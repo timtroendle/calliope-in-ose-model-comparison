@@ -7,17 +7,14 @@ rule all:
 
 
 rule run:
-    message: "Runs the demo model."
-    input: "src/model.py"
-    params:
-        slope = 4,
-        x0 = 5
-    output: "build/results.pickle"
-    script: "src/model.py"
+    message: "Run the model."
+    input: "src/simple-model.yaml"
+    output: "build/results.nc"
+    shell: "calliope run {input} --save_netcdf {output}"
 
 
 rule plot:
-    message: "Visualises the demo results."
+    message: "Visualises the results."
     input:
         src = "src/vis.py",
         results = rules.run.output

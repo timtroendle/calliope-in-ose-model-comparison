@@ -10,6 +10,8 @@ You need [conda](https://conda.io/docs/index.html) to run the analysis. Using co
 
     conda env create -f requirements.yml
 
+Also, you need to manually copy Euro Calliope model files into `./data/model/` # TODO should be linked.
+
 ## Run the analysis
 
     snakemake

@@ -4,8 +4,8 @@
 
 # Results
 
-Figure @fig:linear-model shows the results we found:
+Figure @fig:timeseries shows the results we found:
 
-![The linear model.](../build/plot.png){ #fig:linear-model .class}
+![Generation profiles.](../build/plot.png){ #fig:timeseries .class}
 
 # Bibliography
