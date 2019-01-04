@@ -1,0 +1,15 @@
+---
+title: OSE Model Comparison -- Euro Calliope
+author:
+    - Tim Tröndle
+institute: ETH Zürich
+tags:
+    - 'reproducible-research'
+abstract: |
+    Simulation runs of Euro Calliope within the OSE Model Comparison.
+bibliography:
+    - 'literature.bib'
+csl: 'energy-policy.csl'
+link-citations: True
+date: 0.1.0.dev
+---
