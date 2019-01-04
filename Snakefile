@@ -10,7 +10,7 @@ rule run:
     message: "Run the model."
     input: "src/simple-model.yaml"
     output: "build/results.nc"
-    shell: "calliope run {input} --save_netcdf {output}"
+    shell: "calliope run {input} --save_netcdf {output} --scenario=diw_assumptions"
 
 
 rule plot:

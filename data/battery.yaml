@@ -1,0 +1,19 @@
+techs:
+    battery:
+        essentials:
+            name: 'Battery storage'
+            parent: storage
+            carrier: electricity
+        constraints:
+            energy_cap_max: inf
+            storage_cap_max: inf
+            charge_rate: 1
+            energy_eff: 0.9591663046625439  # 0.9592 * 0.9592 ~ 0.92 round trip efficiency {Schmidt et al. 2017}
+            storage_loss: 0  # No loss over time assumed
+            lifetime: 12 # {own assumption}
+        costs:
+            monetary:
+                energy_cap: 135.14  # EUR per kW {Schmidt et al. 2017 and own assumptions}
+                om_annual: 0  # {own_assumptions}
+                om_prod: 0  # {own_assumptions}
+                storage_cap: 315.32  # EUR per kWh Schmidt et al. 2017 and own assumptions capacity

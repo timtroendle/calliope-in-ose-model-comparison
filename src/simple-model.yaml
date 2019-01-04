@@ -1,9 +1,12 @@
 import:
     - '../data/model/interest-rate.yaml'
     - '../data/model/renewable-techs.yaml'
-    - '../data/model/storage-techs.yaml'
     - '../data/model/locations.yaml'
     - '../data/model/link-techs.yaml'
+    - '../data/battery.yaml'
+overrides:
+    diw_assumptions:
+        tech_groups.storage.costs.monetary.interest_rate: 0.04 # {own assumption}
 model:
     name: 'Simple disconnected nodes model'
     timeseries_data_path: '../data/model/'
