@@ -1,32 +1,11 @@
 PANDOC = "pandoc --filter pantable --filter pandoc-fignos --filter pandoc-tablenos --filter pandoc-citeproc"
 
 include: "rules/build.smk"
+include: "rules/analyse.smk"
 
 rule all:
     message: "Run entire analysis and compile report."
     input: "build/report.html"
-
-
-rule run:
-    message: "Run the model."
-    input:
-        model = "src/simple-model.yaml",
-        load = rules.preprocess_load.output,
-        capacityfactors = expand(
-            "build/model/capacityfactors-{technology}.csv",
-            technology=["open-field-pv", "rooftop-pv", "wind-offshore", "wind-onshore"]
-        )
-    output: "build/results.nc"
-    shell: "calliope run {input.model} --save_netcdf {output} --scenario=diw_assumptions"
-
-
-rule plot:
-    message: "Visualises the results."
-    input:
-        src = "src/vis.py",
-        results = rules.run.output
-    output: "build/plot.png"
-    script: "src/vis.py"
 
 
 rule report:
@@ -35,7 +14,8 @@ rule report:
         "report/literature.bib",
         "report/main.md",
         "report/pandoc-metadata.yml",
-        rules.plot.output
+        rules.plot.output,
+        rules.capacity.output
     output:
         "build/report.html"
     shell:
