@@ -1,11 +1,11 @@
-"""This module contains the visualisation of results."""
+"""Preprocess the renewables data to be compatible with Calliope."""
 import pandas as pd
 import pycountry
 
 
 def preprocess_load_data(path_to_raw_load, assumed_year, path_to_result):
     """Preprocess the load data to be compatible with Calliope."""
-    data = pd.read_excel("data/load_time_series.xlsx", sheet="load (MW)", index_col=0)
+    data = pd.read_excel(path_to_raw_load, sheet_name="load (MW)", index_col=0)
     data.index = pd.date_range(
         start=f"{assumed_year}",
         end=f"{assumed_year + 1}",
@@ -33,7 +33,7 @@ def preprocess_load_data(path_to_raw_load, assumed_year, path_to_result):
 
 if __name__ == "__main__":
     preprocess_load_data(
-        path_to_raw_load=snakemake.input.raw[0],
+        path_to_raw_load=snakemake.input.raw,
         assumed_year=snakemake.params.year,
         path_to_result=snakemake.output[0]
     )

@@ -10,6 +10,9 @@ rule preprocess_load:
 
 rule preprocess_capacityfactors:
     message: "Preprocess capacityfactors of {wildcards.technology}."
-    input: "data/model/capacityfactors-{technology}.csv"
+    input:
+        src = "src/renewables.py",
+        raw = "data/res_time_series_8760h.xlsx"
     output: "build/model/capacityfactors-{technology}.csv"
-    shell: "cp {input} {output}"
+    params: year = 2015
+    script: "../src/renewables.py"
