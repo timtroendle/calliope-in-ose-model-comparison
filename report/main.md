@@ -18,4 +18,14 @@ markdown: True
 ---
 ```
 
+And here, i.e. in Table @tbl:trade, the electricity traded between countries.
+
+```table
+---
+caption: 'Traded electricity GWh. {#tbl:trade}'
+include: ../build/trade.csv
+markdown: True
+---
+```
+
 # Bibliography

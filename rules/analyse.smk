@@ -16,9 +16,18 @@ rule plot:
 
 
 rule capacity:
-    message: "Calculate the installed capacities."
+    message: "Excavate the installed capacities."
     input:
         src = "src/analyse/capacity.py",
         results = rules.run.output
     output: "build/capacity.csv"
     script: "../src/analyse/capacity.py"
+
+
+rule trade:
+    message: "Excavate the traded electricity."
+    input:
+        src = "src/analyse/trade.py",
+        results = rules.run.output
+    output: "build/trade.csv"
+    script: "../src/analyse/trade.py"
