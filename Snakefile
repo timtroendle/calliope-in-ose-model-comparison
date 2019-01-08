@@ -1,6 +1,6 @@
 PANDOC = "pandoc --filter pantable --filter pandoc-fignos --filter pandoc-tablenos --filter pandoc-citeproc"
 
-include: "rules/build.smk"
+include: "rules/construct.smk"
 include: "rules/analyse.smk"
 
 rule all:
