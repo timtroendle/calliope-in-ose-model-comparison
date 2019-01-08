@@ -9,8 +9,8 @@ overrides:
         tech_groups.storage.costs.monetary.interest_rate: 0.04 # {own assumption}
 model:
     name: 'Simple disconnected nodes model'
-    timeseries_data_path: '../data/model/'
-    subset_time: ['2016-01-01', '2016-01-01']
+    timeseries_data_path: '../build/model/'
+    subset_time: ['2015-01-01', '2015-01-01']
 run:
     solver: glpk
     mode: plan

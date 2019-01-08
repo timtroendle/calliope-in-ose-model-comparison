@@ -10,7 +10,10 @@ You need [conda](https://conda.io/docs/index.html) to run the analysis. Using co
 
     conda env create -f requirements.yml
 
-Also, you need to manually copy Euro Calliope model files into `./data/model/` # TODO should be linked.
+Also, you need to manually add the following data:
+
+* Copy Euro Calliope model files into `./data/model/` # TODO should be linked.
+* Copy the load time series into `./data/load_time_series.xlsx` # TODO check in?
 
 ## Run the analysis
 
