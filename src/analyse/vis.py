@@ -25,30 +25,22 @@ def visualise_model_results(path_to_results, path_to_figure):
 
 
 def _create_generation_timeseries(model):
-    data = model.results["carrier_prod"].to_dataframe().reset_index()
-
-    data["location"] = data["loc_tech_carriers_prod"].map(lambda x: x.split("::")[0])
-    data["tech"] = data["loc_tech_carriers_prod"].map(lambda x: x.split("::")[1])
-    data["carrier"] = data["loc_tech_carriers_prod"].map(lambda x: x.split("::")[2])
-
-    ts = data.groupby(["tech", "timesteps"]).sum().reset_index().pivot(
+    ts = model.get_formatted_array("carrier_prod").to_dataframe(
+        name="carrier_prod"
+    ).reset_index().groupby(["techs", "timesteps"]).sum().reset_index().pivot(
         index="timesteps",
-        columns="tech",
+        columns="techs",
         values="carrier_prod"
     )
     return ts.drop(columns=[column for column in ts.columns if "transmission" in column])
 
 
 def _create_consumption_timeseries(model):
-    data = model.results["carrier_con"].to_dataframe().reset_index()
-
-    data["location"] = data["loc_tech_carriers_con"].map(lambda x: x.split("::")[0])
-    data["tech"] = data["loc_tech_carriers_con"].map(lambda x: x.split("::")[1])
-    data["carrier"] = data["loc_tech_carriers_con"].map(lambda x: x.split("::")[2])
-
-    ts = data.groupby(["tech", "timesteps"]).sum().reset_index().pivot(
+    ts = model.get_formatted_array("carrier_con").to_dataframe(
+        name="carrier_con"
+    ).reset_index().groupby(["techs", "timesteps"]).sum().reset_index().pivot(
         index="timesteps",
-        columns="tech",
+        columns="techs",
         values="carrier_con"
     )
     return ts.drop(columns=[column for column in ts.columns if "transmission" in column])

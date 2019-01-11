@@ -26,26 +26,17 @@ def excavate_trade(path_to_results, path_to_trade_amounts):
 
 
 def _read_imports(model):
-    data = model.results["carrier_prod"].to_dataframe().reset_index()
-
-    data["location"] = data["loc_tech_carriers_prod"].map(lambda x: x.split("::")[0])
-    data["tech"] = data["loc_tech_carriers_prod"].map(lambda x: x.split("::")[1])
-
-    data.drop(index=data[~data.tech.str.contains("ac_transmission")].index, inplace=True)
-
-    return data.groupby("location").carrier_prod.sum()
+    data = model.get_formatted_array("carrier_prod").to_dataframe(name="carrier_prod").reset_index()
+    data.drop(index=data[~data.techs.str.contains("ac_transmission")].index, inplace=True)
+    data.locs = data.locs.str[:3]
+    return data.groupby("locs").carrier_prod.sum()
 
 
 def _read_exports(model):
-    data = model.results["carrier_con"].to_dataframe().reset_index()
-
-    data["location"] = data["loc_tech_carriers_con"].map(lambda x: x.split("::")[0])
-    data["tech"] = data["loc_tech_carriers_con"].map(lambda x: x.split("::")[1])
-
-    data.drop(index=data[~data.tech.str.contains("ac_transmission")].index, inplace=True)
-
-    return data.groupby("location").carrier_con.sum()
-
+    data = model.get_formatted_array("carrier_con").to_dataframe(name="carrier_con").reset_index()
+    data.drop(index=data[~data.techs.str.contains("ac_transmission")].index, inplace=True)
+    data.locs = data.locs.str[:3]
+    return data.groupby("locs").carrier_con.sum()
 
 
 if __name__ == "__main__":
