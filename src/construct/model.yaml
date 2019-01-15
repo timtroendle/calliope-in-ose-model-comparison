@@ -14,7 +14,8 @@ model:
     timeseries_data_path: '../../build/model/'
     subset_time: ['2015-01-01', '2015-01-01']
 run:
-    solver: glpk
+    solver: gurobi
+    solver_io: python
     mode: plan
 techs:
     demand_elec:

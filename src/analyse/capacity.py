@@ -3,7 +3,7 @@ import calliope
 import pandas as pd
 
 
-def excavate_installed_capacities(path_to_results, path_to_capacities):
+def excavate_installed_capacities(path_to_results, path_to_capacities_raw, path_to_capacities_publish):
     """Excavate installed capacities from the model results."""
     model = calliope.read_netcdf(path_to_results)
 
@@ -16,7 +16,12 @@ def excavate_installed_capacities(path_to_results, path_to_capacities):
     del capacities["demand_elec"]
     capacities.loc["EUR"] = capacities.sum()
     capacities.to_csv(
-        path_to_capacities,
+        path_to_capacities_raw,
+        index=True,
+        header=True,
+    )
+    capacities.to_csv(
+        path_to_capacities_publish,
         index=True,
         header=True,
         float_format="%.1f"
@@ -32,5 +37,6 @@ def _read_capacities(model):
 if __name__ == "__main__":
     excavate_installed_capacities(
         path_to_results=snakemake.input.results[0],
-        path_to_capacities=snakemake.output[0]
+        path_to_capacities_raw=snakemake.output.raw,
+        path_to_capacities_publish=snakemake.output.publish
     )

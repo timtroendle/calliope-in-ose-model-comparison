@@ -15,7 +15,7 @@ rule report:
         "report/main.md",
         "report/pandoc-metadata.yml",
         rules.plot.output,
-        rules.capacity.output,
+        rules.capacity.output.publish,
         rules.trade.output,
         rules.test.output
     output:

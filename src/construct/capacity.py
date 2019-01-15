@@ -29,6 +29,11 @@ locations:
             wind_onshore:
                 constraints:
                     energy_cap_min: {{ techs.wind_onshore }}
+    {{ country }}_wind_offshore:
+        techs:
+            wind_offshore:
+                constraints:
+                    energy_cap_min: {{ techs.wind_offshore }}
     {% endfor %}
 """
 

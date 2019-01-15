@@ -25,7 +25,9 @@ rule capacity:
     input:
         src = "src/analyse/capacity.py",
         results = rules.run.output
-    output: "build/output/capacity.csv"
+    output:
+        raw = "build/output/capacity-raw.csv",
+        publish = "build/output/capacity-publish.csv"
     script: "../src/analyse/capacity.py"
 
 
@@ -42,7 +44,7 @@ rule test:
     message: "Run tests"
     input:
         "tests/test_capacity_constraints.py",
-        rules.capacity.output
+        rules.capacity.output.raw
     output: "build/test-report.html"
     shell:
         "py.test --html={output} --self-contained-html"

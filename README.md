@@ -10,6 +10,8 @@ You need [conda](https://conda.io/docs/index.html) to run the analysis. Using co
 
     conda env create -f requirements.yml
 
+In addition you will need a gurobi license, or you have to install and configure another solver.
+
 Also, you need to manually add the following data:
 
 * Copy Euro Calliope model files into `./data/model/` # TODO should be linked.
