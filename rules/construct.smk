@@ -27,6 +27,17 @@ rule links:
     script: "../src/construct/links.py"
 
 
+rule generation_capacities:
+    message: "Define the bounds of the generation capacities."
+    input:
+        src = "src/construct/capacity.py",
+        capacity = "data/generation_capacity.xlsx"
+    output:
+        csv = "build/input/capacity.csv",
+        yaml = "build/model/capacity.yaml"
+    script: "../src/construct/capacity.py"
+
+
 rule model:
     message: "Build entire model."
     input:
@@ -36,6 +47,7 @@ rule model:
             technology=["open-field-pv", "rooftop-pv", "wind-offshore", "wind-onshore"]
         ),
         rules.links.output,
+        rules.generation_capacities.output.yaml,
         definition = "src/construct/model.yaml"
     output: "build/model/model.yaml"
     shell: "cp {input.definition} {output}"

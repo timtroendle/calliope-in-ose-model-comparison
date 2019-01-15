@@ -16,7 +16,8 @@ rule report:
         "report/pandoc-metadata.yml",
         rules.plot.output,
         rules.capacity.output,
-        rules.trade.output
+        rules.trade.output,
+        rules.test.output
     output:
         "build/report.html"
     shell:
@@ -34,7 +35,3 @@ rule clean: # removes all generated results
         echo "Data downloaded to data/ has not been cleaned."
         """
 
-
-rule test:
-    shell:
-        "py.test"

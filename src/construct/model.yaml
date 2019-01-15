@@ -5,6 +5,7 @@ import:
     - '../../data/model/link-techs.yaml'
     - '../../data/battery.yaml'
     - '../../build/model/links.yaml'
+    - '../../build/model/capacity.yaml'
 overrides:
     diw_assumptions:
         tech_groups.storage.costs.monetary.interest_rate: 0.04 # {own assumption}

@@ -28,6 +28,11 @@ def preprocess_renewables_data(path_to_raw_data, assumed_year, technology, path_
 
 def _read_wind(path_to_raw_data, sheet_name):
     combined = pd.read_excel(path_to_raw_data, sheet_name="wind on&off combined", index_col=0)
+    combined["RS"] = 0 # FIXME this is only because Serbia data is missing
+    combined["ME"] = 0 # FIXME this is only because Montenegro data is missing
+    combined["BA"] = 0 # FIXME this is only because Bosnia and Herzegovina data is missing
+    combined["MT"] = 0 # FIXME this is only because Malta data is missing
+    combined["AL"] = 0 # FIXME this is only because Albania data is missing
     specific = pd.read_excel(path_to_raw_data, sheet_name=sheet_name, index_col=0)
     specific = specific.reindex(columns=combined.columns)
     return specific.where(~pd.isna(specific), other=combined)

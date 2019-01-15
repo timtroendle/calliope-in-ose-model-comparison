@@ -2,8 +2,13 @@ rule run:
     message: "Run the model."
     input:
         model = rules.model.output
-    output: "build/results.nc"
-    shell: "calliope run {input.model} --save_netcdf {output} --scenario=diw_assumptions"
+    output: "build/output/results.nc"
+    shell:
+        """
+        calliope run {input.model} --save_netcdf {output} --scenario=diw_assumptions
+        echo -e "import calliope\nif calliope.read_netcdf('{output}').results.termination_condition != 'optimal':\n raise ValueError('non optimal')" \
+        | python # see https://github.com/calliope-project/calliope/issues/182
+        """
 
 
 rule plot:
@@ -11,7 +16,7 @@ rule plot:
     input:
         src = "src/analyse/vis.py",
         results = rules.run.output
-    output: "build/plot.png"
+    output: "build/output/plot.png"
     script: "../src/analyse/vis.py"
 
 
@@ -20,7 +25,7 @@ rule capacity:
     input:
         src = "src/analyse/capacity.py",
         results = rules.run.output
-    output: "build/capacity.csv"
+    output: "build/output/capacity.csv"
     script: "../src/analyse/capacity.py"
 
 
@@ -29,5 +34,15 @@ rule trade:
     input:
         src = "src/analyse/trade.py",
         results = rules.run.output
-    output: "build/trade.csv"
+    output: "build/output/trade.csv"
     script: "../src/analyse/trade.py"
+
+
+rule test:
+    message: "Run tests"
+    input:
+        "tests/test_capacity_constraints.py",
+        rules.capacity.output
+    output: "build/test-report.html"
+    shell:
+        "py.test --html={output} --self-contained-html"

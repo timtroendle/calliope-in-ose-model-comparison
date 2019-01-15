@@ -15,6 +15,7 @@ dependencies:
     - calliope=0.6.3
     - xlrd=1.2.0
     - pycountry=18.12.8
+    - pytest-html=1.20.0
     - pip:
         - pytest-pythonpath # adds the root path "./" to PYTHONPATH
         - pandoc-tablenos
