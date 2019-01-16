@@ -14,6 +14,10 @@ overrides:
         techs.lignite.costs.monetary.om_con: 0.0396 # €/kWh
         techs.coal.costs.monetary.om_con: 0.0972 # €/kWh
         techs.ccgt.costs.monetary.om_con: 0.3168 # €/kWh
+        techs.nuclear.costs.monetary.om_prod: 0.00036 # €/kWh (0.03 € / kg CO2eq) * (0.012 kg CO2eq/kWh)
+        techs.lignite.costs.monetary.om_prod: 0.0273 # €/kWh (0.03 € / kg CO2eq) * (0.910 kg CO2eq/kWh)
+        techs.coal.costs.monetary.om_prod: 0.0246 # €/kWh (0.03 € / kg CO2eq) * (0.820 kg CO2eq/kWh)
+        techs.ccgt.costs.monetary.om_prod: 0.0147 # €/kWh (0.03 € / kg CO2eq) * (0.490 kg CO2eq/kWh)
 model:
     name: 'Open Source Modelling -- Euro Calliope model'
     timeseries_data_path: '../../build/model/'
