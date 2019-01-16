@@ -16,7 +16,7 @@ TECH_MAP = {
     "Othernon-RES": "other_non_res",
     "Other RES": "other_res",
     "Solar-thermal": "solar_thermal",
-    "Solar-PV": "solar_pv",
+    "Solar-PV": "roof_mounted_pv", # ASSUME all solar pv is roof mounted
     "Wind-on-shore": "wind_onshore",
     "Wind-off-shore": "wind_offshore"
 }
@@ -34,6 +34,11 @@ locations:
             wind_offshore:
                 constraints:
                     energy_cap_min: {{ techs.wind_offshore }}
+    {{ country }}_roof_mounted_pv:
+        techs:
+            roof_mounted_pv:
+                constraints:
+                    energy_cap_min: {{ techs.roof_mounted_pv }}
     {% endfor %}
 """
 
