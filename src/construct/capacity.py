@@ -4,17 +4,17 @@ import pandas as pd
 import pycountry
 
 TECH_MAP = {
-    "Biofuels": "biofuels",
-    "Gas": "gas",
-    "Hard coal": "hard_coal",
-    "Hydro-pump": "hydro_pump",
-    "Hydro-run": "hydro_run",
-    "Hydro-turbine": "hydro_turbine",
+    "Biofuels": "biofuels", # TODO add
+    "Gas": "gas", # TODO add
+    "Hard coal": "coal",
+    "Hydro-pump": "hydro_pump", # TODO add
+    "Hydro-run": "hydro_run", # TODO add
+    "Hydro-turbine": "hydro_turbine", # TODO add
     "Lignite": "lignite",
-    "Nuclear": "nuclear",
-    "Oil": "oil",
-    "Othernon-RES": "other_non_res",
-    "Other RES": "other_res",
+    "Nuclear": "nuclear", # TODO add
+    "Oil": "oil", # TODO add
+    "Othernon-RES": "other_non_res", # TODO what to do with this?
+    "Other RES": "other_res", # TODO what to do with this?
     "Solar-thermal": "solar_thermal",
     "Solar-PV": "roof_mounted_pv", # ASSUME all solar pv is roof mounted
     "Wind-on-shore": "wind_onshore",
@@ -39,6 +39,14 @@ locations:
             roof_mounted_pv:
                 constraints:
                     energy_cap_min: {{ techs.roof_mounted_pv }}
+    {{ country }}:
+        techs:
+            coal:
+                constraints:
+                    energy_cap_max: {{ techs.coal }}
+            lignite:
+                constraints:
+                    energy_cap_max: {{ techs.lignite }}
     {% endfor %}
 """
 

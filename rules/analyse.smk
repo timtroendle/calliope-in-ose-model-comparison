@@ -1,7 +1,7 @@
 rule run:
     message: "Run the model."
     input:
-        model = rules.model.output
+        model = rules.model.output.model
     output: "build/output/results.nc"
     shell:
         """

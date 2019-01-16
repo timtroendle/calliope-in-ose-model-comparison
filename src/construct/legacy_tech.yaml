@@ -1,0 +1,40 @@
+# taken from https://github.com/sjpfenninger/uk-calliope
+techs:
+    coal:
+        essentials:
+            name: Coal
+            carrier: electricity
+            parent: supply
+        constraints:
+            energy_eff: 0.44  # Coal ASC with FGD medium nth o.a.k., {parsons2011}
+            # energy_ramping: 0.6  # Assume about 1% per minute times 60 minutes, based on {mit2011}
+            resource: inf
+            energy_cap_min_use: 0.5  # Assumption
+            lifetime: 25
+        costs:
+            monetary: # FIXME must be translated to US Dollar 2016
+                energy_cap: 1769.74  # 2016 £/kWh, Coal ASC with FGD medium nth o.a.k., {parsons2011}
+                om_prod: 0.001077  # 2016 £/kWh, Coal ASC with FGD medium nth o.a.k., {parsons2011}
+                om_annual: 37.71  # 2016 £/kW/yr, Coal ASC with FGD medium nth o.a.k., {parsons2011}
+                om_con:  0.00895  # 2016 £/kWh net, medium, Table 6.3, {mott2010} (with 1 GJ = 277.777 kWh)
+            co2:
+                om_prod:  0.820  # kg CO2eq/kWh, {ipcc_ar5_wg3}
+    lignite: # FIXME mainly a copy of coal
+        essentials:
+            name: Lignite
+            carrier: electricity
+            parent: supply
+        constraints:
+            energy_eff: 0.44  # Coal ASC with FGD medium nth o.a.k., {parsons2011}
+            # energy_ramping: 0.6  # Assume about 1% per minute times 60 minutes, based on {mit2011}
+            resource: inf
+            energy_cap_min_use: 0.5  # Assumption
+            lifetime: 25
+        costs:
+            monetary: # FIXME must be translated to US Dollar 2016
+                energy_cap: 1769.74  # 2016 £/kWh, Coal ASC with FGD medium nth o.a.k., {parsons2011}
+                om_prod: 0.001077  # 2016 £/kWh, Coal ASC with FGD medium nth o.a.k., {parsons2011}
+                om_annual: 37.71  # 2016 £/kW/yr, Coal ASC with FGD medium nth o.a.k., {parsons2011}
+                om_con:  0.00895  # 2016 £/kWh net, medium, Table 6.3, {mott2010} (with 1 GJ = 277.777 kWh)
+            co2:
+                om_prod:  0.910  # kg CO2eq/kWh, {ipcc_ar5_wg3} # ASSUME max of IPCC range for coal

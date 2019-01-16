@@ -48,6 +48,13 @@ rule model:
         ),
         rules.links.output,
         rules.generation_capacities.output.yaml,
+        legacy_techs = "src/construct/legacy_tech.yaml",
         definition = "src/construct/model.yaml"
-    output: "build/model/model.yaml"
-    shell: "cp {input.definition} {output}"
+    output:
+        legacy_techs = "build/model/legacy_tech.yaml",
+        model = "build/model/model.yaml"
+    shell:
+        """
+        cp {input.legacy_techs} {output.legacy_techs}
+        cp {input.definition} {output.model}
+        """
