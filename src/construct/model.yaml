@@ -10,6 +10,10 @@ import:
 overrides:
     diw_assumptions:
         tech_groups.storage.costs.monetary.interest_rate: 0.04 # {own assumption}
+        techs.nuclear.costs.monetary.om_con: 0.0169 # €/kWh
+        techs.lignite.costs.monetary.om_con: 0.0396 # €/kWh
+        techs.coal.costs.monetary.om_con: 0.0972 # €/kWh
+        techs.ccgt.costs.monetary.om_con: 0.3168 # €/kWh
 model:
     name: 'Open Source Modelling -- Euro Calliope model'
     timeseries_data_path: '../../build/model/'
