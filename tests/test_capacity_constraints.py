@@ -32,7 +32,7 @@ def test_minimal_capacity_is_installed(capacity_constraints, installed_capacity,
 
 
 @pytest.mark.parametrize("tech", [
-    ("coal"), ("lignite")
+    ("coal"), ("lignite"), ("ccgt"), ("nuclear")
 ])
 def test_maximum_capacity_is_not_exceeded(capacity_constraints, installed_capacity, country, tech):
     assert installed_capacity.loc[country, tech] - EPSILON <= capacity_constraints.loc[country, tech]

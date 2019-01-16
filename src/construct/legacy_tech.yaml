@@ -38,3 +38,37 @@ techs:
                 om_con:  0.00895  # 2016 £/kWh net, medium, Table 6.3, {mott2010} (with 1 GJ = 277.777 kWh)
             co2:
                 om_prod:  0.910  # kg CO2eq/kWh, {ipcc_ar5_wg3} # ASSUME max of IPCC range for coal
+    ccgt:
+        essentials:
+            name: CCGT
+            carrier: electricity
+            parent: supply
+        constraints:
+            energy_eff: 0.58  # CCGT medium nth of a kind, {parsons2011}
+            resource: inf
+            lifetime: 25
+        costs:
+            monetary: # FIXME must be translated to US Dollar 2016
+                energy_cap: 720.63  # 2016 £/kW, CCGT medium nth of a kind, {parsons2011}
+                om_prod: 0.000108  # 2016 £/kWh, CCGT medium nth of a kind, {parsons2011}
+                om_annual: 24.97  # 2016 £/kW/yr, CCGT medium nth of a kind, {parsons2011}
+                om_con: 0.03081  # 2016 £/kWh net, medium, Table 6.3, {mott2010} (with 1 GJ = 277.777 kWh)
+            co2:
+                om_prod:  0.490  # kg CO2eq/kWh, {ipcc_ar5_wg3}
+    nuclear:
+        essentials:
+            name: Nuclear
+            carrier: electricity
+            parent: supply
+        constraints:
+            # energy_ramping: 0.2  # From {mit2011} "Relatively new nuclear reactors ramp asymmetrically: plants can down-ramp 20% of their total output within an hour, but they require six to eight hours to ramp up to full load."
+            resource: inf
+            lifetime: 25
+        costs:
+            monetary:
+                energy_cap: 3263.78  # 2016 £/kW, Nuclear PWR medium nth of a kind, {parsons2011}
+                om_prod: 0.000539  # 2016 £/kWh, Nuclear PWR medium nth of a kind, {parsons2011}
+                om_annual: 64.64  # 2016 £/kW/yr, Nuclear PWR medium nth of a kind, {parsons2011}
+                om_con: 0.00524  # 2016 £/kWh, Table 2, {decc2013}
+            co2:
+                om_prod:  0.012  # kg CO2eq/kWh, {ipcc_ar5_wg3}

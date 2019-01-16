@@ -4,18 +4,18 @@ import pandas as pd
 import pycountry
 
 TECH_MAP = {
-    "Biofuels": "biofuels", # TODO add
-    "Gas": "gas", # TODO add
+    "Biofuels": "biofuels", # ASSUME inexistent
+    "Gas": "ccgt", # ASSUME all gas to be CCGT
     "Hard coal": "coal",
     "Hydro-pump": "hydro_pump", # TODO add
     "Hydro-run": "hydro_run", # TODO add
     "Hydro-turbine": "hydro_turbine", # TODO add
     "Lignite": "lignite",
-    "Nuclear": "nuclear", # TODO add
-    "Oil": "oil", # TODO add
+    "Nuclear": "nuclear",
+    "Oil": "oil", # ASSUME doesnt exist in electricity (was 1.9% in 2015)
     "Othernon-RES": "other_non_res", # TODO what to do with this?
     "Other RES": "other_res", # TODO what to do with this?
-    "Solar-thermal": "solar_thermal",
+    "Solar-thermal": "solar_thermal", # ignored for electricity
     "Solar-PV": "roof_mounted_pv", # ASSUME all solar pv is roof mounted
     "Wind-on-shore": "wind_onshore",
     "Wind-off-shore": "wind_offshore"
@@ -47,6 +47,12 @@ locations:
             lignite:
                 constraints:
                     energy_cap_max: {{ techs.lignite }}
+            ccgt:
+                constraints:
+                    energy_cap_max: {{ techs.ccgt }}
+            nuclear:
+                constraints:
+                    energy_cap_max: {{ techs.nuclear }}
     {% endfor %}
 """
 
@@ -90,7 +96,6 @@ def _read_generation_capacities(path_to_data):
         index=lambda name: pycountry.countries.lookup(name.strip()[:2]).alpha_3,
         inplace=True
     )
-    # TODO drop and properly name techs
     data.rename(
         columns=lambda name: TECH_MAP[name.strip().replace('\n', '').replace('\r', '')],
         inplace=True
