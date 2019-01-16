@@ -18,6 +18,15 @@ rule preprocess_capacityfactors:
     script: "../src/construct/renewables.py"
 
 
+rule location_specific_techs:
+    message: "To apply renewable targets, build location specific renewable techs."
+    input:
+        src = "src/construct/location_specific_techs.py",
+        locations = "data/model/locations.yaml"
+    output: "build/model/location-specific-techs.yaml"
+    script: "../src/construct/location_specific_techs.py"
+
+
 rule links:
     message: "Define links between locations based on net transfer capacities."
     input:
@@ -46,6 +55,7 @@ rule model:
             "build/model/capacityfactors-{technology}.csv",
             technology=["open-field-pv", "rooftop-pv", "wind-offshore", "wind-onshore"]
         ),
+        rules.location_specific_techs.output,
         rules.links.output,
         rules.generation_capacities.output.yaml,
         legacy_techs = "src/construct/legacy_tech.yaml",

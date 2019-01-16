@@ -31,8 +31,13 @@ def _create_generation_timeseries(model):
         index="timesteps",
         columns="techs",
         values="carrier_prod"
+    ).rename(
+        columns=lambda tech: tech if tech[-4] != "_" else tech[:-4]
     )
-    return ts.drop(columns=[column for column in ts.columns if "transmission" in column])
+    return ts.groupby(
+        ts.columns,
+        axis='columns'
+    ).sum().drop(columns=[column for column in ts.columns if "transmission" in column])
 
 
 def _create_consumption_timeseries(model):
@@ -42,8 +47,13 @@ def _create_consumption_timeseries(model):
         index="timesteps",
         columns="techs",
         values="carrier_con"
+    ).rename(
+        columns=lambda tech: tech if tech[-4] != "_" else tech[:-4]
     )
-    return ts.drop(columns=[column for column in ts.columns if "transmission" in column])
+    return ts.groupby(
+        ts.columns,
+        axis='columns'
+    ).sum().drop(columns=[column for column in ts.columns if "transmission" in column])
 
 
 if __name__ == "__main__":

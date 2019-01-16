@@ -10,6 +10,9 @@ def excavate_installed_capacities(path_to_results, path_to_capacities_raw, path_
     capacities = _read_capacities(model)
 
     capacities.loc[:, "locs"] = capacities.loc[:, "locs"].str[:3]
+    capacities.loc[:, "techs"] = capacities.loc[:, "techs"].map(
+        lambda tech: tech if tech[-4] != "_" else tech[:-4]
+    )
     capacities.dropna(subset=["energy_cap"], inplace=True)
     capacities = capacities.groupby(["locs", "techs"]).sum().reset_index()
     capacities = capacities.pivot(index="locs", columns="techs", values="energy_cap") / 1e6 # from kW to GW

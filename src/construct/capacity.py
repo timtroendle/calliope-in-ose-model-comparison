@@ -26,17 +26,17 @@ locations:
     {% for country, techs in capacities.iterrows() %}
     {{ country }}_wind_onshore:
         techs:
-            wind_onshore:
+            wind_onshore_{{ country }}:
                 constraints:
                     energy_cap_min: {{ techs.wind_onshore }}
     {{ country }}_wind_offshore:
         techs:
-            wind_offshore:
+            wind_offshore_{{ country }}:
                 constraints:
                     energy_cap_min: {{ techs.wind_offshore }}
     {{ country }}_roof_mounted_pv:
         techs:
-            roof_mounted_pv:
+            roof_mounted_pv_{{ country }}:
                 constraints:
                     energy_cap_min: {{ techs.roof_mounted_pv }}
     {{ country }}:
