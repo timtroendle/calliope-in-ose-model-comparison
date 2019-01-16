@@ -12,21 +12,30 @@ def preprocess_load_data(path_to_raw_load, assumed_year, path_to_result):
         freq="H",
         closed="left"
     )
-    data["FR"] = data["FR"] + data["FR15"] # france is lacking a "total" column
-    # for all other countries, choose "total" header and delete all subnodes with name
-    # longer than two letters (e.g. DKw)
-    data.rename(
-        columns=lambda name: name if "_total" not in name else name.split("_total")[0],
-        inplace=True
-    )
     data.drop(
-        columns=[col for col in data.columns if len(col) > 2],
+        columns=[
+            "DK_total", # data for sub nodes available, danger of counting data twice
+            "IT_total", # data for sub nodes available, danger of counting data twice
+            "LU_total", # data for sub nodes available, danger of counting data twice
+            "NO_total", # data for sub nodes available, danger of counting data twice
+            "SE_total", # data for sub nodes available, danger of counting data twice
+            "TR", # Turkey out of scope
+            "IL00", # Israel out of scope
+            "TN00", # Tunesia out of scope
+            "IS00", # Israel out of scope
+            "MT", # Malta out of scope
+        ],
         inplace=True
     )
     data.rename(
-        columns=lambda iso2: pycountry.countries.lookup(iso2).alpha_3,
+        columns=lambda name: name if name != "NI" else "GB_NI",
         inplace=True
     )
+    data.rename(
+        columns=lambda name: pycountry.countries.lookup(name.strip()[:2]).alpha_3,
+        inplace=True
+    )
+    data = data.groupby(data.columns, axis='columns').sum()
     data = data * (-1) * 1000 # from MW to kW
     data.to_csv(path_to_result, index=True, header=True)
 
