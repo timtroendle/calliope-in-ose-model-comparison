@@ -9,17 +9,20 @@ PATH_TO_INSTALLED_CAPACITY = PATH_TO_BUILD / "output" / "capacity-raw.csv"
 EPSILON = 1 # kW
 
 
-@pytest.fixture(params=pd.read_csv(PATH_TO_CAPACITY_CONSTRAINTS, index_col=0).index)
+@pytest.fixture(
+    scope="module",
+    params=pd.read_csv(PATH_TO_CAPACITY_CONSTRAINTS, index_col=0).index
+)
 def country(request):
     return request.param
 
 
-@pytest.fixture()
+@pytest.fixture(scope="module")
 def capacity_constraints():
     return pd.read_csv(PATH_TO_CAPACITY_CONSTRAINTS, index_col=0)
 
 
-@pytest.fixture()
+@pytest.fixture(scope="module")
 def installed_capacity():
     return pd.read_csv(PATH_TO_INSTALLED_CAPACITY, index_col=0) * 1e6 # from GW to kW
 
