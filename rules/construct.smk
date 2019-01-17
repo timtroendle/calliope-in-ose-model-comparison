@@ -4,7 +4,6 @@ rule preprocess_load:
         src = "src/construct/load.py",
         raw = "data/load_time_series.xlsx"
     output: "build/model/electricity-demand.csv"
-    params: year = 2015
     script: "../src/construct/load.py"
 
 
@@ -14,7 +13,6 @@ rule preprocess_capacityfactors:
         src = "src/construct/renewables.py",
         raw = "data/res_time_series_8760h.xlsx"
     output: "build/model/capacityfactors-{technology}.csv"
-    params: year = 2015
     script: "../src/construct/renewables.py"
 
 
@@ -47,6 +45,18 @@ rule generation_capacities:
     script: "../src/construct/capacity.py"
 
 
+rule renewable_shares:
+    message: "Ensure minimal renewable shares per country."
+    input:
+        src = "src/construct/renewable_shares.py",
+        shares = "data/bound_RES_and_CO2.xlsx",
+        demand = rules.preprocess_load.output[0]
+    output:
+        csv = "build/input/renewable-shares.csv",
+        yaml = "build/model/renewable-shares.yaml"
+    script: "../src/construct/renewable_shares.py"
+
+
 rule model:
     message: "Build entire model."
     input:
@@ -58,13 +68,15 @@ rule model:
         rules.location_specific_techs.output,
         rules.links.output,
         rules.generation_capacities.output.yaml,
-        legacy_techs = "src/construct/legacy_tech.yaml",
-        definition = "src/construct/model.yaml"
+        rules.renewable_shares.output,
+        legacy_techs = "src/template/legacy_tech.yaml",
+        definition = "src/template/model.yaml"
     output:
         legacy_techs = "build/model/legacy_tech.yaml",
         model = "build/model/model.yaml"
-    shell:
-        """
-        cp {input.legacy_techs} {output.legacy_techs}
-        cp {input.definition} {output.model}
-        """
+    run:
+        import jinja2
+
+        shell("cp {input.legacy_techs} {output.legacy_techs}")
+        with open(input.definition, "r") as template, open(output.model, "w") as result_file:
+            result_file.write(jinja2.Template(template.read()).render(config=config))

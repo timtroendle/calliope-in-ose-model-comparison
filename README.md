@@ -19,6 +19,7 @@ Also, you need to manually add the following data:
 * Copy the 8760 steps renewables time series into `./data/res_time_series_8760h.xlsx` # TODO check in?
 * Copy the NTC data into `./data/NTC.xlsx` # TODO check in?
 * Copy the generation capacities into `./data/generation_capacity.xlsx` # TODO check in?
+* Copy the RES and CO2 bounds into `./data/bound_RES_and_CO2.xlsx` # TODO check in?
 
 ## Run the analysis
 

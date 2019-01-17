@@ -43,6 +43,6 @@ def preprocess_load_data(path_to_raw_load, assumed_year, path_to_result):
 if __name__ == "__main__":
     preprocess_load_data(
         path_to_raw_load=snakemake.input.raw,
-        assumed_year=snakemake.params.year,
+        assumed_year=snakemake.config["year"],
         path_to_result=snakemake.output[0]
     )

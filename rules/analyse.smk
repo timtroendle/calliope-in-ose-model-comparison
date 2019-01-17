@@ -44,7 +44,9 @@ rule test:
     message: "Run tests"
     input:
         "tests/test_capacity_constraints.py",
-        rules.capacity.output.raw
+        rules.capacity.output.raw,
+        rules.renewable_shares.output,
+        rules.run.output
     output: "build/test-report.html"
     shell:
         "py.test --html={output} --self-contained-html"

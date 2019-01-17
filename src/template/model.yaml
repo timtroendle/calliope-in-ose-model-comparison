@@ -8,6 +8,7 @@ import:
     - '../../build/model/capacity.yaml'
     - '../../build/model/legacy_tech.yaml'
     - '../../build/model/location-specific-techs.yaml'
+    - '../../build/model/renewable-shares.yaml'
 overrides:
     diw_assumptions:
         tech_groups.storage.costs.monetary.interest_rate: 0.04 # {own assumption}
@@ -22,7 +23,7 @@ overrides:
 model:
     name: 'Open Source Modelling -- Euro Calliope model'
     timeseries_data_path: '../../build/model/'
-    subset_time: ['2015-01-01', '2015-01-01']
+    subset_time: ['{{ config.from_date }}', '{{ config.to_date }}']
 run:
     solver: gurobi
     solver_io: python

@@ -21,7 +21,7 @@ def _read_ntcs(path_to_ntc):
     data["toLocation"] = data["Border"].map(
         lambda x: pycountry.countries.lookup(x.split("-")[1][:2]).alpha_3
     )
-    data["capacity"] = data.min(axis=1) * 1e3 # from MW to kW
+    data["capacity"] = data.min(axis=1) * 1e3 # from MW to # TODO make directional
     data.drop(columns=["Border", "=>", "<="], inplace=True)
     data.drop(index=data[data["fromLocation"] == data["toLocation"]].index, inplace=True)
     return data.groupby(["fromLocation", "toLocation"]).capacity.sum().reset_index()

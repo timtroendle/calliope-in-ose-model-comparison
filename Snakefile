@@ -3,6 +3,8 @@ PANDOC = "pandoc --filter pantable --filter pandoc-fignos --filter pandoc-tablen
 include: "rules/construct.smk"
 include: "rules/analyse.smk"
 
+configfile: "config/default.yaml"
+
 rule all:
     message: "Run entire analysis and compile report."
     input: "build/report.html"

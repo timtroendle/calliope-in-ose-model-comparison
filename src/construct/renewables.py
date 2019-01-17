@@ -41,7 +41,7 @@ def _read_wind(path_to_raw_data, sheet_name):
 if __name__ == "__main__":
     preprocess_renewables_data(
         path_to_raw_data=snakemake.input.raw,
-        assumed_year=snakemake.params.year,
+        assumed_year=snakemake.config["year"],
         technology=snakemake.wildcards.technology,
         path_to_result=snakemake.output[0]
     )
