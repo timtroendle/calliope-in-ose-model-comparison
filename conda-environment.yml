@@ -18,6 +18,7 @@ dependencies:
     - pycountry=18.12.8
     - pytest-html=1.20.0
     - gurobi=8.1.0
+    - jinja2=2.10
     - pip:
         - pytest-pythonpath # adds the root path "./" to PYTHONPATH
         - pandoc-tablenos
