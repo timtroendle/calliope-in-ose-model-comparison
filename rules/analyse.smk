@@ -49,4 +49,4 @@ rule test:
         rules.run.output
     output: "build/test-report.html"
     shell:
-        "py.test --html={output} --self-contained-html"
+        "py.test ./tests/ --html={output} --self-contained-html"

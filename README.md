@@ -6,15 +6,18 @@ This repository contains the entire scientific project, including code and repor
 
 ## Getting ready
 
-You need [conda](https://conda.io/docs/index.html) to run the analysis. Using conda, you can create a conda environment from within you can run it:
+1. Clone the repo. Because `euro-calliope` is added as a git submodule, you may want to clone using `git clone --recurse-submodules <link-to-this-repo>`.
 
-    conda env create -f requirements.yml
+2. Create an environment to run the analysis. You need [conda](https://conda.io/docs/index.html) to run the analysis. Using conda, you can create a conda environment from within you can run it:
 
-In addition you will need a gurobi license, or you have to install and configure another solver.
+    `conda env create -f conda-environment.yml`
 
-Also, you need to manually add the following data:
+3. Make sure you have a Gurobi license, or install and configure another solver.
 
-* Copy Euro Calliope model files into `./data/model/` # TODO should be linked.
+4. Provide the input data for Euro-Calliope, as defined in "Getting Ready" in  `./euro-calliope/README.md`.
+
+5. Provide the following data manually:
+
 * Copy the load time series into `./data/load_time_series.xlsx` # TODO check in?
 * Copy the 8760 steps renewables time series into `./data/res_time_series_8760h.xlsx` # TODO check in?
 * Copy the NTC data into `./data/NTC.xlsx` # TODO check in?

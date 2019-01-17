@@ -1,3 +1,15 @@
+subworkflow eurocalliope:
+    workdir: "./euro-calliope"
+    snakefile: "./euro-calliope/Snakefile"
+
+
+rule copy_euro_calliope:
+    message: "Copy file ./model/{wildcards.definition_file}.yaml from euro-calliope."
+    input: eurocalliope("model/{definition_file}.yaml"),
+    output: "build/model/{definition_file}.yaml"
+    shell: "cp {input} {output}"
+
+
 rule preprocess_load:
     message: "Preprocess load data."
     input:
@@ -20,7 +32,7 @@ rule location_specific_techs:
     message: "To apply renewable targets, build location specific renewable techs."
     input:
         src = "src/construct/location_specific_techs.py",
-        locations = "data/model/locations.yaml"
+        locations = eurocalliope("model/locations.yaml")
     output: "build/model/location-specific-techs.yaml"
     script: "../src/construct/location_specific_techs.py"
 
@@ -60,6 +72,10 @@ rule renewable_shares:
 rule model:
     message: "Build entire model."
     input:
+        "build/model/interest-rate.yaml",
+        "build/model/renewable-techs.yaml",
+        "build/model/locations.yaml",
+        "build/model/link-techs.yaml",
         rules.preprocess_load.output,
         expand(
             "build/model/capacityfactors-{technology}.csv",
@@ -70,13 +86,16 @@ rule model:
         rules.generation_capacities.output.yaml,
         rules.renewable_shares.output,
         legacy_techs = "src/template/legacy_tech.yaml",
+        battery_techs = "src/template/battery.yaml",
         definition = "src/template/model.yaml"
     output:
         legacy_techs = "build/model/legacy_tech.yaml",
+        battery_techs = "build/model/battery.yaml",
         model = "build/model/model.yaml"
     run:
         import jinja2
 
         shell("cp {input.legacy_techs} {output.legacy_techs}")
+        shell("cp {input.battery_techs} {output.battery_techs}")
         with open(input.definition, "r") as template, open(output.model, "w") as result_file:
             result_file.write(jinja2.Template(template.read()).render(config=config))

@@ -1,14 +1,14 @@
 import:
-    - '../../data/model/interest-rate.yaml'
-    - '../../data/model/renewable-techs.yaml'
-    - '../../data/model/locations.yaml'
-    - '../../data/model/link-techs.yaml'
-    - '../../data/battery.yaml'
-    - '../../build/model/links.yaml'
-    - '../../build/model/capacity.yaml'
-    - '../../build/model/legacy_tech.yaml'
-    - '../../build/model/location-specific-techs.yaml'
-    - '../../build/model/renewable-shares.yaml'
+    - './interest-rate.yaml'
+    - './renewable-techs.yaml'
+    - './locations.yaml'
+    - './link-techs.yaml'
+    - './battery.yaml'
+    - './links.yaml'
+    - './capacity.yaml'
+    - './legacy_tech.yaml'
+    - './location-specific-techs.yaml'
+    - './renewable-shares.yaml'
 overrides:
     diw_assumptions:
         tech_groups.storage.costs.monetary.interest_rate: 0.04 # {own assumption}
@@ -22,7 +22,7 @@ overrides:
         techs.ccgt.costs.monetary.om_prod: 0.0147 # €/kWh (0.03 € / kg CO2eq) * (0.490 kg CO2eq/kWh)
 model:
     name: 'Open Source Modelling -- Euro Calliope model'
-    timeseries_data_path: '../../build/model/'
+    timeseries_data_path: './'
     subset_time: ['{{ config.from_date }}', '{{ config.to_date }}']
 run:
     solver: gurobi
