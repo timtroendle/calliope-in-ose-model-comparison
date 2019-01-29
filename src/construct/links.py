@@ -40,11 +40,32 @@ def _read_ntcs(path_to_ntc):
     data["toLocation"] = data["Border"].map(
         lambda x: pycountry.countries.lookup(x.split("-")[1][:2]).alpha_3
     )
+    data.replace(
+        to_replace={
+            "NIC": "GBR", # NI is not Northern Ireland, but Nicaragua
+            "TUR": None, # out of scope
+            "MLT": None, # out of scope
+            "TUN": None # out of scope
+        },
+        inplace=True
+    )
+    data.dropna(axis="index", how="any", subset=["fromLocation", "toLocation"], inplace=True)
+    data.drop(index=data[data["fromLocation"] == data["toLocation"]].index, inplace=True)
     data["capacity_go"] = data["=>"] * 1e3 # from MW to kW
     data["capacity_return"] = data["<="] * 1e3 # from MW to kW
-    # FIXME Northern Ireland is broken
     data.drop(columns=["Border", "=>", "<="], inplace=True)
-    data.drop(index=data[data["fromLocation"] == data["toLocation"]].index, inplace=True)
+
+    # invert power line from IRL to GBR otherwise it will appear twice in YAML
+    idx = data[(data["fromLocation"] == "IRL") & (data["toLocation"] == "GBR")].index
+    assert len(idx) == 1
+    idx = idx[0]
+    from_irl_to_gbr = data.loc[idx, "capacity_go"]
+    from_gbr_to_irl = data.loc[idx, "capacity_return"]
+    data.loc[idx, "fromLocation"] = "GBR"
+    data.loc[idx, "toLocation"] = "IRL"
+    data.loc[idx, "capacity_go"] = from_gbr_to_irl
+    data.loc[idx, "capacity_return"] = from_irl_to_gbr
+
     return (data.groupby(["fromLocation", "toLocation"])
                 .agg({"capacity_go": "sum", "capacity_return": "sum"})
                 .reset_index())
