@@ -3,7 +3,7 @@ import:
     - './renewable-techs.yaml'
     - './locations.yaml'
     - './link-techs.yaml'
-    - './battery.yaml'
+    - './storage-techs.yaml'
     - './links.yaml'
     - './capacity.yaml'
     - './legacy_tech.yaml'
@@ -11,7 +11,10 @@ import:
     - './renewable-shares.yaml'
 overrides:
     diw_assumptions:
-        tech_groups.storage.costs.monetary.interest_rate: 0.04 # {own assumption}
+        techs.battery.energy_eff: 0.9591663046625439  # 0.9592 * 0.9592 ~ 0.92 round trip efficiency {Schmidt et al. 2017}
+        techs.battery.costs.monetary.interest_rate: 0.04 # {own assumption}
+        techs.battery.costs.monetary.om_annual: 0  # {own_assumptions}
+        techs.battery.costs.monetary.om_prod: 0  # {own_assumptions}
         techs.nuclear.costs.monetary.om_con: 0.0169 # €/kWh
         techs.lignite.costs.monetary.om_con: 0.0396 # €/kWh
         techs.coal.costs.monetary.om_con: 0.0972 # €/kWh
@@ -20,10 +23,24 @@ overrides:
         techs.lignite.costs.monetary.om_prod: 0.0273 # €/kWh (0.03 € / kg CO2eq) * (0.910 kg CO2eq/kWh)
         techs.coal.costs.monetary.om_prod: 0.0246 # €/kWh (0.03 € / kg CO2eq) * (0.820 kg CO2eq/kWh)
         techs.ccgt.costs.monetary.om_prod: 0.0147 # €/kWh (0.03 € / kg CO2eq) * (0.490 kg CO2eq/kWh)
+    diw_battery_baseline_cost:
+        techs.battery.costs.monetary.energy_cap: 135.14 # EUR per kW {Schmidt et al. 2017 and own assumptions}
+        techs.battery.costs.monetary.storage_cap: 315.32 # EUR per kWh Schmidt et al. 2017 and own assumptions capacity
+    diw_battery_low_cost:
+        techs.battery.costs.monetary.energy_cap: 67.57
+        techs.battery.costs.monetary.storage_cap: 157.66
+scenarios:
+    baseline: "diw_assumptions,location_specific_techs,diw_battery_baseline_cost"
+    low-cost: "diw_assumptions,location_specific_techs,diw_battery_low_cost"
 model:
     name: 'Open Source Modelling -- Euro Calliope model'
     timeseries_data_path: './'
     subset_time: ['{{ config.from_date }}', '{{ config.to_date }}']
+    {% if config.resolution != "1H" %}
+    time:
+        function: resample
+        function_options: {'resolution': '{{ config.resolution }}'}
+    {% endif %}
 run:
     solver: gurobi
     solver_io: python

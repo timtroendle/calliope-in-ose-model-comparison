@@ -6,9 +6,11 @@ import pandas as pd
 
 PATH_TO_BUILD = Path(__file__).parent / ".." / "build"
 PATH_TO_REQUESTED_RENEWABLE_SHARES = PATH_TO_BUILD / "input" / "renewable-shares.csv"
-PATH_TO_MODEL = PATH_TO_BUILD / "output" / "results.nc"
+PATH_TO_OUTPUT = PATH_TO_BUILD / "output"
+FILENAME_RESULTS = Path("results.nc")
 EPSILON = 0.01
 RE_TECHS = ["open_field_pv", "roof_mounted_pv", "wind_onshore", "wind_offshore"]
+SCENARIOS = ["baseline", "low-cost"]
 
 
 @pytest.fixture(
@@ -24,10 +26,18 @@ def requested_shares():
     return pd.read_csv(PATH_TO_REQUESTED_RENEWABLE_SHARES, index_col=0).iloc[:, 0]
 
 
+@pytest.fixture(
+    scope="session",
+    params=SCENARIOS
+)
+def model_output(request):
+    print("read")
+    return calliope.read_netcdf(PATH_TO_OUTPUT / request.param / FILENAME_RESULTS)
+
+
 @pytest.fixture(scope="module")
-def generated_electricity():
-    model = calliope.read_netcdf(PATH_TO_MODEL)
-    prod = model.get_formatted_array("carrier_prod").to_dataframe(name="carrier_prod")
+def generated_electricity(model_output):
+    prod = model_output.get_formatted_array("carrier_prod").to_dataframe(name="carrier_prod")
     prod = prod.groupby(["locs", "techs"]).carrier_prod.sum().reset_index()
     prod.drop(index=prod[prod.techs.str.contains("transmission")].index, inplace=True)
     prod.locs = prod.locs.str[:3]
@@ -40,9 +50,8 @@ def generated_electricity():
 
 
 @pytest.fixture(scope="module")
-def consumption():
-    model = calliope.read_netcdf(PATH_TO_MODEL)
-    con = model.get_formatted_array("carrier_con").to_dataframe(name="carrier_con")
+def consumption(model_output):
+    con = model_output.get_formatted_array("carrier_con").to_dataframe(name="carrier_con")
     con = con.groupby(["locs", "techs"]).carrier_con.sum().reset_index()
     con.drop(index=con[con.techs.str.contains("transmission")].index, inplace=True)
     con.locs = con.locs.str[:3]

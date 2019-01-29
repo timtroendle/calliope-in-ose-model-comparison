@@ -5,8 +5,10 @@ import pandas as pd
 
 PATH_TO_BUILD = Path(__file__).parent / ".." / "build"
 PATH_TO_CAPACITY_CONSTRAINTS = PATH_TO_BUILD / "input" / "capacity.csv"
-PATH_TO_INSTALLED_CAPACITY = PATH_TO_BUILD / "output" / "capacity-raw.csv"
+PATH_TO_OUTPUT_DIRECTORY = PATH_TO_BUILD / "output"
+FILENAME_CAPACITY = Path("capacity-raw.csv")
 EPSILON = 1 # kW
+SCENARIOS = ["baseline", "low-cost"]
 
 
 @pytest.fixture(
@@ -22,9 +24,15 @@ def capacity_constraints():
     return pd.read_csv(PATH_TO_CAPACITY_CONSTRAINTS, index_col=0)
 
 
-@pytest.fixture(scope="module")
-def installed_capacity():
-    return pd.read_csv(PATH_TO_INSTALLED_CAPACITY, index_col=0) * 1e6 # from GW to kW
+@pytest.fixture(
+    scope="module",
+    params=SCENARIOS
+)
+def installed_capacity(request):
+    return pd.read_csv(
+        PATH_TO_OUTPUT_DIRECTORY / request.param / FILENAME_CAPACITY,
+        index_col=0
+    ) * 1e6 # from GW to kW
 
 
 @pytest.mark.parametrize("tech", [

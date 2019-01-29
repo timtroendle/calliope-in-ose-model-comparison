@@ -76,6 +76,7 @@ rule model:
         "build/model/renewable-techs.yaml",
         "build/model/locations.yaml",
         "build/model/link-techs.yaml",
+        "build/model/storage-techs.yaml",
         rules.preprocess_load.output,
         expand(
             "build/model/capacityfactors-{technology}.csv",
@@ -86,16 +87,13 @@ rule model:
         rules.generation_capacities.output.yaml,
         rules.renewable_shares.output,
         legacy_techs = "src/template/legacy_tech.yaml",
-        battery_techs = "src/template/battery.yaml",
         definition = "src/template/model.yaml"
     output:
         legacy_techs = "build/model/legacy_tech.yaml",
-        battery_techs = "build/model/battery.yaml",
         model = "build/model/model.yaml"
     run:
         import jinja2
 
         shell("cp {input.legacy_techs} {output.legacy_techs}")
-        shell("cp {input.battery_techs} {output.battery_techs}")
         with open(input.definition, "r") as template, open(output.model, "w") as result_file:
             result_file.write(jinja2.Template(template.read()).render(config=config))

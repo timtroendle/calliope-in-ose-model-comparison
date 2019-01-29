@@ -16,9 +16,10 @@ rule report:
         "report/literature.bib",
         "report/main.md",
         "report/pandoc-metadata.yml",
-        rules.plot.output,
-        rules.capacity.output.publish,
-        rules.trade.output,
+        "build/output/baseline/plot.png",
+        "build/output/baseline/capacity-publish.csv",
+        "build/output/low-cost/capacity-publish.csv",
+        "build/output/baseline/trade.csv",
         rules.test.output
     output:
         "build/report.html"
