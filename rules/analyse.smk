@@ -42,6 +42,17 @@ rule trade:
     script: "../src/analyse/trade.py"
 
 
+rule capacity_diff:
+    message: "Show diff in installed capacities between both scenarios."
+    input:
+        src = "src/analyse/capacity_diff.py",
+        baseline = "build/output/baseline/capacity-raw.csv",
+        low_cost = "build/output/low-cost/capacity-raw.csv"
+    output:
+        "build/output/capacity-diff.csv"
+    script: "../src/analyse/capacity_diff.py"
+
+
 rule test:
     message: "Run tests"
     input:

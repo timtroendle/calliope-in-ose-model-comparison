@@ -18,7 +18,7 @@ rule report:
         "report/pandoc-metadata.yml",
         "build/output/baseline/plot.png",
         "build/output/baseline/capacity-publish.csv",
-        "build/output/low-cost/capacity-publish.csv",
+        "build/output/capacity-diff.csv",
         "build/output/baseline/trade.csv",
         rules.test.output
     output:

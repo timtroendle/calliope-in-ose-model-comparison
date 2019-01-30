@@ -32,12 +32,12 @@ markdown: True
 
 ## Low cost scenario
 
-In the low cost scneario, the capacities that have been installed per country are shown in Table @tbl:installed-capacities-low-cost.
+In the low cost scenario, battery cost are 50% of baseline cost. Table @tbl:installed-capacities-low-cost shows the difference in installed capacities to the baseline.
 
 ```table
 ---
-caption: 'Installed capacities in GW. {#tbl:installed-capacities-low-cost}'
-include: ../build/output/low-cost/capacity-publish.csv
+caption: 'Installed capacities in GW, diff to baseline. {#tbl:installed-capacities-low-cost}'
+include: ../build/output/capacity-diff.csv
 markdown: True
 ---
 ```
