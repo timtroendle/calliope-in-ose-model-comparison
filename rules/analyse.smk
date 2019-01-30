@@ -53,6 +53,17 @@ rule capacity_diff:
     script: "../src/analyse/capacity_diff.py"
 
 
+rule cost_diff:
+    message: "Excavate diff in levelised cost between both scenarios."
+    input:
+        src = "src/analyse/cost_diff.py",
+        baseline = "build/output/baseline/results.nc",
+        low_cost = "build/output/low-cost/results.nc"
+    output:
+        "build/output/cost-diff.csv"
+    script: "../src/analyse/cost_diff.py"
+
+
 rule test:
     message: "Run tests"
     input:

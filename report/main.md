@@ -39,6 +39,18 @@ In the low cost scenario, battery cost are 50% of baseline cost. Table @tbl:inst
 caption: 'Installed capacities in GW, diff to baseline. {#tbl:installed-capacities-low-cost}'
 include: ../build/output/capacity-diff.csv
 markdown: True
+alignment: LR
+---
+```
+
+And eventually, here are the levelised costs in the two scenarios:
+
+```table
+---
+caption: 'Levelised cost in [€ct/kWh]. {#tbl:levelised-cost}'
+include: ../build/output/cost-diff.csv
+markdown: True
+alignment: LR
 ---
 ```
 
