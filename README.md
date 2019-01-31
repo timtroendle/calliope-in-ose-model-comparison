@@ -36,6 +36,14 @@ To generate a PDF of the dependency graph of all steps, and if you have `dot` in
 
     snakemake --rulegraph | dot -Tpdf > dag.pdf
 
+## Run on Euler cluster
+
+To run on Euler, use the following command:
+
+    snakemake --profile config/euler
+
+If you want to run on another cluster, read [snakemake's documentation on cluster execution](https://snakemake.readthedocs.io/en/stable/executable.html#cluster-execution) and take `config/euler` as a starting point.
+
 ## Run the tests
 
     snakemake test --use-conda

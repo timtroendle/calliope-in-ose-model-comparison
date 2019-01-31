@@ -8,6 +8,7 @@ configfile: "config/default.yaml"
 rule all:
     message: "Run entire analysis and compile report."
     input: "build/report.html"
+    group: "analysis"
 
 
 rule report:
@@ -24,6 +25,7 @@ rule report:
         rules.test.output
     output:
         "build/report.html"
+    group: "analysis"
     shell:
         """
         cd ./report

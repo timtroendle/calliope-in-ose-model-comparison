@@ -7,6 +7,7 @@ rule copy_euro_calliope:
     message: "Copy file ./model/{wildcards.definition_file}.yaml from euro-calliope."
     input: eurocalliope("model/{definition_file}.yaml"),
     output: "build/model/{definition_file}.yaml"
+    group: "construction"
     shell: "cp {input} {output}"
 
 
@@ -16,6 +17,7 @@ rule preprocess_load:
         src = "src/construct/load.py",
         raw = "data/load_time_series.xlsx"
     output: "build/model/electricity-demand.csv"
+    group: "construction"
     script: "../src/construct/load.py"
 
 
@@ -25,6 +27,7 @@ rule preprocess_capacityfactors:
         src = "src/construct/renewables.py",
         raw = "data/res_time_series_8760h.xlsx"
     output: "build/model/capacityfactors-{technology}.csv"
+    group: "construction"
     script: "../src/construct/renewables.py"
 
 
@@ -34,6 +37,7 @@ rule location_specific_techs:
         src = "src/construct/location_specific_techs.py",
         locations = eurocalliope("model/locations.yaml")
     output: "build/model/location-specific-techs.yaml"
+    group: "construction"
     script: "../src/construct/location_specific_techs.py"
 
 
@@ -43,6 +47,7 @@ rule links:
         src = "src/construct/links.py",
         ntc = "data/NTC.xlsx"
     output: "build/model/links.yaml"
+    group: "construction"
     script: "../src/construct/links.py"
 
 
@@ -54,6 +59,7 @@ rule generation_capacities:
     output:
         csv = "build/input/capacity.csv",
         yaml = "build/model/capacity.yaml"
+    group: "construction"
     script: "../src/construct/capacity.py"
 
 
@@ -66,6 +72,7 @@ rule renewable_shares:
     output:
         csv = "build/input/renewable-shares.csv",
         yaml = "build/model/renewable-shares.yaml"
+    group: "construction"
     script: "../src/construct/renewable_shares.py"
 
 
@@ -91,6 +98,7 @@ rule model:
     output:
         legacy_techs = "build/model/legacy_tech.yaml",
         model = "build/model/model.yaml"
+    group: "construction"
     run:
         import jinja2
 

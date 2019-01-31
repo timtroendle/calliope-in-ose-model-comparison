@@ -19,6 +19,7 @@ rule plot:
         src = "src/analyse/vis.py",
         results = rules.run.output
     output: "build/output/{scenario}/plot.png"
+    group: "analysis"
     script: "../src/analyse/vis.py"
 
 
@@ -30,6 +31,7 @@ rule capacity:
     output:
         raw = "build/output/{scenario}/capacity-raw.csv",
         publish = "build/output/{scenario}/capacity-publish.csv"
+    group: "analysis"
     script: "../src/analyse/capacity.py"
 
 
@@ -39,6 +41,7 @@ rule trade:
         src = "src/analyse/trade.py",
         results = rules.run.output
     output: "build/output/{scenario}/trade.csv"
+    group: "analysis"
     script: "../src/analyse/trade.py"
 
 
@@ -50,6 +53,7 @@ rule capacity_diff:
         low_cost = "build/output/low-cost/capacity-raw.csv"
     output:
         "build/output/capacity-diff.csv"
+    group: "analysis"
     script: "../src/analyse/capacity_diff.py"
 
 
@@ -61,6 +65,7 @@ rule cost_diff:
         low_cost = "build/output/low-cost/results.nc"
     output:
         "build/output/cost-diff.csv"
+    group: "analysis"
     script: "../src/analyse/cost_diff.py"
 
 
@@ -71,5 +76,6 @@ rule test:
         expand("build/output/{scenario}/capacity-raw.csv", scenario=config["scenarios"]),
         expand("build/output/{scenario}/results.nc", scenario=config["scenarios"])
     output: "build/test-report.html"
+    group: "analysis"
     shell:
         "py.test ./tests/ --html={output} --self-contained-html"
