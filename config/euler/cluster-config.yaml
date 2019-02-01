@@ -1,8 +1,4 @@
-construction:
-    runtime: 10
-    cores: 1
-    memory: 16000
-analysis:
+__default__:
     runtime: 10
     cores: 1
     memory: 16000
@@ -10,3 +6,7 @@ run:
     runtime: 60
     cores: 1
     memory: 60000
+test:
+    runtime: 15
+    cores: 1
+    memory: 16000
