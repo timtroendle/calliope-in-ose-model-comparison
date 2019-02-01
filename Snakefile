@@ -4,7 +4,7 @@ include: "rules/construct.smk"
 include: "rules/analyse.smk"
 
 configfile: "config/default.yaml"
-localrules: all, report
+localrules: all, report, clean
 
 rule all:
     message: "Run entire analysis and compile report."
