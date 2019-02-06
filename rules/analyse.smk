@@ -1,4 +1,4 @@
-configfile: "config/default.yaml"
+configfile: "config/dev.yaml"
 
 rule run:
     message: "Run the model for scenario {wildcards.scenario}."
