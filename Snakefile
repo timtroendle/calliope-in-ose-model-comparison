@@ -4,7 +4,8 @@ include: "rules/construct.smk"
 include: "rules/analyse.smk"
 
 configfile: "config/default.yaml"
-localrules: all, report, clean
+localrules: all, report, clean, copy_euro_calliope
+
 
 rule all:
     message: "Run entire analysis and compile report."
