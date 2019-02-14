@@ -1,7 +1,7 @@
 year: 2015
 from_date: "2015-01-01"
 to_date: "2015-12-31"
-resolution: "1H"
+resolution: "4H"
 scenarios:
     - baseline
     - low-cost

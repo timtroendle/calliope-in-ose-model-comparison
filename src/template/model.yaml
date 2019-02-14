@@ -45,6 +45,8 @@ run:
     solver: gurobi
     solver_io: python
     mode: plan
+    solver_options:
+        Threads: 4
 techs:
     demand_elec:
         essentials:
