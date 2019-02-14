@@ -68,6 +68,7 @@ rule test:
     message: "Run tests"
     input:
         "tests/test_capacity_constraints.py",
+        "tests/test_renewable_shares.py",
         expand("build/output/{scenario}/capacity-raw.csv", scenario=config["scenarios"]),
         expand("build/output/{scenario}/results.nc", scenario=config["scenarios"])
     output: "build/test-report.html"

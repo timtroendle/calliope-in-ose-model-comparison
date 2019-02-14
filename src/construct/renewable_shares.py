@@ -20,6 +20,10 @@ def generate_renewable_shares(path_to_shares, path_to_demand, from_date, to_date
     raw = _read_shares(path_to_shares)
     raw.to_csv(path_to_csv, index=True, header=True)
 
+    # FIXME this is broken. Renewable shares in Calliope are not based on demand, but on installed
+    # capacities. Installed capacities aren't known a priori though. This mechanism here is a good
+    # estimate, but a proper fix needs a change in Calliope, see
+    # https://github.com/calliope-project/calliope/issues/176
     share_of_global_demand = _read_share_of_global_demand(path_to_demand, from_date, to_date).reindex(raw.index)
     global_share = raw["renewable_share"] * share_of_global_demand
 

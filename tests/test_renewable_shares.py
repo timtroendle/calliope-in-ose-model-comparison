@@ -10,6 +10,7 @@ PATH_TO_OUTPUT = PATH_TO_BUILD / "output"
 FILENAME_RESULTS = Path("results.nc")
 EPSILON = 0.01
 RE_TECHS = ["open_field_pv", "roof_mounted_pv", "wind_onshore", "wind_offshore"]
+NON_RE_TECHS = ["coal", "lignite", "ccgt", "nuclear"]
 SCENARIOS = ["baseline", "low-cost"]
 
 
@@ -31,7 +32,6 @@ def requested_shares():
     params=SCENARIOS
 )
 def model_output(request):
-    print("read")
     return calliope.read_netcdf(PATH_TO_OUTPUT / request.param / FILENAME_RESULTS)
 
 
@@ -49,21 +49,10 @@ def generated_electricity(model_output):
     )
 
 
-@pytest.fixture(scope="module")
-def consumption(model_output):
-    con = model_output.get_formatted_array("carrier_con").to_dataframe(name="carrier_con")
-    con = con.groupby(["locs", "techs"]).carrier_con.sum().reset_index()
-    con.drop(index=con[con.techs.str.contains("transmission")].index, inplace=True)
-    con.locs = con.locs.str[:3]
-    return con.groupby(["locs", "techs"]).carrier_con.sum().reset_index().pivot(
-        index="locs",
-        columns="techs",
-        values="carrier_con"
-    )
-
-
-def test_minimal_capacity_is_installed(requested_shares, generated_electricity, consumption, country):
+@pytest.mark.xfail(reason="See issue in src/construct/renewable_shares.py.")
+def test_minimal_capacity_is_installed(requested_shares, generated_electricity, country):
     re_prod = generated_electricity.loc[country, RE_TECHS].sum()
-    re_share = re_prod / (consumption.loc[country, "demand_elec"] * -1)
+    non_re_prod = generated_electricity.loc[country, NON_RE_TECHS].sum()
+    re_share = re_prod / (non_re_prod + re_prod)
 
     assert re_share + EPSILON >= requested_shares.loc[country]
