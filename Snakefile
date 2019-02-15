@@ -2,6 +2,7 @@ PANDOC = "pandoc --filter pantable --filter pandoc-fignos --filter pandoc-tablen
 
 include: "rules/construct.smk"
 include: "rules/analyse.smk"
+include: "rules/sync.smk"
 
 configfile: "config/dev.yaml"
 localrules: all, report, clean, copy_euro_calliope
