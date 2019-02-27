@@ -86,10 +86,10 @@ rule model:
         rules.links.output,
         rules.generation_capacities.output.yaml,
         rules.renewable_shares.output,
-        legacy_techs = "src/template/legacy_tech.yaml",
+        legacy_techs = "src/template/legacy-tech.yaml",
         definition = "src/template/model.yaml"
     output:
-        legacy_techs = "build/model/legacy_tech.yaml",
+        legacy_techs = "build/model/legacy-tech.yaml",
         model = "build/model/model.yaml"
     run:
         import jinja2

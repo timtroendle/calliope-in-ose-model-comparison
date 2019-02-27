@@ -6,7 +6,7 @@ import:
     - './storage-techs.yaml'
     - './links.yaml'
     - './capacity.yaml'
-    - './legacy_tech.yaml'
+    - './legacy-tech.yaml'
     - './location-specific-techs.yaml'
     - './renewable-shares.yaml'
 overrides:

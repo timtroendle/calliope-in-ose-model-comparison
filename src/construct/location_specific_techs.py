@@ -11,6 +11,7 @@ tech_groups:
             parent: pv
         constraints:
             resource_area_per_energy_cap: 0.0000125 # [km^2/kW] from (Gagnon:2016, Klauser:2016, Wirth:2017)
+            resource_area_max: inf # see https://github.com/calliope-project/calliope/pull/160
             resource: file=capacityfactors-open-field-pv.csv
             resource_unit: energy_per_cap
     roof_mounted_pv_group:
@@ -18,7 +19,6 @@ tech_groups:
             name: Roof mounted PV
             parent: pv
         constraints:
-            resource_area_per_energy_cap: 0.00000625 # [km^2/kW] from (Gagnon:2016, Klauser:2016)
             resource: file=capacityfactors-rooftop-pv.csv
             resource_unit: energy_per_cap
     wind_onshore_group:
@@ -26,7 +26,6 @@ tech_groups:
             name: Onshore wind
             parent: wind
         constraints:
-            resource_area_per_energy_cap: 0.000125 # [km^2/kW] from (European Environment Agency, 2009)
             resource: file=capacityfactors-wind-onshore.csv
             resource_unit: energy_per_cap
         costs:
@@ -38,7 +37,6 @@ tech_groups:
             name: Offshore wind
             parent: wind
         constraints:
-            resource_area_per_energy_cap: 0.000066667 # [km^2/kW] from (European Environment Agency, 2009)
             resource: file=capacityfactors-wind-offshore.csv
             resource_unit: energy_per_cap
         costs:
@@ -57,10 +55,17 @@ techs:
             essentials:
                 name: Roof mounted PV in {{ location }}
                 parent: roof_mounted_pv_group
-        wind_onshore_{{ location }}:
+        wind_onshore_monopoly_{{ location }}:
             essentials:
-                name: Onshore wind in {{ location }}
+                name: Onshore wind without land competition in {{ location }}
                 parent: wind_onshore_group
+        wind_onshore_competing_{{ location }}:
+            essentials:
+                name: Onshore wind competing with open field PV on land in {{ location }}
+                parent: wind_onshore_group
+            constraints:
+                resource_area_per_energy_cap: 0.000125 # [km^2/kW] from (European Environment Agency, 2009)
+                resource_area_max: inf # see https://github.com/calliope-project/calliope/pull/160
         wind_offshore_{{ location }}:
             essentials:
                 name: Offshore wind in {{ location }}
@@ -70,17 +75,17 @@ techs:
 overrides:
     location_specific_techs:
         {% for location in locations %}
-        locations.{{ location }}_roof_mounted_pv.techs.roof_mounted_pv.exists: False
-        locations.{{ location }}_pv_or_wind_farm.techs.wind_onshore.exists: False
-        locations.{{ location }}_pv_or_wind_farm.techs.open_field_pv.exists: False
-        locations.{{ location }}_wind_onshore.techs.wind_onshore.exists: False
-        locations.{{ location }}_wind_offshore.techs.wind_offshore.exists: False
+        locations.{{ location }}.techs.roof_mounted_pv.exists: False
+        locations.{{ location }}.techs.open_field_pv.exists: False
+        locations.{{ location }}.techs.wind_onshore_monopoly.exists: False
+        locations.{{ location }}.techs.wind_onshore_competing.exists: False
+        locations.{{ location }}.techs.wind_offshore.exists: False
 
-        locations.{{ location }}_roof_mounted_pv.techs.roof_mounted_pv_{{ location }}.constraints.resource: file=capacityfactors-rooftop-pv.csv:{{ location }}
-        locations.{{ location }}_pv_or_wind_farm.techs.wind_onshore_{{ location }}.constraints.resource: file=capacityfactors-wind-onshore.csv:{{ location }}
-        locations.{{ location }}_pv_or_wind_farm.techs.open_field_pv_{{ location }}.constraints.resource: file=capacityfactors-open-field-pv.csv:{{ location }}
-        locations.{{ location }}_wind_onshore.techs.wind_onshore_{{ location }}.constraints.resource: file=capacityfactors-wind-onshore.csv:{{ location }}
-        locations.{{ location }}_wind_offshore.techs.wind_offshore_{{ location }}.constraints.resource: file=capacityfactors-wind-offshore.csv:{{ location }}
+        locations.{{ location }}.techs.roof_mounted_pv_{{ location }}:
+        locations.{{ location }}.techs.open_field_pv_{{ location }}:
+        locations.{{ location }}.techs.wind_onshore_monopoly_{{ location }}:
+        locations.{{ location }}.techs.wind_onshore_competing_{{ location }}:
+        locations.{{ location }}.techs.wind_offshore_{{ location }}:
         {% endfor %}
 """
 

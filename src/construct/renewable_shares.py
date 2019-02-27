@@ -8,7 +8,7 @@ TEMPLATE = """
 model:
     group_share:
         {% for country, share in shares.iteritems() %}
-        wind_onshore_{{ country }},wind_offshore_{{ country }},open_field_pv_{{ country }},roof_mounted_pv_{{ country }}:
+        wind_onshore_monopoly_{{ country }},wind_onshore_competing_{{ country }},wind_offshore_{{ country }},open_field_pv_{{ country }},roof_mounted_pv_{{ country }}:
             carrier_prod_min:
                 electricity: {{ share }}
         {% endfor %}

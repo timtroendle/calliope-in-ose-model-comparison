@@ -9,7 +9,7 @@ PATH_TO_REQUESTED_RENEWABLE_SHARES = PATH_TO_BUILD / "input" / "renewable-shares
 PATH_TO_OUTPUT = PATH_TO_BUILD / "output"
 FILENAME_RESULTS = Path("results.nc")
 EPSILON = 0.01
-RE_TECHS = ["open_field_pv", "roof_mounted_pv", "wind_onshore", "wind_offshore"]
+RE_TECHS = ["open_field_pv", "roof_mounted_pv", "wind_onshore_monopoly", "wind_onshore_competing", "wind_offshore"]
 NON_RE_TECHS = ["coal", "lignite", "ccgt", "nuclear"]
 SCENARIOS = ["baseline", "low-cost"]
 

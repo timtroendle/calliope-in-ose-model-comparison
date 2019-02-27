@@ -17,30 +17,24 @@ TECH_MAP = {
     "Other RES": "other_res", # TODO what to do with this?
     "Solar-thermal": "solar_thermal", # ignored for electricity
     "Solar-PV": "roof_mounted_pv", # ASSUME all solar pv is roof mounted
-    "Wind-on-shore": "wind_onshore",
+    "Wind-on-shore": "wind_onshore_monopoly",
     "Wind-off-shore": "wind_offshore"
 }
 
 TEMPLATE = """
 locations:
     {% for country, techs in capacities.iterrows() %}
-    {{ country }}_wind_onshore:
+    {{ country }}:
         techs:
-            wind_onshore_{{ country }}:
+            wind_onshore_monopoly_{{ country }}:
                 constraints:
-                    energy_cap_min: {{ techs.wind_onshore }}
-    {{ country }}_wind_offshore:
-        techs:
+                    energy_cap_min: {{ techs.wind_onshore_monopoly }}
             wind_offshore_{{ country }}:
                 constraints:
                     energy_cap_min: {{ techs.wind_offshore }}
-    {{ country }}_roof_mounted_pv:
-        techs:
             roof_mounted_pv_{{ country }}:
                 constraints:
                     energy_cap_min: {{ techs.roof_mounted_pv }}
-    {{ country }}:
-        techs:
             coal:
                 constraints:
                     energy_cap_max: {{ techs.coal }}
