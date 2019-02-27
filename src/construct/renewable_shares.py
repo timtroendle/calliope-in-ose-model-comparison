@@ -3,32 +3,29 @@ import jinja2
 import pandas as pd
 import pycountry
 
+# FIXME this needs Calliope > 0.6.3 and is thus not yet usable
+# https://github.com/calliope-project/calliope/issues/176
+# https://github.com/calliope-project/calliope/pull/191/
 
 TEMPLATE = """
-model:
-    group_share:
-        {% for country, share in shares.iteritems() %}
-        wind_onshore_monopoly_{{ country }},wind_onshore_competing_{{ country }},wind_offshore_{{ country }},open_field_pv_{{ country }},roof_mounted_pv_{{ country }}:
-            carrier_prod_min:
-                electricity: {{ share }}
-        {% endfor %}
+group_constraints:
+    {% for country, share in shares.iteritems() %}
+    renewable_share_{{ country }}:
+        locs: ["{{ country }}"]
+        techs: wind_onshore_monopoly,wind_onshore_competing,wind_offshore,open_field_pv,roof_mounted_pv
+        demand_share_min:
+            electricity: {{ share }}
+    {% endfor %}
 """
 
 
-def generate_renewable_shares(path_to_shares, path_to_demand, from_date, to_date, path_to_yaml, path_to_csv):
+def generate_renewable_shares(path_to_shares, path_to_yaml, path_to_csv):
     """Create Calliope file defining minimal renewable shares."""
     raw = _read_shares(path_to_shares)
     raw.to_csv(path_to_csv, index=True, header=True)
 
-    # FIXME this is broken. Renewable shares in Calliope are not based on demand, but on installed
-    # capacities. Installed capacities aren't known a priori though. This mechanism here is a good
-    # estimate, but a proper fix needs a change in Calliope, see
-    # https://github.com/calliope-project/calliope/issues/176
-    share_of_global_demand = _read_share_of_global_demand(path_to_demand, from_date, to_date).reindex(raw.index)
-    global_share = raw["renewable_share"] * share_of_global_demand
-
     with open(path_to_yaml, "w") as result_file:
-        result_file.write(jinja2.Template(TEMPLATE).render(shares=global_share))
+        result_file.write(jinja2.Template(TEMPLATE).render(shares=raw["renewable_share"]))
 
 
 def _read_shares(path_to_data):
@@ -51,20 +48,9 @@ def _read_shares(path_to_data):
     return data / 100 # make unit less
 
 
-def _read_share_of_global_demand(path_to_demand, from_date, to_date):
-    return pd.read_csv(path_to_demand, index_col=0, parse_dates=True).loc[from_date:to_date, :].sum(
-        axis="index"
-    ).transform(
-        lambda x: x / x.sum()
-    )
-
-
 if __name__ == "__main__":
     generate_renewable_shares(
         path_to_shares=snakemake.input.shares,
-        path_to_demand=snakemake.input.demand,
-        from_date=snakemake.config["from_date"],
-        to_date=snakemake.config["to_date"],
         path_to_yaml=snakemake.output.yaml,
         path_to_csv=snakemake.output.csv
     )

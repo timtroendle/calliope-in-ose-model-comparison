@@ -28,15 +28,6 @@ rule preprocess_capacityfactors:
     script: "../src/construct/renewables.py"
 
 
-rule location_specific_techs:
-    message: "To apply renewable targets, build location specific renewable techs."
-    input:
-        src = "src/construct/location_specific_techs.py",
-        locations = eurocalliope("model/locations.yaml")
-    output: "build/model/location-specific-techs.yaml"
-    script: "../src/construct/location_specific_techs.py"
-
-
 rule links:
     message: "Define links between locations based on net transfer capacities."
     input:
@@ -61,8 +52,7 @@ rule renewable_shares:
     message: "Ensure minimal renewable shares per country."
     input:
         src = "src/construct/renewable_shares.py",
-        shares = "data/bound_RES_and_CO2.xlsx",
-        demand = rules.preprocess_load.output[0]
+        shares = "data/bound_RES_and_CO2.xlsx"
     output:
         csv = "build/input/renewable-shares.csv",
         yaml = "build/model/renewable-shares.yaml"
@@ -82,7 +72,6 @@ rule model:
             "build/model/capacityfactors-{technology}.csv",
             technology=["open-field-pv", "rooftop-pv", "wind-offshore", "wind-onshore"]
         ),
-        rules.location_specific_techs.output,
         rules.links.output,
         rules.generation_capacities.output.yaml,
         rules.renewable_shares.output,

@@ -49,7 +49,7 @@ def generated_electricity(model_output):
     )
 
 
-@pytest.mark.xfail(reason="See issue in src/construct/renewable_shares.py.")
+@pytest.mark.xfail(reason="Not yet implemented.")
 def test_minimal_capacity_is_installed(requested_shares, generated_electricity, country):
     re_prod = generated_electricity.loc[country, RE_TECHS].sum()
     non_re_prod = generated_electricity.loc[country, NON_RE_TECHS].sum()
