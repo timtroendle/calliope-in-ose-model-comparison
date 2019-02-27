@@ -40,7 +40,9 @@ To generate a PDF of the dependency graph of all steps, and if you have `dot` in
 
 To run on Euler, use the following command:
 
-    snakemake --use-conda --profile config/euler
+    snakemake --use-conda --profile config/euler [--config email=<you@provider.org>]
+
+By providing an email address, you will be informed by mail when Snakemake finishes execution.
 
 If you want to run on another cluster, read [snakemake's documentation on cluster execution](https://snakemake.readthedocs.io/en/stable/executable.html#cluster-execution) and take `config/euler` as a starting point.
 
