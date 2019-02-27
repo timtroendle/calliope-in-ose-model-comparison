@@ -5,7 +5,7 @@ include: "rules/analyse.smk"
 include: "rules/sync.smk"
 
 configfile: "config/dev.yaml"
-localrules: all, report, clean, copy_euro_calliope
+localrules: all, report, clean
 
 
 onstart:

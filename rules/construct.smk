@@ -3,6 +3,9 @@ subworkflow eurocalliope:
     snakefile: "./euro-calliope/Snakefile"
 
 
+localrules: copy_euro_calliope, model
+
+
 rule copy_euro_calliope:
     message: "Copy file ./model/{wildcards.definition_file}.yaml from euro-calliope."
     input: eurocalliope("model/{definition_file}.yaml"),
