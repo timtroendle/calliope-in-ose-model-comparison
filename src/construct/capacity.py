@@ -28,25 +28,25 @@ locations:
         techs:
             wind_onshore_monopoly:
                 constraints:
-                    energy_cap_min: {{ techs.wind_onshore_monopoly }}
+                    energy_cap_min: {{ techs.wind_onshore_monopoly }} # MW
             wind_offshore:
                 constraints:
-                    energy_cap_min: {{ techs.wind_offshore }}
+                    energy_cap_min: {{ techs.wind_offshore }} # MW
             roof_mounted_pv:
                 constraints:
-                    energy_cap_min: {{ techs.roof_mounted_pv }}
+                    energy_cap_min: {{ techs.roof_mounted_pv }} # MW
             coal:
                 constraints:
-                    energy_cap_max: {{ techs.coal }}
+                    energy_cap_max: {{ techs.coal }} # MW
             lignite:
                 constraints:
-                    energy_cap_max: {{ techs.lignite }}
+                    energy_cap_max: {{ techs.lignite }} # MW
             ccgt:
                 constraints:
-                    energy_cap_max: {{ techs.ccgt }}
+                    energy_cap_max: {{ techs.ccgt }} # MW
             nuclear:
                 constraints:
-                    energy_cap_max: {{ techs.nuclear }}
+                    energy_cap_max: {{ techs.nuclear }} # MW
     {% endfor %}
 """
 
@@ -94,7 +94,7 @@ def _read_generation_capacities(path_to_data):
         columns=lambda name: TECH_MAP[name.strip().replace('\n', '').replace('\r', '')],
         inplace=True
     )
-    return data.groupby(data.index).sum() * 1000 # from MW to kW
+    return data.groupby(data.index).sum()
 
 
 if __name__ == "__main__":

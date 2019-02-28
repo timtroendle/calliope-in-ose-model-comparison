@@ -13,12 +13,12 @@ techs:
             lifetime: 25
         costs:
             monetary:
-                energy_cap: 2160.18  # 2016 EUR/kWh, Coal ASC with FGD medium nth o.a.k., {parsons2011}
-                om_prod: 0.001315  # 2016 EUR/kWh, Coal ASC with FGD medium nth o.a.k., {parsons2011}
-                om_annual: 46.03  # 2016 EUR/kW/yr, Coal ASC with FGD medium nth o.a.k., {parsons2011}
-                om_con:  0.01092  # 2016 EUR/kWh net, medium, Table 6.3, {mott2010} (with 1 GJ = 277.777 kWh)
+                energy_cap: 2160180  # 2016 EUR/MWh, Coal ASC with FGD medium nth o.a.k., {parsons2011}
+                om_prod: 1.315  # 2016 EUR/MWh, Coal ASC with FGD medium nth o.a.k., {parsons2011}
+                om_annual: 46030  # 2016 EUR/MW/yr, Coal ASC with FGD medium nth o.a.k., {parsons2011}
+                om_con:  10.92  # 2016 EUR/MWh net, medium, Table 6.3, {mott2010} (with 1 GJ = 0.277777 MWh)
             co2:
-                om_prod:  0.820  # kg CO2eq/kWh, {ipcc_ar5_wg3}
+                om_prod:  820  # kg CO2eq/MWh, {ipcc_ar5_wg3}
     lignite: # FIXME mainly a copy of coal
         essentials:
             name: Lignite
@@ -32,12 +32,12 @@ techs:
             lifetime: 25
         costs:
             monetary:
-                energy_cap: 2160.18  # 2016 EUR/kWh, Coal ASC with FGD medium nth o.a.k., {parsons2011}
-                om_prod: 0.001315  # 2016 EUR/kWh, Coal ASC with FGD medium nth o.a.k., {parsons2011}
-                om_annual: 46.03  # 2016 EUR/kW/yr, Coal ASC with FGD medium nth o.a.k., {parsons2011}
-                om_con:  0.01092  # 2016 EUR/kWh net, medium, Table 6.3, {mott2010} (with 1 GJ = 277.777 kWh)
+                energy_cap: 2160180  # 2016 EUR/MWh, Coal ASC with FGD medium nth o.a.k., {parsons2011}
+                om_prod: 1.315  # 2016 EUR/MWh, Coal ASC with FGD medium nth o.a.k., {parsons2011}
+                om_annual: 46030  # 2016 EUR/MW/yr, Coal ASC with FGD medium nth o.a.k., {parsons2011}
+                om_con:  10.92  # 2016 EUR/MWh net, medium, Table 6.3, {mott2010} (with 1 GJ = 0.277777 MWh)
             co2:
-                om_prod:  0.910  # kg CO2eq/kWh, {ipcc_ar5_wg3} # ASSUME max of IPCC range for coal
+                om_prod:  910  # kg CO2eq/MWh, {ipcc_ar5_wg3} # ASSUME max of IPCC range for coal
     ccgt:
         essentials:
             name: CCGT
@@ -49,12 +49,12 @@ techs:
             lifetime: 25
         costs:
             monetary:
-                energy_cap: 879.62  # 2016 EUR/kW, CCGT medium nth of a kind, {parsons2011}
-                om_prod: 0.000132  # 2016 EUR/kWh, CCGT medium nth of a kind, {parsons2011}
-                om_annual: 30.48  # 2016 EUR/kW/yr, CCGT medium nth of a kind, {parsons2011}
-                om_con: 0.03761  # 2016 EUR/kWh net, medium, Table 6.3, {mott2010} (with 1 GJ = 277.777 kWh)
+                energy_cap: 879620  # 2016 EUR/MW, CCGT medium nth of a kind, {parsons2011}
+                om_prod: 0.132  # 2016 EUR/MWh, CCGT medium nth of a kind, {parsons2011}
+                om_annual: 30480  # 2016 EUR/MW/yr, CCGT medium nth of a kind, {parsons2011}
+                om_con: 37.61  # 2016 EUR/MWh net, medium, Table 6.3, {mott2010} (with 1 GJ = 0.277777 MWh)
             co2:
-                om_prod:  0.490  # kg CO2eq/kWh, {ipcc_ar5_wg3}
+                om_prod:  490  # kg CO2eq/MWh, {ipcc_ar5_wg3}
     nuclear:
         essentials:
             name: Nuclear
@@ -66,9 +66,9 @@ techs:
             lifetime: 25
         costs:
             monetary:
-                energy_cap: 3983.84  # 2016 EUR/kW, Nuclear PWR medium nth of a kind, {parsons2011}
-                om_prod: 0.000658  # 2016 EUR/kWh, Nuclear PWR medium nth of a kind, {parsons2011}
-                om_annual: 78.90  # 2016 EUR/kW/yr, Nuclear PWR medium nth of a kind, {parsons2011}
-                om_con: 0.00640  # 2016 EUR/kWh, Table 2, {decc2013}
+                energy_cap: 3983840  # 2016 EUR/MW, Nuclear PWR medium nth of a kind, {parsons2011}
+                om_prod: 0.658  # 2016 EUR/MWh, Nuclear PWR medium nth of a kind, {parsons2011}
+                om_annual: 78900  # 2016 EUR/MW/yr, Nuclear PWR medium nth of a kind, {parsons2011}
+                om_con: 6.40  # 2016 EUR/MWh, Table 2, {decc2013}
             co2:
-                om_prod:  0.012  # kg CO2eq/kWh, {ipcc_ar5_wg3}
+                om_prod:  12  # kg CO2eq/MWh, {ipcc_ar5_wg3}

@@ -36,7 +36,7 @@ def preprocess_load_data(path_to_raw_load, assumed_year, path_to_result):
         inplace=True
     )
     data = data.groupby(data.columns, axis='columns').sum()
-    data = data * (-1) * 1000 # from MW to kW
+    data = data * (-1)
     data.to_csv(path_to_result, index=True, header=True)
 
 

@@ -47,7 +47,7 @@ And eventually, here are the levelised costs in the two scenarios:
 
 ```table
 ---
-caption: 'Levelised cost in [€ct/kWh]. {#tbl:levelised-cost}'
+caption: 'Levelised cost in [€/MWh]. {#tbl:levelised-cost}'
 include: ../build/output/cost-diff.csv
 markdown: True
 alignment: LR

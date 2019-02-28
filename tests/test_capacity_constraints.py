@@ -7,7 +7,7 @@ PATH_TO_BUILD = Path(__file__).parent / ".." / "build"
 PATH_TO_CAPACITY_CONSTRAINTS = PATH_TO_BUILD / "input" / "capacity.csv"
 PATH_TO_OUTPUT_DIRECTORY = PATH_TO_BUILD / "output"
 FILENAME_CAPACITY = Path("capacity-raw.csv")
-EPSILON = 1 # kW
+EPSILON = 0.001 # 1 kW
 SCENARIOS = ["baseline", "low-cost"]
 
 
@@ -32,7 +32,7 @@ def installed_capacity(request):
     return pd.read_csv(
         PATH_TO_OUTPUT_DIRECTORY / request.param / FILENAME_CAPACITY,
         index_col=0
-    ) * 1e6 # from GW to kW
+    ) * 1e3 # from GW to MW
 
 
 @pytest.mark.parametrize("tech", [

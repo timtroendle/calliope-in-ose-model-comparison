@@ -9,12 +9,12 @@ links:
     {{ row.fromLocation }},{{ row.toLocation }}.techs:
         ac_transmission:
             constraints:
-                energy_cap_equals: {{ row.capacity_go }}
+                energy_cap_equals: {{ row.capacity_go }} # MW
                 one_way: true
     {{ row.toLocation }},{{ row.fromLocation }}.techs:
         ac_transmission:
             constraints:
-                energy_cap_equals: {{ row.capacity_return }}
+                energy_cap_equals: {{ row.capacity_return }} # MW
                 one_way: true
     {% endfor %}
 """
@@ -51,8 +51,8 @@ def _read_ntcs(path_to_ntc):
     )
     data.dropna(axis="index", how="any", subset=["fromLocation", "toLocation"], inplace=True)
     data.drop(index=data[data["fromLocation"] == data["toLocation"]].index, inplace=True)
-    data["capacity_go"] = data["=>"] * 1e3 # from MW to kW
-    data["capacity_return"] = data["<="] * 1e3 # from MW to kW
+    data["capacity_go"] = data["=>"]
+    data["capacity_return"] = data["<="]
     data.drop(columns=["Border", "=>", "<="], inplace=True)
 
     # invert power line from IRL to GBR otherwise it will appear twice in YAML

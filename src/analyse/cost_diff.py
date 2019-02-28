@@ -24,7 +24,7 @@ def _read_cost(path_to_model):
     model = calliope.read_netcdf(path_to_model)
     return (model.get_formatted_array("total_levelised_cost")
                  .to_dataframe()
-                 .loc[("electricity", "monetary"), "total_levelised_cost"]) * 100
+                 .loc[("electricity", "monetary"), "total_levelised_cost"])
 
 
 if __name__ == "__main__":

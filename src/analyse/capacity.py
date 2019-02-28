@@ -15,7 +15,7 @@ def excavate_installed_capacities(path_to_results, path_to_capacities_raw, path_
     )
     capacities.dropna(subset=["energy_cap"], inplace=True)
     capacities = capacities.groupby(["locs", "techs"]).sum().reset_index()
-    capacities = capacities.pivot(index="locs", columns="techs", values="energy_cap") / 1e6 # from kW to GW
+    capacities = capacities.pivot(index="locs", columns="techs", values="energy_cap") / 1e3 # from MW to GW
     del capacities["demand_elec"]
     capacities.loc["EUR"] = capacities.sum()
     capacities.to_csv(

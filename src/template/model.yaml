@@ -13,20 +13,20 @@ overrides:
         techs.battery.costs.monetary.interest_rate: 0.04 # {own assumption}
         techs.battery.costs.monetary.om_annual: 0  # {own_assumptions}
         techs.battery.costs.monetary.om_prod: 0  # {own_assumptions}
-        techs.nuclear.costs.monetary.om_con: 0.0169 # €/kWh
-        techs.lignite.costs.monetary.om_con: 0.0396 # €/kWh
-        techs.coal.costs.monetary.om_con: 0.0972 # €/kWh
-        techs.ccgt.costs.monetary.om_con: 0.3168 # €/kWh
-        techs.nuclear.costs.monetary.om_prod: 0.00036 # €/kWh (0.03 € / kg CO2eq) * (0.012 kg CO2eq/kWh)
-        techs.lignite.costs.monetary.om_prod: 0.0273 # €/kWh (0.03 € / kg CO2eq) * (0.910 kg CO2eq/kWh)
-        techs.coal.costs.monetary.om_prod: 0.0246 # €/kWh (0.03 € / kg CO2eq) * (0.820 kg CO2eq/kWh)
-        techs.ccgt.costs.monetary.om_prod: 0.0147 # €/kWh (0.03 € / kg CO2eq) * (0.490 kg CO2eq/kWh)
+        techs.nuclear.costs.monetary.om_con: 16.9 # €/Mh
+        techs.lignite.costs.monetary.om_con: 39.6 # €/MWh
+        techs.coal.costs.monetary.om_con: 97.2 # €/MWh
+        techs.ccgt.costs.monetary.om_con: 316.8 # €/MWh
+        techs.nuclear.costs.monetary.om_prod: 0.36 # €/MWh (0.03 € / kg CO2eq) * (12 kg CO2eq/MWh)
+        techs.lignite.costs.monetary.om_prod: 27.3 # €/MWh (0.03 € / kg CO2eq) * (910 kg CO2eq/MWh)
+        techs.coal.costs.monetary.om_prod: 24.6 # €/MWh (0.03 € / kg CO2eq) * (820 kg CO2eq/MWh)
+        techs.ccgt.costs.monetary.om_prod: 14.7 # €/MWh (0.03 € / kg CO2eq) * (490 kg CO2eq/MWh)
     diw_battery_baseline_cost:
-        techs.battery.costs.monetary.energy_cap: 135.14 # EUR per kW {Schmidt et al. 2017 and own assumptions}
-        techs.battery.costs.monetary.storage_cap: 315.32 # EUR per kWh Schmidt et al. 2017 and own assumptions capacity
+        techs.battery.costs.monetary.energy_cap: 135140 # EUR per MW {Schmidt et al. 2017 and own assumptions}
+        techs.battery.costs.monetary.storage_cap: 315320 # EUR per MWh Schmidt et al. 2017 and own assumptions capacity
     diw_battery_low_cost:
-        techs.battery.costs.monetary.energy_cap: 67.57
-        techs.battery.costs.monetary.storage_cap: 157.66
+        techs.battery.costs.monetary.energy_cap: 67570 # EUR per MW
+        techs.battery.costs.monetary.storage_cap: 157660 # EUR per MWh
 scenarios:
     baseline: "diw_assumptions,diw_battery_baseline_cost"
     low-cost: "diw_assumptions,diw_battery_low_cost"

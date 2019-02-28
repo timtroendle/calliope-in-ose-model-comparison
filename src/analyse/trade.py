@@ -7,8 +7,8 @@ def excavate_trade(path_to_results, path_to_trade_amounts):
     """Excavate trade between countries from the model results."""
     model = calliope.read_netcdf(path_to_results)
 
-    imports = _read_imports(model) / 1e6 # from kWh to GWh
-    exports = _read_exports(model) / 1e6 # from kWh to GWh
+    imports = _read_imports(model) / 1e3 # from MWh to GWh
+    exports = _read_exports(model) / 1e3 # from MWh to GWh
 
     pd.DataFrame(
         index=imports.index,
