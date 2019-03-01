@@ -7,6 +7,7 @@ import:
     - './links.yaml'
     - './capacity.yaml'
     - './legacy-tech.yaml'
+    - './renewable-shares.yaml'
 overrides:
     diw_assumptions:
         techs.battery.energy_eff: 0.9591663046625439  # 0.9592 * 0.9592 ~ 0.92 round trip efficiency {Schmidt et al. 2017}
@@ -28,8 +29,8 @@ overrides:
         techs.battery.costs.monetary.energy_cap: 67570 # EUR per MW
         techs.battery.costs.monetary.storage_cap: 157660 # EUR per MWh
 scenarios:
-    baseline: "diw_assumptions,diw_battery_baseline_cost"
-    low-cost: "diw_assumptions,diw_battery_low_cost"
+    baseline: ["diw_assumptions", "diw_battery_baseline_cost"]
+    low-cost: ["diw_assumptions", "diw_battery_low_cost"]
 model:
     name: 'Open Source Modelling -- Euro Calliope model'
     timeseries_data_path: './'

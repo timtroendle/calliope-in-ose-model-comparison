@@ -3,16 +3,13 @@ import jinja2
 import pandas as pd
 import pycountry
 
-# FIXME this needs Calliope > 0.6.3 and is thus not yet usable
-# https://github.com/calliope-project/calliope/issues/176
-# https://github.com/calliope-project/calliope/pull/191/
 
 TEMPLATE = """
 group_constraints:
     {% for country, share in shares.iteritems() %}
     renewable_share_{{ country }}:
         locs: ["{{ country }}"]
-        techs: wind_onshore_monopoly,wind_onshore_competing,wind_offshore,open_field_pv,roof_mounted_pv
+        techs: ["wind_onshore_monopoly", "wind_onshore_competing", "wind_offshore", "open_field_pv", "roof_mounted_pv"]
         demand_share_min:
             electricity: {{ share }}
     {% endfor %}

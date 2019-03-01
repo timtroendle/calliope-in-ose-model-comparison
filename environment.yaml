@@ -13,14 +13,32 @@ dependencies:
     - pytest=4.0.2
     - flake8=3.6.0
     - snakemake-minimal=5.4
-    - calliope=0.6.3
     - xlrd=1.2.0
     - pycountry=18.12.8
     - pytest-html=1.20.0
     - gurobi=8.1.0
     - jinja2=2.10
+    # FIXME The following is a copy of Calliope's base.yml file. It's only necessary because
+    # we pip install Calliope's development version and can be removed as soon as
+    # Calliope 0.6.4 is released.
+    - bottleneck
+    - click=6
+    - glpk=4.61
+    - hdf5
+    - ipython
+    - ipdb
+    - libnetcdf
+    - natsort
+    - netcdf4
+    - numexpr
+    - plotly<4.0
+    - pyomo<5.6
+    - ruamel.yaml<0.16
+    - scikit-learn<0.21
+    - xarray<0.11
     - pip:
         - pytest-pythonpath # adds the root path "./" to PYTHONPATH
         - pandoc-tablenos
         - pandoc-fignos
         - pantable
+        - ./calliope # FIXME install development version. Remove after release of 0.6.4
