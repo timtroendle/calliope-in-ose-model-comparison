@@ -6,11 +6,7 @@ rule run:
         model = rules.model.output.model
     output: "build/output/{scenario}/results.nc"
     shell:
-        """
-        calliope run {input.model} --save_netcdf {output} --scenario={wildcards.scenario}
-        echo -e "import calliope\nif calliope.read_netcdf('{output}').results.termination_condition != 'optimal':\n raise ValueError('non optimal')" \
-        | python # see https://github.com/calliope-project/calliope/issues/182
-        """
+        "calliope run {input.model} --save_netcdf {output} --scenario={wildcards.scenario}"
 
 
 rule plot:

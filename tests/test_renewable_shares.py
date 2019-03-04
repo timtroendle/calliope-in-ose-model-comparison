@@ -10,7 +10,7 @@ PATH_TO_OUTPUT = PATH_TO_BUILD / "output"
 FILENAME_RESULTS = Path("results.nc")
 EPSILON = 0.01
 RE_TECHS = ["open_field_pv", "roof_mounted_pv", "wind_onshore_monopoly", "wind_onshore_competing", "wind_offshore"]
-SCENARIOS = ["baseline", "low-cost"]
+SCENARIOS = ["baseline", "low-cost", "baseline-germany", "low-cost-germany"]
 
 
 @pytest.fixture(

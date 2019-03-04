@@ -41,4 +41,4 @@ dependencies:
         - pandoc-tablenos
         - pandoc-fignos
         - pantable
-        - ./calliope # FIXME install development version. Remove after release of 0.6.4
+        - -e ./calliope # FIXME install development version. Remove after release of 0.6.4

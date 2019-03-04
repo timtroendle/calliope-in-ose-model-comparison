@@ -5,3 +5,5 @@ resolution: "12H"
 scenarios:
     - baseline
     - low-cost
+    - baseline-germany
+    - low-cost-germany

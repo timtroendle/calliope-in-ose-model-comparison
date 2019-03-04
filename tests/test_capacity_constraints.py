@@ -8,7 +8,7 @@ PATH_TO_CAPACITY_CONSTRAINTS = PATH_TO_BUILD / "input" / "capacity.csv"
 PATH_TO_OUTPUT_DIRECTORY = PATH_TO_BUILD / "output"
 FILENAME_CAPACITY = Path("capacity-raw.csv")
 EPSILON = 0.001 # 1 kW
-SCENARIOS = ["baseline", "low-cost"]
+SCENARIOS = ["baseline", "low-cost", "baseline-germany", "low-cost-germany"]
 
 
 @pytest.fixture(
