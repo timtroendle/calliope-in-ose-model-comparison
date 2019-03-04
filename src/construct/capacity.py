@@ -13,8 +13,8 @@ TECH_MAP = {
     "Lignite": "lignite",
     "Nuclear": "nuclear",
     "Oil": "oil", # ASSUME doesnt exist in electricity (was 1.9% in 2015)
-    "Othernon-RES": "other_non_res", # TODO what to do with this?
-    "Other RES": "other_res", # TODO what to do with this?
+    "Othernon-RES": "other_non_res", # ignore
+    "Other RES": "other_res", # ASSUME Wind and Solar -- will be enforced through RE share
     "Solar-thermal": "solar_thermal", # ignored for electricity
     "Solar-PV": "roof_mounted_pv", # ASSUME all solar pv is roof mounted
     "Wind-on-shore": "wind_onshore_monopoly",
