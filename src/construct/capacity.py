@@ -7,7 +7,7 @@ TECH_MAP = {
     "Biofuels": "biofuels", # ASSUME inexistent
     "Gas": "ccgt", # ASSUME all gas to be CCGT
     "Hard coal": "coal",
-    "Hydro-pump": "hydro_pump", # TODO add
+    "Hydro-pump": "pumped_hydro",
     "Hydro-run": "hydro_run", # TODO add
     "Hydro-turbine": "hydro_turbine", # TODO add
     "Lignite": "lignite",
@@ -35,6 +35,9 @@ locations:
             roof_mounted_pv:
                 constraints:
                     energy_cap_min: {{ techs.roof_mounted_pv }} # MW
+            pumped_hydro:
+                constraints:
+                    energy_cap_min: {{ techs.pumped_hydro }} # MW
             coal:
                 constraints:
                     energy_cap_max: {{ techs.coal }} # MW

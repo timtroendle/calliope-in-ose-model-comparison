@@ -36,7 +36,7 @@ def installed_capacity(request):
 
 
 @pytest.mark.parametrize("tech", [
-    ("wind_onshore_monopoly"), ("wind_offshore"), ("roof_mounted_pv")
+    ("wind_onshore_monopoly"), ("wind_offshore"), ("roof_mounted_pv"), ("pumped_hydro")
 ])
 def test_minimal_capacity_is_installed(capacity_constraints, installed_capacity, country, tech):
     assert installed_capacity.loc[country, tech] + EPSILON >= capacity_constraints.loc[country, tech]

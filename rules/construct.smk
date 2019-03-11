@@ -3,7 +3,7 @@ subworkflow eurocalliope:
     snakefile: "./euro-calliope/Snakefile"
 
 
-localrules: copy_euro_calliope, model
+localrules: copy_euro_calliope, model, pumped_hydro
 
 
 rule copy_euro_calliope:
@@ -58,6 +58,15 @@ rule generation_capacities:
     script: "../src/construct/capacity.py"
 
 
+rule pumped_hydro:
+    message: "Define the charge rates of pumped hydro."
+    input:
+        src = "src/construct/pumped_hydro.py"
+    output:
+        yaml = "build/model/pumped-hydro.yaml"
+    script: "../src/construct/pumped_hydro.py"
+
+
 rule renewable_shares:
     message: "Ensure minimal renewable shares per country."
     input:
@@ -84,6 +93,7 @@ rule model:
         ),
         rules.links.output,
         rules.generation_capacities.output.yaml,
+        rules.pumped_hydro.output,
         rules.renewable_shares.output,
         legacy_techs = "src/template/legacy-tech.yaml",
         definition = "src/template/model.yaml"
