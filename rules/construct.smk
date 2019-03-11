@@ -7,9 +7,16 @@ localrules: copy_euro_calliope, model
 
 
 rule copy_euro_calliope:
-    message: "Copy file ./model/{wildcards.definition_file}.yaml from euro-calliope."
-    input: eurocalliope("model/{definition_file}.yaml"),
+    message: "Copy file ./build/model/{wildcards.definition_file}.yaml from euro-calliope."
+    input: eurocalliope("build/model/{definition_file}.yaml"),
     output: "build/model/{definition_file}.yaml"
+    shell: "cp {input} {output}"
+
+
+rule copy_national_locations_from_euro_calliope:
+    message: "Copy file locations.yaml from euro-calliope."
+    input: eurocalliope("build/model/national/locations.yaml"),
+    output: "build/model/locations.yaml"
     shell: "cp {input} {output}"
 
 
