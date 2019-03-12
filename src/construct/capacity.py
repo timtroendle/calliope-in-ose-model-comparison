@@ -8,7 +8,7 @@ TECH_MAP = {
     "Gas": "ccgt", # ASSUME all gas to be CCGT
     "Hard coal": "coal",
     "Hydro-pump": "pumped_hydro",
-    "Hydro-run": "hydro_run", # TODO add
+    "Hydro-run": "hydro_run_of_river",
     "Hydro-turbine": "hydro_turbine", # TODO add
     "Lignite": "lignite",
     "Nuclear": "nuclear",
@@ -38,6 +38,9 @@ locations:
             pumped_hydro:
                 constraints:
                     energy_cap_min: {{ techs.pumped_hydro }} # MW
+            hydro_run_of_river:
+                constraints:
+                    energy_cap_equals: {{ techs.hydro_run_of_river }} # MW
             coal:
                 constraints:
                     energy_cap_max: {{ techs.coal }} # MW

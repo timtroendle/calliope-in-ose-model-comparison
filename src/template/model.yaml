@@ -215,6 +215,20 @@ techs:
             carrier: electricity
         constraints:
             resource: file=electricity-demand.csv
+    hydro_run_of_river:
+        essentials:
+            name: 'Run of river hydro power'
+            parent: supply
+            carrier: electricity
+        constraints:
+            energy_cap_max: inf
+            resource: file=run-of-river.csv:capacityfactor
+            resource_unit: energy_per_cap
+            lifetime: 60 # [JRC ETRI 2014]
+        costs:
+            monetary:
+                energy_cap: 5620000 # EUR2013/MW, [JRC ETRI 2014]
+                om_annual: 84300 # EUR2013/MW/year, [JRC ETRI 2014]
     ac_transmission:
         essentials:
             name: "High voltage AC transmission line"

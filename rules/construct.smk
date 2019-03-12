@@ -3,7 +3,28 @@ subworkflow eurocalliope:
     snakefile: "./euro-calliope/Snakefile"
 
 
-localrules: copy_euro_calliope, model, pumped_hydro
+localrules: copy_euro_calliope, model, pumped_hydro, raw_run_of_river_data_zipped
+
+URL_RUNOFF_DATA_SWITZERLAND = "https://data.sccer-jasm.ch/runofriver_production/"\
+                              "opsd-runofriver_production-2017-10-16.zip"
+
+
+rule raw_run_of_river_data_zipped:
+    message: "Download run of river generation data as zip."
+    output:
+        protected("data/automatic/raw-run-of-river.zip")
+    shell:
+        "curl -sLo {output} '{URL_RUNOFF_DATA_SWITZERLAND}'"
+
+
+rule run_of_river_capacity_factors:
+    message: "Create capacity factor timeseries from Swiss generation data."
+    input:
+        src = "src/construct/runoff.py",
+        zip = rules.raw_run_of_river_data_zipped.output,
+    shadow: "minimal"
+    output: "build/model/run-of-river.csv"
+    script: "../src/construct/runoff.py"
 
 
 rule copy_euro_calliope:
@@ -95,6 +116,7 @@ rule model:
         rules.generation_capacities.output.yaml,
         rules.pumped_hydro.output,
         rules.renewable_shares.output,
+        rules.run_of_river_capacity_factors.output,
         legacy_techs = "src/template/legacy-tech.yaml",
         definition = "src/template/model.yaml"
     output:

@@ -6,4 +6,5 @@ __pycache__
 .vscode
 .DS_Store
 build
-euro-calliope/model
+euro-calliope/build
+data/automatic

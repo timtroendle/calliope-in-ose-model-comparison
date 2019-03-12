@@ -43,6 +43,13 @@ def test_minimal_capacity_is_installed(capacity_constraints, installed_capacity,
 
 
 @pytest.mark.parametrize("tech", [
+    ("hydro_run_of_river")
+])
+def test_exact_capacity_is_installed(capacity_constraints, installed_capacity, country, tech):
+    assert installed_capacity.loc[country, tech] == pytest.approx(capacity_constraints.loc[country, tech], abs=EPSILON)
+
+
+@pytest.mark.parametrize("tech", [
     ("coal"), ("lignite"), ("ccgt"), ("nuclear")
 ])
 def test_maximum_capacity_is_not_exceeded(capacity_constraints, installed_capacity, country, tech):

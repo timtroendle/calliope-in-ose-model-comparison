@@ -9,7 +9,8 @@ PATH_TO_REQUESTED_RENEWABLE_SHARES = PATH_TO_BUILD / "input" / "renewable-shares
 PATH_TO_OUTPUT = PATH_TO_BUILD / "output"
 FILENAME_RESULTS = Path("results.nc")
 EPSILON = 0.01
-RE_TECHS = ["open_field_pv", "roof_mounted_pv", "wind_onshore_monopoly", "wind_onshore_competing", "wind_offshore"]
+RE_TECHS = ["open_field_pv", "roof_mounted_pv", "wind_onshore_monopoly",
+            "wind_onshore_competing", "wind_offshore", "hydro_run_of_river"]
 SCENARIOS = ["baseline", "low-cost", "baseline-germany", "low-cost-germany"]
 
 
@@ -61,7 +62,7 @@ def consumption(model_output):
     )
 
 
-def test_minimal_capacity_is_installed(requested_shares, generated_electricity, consumption, country):
+def test_renewable_share(requested_shares, generated_electricity, consumption, country):
     re_prod = generated_electricity.loc[country, RE_TECHS].sum()
     re_share = re_prod / (consumption.loc[country, "demand_elec"] * -1)
 
