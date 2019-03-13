@@ -102,7 +102,6 @@ rule renewable_shares:
 rule model:
     message: "Build entire model."
     input:
-        "build/model/interest-rate.yaml",
         "build/model/renewable-techs.yaml",
         "build/model/locations.yaml",
         "build/model/link-techs.yaml",

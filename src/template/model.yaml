@@ -1,5 +1,4 @@
 import:
-    - './interest-rate.yaml'
     - './renewable-techs.yaml'
     - './locations.yaml'
     - './link-techs.yaml'
@@ -29,6 +28,13 @@ overrides:
     diw_battery_low_cost:
         techs.battery.costs.monetary.energy_cap: 67570 # EUR per MW
         techs.battery.costs.monetary.storage_cap: 157660 # EUR per MWh
+    equal_interest_rate: # harmonise interest rates
+        tech_groups.conversion.costs.monetary.interest_rate: 0.04
+        tech_groups.conversion_plus.costs.monetary.interest_rate: 0.04
+        tech_groups.storage.costs.monetary.interest_rate: 0.04
+        tech_groups.supply.costs.monetary.interest_rate: 0.04
+        tech_groups.supply_plus.costs.monetary.interest_rate: 0.04
+        tech_groups.transmission.costs.monetary.interest_rate: 0.04
     germany_only:
         # FIXME Actually should simulate Germany only. This is blocked by:
         # https://github.com/calliope-project/calliope/issues/198
@@ -187,10 +193,10 @@ overrides:
         links.ROU,SRB.techs.ac_transmission.exists: False
         links.SRB,ROU.techs.ac_transmission.exists: False
 scenarios:
-    baseline: ["diw_assumptions", "diw_battery_baseline_cost"]
-    low-cost: ["diw_assumptions", "diw_battery_low_cost"]
-    baseline-germany: ["diw_assumptions", "diw_battery_baseline_cost", "germany_only"]
-    low-cost-germany: ["diw_assumptions", "diw_battery_low_cost", "germany_only"]
+    baseline: ["diw_assumptions", "diw_battery_baseline_cost", "equal_interest_rate"]
+    low-cost: ["diw_assumptions", "diw_battery_low_cost", "equal_interest_rate"]
+    baseline-germany: ["diw_assumptions", "diw_battery_baseline_cost", "germany_only", "equal_interest_rate"]
+    low-cost-germany: ["diw_assumptions", "diw_battery_low_cost", "germany_only", "equal_interest_rate"]
 model:
     name: 'Open Source Modelling -- Euro Calliope model'
     calliope_version: 0.6.4
