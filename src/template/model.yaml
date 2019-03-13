@@ -15,10 +15,10 @@ overrides:
         techs.battery.costs.monetary.interest_rate: 0.04 # {own assumption}
         techs.battery.costs.monetary.om_annual: 0  # {own_assumptions}
         techs.battery.costs.monetary.om_prod: 0  # {own_assumptions}
-        techs.nuclear.costs.monetary.om_con: 16.9 # €/Mh
-        techs.lignite.costs.monetary.om_con: 39.6 # €/MWh
-        techs.coal.costs.monetary.om_con: 97.2 # €/MWh
-        techs.ccgt.costs.monetary.om_con: 316.8 # €/MWh
+        techs.nuclear.costs.monetary.om_con: 1.69 # €/MWh
+        techs.lignite.costs.monetary.om_con: 3.96 # €/MWh
+        techs.coal.costs.monetary.om_con: 9.72 # €/MWh
+        techs.ccgt.costs.monetary.om_con: 31.68 # €/MWh
         techs.nuclear.costs.monetary.om_prod: 0.36 # €/MWh (0.03 € / kg CO2eq) * (12 kg CO2eq/MWh)
         techs.lignite.costs.monetary.om_prod: 27.3 # €/MWh (0.03 € / kg CO2eq) * (910 kg CO2eq/MWh)
         techs.coal.costs.monetary.om_prod: 24.6 # €/MWh (0.03 € / kg CO2eq) * (820 kg CO2eq/MWh)
