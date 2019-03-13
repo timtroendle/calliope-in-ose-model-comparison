@@ -2,6 +2,7 @@ import:
     - './interest-rate.yaml'
     - './renewable-techs.yaml'
     - './locations.yaml'
+    - './link-techs.yaml'
     - './storage-techs.yaml'
     - './links.yaml'
     - './capacity.yaml'
@@ -228,10 +229,3 @@ techs:
             monetary:
                 energy_cap: 5620000 # EUR2013/MW, [JRC ETRI 2014]
                 om_annual: 84300 # EUR2013/MW/year, [JRC ETRI 2014]
-    ac_transmission:
-        essentials:
-            name: "High voltage AC transmission line"
-            parent: transmission
-            carrier: electricity
-        constraints:
-            energy_eff: 1.0 # TODO really?

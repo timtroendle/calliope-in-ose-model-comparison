@@ -105,6 +105,7 @@ rule model:
         "build/model/interest-rate.yaml",
         "build/model/renewable-techs.yaml",
         "build/model/locations.yaml",
+        "build/model/link-techs.yaml",
         "build/model/storage-techs.yaml",
         rules.preprocess_load.output,
         expand(
