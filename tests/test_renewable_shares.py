@@ -11,28 +11,18 @@ FILENAME_RESULTS = Path("results.nc")
 EPSILON = 0.01
 RE_TECHS = ["open_field_pv", "roof_mounted_pv", "wind_onshore_monopoly",
             "wind_onshore_competing", "wind_offshore", "hydro_run_of_river"]
-SCENARIOS = ["baseline", "low-cost", "baseline-germany", "low-cost-germany"]
-
-
-@pytest.fixture(
-    scope="module",
-    params=pd.read_csv(PATH_TO_REQUESTED_RENEWABLE_SHARES, index_col=0).index
-)
-def country(request):
-    return request.param
+EUROPE_SCENARIOS = ["baseline", "low-cost"]
+GERMANY_SCENARIOS = ["baseline-germany", "low-cost-germany"]
 
 
 @pytest.fixture(scope="module")
-def requested_shares():
+def requested_shares(request):
     return pd.read_csv(PATH_TO_REQUESTED_RENEWABLE_SHARES, index_col=0).iloc[:, 0]
 
 
-@pytest.fixture(
-    scope="session",
-    params=SCENARIOS
-)
-def model_output(request):
-    return calliope.read_netcdf(PATH_TO_OUTPUT / request.param / FILENAME_RESULTS)
+@pytest.fixture(scope="session")
+def model_output(scenario):
+    return calliope.read_netcdf(PATH_TO_OUTPUT / scenario / FILENAME_RESULTS)
 
 
 @pytest.fixture(scope="module")
@@ -62,8 +52,43 @@ def consumption(model_output):
     )
 
 
-def test_renewable_share(requested_shares, generated_electricity, consumption, country):
+@pytest.fixture()
+def re_share(generated_electricity, consumption, country):
     re_prod = generated_electricity.loc[country, RE_TECHS].sum()
-    re_share = re_prod / (consumption.loc[country, "demand_elec"] * -1)
+    return re_prod / (consumption.loc[country, "demand_elec"] * -1)
 
-    assert re_share + EPSILON >= requested_shares.loc[country]
+
+@pytest.fixture()
+def requested_share(requested_shares, country):
+    return requested_shares.loc[country]
+
+
+class Base:
+
+    def test_renewable_share(self, re_share, requested_share):
+        assert re_share + EPSILON >= requested_share
+
+
+class TestAllEurope(Base):
+
+    @pytest.fixture(
+        scope="module",
+        params=pd.read_csv(PATH_TO_REQUESTED_RENEWABLE_SHARES, index_col=0).index
+    )
+    def country(self, request):
+        return request.param
+
+    @pytest.fixture(scope="session", params=EUROPE_SCENARIOS)
+    def scenario(self, request):
+        return request.param
+
+
+class TestGermanyOnly(Base):
+
+    @pytest.fixture
+    def country(self):
+        return "DEU"
+
+    @pytest.fixture(scope="session", params=GERMANY_SCENARIOS)
+    def scenario(self, request):
+        return request.param

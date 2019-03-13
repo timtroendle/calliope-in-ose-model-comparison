@@ -8,15 +8,8 @@ PATH_TO_BUILD = Path(__file__).parent / ".." / "build"
 PATH_TO_REQUESTED_CO2_CAPS = PATH_TO_BUILD / "input" / "co2-caps.csv"
 PATH_TO_OUTPUT = PATH_TO_BUILD / "output"
 FILENAME_RESULTS = Path("results.nc")
-SCENARIOS = ["baseline", "low-cost", "baseline-germany", "low-cost-germany"]
-
-
-@pytest.fixture(
-    scope="module",
-    params=pd.read_csv(PATH_TO_REQUESTED_CO2_CAPS, index_col=0).index
-)
-def country(request):
-    return request.param
+EUROPE_SCENARIOS = ["baseline", "low-cost"]
+GERMANY_SCENARIOS = ["baseline-germany", "low-cost-germany"]
 
 
 @pytest.fixture(scope="module")
@@ -25,11 +18,10 @@ def requested_caps():
 
 
 @pytest.fixture(
-    scope="session",
-    params=SCENARIOS
+    scope="session"
 )
-def model_output(request):
-    return calliope.read_netcdf(PATH_TO_OUTPUT / request.param / FILENAME_RESULTS)
+def model_output(scenario):
+    return calliope.read_netcdf(PATH_TO_OUTPUT / scenario / FILENAME_RESULTS)
 
 
 @pytest.fixture(scope="module")
@@ -44,5 +36,32 @@ def co2_emissions(model_output):
                         .loc[:, "co2"])
 
 
-def test_co2_caps(requested_caps, co2_emissions, country):
-    assert co2_emissions.loc[country] <= requested_caps.loc[country]
+class Base:
+
+    def test_co2_caps(self, requested_caps, co2_emissions, country):
+        assert co2_emissions.loc[country] <= requested_caps.loc[country]
+
+
+class TestAllEurope(Base):
+
+    @pytest.fixture(
+        scope="module",
+        params=pd.read_csv(PATH_TO_REQUESTED_CO2_CAPS, index_col=0).index
+    )
+    def country(self, request):
+        return request.param
+
+    @pytest.fixture(scope="session", params=EUROPE_SCENARIOS)
+    def scenario(self, request):
+        return request.param
+
+
+class TestGermanyOnly(Base):
+
+    @pytest.fixture
+    def country(self):
+        return "DEU"
+
+    @pytest.fixture(scope="session", params=GERMANY_SCENARIOS)
+    def scenario(self, request):
+        return request.param

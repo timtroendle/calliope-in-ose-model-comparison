@@ -8,15 +8,8 @@ PATH_TO_CAPACITY_CONSTRAINTS = PATH_TO_BUILD / "input" / "capacity.csv"
 PATH_TO_OUTPUT_DIRECTORY = PATH_TO_BUILD / "output"
 FILENAME_CAPACITY = Path("capacity-raw.csv")
 EPSILON = 0.001 # 1 kW
-SCENARIOS = ["baseline", "low-cost", "baseline-germany", "low-cost-germany"]
-
-
-@pytest.fixture(
-    scope="module",
-    params=pd.read_csv(PATH_TO_CAPACITY_CONSTRAINTS, index_col=0).index
-)
-def country(request):
-    return request.param
+EUROPE_SCENARIOS = ["baseline", "low-cost"]
+GERMANY_SCENARIOS = ["baseline-germany", "low-cost-germany"]
 
 
 @pytest.fixture(scope="module")
@@ -24,33 +17,58 @@ def capacity_constraints():
     return pd.read_csv(PATH_TO_CAPACITY_CONSTRAINTS, index_col=0)
 
 
-@pytest.fixture(
-    scope="module",
-    params=SCENARIOS
-)
-def installed_capacity(request):
+@pytest.fixture(scope="module")
+def installed_capacity(scenario):
     return pd.read_csv(
-        PATH_TO_OUTPUT_DIRECTORY / request.param / FILENAME_CAPACITY,
+        PATH_TO_OUTPUT_DIRECTORY / scenario / FILENAME_CAPACITY,
         index_col=0
     ) * 1e3 # from GW to MW
 
 
-@pytest.mark.parametrize("tech", [
-    ("wind_onshore_monopoly"), ("wind_offshore"), ("roof_mounted_pv"), ("pumped_hydro")
-])
-def test_minimal_capacity_is_installed(capacity_constraints, installed_capacity, country, tech):
-    assert installed_capacity.loc[country, tech] + EPSILON >= capacity_constraints.loc[country, tech]
+class Base:
+
+    @pytest.mark.parametrize("tech", [
+        ("wind_onshore_monopoly"), ("wind_offshore"), ("roof_mounted_pv"), ("pumped_hydro")
+    ])
+    def test_minimal_capacity_is_installed(self, capacity_constraints, installed_capacity, country, tech):
+        assert installed_capacity.loc[country, tech] + EPSILON >= capacity_constraints.loc[country, tech]
+
+    @pytest.mark.parametrize("tech", [
+        ("hydro_run_of_river")
+    ])
+    def test_exact_capacity_is_installed(self, capacity_constraints, installed_capacity, country, tech):
+        assert installed_capacity.loc[country, tech] == pytest.approx(
+            capacity_constraints.loc[country, tech],
+            abs=EPSILON
+        )
+
+    @pytest.mark.parametrize("tech", [
+        ("coal"), ("lignite"), ("ccgt"), ("nuclear")
+    ])
+    def test_maximum_capacity_is_not_exceeded(self, capacity_constraints, installed_capacity, country, tech):
+        assert installed_capacity.loc[country, tech] - EPSILON <= capacity_constraints.loc[country, tech]
 
 
-@pytest.mark.parametrize("tech", [
-    ("hydro_run_of_river")
-])
-def test_exact_capacity_is_installed(capacity_constraints, installed_capacity, country, tech):
-    assert installed_capacity.loc[country, tech] == pytest.approx(capacity_constraints.loc[country, tech], abs=EPSILON)
+class TestAllEurope(Base):
+
+    @pytest.fixture(
+        scope="module",
+        params=pd.read_csv(PATH_TO_CAPACITY_CONSTRAINTS, index_col=0).index
+    )
+    def country(self, request):
+        return request.param
+
+    @pytest.fixture(scope="module", params=EUROPE_SCENARIOS)
+    def scenario(self, request):
+        return request.param
 
 
-@pytest.mark.parametrize("tech", [
-    ("coal"), ("lignite"), ("ccgt"), ("nuclear")
-])
-def test_maximum_capacity_is_not_exceeded(capacity_constraints, installed_capacity, country, tech):
-    assert installed_capacity.loc[country, tech] - EPSILON <= capacity_constraints.loc[country, tech]
+class TestGermanyOnly(Base):
+
+    @pytest.fixture
+    def country(self):
+        return "DEU"
+
+    @pytest.fixture(scope="module", params=GERMANY_SCENARIOS)
+    def scenario(self, request):
+        return request.param
