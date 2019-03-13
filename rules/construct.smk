@@ -99,6 +99,17 @@ rule renewable_shares:
     script: "../src/construct/renewable_shares.py"
 
 
+rule co2_caps:
+    message: "Ensure CO2 bounds in each country."
+    input:
+        src = "src/construct/co2_caps.py",
+        caps = "data/bound_RES_and_CO2.xlsx"
+    output:
+        csv = "build/input/co2-caps.csv",
+        yaml = "build/model/co2-caps.yaml"
+    script: "../src/construct/co2_caps.py"
+
+
 rule model:
     message: "Build entire model."
     input:
@@ -115,6 +126,7 @@ rule model:
         rules.generation_capacities.output.yaml,
         rules.pumped_hydro.output,
         rules.renewable_shares.output,
+        rules.co2_caps.output,
         rules.run_of_river_capacity_factors.output,
         legacy_techs = "src/template/legacy-tech.yaml",
         definition = "src/template/model.yaml"

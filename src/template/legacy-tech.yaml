@@ -17,7 +17,7 @@ techs:
                 om_annual: 46030  # 2016 EUR/MW/yr, Coal ASC with FGD medium nth o.a.k., {parsons2011}
                 om_con:  10.92  # 2016 EUR/MWh net, medium, Table 6.3, {mott2010} (with 1 GJ = 0.277777 MWh)
             co2:
-                om_prod:  820  # kg CO2eq/MWh, {ipcc_ar5_wg3}
+                om_prod:  0.000820  # kt CO2eq/MWh, {ipcc_ar5_wg3}
     lignite:
         essentials:
             name: Lignite
@@ -35,7 +35,7 @@ techs:
                 om_annual: 46030  # 2016 EUR/MW/yr, Coal ASC with FGD medium nth o.a.k., {parsons2011}
                 om_con:  10.92  # 2016 EUR/MWh net, medium, Table 6.3, {mott2010} (with 1 GJ = 0.277777 MWh)
             co2:
-                om_prod:  910  # kg CO2eq/MWh, {ipcc_ar5_wg3} # ASSUME max of IPCC range for coal
+                om_prod:  0.000910  # kt CO2eq/MWh, {ipcc_ar5_wg3} # ASSUME max of IPCC range for coal
     ccgt:
         essentials:
             name: CCGT
@@ -52,7 +52,7 @@ techs:
                 om_annual: 30480  # 2016 EUR/MW/yr, CCGT medium nth of a kind, {parsons2011}
                 om_con: 37.61  # 2016 EUR/MWh net, medium, Table 6.3, {mott2010} (with 1 GJ = 0.277777 MWh)
             co2:
-                om_prod:  490  # kg CO2eq/MWh, {ipcc_ar5_wg3}
+                om_prod:  0.000490  # kt CO2eq/MWh, {ipcc_ar5_wg3}
     nuclear:
         essentials:
             name: Nuclear
@@ -69,4 +69,4 @@ techs:
                 om_annual: 78900  # 2016 EUR/MW/yr, Nuclear PWR medium nth of a kind, {parsons2011}
                 om_con: 6.40  # 2016 EUR/MWh, Table 2, {decc2013}
             co2:
-                om_prod:  12  # kg CO2eq/MWh, {ipcc_ar5_wg3}
+                om_prod: 0.000012  # kt CO2eq/MWh, {ipcc_ar5_wg3}

@@ -8,6 +8,7 @@ import:
     - './pumped-hydro.yaml'
     - './legacy-tech.yaml'
     - './renewable-shares.yaml'
+    - './co2-caps.yaml'
 overrides:
     diw_assumptions:
         techs.battery.energy_eff: 0.9591663046625439  # 0.9592 * 0.9592 ~ 0.92 round trip efficiency {Schmidt et al. 2017}
