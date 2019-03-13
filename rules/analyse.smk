@@ -29,6 +29,17 @@ rule capacity:
     script: "../src/analyse/capacity.py"
 
 
+rule storage_capacity:
+    message: "Excavate the installed storage capacities of scenario {wildcards.scenario}."
+    input:
+        src = "src/analyse/storage_capacity.py",
+        results = rules.run.output
+    output:
+        raw = "build/output/{scenario}/storage-capacity-raw.csv",
+        publish = "build/output/{scenario}/storage-capacity-publish.csv"
+    script: "../src/analyse/storage_capacity.py"
+
+
 rule trade:
     message: "Excavate the traded electricity of scenario {wildcards.scenario}."
     input:
@@ -39,25 +50,35 @@ rule trade:
 
 
 rule capacity_diff:
-    message: "Show diff in installed capacities between both scenarios."
+    message: "Show diff in installed capacities compared to baseline."
     input:
         src = "src/analyse/capacity_diff.py",
         baseline = "build/output/baseline/capacity-raw.csv",
-        low_cost = "build/output/low-cost/capacity-raw.csv"
+        other = "build/output/{scenario}/capacity-raw.csv"
     output:
-        "build/output/capacity-diff.csv"
+        "build/output/{scenario}/capacity-diff.csv"
     script: "../src/analyse/capacity_diff.py"
 
 
-rule cost_diff:
-    message: "Excavate diff in levelised cost between both scenarios."
+rule storage_capacity_diff:
+    message: "Show diff in installed storage capacities compared to baseline."
     input:
-        src = "src/analyse/cost_diff.py",
-        baseline = "build/output/baseline/results.nc",
-        low_cost = "build/output/low-cost/results.nc"
+        src = "src/analyse/storage_capacity_diff.py",
+        baseline = "build/output/baseline/storage-capacity-raw.csv",
+        other = "build/output/{scenario}/storage-capacity-raw.csv"
     output:
-        "build/output/cost-diff.csv"
-    script: "../src/analyse/cost_diff.py"
+        "build/output/{scenario}/storage-capacity-diff.csv"
+    script: "../src/analyse/storage_capacity_diff.py"
+
+
+rule cost:
+    message: "Excavate levelised costs from scenarios."
+    input:
+        src = "src/analyse/cost.py",
+        results = expand("build/output/{scenario}/results.nc", scenario=config["scenarios"])
+    output:
+        "build/output/cost.csv"
+    script: "../src/analyse/cost.py"
 
 
 rule test:

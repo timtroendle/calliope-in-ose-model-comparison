@@ -31,9 +31,17 @@ rule report:
         "report/pandoc-metadata.yml",
         "build/output/baseline/plot.png",
         "build/output/baseline/capacity-publish.csv",
-        "build/output/capacity-diff.csv",
-        "build/output/cost-diff.csv",
+        "build/output/baseline/storage-capacity-publish.csv",
         "build/output/baseline/trade.csv",
+        expand(
+            "build/output/{scenario}/capacity-diff.csv",
+            scenario=[scenario for scenario in config["scenarios"] if scenario != "baseline"]
+        ),
+        expand(
+            "build/output/{scenario}/storage-capacity-diff.csv",
+            scenario=[scenario for scenario in config["scenarios"] if scenario != "baseline"]
+        ),
+        "build/output/cost.csv",
         rules.test.output
     output:
         "build/report.html"
