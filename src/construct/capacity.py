@@ -9,7 +9,7 @@ TECH_MAP = {
     "Hard coal": "coal",
     "Hydro-pump": "pumped_hydro",
     "Hydro-run": "hydro_run_of_river",
-    "Hydro-turbine": "hydro_turbine", # TODO add
+    "Hydro-turbine": "hydro_turbine", # ASSUME ignore
     "Lignite": "lignite",
     "Nuclear": "nuclear",
     "Oil": "oil", # ASSUME doesnt exist in electricity (was 1.9% in 2015)

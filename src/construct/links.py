@@ -19,8 +19,6 @@ links:
     {% endfor %}
 """
 
-# TODO allow for transmission capacity extension?
-
 
 def generate_links(path_to_ntc, path_to_result):
     """Generate a file that represents links in Calliope."""

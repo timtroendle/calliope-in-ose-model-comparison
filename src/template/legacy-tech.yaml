@@ -7,7 +7,6 @@ techs:
             parent: supply
         constraints:
             energy_eff: 0.44  # Coal ASC with FGD medium nth o.a.k., {parsons2011}
-            # energy_ramping: 0.6  # Assume about 1% per minute times 60 minutes, based on {mit2011}
             resource: inf
             energy_cap_min_use: 0.5  # Assumption
             lifetime: 25
@@ -19,14 +18,13 @@ techs:
                 om_con:  10.92  # 2016 EUR/MWh net, medium, Table 6.3, {mott2010} (with 1 GJ = 0.277777 MWh)
             co2:
                 om_prod:  820  # kg CO2eq/MWh, {ipcc_ar5_wg3}
-    lignite: # FIXME mainly a copy of coal
+    lignite:
         essentials:
             name: Lignite
             carrier: electricity
             parent: supply
         constraints:
             energy_eff: 0.44  # Coal ASC with FGD medium nth o.a.k., {parsons2011}
-            # energy_ramping: 0.6  # Assume about 1% per minute times 60 minutes, based on {mit2011}
             resource: inf
             energy_cap_min_use: 0.5  # Assumption
             lifetime: 25

@@ -2,7 +2,6 @@ import:
     - './interest-rate.yaml'
     - './renewable-techs.yaml'
     - './locations.yaml'
-    - './link-techs.yaml'
     - './storage-techs.yaml'
     - './links.yaml'
     - './capacity.yaml'
@@ -19,10 +18,10 @@ overrides:
         techs.lignite.costs.monetary.om_con: 3.96 # €/MWh
         techs.coal.costs.monetary.om_con: 9.72 # €/MWh
         techs.ccgt.costs.monetary.om_con: 31.68 # €/MWh
-        techs.nuclear.costs.monetary.om_prod: 0.36 # €/MWh (0.03 € / kg CO2eq) * (12 kg CO2eq/MWh)
-        techs.lignite.costs.monetary.om_prod: 27.3 # €/MWh (0.03 € / kg CO2eq) * (910 kg CO2eq/MWh)
-        techs.coal.costs.monetary.om_prod: 24.6 # €/MWh (0.03 € / kg CO2eq) * (820 kg CO2eq/MWh)
-        techs.ccgt.costs.monetary.om_prod: 14.7 # €/MWh (0.03 € / kg CO2eq) * (490 kg CO2eq/MWh)
+        techs.nuclear.costs.monetary.om_prod: 1.018 # €/MWh 0.658 + (0.03 € / kg CO2eq) * (12 kg CO2eq/MWh)
+        techs.lignite.costs.monetary.om_prod: 28.615 # €/MWh 1.315 + (0.03 € / kg CO2eq) * (910 kg CO2eq/MWh)
+        techs.coal.costs.monetary.om_prod: 25.915 # €/MWh 1.315 + (0.03 € / kg CO2eq) * (820 kg CO2eq/MWh)
+        techs.ccgt.costs.monetary.om_prod: 14.832 # €/MWh 0.132 + (0.03 € / kg CO2eq) * (490 kg CO2eq/MWh)
     diw_battery_baseline_cost:
         techs.battery.costs.monetary.energy_cap: 135140 # EUR per MW {Schmidt et al. 2017 and own assumptions}
         techs.battery.costs.monetary.storage_cap: 315320 # EUR per MWh Schmidt et al. 2017 and own assumptions capacity
