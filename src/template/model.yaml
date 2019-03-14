@@ -139,9 +139,82 @@ overrides:
         group_constraints.renewable_share_SVK.exists: False
         group_constraints.renewable_share_SVN.exists: False
         group_constraints.renewable_share_SWE.exists: False
+    no_co2_caps:
+        group_constraints.co2_cap_ALB.exists: False
+        group_constraints.co2_cap_AUT.exists: False
+        group_constraints.co2_cap_BEL.exists: False
+        group_constraints.co2_cap_BGR.exists: False
+        group_constraints.co2_cap_BIH.exists: False
+        group_constraints.co2_cap_CHE.exists: False
+        group_constraints.co2_cap_CYP.exists: False
+        group_constraints.co2_cap_CZE.exists: False
+        group_constraints.co2_cap_DEU.exists: False
+        group_constraints.co2_cap_DNK.exists: False
+        group_constraints.co2_cap_ESP.exists: False
+        group_constraints.co2_cap_EST.exists: False
+        group_constraints.co2_cap_FIN.exists: False
+        group_constraints.co2_cap_FRA.exists: False
+        group_constraints.co2_cap_GBR.exists: False
+        group_constraints.co2_cap_GRC.exists: False
+        group_constraints.co2_cap_HRV.exists: False
+        group_constraints.co2_cap_HUN.exists: False
+        group_constraints.co2_cap_IRL.exists: False
+        group_constraints.co2_cap_ITA.exists: False
+        group_constraints.co2_cap_LTU.exists: False
+        group_constraints.co2_cap_LUX.exists: False
+        group_constraints.co2_cap_LVA.exists: False
+        group_constraints.co2_cap_MKD.exists: False
+        group_constraints.co2_cap_MNE.exists: False
+        group_constraints.co2_cap_NLD.exists: False
+        group_constraints.co2_cap_NOR.exists: False
+        group_constraints.co2_cap_POL.exists: False
+        group_constraints.co2_cap_PRT.exists: False
+        group_constraints.co2_cap_ROU.exists: False
+        group_constraints.co2_cap_SRB.exists: False
+        group_constraints.co2_cap_SVK.exists: False
+        group_constraints.co2_cap_SVN.exists: False
+        group_constraints.co2_cap_SWE.exists: False
+    no_run_of_river:
+        locations.ALB.techs.hydro_run_of_river.exists: False
+        locations.AUT.techs.hydro_run_of_river.exists: False
+        locations.BEL.techs.hydro_run_of_river.exists: False
+        locations.BGR.techs.hydro_run_of_river.exists: False
+        locations.BIH.techs.hydro_run_of_river.exists: False
+        locations.CHE.techs.hydro_run_of_river.exists: False
+        locations.CYP.techs.hydro_run_of_river.exists: False
+        locations.CZE.techs.hydro_run_of_river.exists: False
+        locations.DEU.techs.hydro_run_of_river.exists: False
+        locations.DNK.techs.hydro_run_of_river.exists: False
+        locations.ESP.techs.hydro_run_of_river.exists: False
+        locations.EST.techs.hydro_run_of_river.exists: False
+        locations.FIN.techs.hydro_run_of_river.exists: False
+        locations.FRA.techs.hydro_run_of_river.exists: False
+        locations.GBR.techs.hydro_run_of_river.exists: False
+        locations.GRC.techs.hydro_run_of_river.exists: False
+        locations.HRV.techs.hydro_run_of_river.exists: False
+        locations.HUN.techs.hydro_run_of_river.exists: False
+        locations.IRL.techs.hydro_run_of_river.exists: False
+        locations.ITA.techs.hydro_run_of_river.exists: False
+        locations.LTU.techs.hydro_run_of_river.exists: False
+        locations.LUX.techs.hydro_run_of_river.exists: False
+        locations.LVA.techs.hydro_run_of_river.exists: False
+        locations.MKD.techs.hydro_run_of_river.exists: False
+        locations.MNE.techs.hydro_run_of_river.exists: False
+        locations.NLD.techs.hydro_run_of_river.exists: False
+        locations.NOR.techs.hydro_run_of_river.exists: False
+        locations.POL.techs.hydro_run_of_river.exists: False
+        locations.PRT.techs.hydro_run_of_river.exists: False
+        locations.ROU.techs.hydro_run_of_river.exists: False
+        locations.SRB.techs.hydro_run_of_river.exists: False
+        locations.SVK.techs.hydro_run_of_river.exists: False
+        locations.SVN.techs.hydro_run_of_river.exists: False
+        locations.SWE.techs.hydro_run_of_river.exists: False
 scenarios:
     baseline: ["diw_assumptions", "diw_battery_baseline_cost", "equal_interest_rate"]
     low-cost: ["diw_assumptions", "diw_battery_low_cost", "equal_interest_rate"]
+    low-cost-no-co2-caps: ["diw_assumptions", "diw_battery_low_cost", "equal_interest_rate", "no_co2_caps"] # performance test
+    low-cost-no-run-of-river: ["diw_assumptions", "diw_battery_low_cost", "equal_interest_rate", "no_run_of_river"] # performance test
+    low-cost-no-nothing: ["diw_assumptions", "diw_battery_low_cost", "equal_interest_rate", "no_run_of_river", "no_co2_caps"] # performance test
     baseline-germany: ["diw_assumptions", "diw_battery_baseline_cost", "germany_only", "equal_interest_rate"]
     low-cost-germany: ["diw_assumptions", "diw_battery_low_cost", "germany_only", "equal_interest_rate"]
 model:
