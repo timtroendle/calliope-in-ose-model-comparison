@@ -57,7 +57,7 @@ And the diff in storage capacities in Germany in Table @tbl:installed-storage-ca
 
 ```table
 ---
-caption: 'Installed capacities in Germany [GW], diff to baseline. {#tbl:installed-storage-capacities-low-cost}'
+caption: 'Installed storage capacities in Germany [GWh], diff to baseline. {#tbl:installed-storage-capacities-low-cost}'
 include: ../build/output/low-cost/storage-capacity-diff.csv
 markdown: True
 alignment: LR
@@ -81,7 +81,7 @@ And the diff in storage capacities in Germany in Table @tbl:installed-storage-ca
 
 ```table
 ---
-caption: 'Installed capacities in Germany [GW], diff to baseline. {#tbl:installed-storage-capacities-baseline-germany}'
+caption: 'Installed storage capacities in Germany [GWh], diff to baseline. {#tbl:installed-storage-capacities-baseline-germany}'
 include: ../build/output/baseline-germany/storage-capacity-diff.csv
 markdown: True
 alignment: LR
@@ -105,7 +105,7 @@ And the diff in storage capacities in Germany in Table @tbl:installed-storage-ca
 
 ```table
 ---
-caption: 'Installed capacities in Germany [GW], diff to baseline. {#tbl:installed-storage-capacities-low-cost-germany}'
+caption: 'Installed storage capacities in Germany [GWh], diff to baseline. {#tbl:installed-storage-capacities-low-cost-germany}'
 include: ../build/output/low-cost-germany/storage-capacity-diff.csv
 markdown: True
 alignment: LR

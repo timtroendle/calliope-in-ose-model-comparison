@@ -8,6 +8,7 @@ PATH_TO_BUILD = Path(__file__).parent / ".." / "build"
 PATH_TO_REQUESTED_CO2_CAPS = PATH_TO_BUILD / "input" / "co2-caps.csv"
 PATH_TO_OUTPUT = PATH_TO_BUILD / "output"
 FILENAME_RESULTS = Path("results.nc")
+EPSILON = 0.001 # 1 t CO2eq
 EUROPE_SCENARIOS = ["baseline", "low-cost"]
 GERMANY_SCENARIOS = ["baseline-germany", "low-cost-germany"]
 
@@ -17,9 +18,7 @@ def requested_caps():
     return pd.read_csv(PATH_TO_REQUESTED_CO2_CAPS, index_col=0).iloc[:, 0]
 
 
-@pytest.fixture(
-    scope="session"
-)
+@pytest.fixture(scope="session")
 def model_output(scenario):
     return calliope.read_netcdf(PATH_TO_OUTPUT / scenario / FILENAME_RESULTS)
 
@@ -39,7 +38,7 @@ def co2_emissions(model_output):
 class Base:
 
     def test_co2_caps(self, requested_caps, co2_emissions, country):
-        assert co2_emissions.loc[country] <= requested_caps.loc[country]
+        assert co2_emissions.loc[country] <= requested_caps.loc[country] + EPSILON
 
 
 class TestAllEurope(Base):
