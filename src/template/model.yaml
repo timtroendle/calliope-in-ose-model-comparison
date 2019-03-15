@@ -37,6 +37,8 @@ overrides:
         tech_groups.supply_plus.costs.monetary.interest_rate: 0.04
         tech_groups.transmission.costs.monetary.interest_rate: 0.04
     germany_only:
+        model.time.fiunction: resample
+        model.time.function_options: {'resolution': '1H'}
         # locations
         locations.ALB.exists: False
         locations.AUT.exists: False
