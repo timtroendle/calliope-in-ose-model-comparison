@@ -13,8 +13,8 @@ TECH_MAP = {
     "Lignite": "lignite",
     "Nuclear": "nuclear",
     "Oil": "oil", # ASSUME doesnt exist in electricity (was 1.9% in 2015)
-    "Othernon-RES": "other_non_res", # ignore
-    "Other RES": "other_res", # ASSUME Wind and Solar -- will be enforced through RE share
+    "Othernon-RES": "ccgt", # ASSUME ccgt
+    "Other RES": "biomass", # ASSUME biomass
     "Solar-thermal": "solar_thermal", # ignored for electricity
     "Solar-PV": "roof_mounted_pv", # ASSUME all solar pv is roof mounted
     "Wind-on-shore": "wind_onshore_monopoly",
@@ -35,12 +35,15 @@ locations:
             roof_mounted_pv:
                 constraints:
                     energy_cap_min: {{ techs.roof_mounted_pv }} # MW
-            pumped_hydro:
-                constraints:
-                    energy_cap_min: {{ techs.pumped_hydro }} # MW
             hydro_run_of_river:
                 constraints:
                     energy_cap_equals: {{ techs.hydro_run_of_river }} # MW
+            biomass:
+                constraints:
+                    energy_cap_equals: {{ techs.biomass }} # MW
+            pumped_hydro:
+                constraints:
+                    energy_cap_min: {{ techs.pumped_hydro }} # MW
             coal:
                 constraints:
                     energy_cap_max: {{ techs.coal }} # MW
@@ -100,7 +103,7 @@ def _read_generation_capacities(path_to_data):
         columns=lambda name: TECH_MAP[name.strip().replace('\n', '').replace('\r', '')],
         inplace=True
     )
-    return data.groupby(data.index).sum()
+    return data.groupby(data.index).sum().groupby(data.columns, axis="columns").sum()
 
 
 if __name__ == "__main__":

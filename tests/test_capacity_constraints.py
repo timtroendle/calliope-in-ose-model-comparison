@@ -34,7 +34,7 @@ class Base:
         assert installed_capacity.loc[country, tech] + EPSILON >= capacity_constraints.loc[country, tech]
 
     @pytest.mark.parametrize("tech", [
-        ("hydro_run_of_river")
+        ("hydro_run_of_river"), ("biomass")
     ])
     def test_exact_capacity_is_installed(self, capacity_constraints, installed_capacity, country, tech):
         assert installed_capacity.loc[country, tech] == pytest.approx(

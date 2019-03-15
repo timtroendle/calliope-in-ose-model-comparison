@@ -209,14 +209,49 @@ overrides:
         locations.SVK.techs.hydro_run_of_river.exists: False
         locations.SVN.techs.hydro_run_of_river.exists: False
         locations.SWE.techs.hydro_run_of_river.exists: False
+    no_hydrogen:
+        locations.ALB.techs.hydrogen.exists: False
+        locations.AUT.techs.hydrogen.exists: False
+        locations.BEL.techs.hydrogen.exists: False
+        locations.BGR.techs.hydrogen.exists: False
+        locations.BIH.techs.hydrogen.exists: False
+        locations.CHE.techs.hydrogen.exists: False
+        locations.CYP.techs.hydrogen.exists: False
+        locations.CZE.techs.hydrogen.exists: False
+        locations.DEU.techs.hydrogen.exists: False
+        locations.DNK.techs.hydrogen.exists: False
+        locations.ESP.techs.hydrogen.exists: False
+        locations.EST.techs.hydrogen.exists: False
+        locations.FIN.techs.hydrogen.exists: False
+        locations.FRA.techs.hydrogen.exists: False
+        locations.GBR.techs.hydrogen.exists: False
+        locations.GRC.techs.hydrogen.exists: False
+        locations.HRV.techs.hydrogen.exists: False
+        locations.HUN.techs.hydrogen.exists: False
+        locations.IRL.techs.hydrogen.exists: False
+        locations.ITA.techs.hydrogen.exists: False
+        locations.LTU.techs.hydrogen.exists: False
+        locations.LUX.techs.hydrogen.exists: False
+        locations.LVA.techs.hydrogen.exists: False
+        locations.MKD.techs.hydrogen.exists: False
+        locations.MNE.techs.hydrogen.exists: False
+        locations.NLD.techs.hydrogen.exists: False
+        locations.NOR.techs.hydrogen.exists: False
+        locations.POL.techs.hydrogen.exists: False
+        locations.PRT.techs.hydrogen.exists: False
+        locations.ROU.techs.hydrogen.exists: False
+        locations.SRB.techs.hydrogen.exists: False
+        locations.SVK.techs.hydrogen.exists: False
+        locations.SVN.techs.hydrogen.exists: False
+        locations.SWE.techs.hydrogen.exists: False
 scenarios:
-    baseline: ["diw_assumptions", "diw_battery_baseline_cost", "equal_interest_rate"]
-    low-cost: ["diw_assumptions", "diw_battery_low_cost", "equal_interest_rate"]
-    low-cost-no-co2-caps: ["diw_assumptions", "diw_battery_low_cost", "equal_interest_rate", "no_co2_caps"] # performance test
-    low-cost-no-run-of-river: ["diw_assumptions", "diw_battery_low_cost", "equal_interest_rate", "no_run_of_river"] # performance test
-    low-cost-no-nothing: ["diw_assumptions", "diw_battery_low_cost", "equal_interest_rate", "no_run_of_river", "no_co2_caps"] # performance test
-    baseline-germany: ["diw_assumptions", "diw_battery_baseline_cost", "germany_only", "equal_interest_rate"]
-    low-cost-germany: ["diw_assumptions", "diw_battery_low_cost", "germany_only", "equal_interest_rate"]
+    baseline: ["diw_assumptions", "diw_battery_baseline_cost", "equal_interest_rate", "no_hydrogen"]
+    low-cost: ["diw_assumptions", "diw_battery_low_cost", "equal_interest_rate", "no_hydrogen"]
+    baseline-germany: ["diw_assumptions", "diw_battery_baseline_cost", "germany_only", "equal_interest_rate", "no_hydrogen"]
+    low-cost-germany: ["diw_assumptions", "diw_battery_low_cost", "germany_only", "equal_interest_rate", "no_hydrogen"]
+    low-cost-no-co2-caps: ["diw_assumptions", "diw_battery_low_cost", "equal_interest_rate", "no_co2_caps", "no_hydrogen"] # performance test
+    low-cost-no-run-of-river: ["diw_assumptions", "diw_battery_low_cost", "equal_interest_rate", "no_run_of_river", "no_hydrogen"] # performance test
+    low-cost-no-nothing: ["diw_assumptions", "diw_battery_low_cost", "equal_interest_rate", "no_run_of_river", "no_co2_caps", "no_hydrogen"] # performance test
 model:
     name: 'Open Source Modelling -- Euro Calliope model'
     calliope_version: 0.6.4
@@ -255,3 +290,20 @@ techs:
             monetary:
                 energy_cap: 5620000 # EUR2013/MW, [JRC ETRI 2014]
                 om_annual: 84300 # EUR2013/MW/year, [JRC ETRI 2014]
+    biomass: # based on Anaerobic digestion from [JRC ETRI 2014]
+        essentials:
+            name: Biomass
+            carrier: electricity
+            parent: supply
+        constraints:
+            energy_eff: 0.4
+            resource: inf
+            lifetime: 20
+        costs:
+            monetary:
+                energy_cap: 2760000  # 2013 EUR/MW
+                om_prod: 3.1  # 2013 EUR/MWh
+                om_annual: 113160  # 2013 EUR/MW/yr 2760000 * 4.1%
+                om_con: 16.2 # medium price taken from [@EuropeanEnvironmentAgency:2013]d
+            co2:
+                om_prod: 0

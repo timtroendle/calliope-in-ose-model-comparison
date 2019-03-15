@@ -2,7 +2,6 @@ subworkflow eurocalliope:
     workdir: "./euro-calliope"
     snakefile: "./euro-calliope/Snakefile"
 
-
 localrules: copy_euro_calliope, model, pumped_hydro, raw_run_of_river_data_zipped
 
 URL_RUNOFF_DATA_SWITZERLAND = "https://data.sccer-jasm.ch/runofriver_production/"\
