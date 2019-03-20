@@ -43,7 +43,7 @@ locations:
                     energy_cap_equals: {{ techs.biomass }} # MW
             pumped_hydro:
                 constraints:
-                    energy_cap_min: {{ techs.pumped_hydro }} # MW
+                    energy_cap_equals: {{ techs.pumped_hydro }} # MW
             coal:
                 constraints:
                     energy_cap_max: {{ techs.coal }} # MW

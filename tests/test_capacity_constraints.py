@@ -28,13 +28,13 @@ def installed_capacity(scenario):
 class Base:
 
     @pytest.mark.parametrize("tech", [
-        ("wind_onshore_monopoly"), ("wind_offshore"), ("roof_mounted_pv"), ("pumped_hydro")
+        ("wind_onshore_monopoly"), ("wind_offshore"), ("roof_mounted_pv")
     ])
     def test_minimal_capacity_is_installed(self, capacity_constraints, installed_capacity, country, tech):
         assert installed_capacity.loc[country, tech] + EPSILON >= capacity_constraints.loc[country, tech]
 
     @pytest.mark.parametrize("tech", [
-        ("hydro_run_of_river"), ("biomass")
+        ("hydro_run_of_river"), ("biomass"), ("pumped_hydro")
     ])
     def test_exact_capacity_is_installed(self, capacity_constraints, installed_capacity, country, tech):
         assert installed_capacity.loc[country, tech] == pytest.approx(
