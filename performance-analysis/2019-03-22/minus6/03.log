@@ -1,0 +1,1040 @@
+[2019-03-21 18:41:51] INFO     Model: initialising
+[2019-03-21 18:41:52] INFO     `run.solver_options.FeasibilityTol`:1e-06 applied from override as new configuration
+`run.solver_options.OptimalityTol`:1e-06 applied from override as new configuration
+[2019-03-21 18:41:52] INFO     Using scenario `baseline` leading to the application of overrides `['diw_assumptions', 'diw_battery_baseline_cost', 'equal_interest_rate', 'no_hydrogen']`.
+[2019-03-21 18:41:53] INFO     `locations.ALB.techs.hydrogen.exists`:False applied from override as new configuration
+`locations.AUT.techs.hydrogen.exists`:False applied from override as new configuration
+`locations.BEL.techs.hydrogen.exists`:False applied from override as new configuration
+`locations.BGR.techs.hydrogen.exists`:False applied from override as new configuration
+`locations.BIH.techs.hydrogen.exists`:False applied from override as new configuration
+`locations.CHE.techs.hydrogen.exists`:False applied from override as new configuration
+`locations.CYP.techs.hydrogen.exists`:False applied from override as new configuration
+`locations.CZE.techs.hydrogen.exists`:False applied from override as new configuration
+`locations.DEU.techs.hydrogen.exists`:False applied from override as new configuration
+`locations.DNK.techs.hydrogen.exists`:False applied from override as new configuration
+`locations.ESP.techs.hydrogen.exists`:False applied from override as new configuration
+`locations.EST.techs.hydrogen.exists`:False applied from override as new configuration
+`locations.FIN.techs.hydrogen.exists`:False applied from override as new configuration
+`locations.FRA.techs.hydrogen.exists`:False applied from override as new configuration
+`locations.GBR.techs.hydrogen.exists`:False applied from override as new configuration
+`locations.GRC.techs.hydrogen.exists`:False applied from override as new configuration
+`locations.HRV.techs.hydrogen.exists`:False applied from override as new configuration
+`locations.HUN.techs.hydrogen.exists`:False applied from override as new configuration
+`locations.IRL.techs.hydrogen.exists`:False applied from override as new configuration
+`locations.ITA.techs.hydrogen.exists`:False applied from override as new configuration
+`locations.LTU.techs.hydrogen.exists`:False applied from override as new configuration
+`locations.LUX.techs.hydrogen.exists`:False applied from override as new configuration
+`locations.LVA.techs.hydrogen.exists`:False applied from override as new configuration
+`locations.MKD.techs.hydrogen.exists`:False applied from override as new configuration
+`locations.MNE.techs.hydrogen.exists`:False applied from override as new configuration
+`locations.NLD.techs.hydrogen.exists`:False applied from override as new configuration
+`locations.NOR.techs.hydrogen.exists`:False applied from override as new configuration
+`locations.POL.techs.hydrogen.exists`:False applied from override as new configuration
+`locations.PRT.techs.hydrogen.exists`:False applied from override as new configuration
+`locations.ROU.techs.hydrogen.exists`:False applied from override as new configuration
+`locations.SRB.techs.hydrogen.exists`:False applied from override as new configuration
+`locations.SVK.techs.hydrogen.exists`:False applied from override as new configuration
+`locations.SVN.techs.hydrogen.exists`:False applied from override as new configuration
+`locations.SWE.techs.hydrogen.exists`:False applied from override as new configuration
+`tech_groups.conversion.costs.monetary.interest_rate`:0.04 applied from override as new configuration
+`tech_groups.conversion_plus.costs.monetary.interest_rate`:0.04 applied from override as new configuration
+`tech_groups.storage.costs.monetary.interest_rate`:0.04 applied from override as new configuration
+`tech_groups.supply.costs.monetary.interest_rate`:0.04 applied from override as new configuration
+`tech_groups.supply_plus.costs.monetary.interest_rate`:0.04 applied from override as new configuration
+`tech_groups.transmission.costs.monetary.interest_rate`:0.04 applied from override as new configuration
+Override applied to techs.battery.costs.monetary.energy_cap: 713470 -> 135140
+`techs.battery.costs.monetary.interest_rate`:0.04 applied from override as new configuration
+Override applied to techs.battery.costs.monetary.om_annual: 12480 -> 0
+Override applied to techs.battery.costs.monetary.om_prod: 2.8 -> 0
+Override applied to techs.battery.costs.monetary.storage_cap: 322730 -> 315320
+`techs.battery.energy_eff`:0.9591663046625439 applied from override as new configuration
+Override applied to techs.ccgt.costs.monetary.om_con: 37.61 -> 31.68
+Override applied to techs.ccgt.costs.monetary.om_prod: 0.132 -> 14.832
+Override applied to techs.coal.costs.monetary.om_con: 10.92 -> 9.72
+Override applied to techs.coal.costs.monetary.om_prod: 1.315 -> 25.915
+Override applied to techs.lignite.costs.monetary.om_con: 10.92 -> 3.96
+Override applied to techs.lignite.costs.monetary.om_prod: 1.315 -> 28.615
+Override applied to techs.nuclear.costs.monetary.om_con: 6.4 -> 1.69
+Override applied to techs.nuclear.costs.monetary.om_prod: 0.658 -> 1.018
+[2019-03-21 18:41:54] INFO     Model: preprocessing stage 1 (model_run)
+[2019-03-21 18:42:01] INFO     Model: preprocessing stage 2 (model_data)
+[2019-03-21 18:43:11] INFO     Model: preprocessing complete. Time since start: 0:01:19.844809
+[2019-03-21 18:43:11] INFO     Backend: starting model run
+[2019-03-21 18:57:58] INFO     Backend: model generated. Time since start: 0:16:06.882682
+[2019-03-21 18:57:58] INFO     Backend: sending model to solver
+[2019-03-21 19:10:00] SOLVER   Parameter OutputFlag unchanged
+[2019-03-21 19:10:00] SOLVER   Value: 1  Min: 0  Max: 1  Default: 1
+[2019-03-21 19:10:00] SOLVER   Changed value of parameter LogFile to /cluster/work/cpesm/trtim/ose-model-comparison/tmpb1sgg03v.log
+[2019-03-21 19:10:00] SOLVER   Prev: gurobi.log  Default:
+[2019-03-21 19:10:00] SOLVER   Parameter FeasibilityTol unchanged
+[2019-03-21 19:10:00] SOLVER   Value: 1e-06  Min: 1e-09  Max: 0.01  Default: 1e-06
+[2019-03-21 19:10:00] SOLVER   Parameter OptimalityTol unchanged
+[2019-03-21 19:10:00] SOLVER   Value: 1e-06  Min: 1e-09  Max: 0.01  Default: 1e-06
+[2019-03-21 19:10:00] SOLVER   Changed value of parameter Threads to 4
+[2019-03-21 19:10:00] SOLVER   Prev: 0  Min: 0  Max: 1024  Default: 0
+[2019-03-21 19:10:00] SOLVER   Optimize a model with 9340786 rows, 7221010 columns and 24514096 nonzeros
+[2019-03-21 19:10:00] SOLVER   Coefficient statistics:
+[2019-03-21 19:10:00] SOLVER   Matrix range     [1e-05, 4e+05]
+[2019-03-21 19:10:00] SOLVER   Objective range  [1e+00, 1e+00]
+[2019-03-21 19:10:00] SOLVER   Bounds range     [5e+01, 3e+06]
+[2019-03-21 19:10:00] SOLVER   RHS range        [7e+00, 3e+06]
+[2019-03-21 19:10:00] SOLVER   Concurrent LP optimizer: dual simplex and barrier
+[2019-03-21 19:10:00] SOLVER   Showing barrier log only...
+[2019-03-21 19:10:08] SOLVER   Presolve removed 6267467 rows and 4374384 columns (presolve time = 6s) ...
+[2019-03-21 19:10:13] SOLVER   Presolve removed 6909511 rows and 5016428 columns (presolve time = 10s) ...
+[2019-03-21 19:10:16] SOLVER   Presolve removed 6936561 rows and 5016438 columns
+[2019-03-21 19:10:17] SOLVER   Presolve time: 16.98s
+[2019-03-21 19:10:17] SOLVER   Presolved: 2404225 rows, 2204572 columns, 8744011 nonzeros
+[2019-03-21 19:10:35] SOLVER   Ordering time: 0.00s
+[2019-03-21 19:10:39] SOLVER   Barrier statistics:
+[2019-03-21 19:10:39] SOLVER   Dense cols : 270
+[2019-03-21 19:10:39] SOLVER   AA' NZ     : 8.096e+06
+[2019-03-21 19:10:39] SOLVER   Factor NZ  : 4.937e+07 (roughly 2.3 GBytes of memory)
+[2019-03-21 19:10:39] SOLVER   Factor Ops : 1.056e+10 (roughly 1 second per iteration)
+[2019-03-21 19:10:39] SOLVER   Threads    : 3
+[2019-03-21 19:10:41] SOLVER   Objective                Residual
+[2019-03-21 19:10:41] SOLVER   Iter       Primal          Dual         Primal    Dual     Compl     Time
+[2019-03-21 19:10:41] SOLVER   0   5.04206811e+14 -7.63926119e+13  1.99e+10 5.72e+02  1.53e+11    41s
+[2019-03-21 19:10:43] SOLVER   1   5.06804521e+14 -7.70513075e+13  1.33e+10 4.52e+04  1.24e+11    43s
+[2019-03-21 19:10:45] SOLVER   2   5.05769123e+14 -8.58810340e+13  1.25e+10 3.38e+04  1.04e+11    45s
+[2019-03-21 19:10:48] SOLVER   3   4.77810594e+14 -3.23153699e+14  1.13e+10 2.69e+04  9.13e+10    48s
+[2019-03-21 19:10:51] SOLVER   4   3.63820935e+14 -4.44087848e+15  9.57e+09 3.57e+03  7.06e+10    51s
+[2019-03-21 19:10:52] SOLVER   5   1.81135140e+14 -4.36622768e+15  4.53e+09 2.49e+03  3.48e+10    53s
+[2019-03-21 19:10:55] SOLVER   6   6.69207806e+13 -3.58876256e+15  1.34e+09 3.37e+02  1.05e+10    55s
+[2019-03-21 19:10:57] SOLVER   7   6.12744484e+13 -3.11081963e+15  1.17e+09 2.23e+02  9.06e+09    57s
+[2019-03-21 19:10:59] SOLVER   8   4.33407404e+13 -2.63709497e+15  6.84e+08 1.23e+02  5.40e+09    59s
+[2019-03-21 19:11:02] SOLVER   9   2.32421138e+13 -1.65489600e+15  1.01e+08 2.52e+01  1.03e+09    62s
+[2019-03-21 19:11:04] SOLVER   10   2.06447686e+13 -1.24932089e+15  4.62e+07 2.12e+01  5.62e+08    64s
+[2019-03-21 19:11:06] SOLVER   11   1.93857380e+13 -7.22109493e+14  2.74e+07 1.00e+01  3.16e+08    66s
+[2019-03-21 19:11:08] SOLVER   12   1.90658785e+13 -6.59726849e+14  2.35e+07 8.94e+00  2.78e+08    68s
+[2019-03-21 19:11:10] SOLVER   13   1.81973416e+13 -5.07049965e+14  1.67e+07 6.37e+00  2.02e+08    71s
+[2019-03-21 19:11:13] SOLVER   14   1.74928908e+13 -4.22336007e+14  1.29e+07 5.08e+00  1.61e+08    74s
+[2019-03-21 19:11:16] SOLVER   15   1.62760804e+13 -3.03393761e+14  7.97e+06 3.46e+00  1.07e+08    76s
+[2019-03-21 19:11:18] SOLVER   16   1.57445409e+13 -2.11546938e+14  6.85e+06 1.65e+00  7.92e+07    78s
+[2019-03-21 19:11:20] SOLVER   17   1.54070799e+13 -1.97564004e+14  6.32e+06 1.51e+00  7.32e+07    80s
+[2019-03-21 19:11:22] SOLVER   18   1.32280864e+13 -9.43428698e+13  3.35e+06 3.68e-01  3.54e+07    83s
+[2019-03-21 19:11:25] SOLVER   19   1.22723055e+13 -8.79110685e+13  2.81e+06 6.52e-01  3.14e+07    85s
+[2019-03-21 19:11:27] SOLVER   20   1.08653966e+13 -5.07002724e+13  2.03e+06 1.47e-01  1.93e+07    88s
+[2019-03-21 19:11:31] SOLVER   21   8.18556547e+12 -3.24422463e+13  1.25e+06 8.41e-04  1.18e+07    91s
+[2019-03-21 19:11:33] SOLVER   22   7.05026363e+12 -1.65047290e+13  9.27e+05 4.75e-04  6.93e+06    94s
+[2019-03-21 19:11:35] SOLVER   23   6.07824052e+12 -1.20303379e+13  7.55e+05 2.41e-06  5.20e+06    96s
+[2019-03-21 19:11:38] SOLVER   24   4.56785820e+12 -8.31238693e+12  5.03e+05 6.09e-07  3.46e+06    98s
+[2019-03-21 19:11:40] SOLVER   25   3.55801807e+12 -5.89979775e+12  3.57e+05 2.46e-06  2.42e+06   101s
+[2019-03-21 19:11:44] SOLVER   26   2.77424246e+12 -3.89564479e+12  2.55e+05 2.22e-06  1.64e+06   104s
+[2019-03-21 19:11:47] SOLVER   27   2.46211907e+12 -2.58873352e+12  2.19e+05 9.52e-07  1.23e+06   107s
+[2019-03-21 19:11:49] SOLVER   28   2.02113688e+12 -2.02441377e+12  1.68e+05 5.67e-07  9.55e+05   109s
+[2019-03-21 19:11:51] SOLVER   29   1.56433874e+12 -1.47467428e+12  1.18e+05 5.65e-07  6.95e+05   111s
+[2019-03-21 19:11:54] SOLVER   30   1.47552618e+12 -1.37388364e+12  1.09e+05 5.41e-07  6.47e+05   114s
+[2019-03-21 19:11:56] SOLVER   31   1.21948344e+12 -1.03155426e+12  8.22e+04 4.75e-07  4.99e+05   117s
+[2019-03-21 19:11:59] SOLVER   32   1.03238465e+12 -8.93513957e+11  6.36e+04 2.17e-06  4.20e+05   119s
+[2019-03-21 19:12:02] SOLVER   33   9.66739831e+11 -5.79837107e+11  5.54e+04 1.02e-06  3.35e+05   122s
+[2019-03-21 19:12:04] SOLVER   34   8.55327809e+11 -4.81561463e+11  4.47e+04 1.90e-06  2.86e+05   125s
+[2019-03-21 19:12:06] SOLVER   35   8.24116304e+11 -4.12330600e+11  4.17e+04 2.18e-06  2.64e+05   127s
+[2019-03-21 19:12:08] SOLVER   36   7.56223139e+11 -3.17100316e+11  3.52e+04 2.44e-06  2.27e+05   129s
+[2019-03-21 19:12:11] SOLVER   37   6.74864050e+11 -1.65996199e+11  2.76e+04 2.93e-06  1.76e+05   131s
+[2019-03-21 19:12:14] SOLVER   38   5.86564327e+11 -6.33598579e+10  2.02e+04 1.07e-05  1.35e+05   134s
+[2019-03-21 19:12:16] SOLVER   39   5.61153902e+11 -1.34884215e+10  1.79e+04 1.13e-05  1.19e+05   136s
+[2019-03-21 19:12:18] SOLVER   40   5.41208919e+11  1.25305765e+10  1.61e+04 9.36e-06  1.09e+05   138s
+[2019-03-21 19:12:20] SOLVER   41   5.17773431e+11  4.27349026e+10  1.39e+04 1.06e-05  9.74e+04   140s
+[2019-03-21 19:12:22] SOLVER   42   4.94546104e+11  1.52917470e+11  1.18e+04 1.20e-05  6.98e+04   142s
+[2019-03-21 19:12:25] SOLVER   43   4.59039447e+11  1.84623394e+11  8.70e+03 9.58e-06  5.58e+04   145s
+[2019-03-21 19:12:27] SOLVER   44   4.47354885e+11  2.19710120e+11  7.58e+03 5.78e-06  4.62e+04   147s
+[2019-03-21 19:12:29] SOLVER   45   4.44754756e+11  2.21892503e+11  7.33e+03 5.61e-06  4.52e+04   149s
+[2019-03-21 19:12:31] SOLVER   46   4.36006021e+11  2.33093619e+11  6.17e+03 5.25e-06  4.11e+04   151s
+[2019-03-21 19:12:33] SOLVER   47   4.25220267e+11  2.49877816e+11  4.80e+03 4.19e-06  3.54e+04   154s
+[2019-03-21 19:12:35] SOLVER   48   4.17880271e+11  2.55690428e+11  4.36e+03 3.99e-06  3.27e+04   156s
+[2019-03-21 19:12:38] SOLVER   49   4.06416900e+11  2.68198714e+11  3.75e+03 3.40e-06  2.78e+04   158s
+[2019-03-21 19:12:41] SOLVER   50   3.96548326e+11  2.79058448e+11  3.27e+03 2.99e-06  2.36e+04   161s
+[2019-03-21 19:12:43] SOLVER   51   3.88077180e+11  2.89163319e+11  2.83e+03 2.14e-06  1.99e+04   164s
+[2019-03-21 19:12:45] SOLVER   52   3.84470665e+11  2.92375865e+11  2.65e+03 1.94e-06  1.85e+04   166s
+[2019-03-21 19:12:48] SOLVER   53   3.82339269e+11  2.95028727e+11  2.54e+03 1.90e-06  1.75e+04   168s
+[2019-03-21 19:12:50] SOLVER   54   3.79159130e+11  2.95903889e+11  2.38e+03 1.84e-06  1.67e+04   171s
+[2019-03-21 19:12:54] SOLVER   55   3.73748469e+11  3.02249108e+11  2.10e+03 1.53e-06  1.43e+04   174s
+[2019-03-21 19:12:57] SOLVER   56   3.71749370e+11  3.05283915e+11  1.99e+03 1.32e-06  1.33e+04   177s
+[2019-03-21 19:12:59] SOLVER   57   3.70472500e+11  3.07025915e+11  1.92e+03 1.21e-06  1.27e+04   179s
+[2019-03-21 19:13:01] SOLVER   58   3.68793798e+11  3.08840367e+11  1.83e+03 1.10e-06  1.20e+04   181s
+[2019-03-21 19:13:04] SOLVER   59   3.66902937e+11  3.11005209e+11  1.73e+03 1.02e-06  1.12e+04   184s
+[2019-03-21 19:13:06] SOLVER   60   3.63840099e+11  3.11441320e+11  1.57e+03 1.01e-06  1.05e+04   186s
+[2019-03-21 19:13:09] SOLVER   61   3.62824264e+11  3.12904100e+11  1.52e+03 9.48e-07  9.97e+03   189s
+[2019-03-21 19:13:12] SOLVER   62   3.59912374e+11  3.16604026e+11  1.36e+03 8.13e-07  8.64e+03   193s
+[2019-03-21 19:13:15] SOLVER   63   3.57672936e+11  3.19539814e+11  1.23e+03 6.84e-07  7.60e+03   195s
+[2019-03-21 19:13:17] SOLVER   64   3.56957980e+11  3.20435324e+11  1.19e+03 6.48e-07  7.28e+03   197s
+[2019-03-21 19:13:19] SOLVER   65   3.55811974e+11  3.22296744e+11  1.13e+03 5.56e-07  6.68e+03   199s
+[2019-03-21 19:13:22] SOLVER   66   3.53388034e+11  3.24115709e+11  9.99e+02 4.86e-07  5.83e+03   202s
+[2019-03-21 19:13:25] SOLVER   67   3.52616910e+11  3.25116451e+11  9.55e+02 4.42e-07  5.48e+03   205s
+[2019-03-21 19:13:28] SOLVER   68   3.51309716e+11  3.26111752e+11  8.82e+02 4.00e-07  5.02e+03   208s
+[2019-03-21 19:13:30] SOLVER   69   3.50931559e+11  3.26447168e+11  8.61e+02 3.84e-07  4.88e+03   210s
+[2019-03-21 19:13:32] SOLVER   70   3.50762148e+11  3.26589231e+11  8.51e+02 3.80e-07  4.81e+03   212s
+[2019-03-21 19:13:35] SOLVER   71   3.49064958e+11  3.27258472e+11  7.57e+02 3.54e-07  4.34e+03   215s
+[2019-03-21 19:13:37] SOLVER   72   3.48277983e+11  3.27611524e+11  7.12e+02 3.35e-07  4.11e+03   217s
+[2019-03-21 19:13:40] SOLVER   73   3.47915970e+11  3.27891613e+11  6.91e+02 3.25e-07  3.98e+03   220s
+[2019-03-21 19:13:43] SOLVER   74   3.46868913e+11  3.28876431e+11  6.29e+02 2.85e-07  3.58e+03   223s
+[2019-03-21 19:13:46] SOLVER   75   3.46204718e+11  3.29465089e+11  5.92e+02 2.67e-07  3.33e+03   226s
+[2019-03-21 19:13:48] SOLVER   76   3.45901531e+11  3.29880941e+11  5.74e+02 2.47e-07  3.19e+03   228s
+[2019-03-21 19:13:50] SOLVER   77   3.45454393e+11  3.30133227e+11  5.48e+02 2.36e-07  3.05e+03   230s
+[2019-03-21 19:13:52] SOLVER   78   3.44321818e+11  3.30411536e+11  4.84e+02 2.47e-07  2.76e+03   233s
+[2019-03-21 19:13:56] SOLVER   79   3.44221134e+11  3.30544527e+11  4.78e+02 2.34e-07  2.72e+03   236s
+[2019-03-21 19:13:58] SOLVER   80   3.43728096e+11  3.30606950e+11  4.48e+02 2.37e-07  2.61e+03   239s
+[2019-03-21 19:14:01] SOLVER   81   3.43533753e+11  3.30899006e+11  4.36e+02 2.50e-07  2.51e+03   241s
+[2019-03-21 19:14:02] SOLVER   82   3.42840932e+11  3.31238377e+11  3.94e+02 2.64e-07  2.30e+03   243s
+[2019-03-21 19:14:05] SOLVER   83   3.42217034e+11  3.31746228e+11  3.56e+02 2.77e-07  2.08e+03   245s
+[2019-03-21 19:14:07] SOLVER   84   3.42027387e+11  3.32016858e+11  3.44e+02 2.80e-07  1.99e+03   247s
+[2019-03-21 19:14:10] SOLVER   85   3.41674598e+11  3.32265217e+11  3.23e+02 2.94e-07  1.87e+03   250s
+[2019-03-21 19:14:11] SOLVER   86   3.41249658e+11  3.32415772e+11  2.96e+02 2.84e-07  1.75e+03   252s
+[2019-03-21 19:14:14] SOLVER   87   3.40938511e+11  3.32832851e+11  2.77e+02 2.75e-07  1.61e+03   254s
+[2019-03-21 19:14:17] SOLVER   88   3.40299997e+11  3.33511088e+11  2.40e+02 2.12e-07  1.35e+03   257s
+[2019-03-21 19:14:19] SOLVER   89   3.39933836e+11  3.34071412e+11  2.19e+02 2.45e-07  1.16e+03   259s
+[2019-03-21 19:14:21] SOLVER   90   3.39606898e+11  3.34361660e+11  1.98e+02 3.08e-07  1.04e+03   261s
+[2019-03-21 19:14:23] SOLVER   91   3.39486537e+11  3.34575517e+11  1.91e+02 2.22e-07  9.75e+02   263s
+[2019-03-21 19:14:25] SOLVER   92   3.39174735e+11  3.34801709e+11  1.73e+02 2.07e-07  8.69e+02   265s
+[2019-03-21 19:14:27] SOLVER   93   3.39012410e+11  3.34877337e+11  1.63e+02 2.52e-07  8.21e+02   267s
+[2019-03-21 19:14:29] SOLVER   94   3.38874285e+11  3.35059555e+11  1.55e+02 3.14e-07  7.58e+02   269s
+[2019-03-21 19:14:32] SOLVER   95   3.38408920e+11  3.35251828e+11  1.28e+02 2.91e-07  6.27e+02   272s
+[2019-03-21 19:14:34] SOLVER   96   3.38378810e+11  3.35300163e+11  1.26e+02 3.08e-07  6.11e+02   275s
+[2019-03-21 19:14:36] SOLVER   97   3.38221648e+11  3.35397211e+11  1.16e+02 3.12e-07  5.61e+02   277s
+[2019-03-21 19:14:38] SOLVER   98   3.38063790e+11  3.35510284e+11  1.06e+02 2.55e-07  5.07e+02   279s
+[2019-03-21 19:14:41] SOLVER   99   3.37937349e+11  3.35605427e+11  9.90e+01 2.15e-07  4.63e+02   281s
+[2019-03-21 19:14:44] SOLVER   100   3.37717665e+11  3.35713543e+11  8.53e+01 2.38e-07  3.98e+02   284s
+[2019-03-21 19:14:47] SOLVER   101   3.37579181e+11  3.35777102e+11  7.71e+01 2.95e-07  3.58e+02   287s
+[2019-03-21 19:14:49] SOLVER   102   3.37491762e+11  3.35810184e+11  7.14e+01 3.07e-07  3.34e+02   289s
+[2019-03-21 19:14:51] SOLVER   103   3.37426456e+11  3.35832051e+11  6.70e+01 3.45e-07  3.17e+02   291s
+[2019-03-21 19:14:54] SOLVER   104   3.37347725e+11  3.35944916e+11  6.21e+01 6.04e-07  2.79e+02   294s
+[2019-03-21 19:14:56] SOLVER   105   3.37292054e+11  3.35958931e+11  5.86e+01 5.51e-07  2.65e+02   296s
+[2019-03-21 19:14:58] SOLVER   106   3.37227029e+11  3.35972685e+11  5.46e+01 4.64e-07  2.49e+02   299s
+[2019-03-21 19:15:02] SOLVER   107   3.37136254e+11  3.36007954e+11  4.90e+01 3.60e-07  2.24e+02   302s
+[2019-03-21 19:15:04] SOLVER   108   3.37091743e+11  3.36026559e+11  4.60e+01 4.09e-07  2.11e+02   305s
+[2019-03-21 19:15:06] SOLVER   109   3.37054776e+11  3.36053636e+11  4.37e+01 4.06e-07  1.99e+02   306s
+[2019-03-21 19:15:08] SOLVER   110   3.36965453e+11  3.36090172e+11  3.77e+01 4.21e-07  1.74e+02   308s
+[2019-03-21 19:15:10] SOLVER   111   3.36954233e+11  3.36140123e+11  3.69e+01 5.13e-07  1.62e+02   311s
+[2019-03-21 19:15:13] SOLVER   112   3.36925085e+11  3.36154674e+11  3.52e+01 5.47e-07  1.53e+02   314s
+[2019-03-21 19:15:16] SOLVER   113   3.36886024e+11  3.36169449e+11  3.29e+01 5.84e-07  1.42e+02   316s
+[2019-03-21 19:15:18] SOLVER   114   3.36858535e+11  3.36176255e+11  3.11e+01 5.73e-07  1.35e+02   318s
+[2019-03-21 19:15:19] SOLVER   115   3.36831017e+11  3.36189150e+11  2.93e+01 5.85e-07  1.27e+02   320s
+[2019-03-21 19:15:22] SOLVER   116   3.36795147e+11  3.36217514e+11  2.72e+01 5.91e-07  1.15e+02   322s
+[2019-03-21 19:15:24] SOLVER   117   3.36791412e+11  3.36221250e+11  2.69e+01 5.92e-07  1.13e+02   324s
+[2019-03-21 19:15:26] SOLVER   118   3.36748075e+11  3.36242170e+11  2.43e+01 5.44e-07  1.01e+02   326s
+[2019-03-21 19:15:29] SOLVER   119   3.36676624e+11  3.36261829e+11  1.98e+01 5.04e-07  8.24e+01   329s
+[2019-03-21 19:15:31] SOLVER   120   3.36617403e+11  3.36280264e+11  1.59e+01 5.15e-07  6.70e+01   331s
+[2019-03-21 19:15:33] SOLVER   121   3.36589316e+11  3.36289079e+11  1.40e+01 5.13e-07  5.96e+01   333s
+[2019-03-21 19:15:35] SOLVER   122   3.36584198e+11  3.36298110e+11  1.36e+01 6.36e-07  5.68e+01   335s
+[2019-03-21 19:15:37] SOLVER   123   3.36561263e+11  3.36320005e+11  1.21e+01 9.44e-07  4.79e+01   338s
+[2019-03-21 19:15:40] SOLVER   124   3.36540796e+11  3.36328399e+11  1.09e+01 1.05e-06  4.22e+01   341s
+[2019-03-21 19:15:43] SOLVER   125   3.36520663e+11  3.36335661e+11  9.50e+00 9.45e-07  3.68e+01   343s
+[2019-03-21 19:15:45] SOLVER   126   3.36510995e+11  3.36338668e+11  8.84e+00 9.31e-07  3.42e+01   345s
+[2019-03-21 19:15:47] SOLVER   127   3.36485490e+11  3.36343454e+11  7.18e+00 8.55e-07  2.82e+01   347s
+[2019-03-21 19:15:49] SOLVER   128   3.36468282e+11  3.36345514e+11  6.03e+00 8.64e-07  2.44e+01   349s
+[2019-03-21 19:15:53] SOLVER   129   3.36450955e+11  3.36347908e+11  4.97e+00 8.68e-07  2.05e+01   353s
+[2019-03-21 19:15:55] SOLVER   130   3.36444481e+11  3.36349361e+11  4.55e+00 8.43e-07  1.89e+01   355s
+[2019-03-21 19:15:57] SOLVER   131   3.36437106e+11  3.36351925e+11  4.05e+00 8.48e-07  1.69e+01   358s
+[2019-03-21 19:15:59] SOLVER   132   3.36428182e+11  3.36353111e+11  3.45e+00 8.56e-07  1.49e+01   360s
+[2019-03-21 19:16:02] SOLVER   133   3.36423937e+11  3.36356145e+11  3.16e+00 8.89e-07  1.35e+01   362s
+[2019-03-21 19:16:04] SOLVER   134   3.36419319e+11  3.36360739e+11  2.87e+00 9.89e-07  1.16e+01   365s
+[2019-03-21 19:16:08] SOLVER   135   3.36413657e+11  3.36362733e+11  2.54e+00 1.07e-06  1.01e+01   368s
+[2019-03-21 19:16:10] SOLVER   136   3.36408081e+11  3.36364102e+11  2.16e+00 1.13e-06  8.73e+00   371s
+[2019-03-21 19:16:12] SOLVER   137   3.36405811e+11  3.36364578e+11  2.01e+00 1.15e-06  8.19e+00   373s
+[2019-03-21 19:16:14] SOLVER   138   3.36403932e+11  3.36366149e+11  1.88e+00 6.89e-06  7.50e+00   375s
+[2019-03-21 19:16:17] SOLVER   139   3.36400205e+11  3.36367870e+11  1.63e+00 3.47e-06  6.42e+00   377s
+[2019-03-21 19:16:21] SOLVER   140   3.36396323e+11  3.36369063e+11  1.39e+00 2.91e-06  5.42e+00   381s
+[2019-03-21 19:16:23] SOLVER   141   3.36392987e+11  3.36370665e+11  1.17e+00 2.57e-06  4.44e+00   383s
+[2019-03-21 19:16:25] SOLVER   142   3.36391762e+11  3.36370988e+11  1.09e+00 3.12e-06  4.13e+00   386s
+[2019-03-21 19:16:27] SOLVER   143   3.36390123e+11  3.36371406e+11  9.78e-01 5.25e-06  3.72e+00   388s
+[2019-03-21 19:16:30] SOLVER   144   3.36387129e+11  3.36371808e+11  7.95e-01 5.27e-06  3.04e+00   390s
+[2019-03-21 19:16:33] SOLVER   145   3.36385017e+11  3.36372544e+11  6.52e-01 4.09e-06  2.48e+00   393s
+[2019-03-21 19:16:35] SOLVER   146   3.36383949e+11  3.36372746e+11  5.80e-01 1.80e-06  2.23e+00   395s
+[2019-03-21 19:16:37] SOLVER   147   3.36383066e+11  3.36373033e+11  5.21e-01 2.18e-06  1.99e+00   397s
+[2019-03-21 19:16:39] SOLVER   148   3.36382619e+11  3.36373103e+11  4.91e-01 2.24e-06  1.89e+00   399s
+[2019-03-21 19:16:41] SOLVER   149   3.36381827e+11  3.36373200e+11  4.37e-01 2.38e-06  1.71e+00   401s
+[2019-03-21 19:16:43] SOLVER   150   3.36381152e+11  3.36373533e+11  3.91e-01 2.94e-06  1.51e+00   404s
+[2019-03-21 19:16:46] SOLVER   151   3.36380055e+11  3.36373589e+11  3.19e-01 2.73e-06  1.28e+00   406s
+[2019-03-21 19:16:48] SOLVER   152   3.36379653e+11  3.36373914e+11  2.93e-01 3.44e-06  1.14e+00   409s
+[2019-03-21 19:16:50] SOLVER   153   3.36379553e+11  3.36373937e+11  2.87e-01 3.50e-06  1.12e+00   411s
+[2019-03-21 19:16:52] SOLVER   154   3.36379435e+11  3.36373964e+11  2.79e-01 3.59e-06  1.09e+00   412s
+[2019-03-21 19:16:54] SOLVER   155   3.36378985e+11  3.36374055e+11  2.50e-01 2.87e-06  9.79e-01   415s
+[2019-03-21 19:16:58] SOLVER   156   3.36378256e+11  3.36374444e+11  2.03e-01 1.63e-06  7.58e-01   418s
+[2019-03-21 19:17:00] SOLVER   157   3.36378132e+11  3.36374579e+11  1.94e-01 1.35e-06  7.06e-01   420s
+[2019-03-21 19:17:02] SOLVER   158   3.36377854e+11  3.36374621e+11  1.75e-01 6.93e-06  6.43e-01   422s
+[2019-03-21 19:17:04] SOLVER   159   3.36377608e+11  3.36374652e+11  1.58e-01 6.61e-06  5.87e-01   424s
+[2019-03-21 19:17:06] SOLVER   160   3.36377178e+11  3.36374712e+11  1.29e-01 5.99e-06  4.90e-01   427s
+[2019-03-21 19:17:09] SOLVER   161   3.36376992e+11  3.36374812e+11  1.17e-01 5.68e-06  4.33e-01   430s
+[2019-03-21 19:17:12] SOLVER   162   3.36376922e+11  3.36374839e+11  1.12e-01 2.31e-05  4.14e-01   432s
+[2019-03-21 19:17:14] SOLVER   163   3.36376758e+11  3.36374880e+11  1.01e-01 7.38e-05  3.73e-01   434s
+[2019-03-21 19:17:16] SOLVER   164   3.36376657e+11  3.36374931e+11  9.37e-02 3.83e-04  3.43e-01   437s
+[2019-03-21 19:17:19] SOLVER   165   3.36376491e+11  3.36374980e+11  8.29e-02 3.31e-04  3.00e-01   439s
+[2019-03-21 19:17:21] SOLVER   166   3.36376423e+11  3.36374992e+11  7.81e-02 3.19e-04  2.84e-01   442s
+[2019-03-21 19:17:24] SOLVER   167   3.36376329e+11  3.36375005e+11  7.23e-02 3.04e-04  2.63e-01   444s
+[2019-03-21 19:17:28] SOLVER   168   3.36376280e+11  3.36375014e+11  6.88e-02 2.96e-04  2.51e-01   448s
+[2019-03-21 19:17:32] SOLVER   169   3.36376135e+11  3.36375049e+11  5.94e-02 2.57e-04  2.16e-01   452s
+[2019-03-21 19:17:35] SOLVER   170   3.36376100e+11  3.36375062e+11  5.70e-02 2.42e-04  2.06e-01   455s
+[2019-03-21 19:17:38] SOLVER   171   3.36376028e+11  3.36375108e+11  5.20e-02 1.93e-04  1.83e-01   458s
+[2019-03-21 19:17:40] SOLVER   172   3.36375984e+11  3.36375167e+11  4.89e-02 1.43e-04  1.63e-01   460s
+[2019-03-21 19:17:42] SOLVER   173   3.36375781e+11  3.36375167e+11  3.45e-02 1.43e-04  1.22e-01   463s
+[2019-03-21 19:17:45] SOLVER   174   3.36375752e+11  3.36375169e+11  3.25e-02 1.41e-04  1.16e-01   465s
+[2019-03-21 19:17:47] SOLVER   175   3.36375726e+11  3.36375181e+11  3.06e-02 5.26e-04  1.08e-01   467s
+[2019-03-21 19:17:50] SOLVER   176   3.36375706e+11  3.36375185e+11  2.92e-02 1.72e-03  1.03e-01   470s
+[2019-03-21 19:17:50] SOLVER   Barrier solved model in 176 iterations and 470.03 seconds
+[2019-03-21 19:17:50] SOLVER   Optimal objective 3.36375706e+11
+[2019-03-21 19:17:51] SOLVER   Crossover log...
+[2019-03-21 19:17:52] SOLVER   1113543 DPushes remaining with DInf 0.0000000e+00               472s
+[2019-03-21 19:17:55] SOLVER   873120 DPushes remaining with DInf 0.0000000e+00               476s
+[2019-03-21 19:18:00] SOLVER   867912 DPushes remaining with DInf 0.0000000e+00               480s
+[2019-03-21 19:18:05] SOLVER   862704 DPushes remaining with DInf 0.0000000e+00               485s
+[2019-03-21 19:18:10] SOLVER   857496 DPushes remaining with DInf 0.0000000e+00               491s
+[2019-03-21 19:18:15] SOLVER   853032 DPushes remaining with DInf 0.0000000e+00               495s
+[2019-03-21 19:18:20] SOLVER   847824 DPushes remaining with DInf 0.0000000e+00               501s
+[2019-03-21 19:18:25] SOLVER   844104 DPushes remaining with DInf 0.0000000e+00               505s
+[2019-03-21 19:18:30] SOLVER   838896 DPushes remaining with DInf 0.0000000e+00               510s
+[2019-03-21 19:18:35] SOLVER   833688 DPushes remaining with DInf 0.0000000e+00               516s
+[2019-03-21 19:18:40] SOLVER   829224 DPushes remaining with DInf 0.0000000e+00               521s
+[2019-03-21 19:18:45] SOLVER   824760 DPushes remaining with DInf 0.0000000e+00               526s
+[2019-03-21 19:18:50] SOLVER   821040 DPushes remaining with DInf 0.0000000e+00               530s
+[2019-03-21 19:18:55] SOLVER   816576 DPushes remaining with DInf 0.0000000e+00               535s
+[2019-03-21 19:19:00] SOLVER   812112 DPushes remaining with DInf 0.0000000e+00               540s
+[2019-03-21 19:19:05] SOLVER   806904 DPushes remaining with DInf 0.0000000e+00               546s
+[2019-03-21 19:19:10] SOLVER   803184 DPushes remaining with DInf 0.0000000e+00               550s
+[2019-03-21 19:19:15] SOLVER   797975 DPushes remaining with DInf 0.0000000e+00               556s
+[2019-03-21 19:19:20] SOLVER   792440 DPushes remaining with DInf 0.0000000e+00               560s
+[2019-03-21 19:19:25] SOLVER   787230 DPushes remaining with DInf 0.0000000e+00               566s
+[2019-03-21 19:19:30] SOLVER   781487 DPushes remaining with DInf 0.0000000e+00               571s
+[2019-03-21 19:19:35] SOLVER   777020 DPushes remaining with DInf 0.0000000e+00               575s
+[2019-03-21 19:19:40] SOLVER   771811 DPushes remaining with DInf 0.0000000e+00               581s
+[2019-03-21 19:19:45] SOLVER   767346 DPushes remaining with DInf 0.0000000e+00               585s
+[2019-03-21 19:19:50] SOLVER   762882 DPushes remaining with DInf 0.0000000e+00               590s
+[2019-03-21 19:19:55] SOLVER   758412 DPushes remaining with DInf 0.0000000e+00               595s
+[2019-03-21 19:20:00] SOLVER   753948 DPushes remaining with DInf 0.0000000e+00               601s
+[2019-03-21 19:20:05] SOLVER   750227 DPushes remaining with DInf 0.0000000e+00               605s
+[2019-03-21 19:20:10] SOLVER   745762 DPushes remaining with DInf 0.0000000e+00               611s
+[2019-03-21 19:20:15] SOLVER   740552 DPushes remaining with DInf 0.0000000e+00               616s
+[2019-03-21 19:20:20] SOLVER   736088 DPushes remaining with DInf 0.0000000e+00               620s
+[2019-03-21 19:20:25] SOLVER   731623 DPushes remaining with DInf 0.0000000e+00               625s
+[2019-03-21 19:20:30] SOLVER   726413 DPushes remaining with DInf 0.0000000e+00               631s
+[2019-03-21 19:20:35] SOLVER   721948 DPushes remaining with DInf 0.0000000e+00               636s
+[2019-03-21 19:20:40] SOLVER   717484 DPushes remaining with DInf 0.0000000e+00               641s
+[2019-03-21 19:20:45] SOLVER   712276 DPushes remaining with DInf 0.0000000e+00               645s
+[2019-03-21 19:20:50] SOLVER   706324 DPushes remaining with DInf 0.0000000e+00               650s
+[2019-03-21 19:20:55] SOLVER   700372 DPushes remaining with DInf 0.0000000e+00               656s
+[2019-03-21 19:21:01] SOLVER   695164 DPushes remaining with DInf 0.0000000e+00               661s
+[2019-03-21 19:21:05] SOLVER   691444 DPushes remaining with DInf 0.0000000e+00               665s
+[2019-03-21 19:21:10] SOLVER   686236 DPushes remaining with DInf 0.0000000e+00               670s
+[2019-03-21 19:21:15] SOLVER   681028 DPushes remaining with DInf 0.0000000e+00               675s
+[2019-03-21 19:21:20] SOLVER   675076 DPushes remaining with DInf 0.0000000e+00               680s
+[2019-03-21 19:21:25] SOLVER   669868 DPushes remaining with DInf 0.0000000e+00               685s
+[2019-03-21 19:21:30] SOLVER   663916 DPushes remaining with DInf 0.0000000e+00               691s
+[2019-03-21 19:21:35] SOLVER   658708 DPushes remaining with DInf 0.0000000e+00               696s
+[2019-03-21 19:21:40] SOLVER   653500 DPushes remaining with DInf 0.0000000e+00               701s
+[2019-03-21 19:21:45] SOLVER   649036 DPushes remaining with DInf 0.0000000e+00               705s
+[2019-03-21 19:21:50] SOLVER   643827 DPushes remaining with DInf 0.0000000e+00               711s
+[2019-03-21 19:21:55] SOLVER   639363 DPushes remaining with DInf 0.0000000e+00               715s
+[2019-03-21 19:22:00] SOLVER   634899 DPushes remaining with DInf 0.0000000e+00               720s
+[2019-03-21 19:22:05] SOLVER   631179 DPushes remaining with DInf 0.0000000e+00               725s
+[2019-03-21 19:22:10] SOLVER   627459 DPushes remaining with DInf 0.0000000e+00               730s
+[2019-03-21 19:22:15] SOLVER   623739 DPushes remaining with DInf 0.0000000e+00               736s
+[2019-03-21 19:22:20] SOLVER   620019 DPushes remaining with DInf 0.0000000e+00               740s
+[2019-03-21 19:22:25] SOLVER   616299 DPushes remaining with DInf 0.0000000e+00               745s
+[2019-03-21 19:22:31] SOLVER   612579 DPushes remaining with DInf 0.0000000e+00               751s
+[2019-03-21 19:22:35] SOLVER   609603 DPushes remaining with DInf 0.0000000e+00               755s
+[2019-03-21 19:22:40] SOLVER   605883 DPushes remaining with DInf 0.0000000e+00               760s
+[2019-03-21 19:22:45] SOLVER   602163 DPushes remaining with DInf 0.0000000e+00               766s
+[2019-03-21 19:22:50] SOLVER   598443 DPushes remaining with DInf 0.0000000e+00               770s
+[2019-03-21 19:22:55] SOLVER   593979 DPushes remaining with DInf 0.0000000e+00               775s
+[2019-03-21 19:23:00] SOLVER   589515 DPushes remaining with DInf 0.0000000e+00               780s
+[2019-03-21 19:23:05] SOLVER   584307 DPushes remaining with DInf 0.0000000e+00               786s
+[2019-03-21 19:23:10] SOLVER   580587 DPushes remaining with DInf 0.0000000e+00               790s
+[2019-03-21 19:23:15] SOLVER   576123 DPushes remaining with DInf 0.0000000e+00               795s
+[2019-03-21 19:23:20] SOLVER   571659 DPushes remaining with DInf 0.0000000e+00               801s
+[2019-03-21 19:23:26] SOLVER   567939 DPushes remaining with DInf 0.0000000e+00               806s
+[2019-03-21 19:23:30] SOLVER   564963 DPushes remaining with DInf 0.0000000e+00               811s
+[2019-03-21 19:23:35] SOLVER   561987 DPushes remaining with DInf 0.0000000e+00               816s
+[2019-03-21 19:23:40] SOLVER   559011 DPushes remaining with DInf 0.0000000e+00               820s
+[2019-03-21 19:23:46] SOLVER   554547 DPushes remaining with DInf 0.0000000e+00               826s
+[2019-03-21 19:23:50] SOLVER   551571 DPushes remaining with DInf 0.0000000e+00               830s
+[2019-03-21 19:23:55] SOLVER   547107 DPushes remaining with DInf 0.0000000e+00               835s
+[2019-03-21 19:24:00] SOLVER   542642 DPushes remaining with DInf 0.0000000e+00               840s
+[2019-03-21 19:24:05] SOLVER   537434 DPushes remaining with DInf 0.0000000e+00               846s
+[2019-03-21 19:24:11] SOLVER   533714 DPushes remaining with DInf 0.0000000e+00               851s
+[2019-03-21 19:24:15] SOLVER   530738 DPushes remaining with DInf 0.0000000e+00               855s
+[2019-03-21 19:24:21] SOLVER   527018 DPushes remaining with DInf 0.0000000e+00               861s
+[2019-03-21 19:24:25] SOLVER   524786 DPushes remaining with DInf 0.0000000e+00               865s
+[2019-03-21 19:24:30] SOLVER   522554 DPushes remaining with DInf 0.0000000e+00               871s
+[2019-03-21 19:24:35] SOLVER   518834 DPushes remaining with DInf 0.0000000e+00               876s
+[2019-03-21 19:24:40] SOLVER   515114 DPushes remaining with DInf 0.0000000e+00               880s
+[2019-03-21 19:24:45] SOLVER   510650 DPushes remaining with DInf 0.0000000e+00               885s
+[2019-03-21 19:24:50] SOLVER   504481 DPushes remaining with DInf 0.0000000e+00               890s
+[2019-03-21 19:24:55] SOLVER   498884 DPushes remaining with DInf 0.0000000e+00               895s
+[2019-03-21 19:25:00] SOLVER   492932 DPushes remaining with DInf 0.0000000e+00               900s
+[2019-03-21 19:25:05] SOLVER   487687 DPushes remaining with DInf 0.0000000e+00               905s
+[2019-03-21 19:25:10] SOLVER   482373 DPushes remaining with DInf 0.0000000e+00               910s
+[2019-03-21 19:25:15] SOLVER   477165 DPushes remaining with DInf 0.0000000e+00               916s
+[2019-03-21 19:25:20] SOLVER   472700 DPushes remaining with DInf 0.0000000e+00               920s
+[2019-03-21 19:25:25] SOLVER   467492 DPushes remaining with DInf 0.0000000e+00               926s
+[2019-03-21 19:25:30] SOLVER   463028 DPushes remaining with DInf 0.0000000e+00               931s
+[2019-03-21 19:25:35] SOLVER   458564 DPushes remaining with DInf 0.0000000e+00               936s
+[2019-03-21 19:25:40] SOLVER   454091 DPushes remaining with DInf 0.0000000e+00               940s
+[2019-03-21 19:25:46] SOLVER   448208 DPushes remaining with DInf 0.0000000e+00               946s
+[2019-03-21 19:25:50] SOLVER   443325 DPushes remaining with DInf 0.0000000e+00               950s
+[2019-03-21 19:25:55] SOLVER   438598 DPushes remaining with DInf 0.0000000e+00               955s
+[2019-03-21 19:26:00] SOLVER   433158 DPushes remaining with DInf 0.0000000e+00               961s
+[2019-03-21 19:26:05] SOLVER   428187 DPushes remaining with DInf 0.0000000e+00               965s
+[2019-03-21 19:26:10] SOLVER   421945 DPushes remaining with DInf 0.0000000e+00               971s
+[2019-03-21 19:26:15] SOLVER   416766 DPushes remaining with DInf 0.0000000e+00               975s
+[2019-03-21 19:26:20] SOLVER   411242 DPushes remaining with DInf 0.0000000e+00               980s
+[2019-03-21 19:26:25] SOLVER   406007 DPushes remaining with DInf 0.0000000e+00               986s
+[2019-03-21 19:26:30] SOLVER   400952 DPushes remaining with DInf 0.0000000e+00               990s
+[2019-03-21 19:26:35] SOLVER   396469 DPushes remaining with DInf 0.0000000e+00               995s
+[2019-03-21 19:26:40] SOLVER   392005 DPushes remaining with DInf 0.0000000e+00              1000s
+[2019-03-21 19:26:45] SOLVER   387541 DPushes remaining with DInf 0.0000000e+00              1006s
+[2019-03-21 19:26:50] SOLVER   383821 DPushes remaining with DInf 0.0000000e+00              1010s
+[2019-03-21 19:26:55] SOLVER   379357 DPushes remaining with DInf 0.0000000e+00              1016s
+[2019-03-21 19:27:01] SOLVER   375637 DPushes remaining with DInf 0.0000000e+00              1021s
+[2019-03-21 19:27:05] SOLVER   372661 DPushes remaining with DInf 0.0000000e+00              1025s
+[2019-03-21 19:27:10] SOLVER   368935 DPushes remaining with DInf 0.0000000e+00              1031s
+[2019-03-21 19:27:16] SOLVER   365215 DPushes remaining with DInf 0.0000000e+00              1036s
+[2019-03-21 19:27:21] SOLVER   362239 DPushes remaining with DInf 0.0000000e+00              1041s
+[2019-03-21 19:27:25] SOLVER   359263 DPushes remaining with DInf 0.0000000e+00              1046s
+[2019-03-21 19:27:30] SOLVER   356287 DPushes remaining with DInf 0.0000000e+00              1050s
+[2019-03-21 19:27:36] SOLVER   351823 DPushes remaining with DInf 0.0000000e+00              1056s
+[2019-03-21 19:27:40] SOLVER   348847 DPushes remaining with DInf 0.0000000e+00              1061s
+[2019-03-21 19:27:45] SOLVER   345871 DPushes remaining with DInf 0.0000000e+00              1065s
+[2019-03-21 19:27:50] SOLVER   342151 DPushes remaining with DInf 0.0000000e+00              1071s
+[2019-03-21 19:27:55] SOLVER   338431 DPushes remaining with DInf 0.0000000e+00              1075s
+[2019-03-21 19:28:00] SOLVER   334711 DPushes remaining with DInf 0.0000000e+00              1080s
+[2019-03-21 19:28:06] SOLVER   330991 DPushes remaining with DInf 0.0000000e+00              1086s
+[2019-03-21 19:28:10] SOLVER   328015 DPushes remaining with DInf 0.0000000e+00              1090s
+[2019-03-21 19:28:15] SOLVER   324295 DPushes remaining with DInf 0.0000000e+00              1096s
+[2019-03-21 19:28:20] SOLVER   321319 DPushes remaining with DInf 0.0000000e+00              1100s
+[2019-03-21 19:28:25] SOLVER   318343 DPushes remaining with DInf 0.0000000e+00              1105s
+[2019-03-21 19:28:31] SOLVER   314623 DPushes remaining with DInf 0.0000000e+00              1111s
+[2019-03-21 19:28:35] SOLVER   311596 DPushes remaining with DInf 0.0000000e+00              1115s
+[2019-03-21 19:28:41] SOLVER   307876 DPushes remaining with DInf 0.0000000e+00              1121s
+[2019-03-21 19:28:46] SOLVER   304156 DPushes remaining with DInf 0.0000000e+00              1126s
+[2019-03-21 19:28:50] SOLVER   301180 DPushes remaining with DInf 0.0000000e+00              1131s
+[2019-03-21 19:28:56] SOLVER   297460 DPushes remaining with DInf 0.0000000e+00              1136s
+[2019-03-21 19:29:01] SOLVER   294484 DPushes remaining with DInf 0.0000000e+00              1141s
+[2019-03-21 19:29:06] SOLVER   291508 DPushes remaining with DInf 0.0000000e+00              1146s
+[2019-03-21 19:29:10] SOLVER   289276 DPushes remaining with DInf 0.0000000e+00              1150s
+[2019-03-21 19:29:15] SOLVER   286300 DPushes remaining with DInf 0.0000000e+00              1155s
+[2019-03-21 19:29:20] SOLVER   283324 DPushes remaining with DInf 0.0000000e+00              1161s
+[2019-03-21 19:29:25] SOLVER   281092 DPushes remaining with DInf 0.0000000e+00              1165s
+[2019-03-21 19:29:31] SOLVER   277372 DPushes remaining with DInf 0.0000000e+00              1171s
+[2019-03-21 19:29:35] SOLVER   274396 DPushes remaining with DInf 0.0000000e+00              1176s
+[2019-03-21 19:29:41] SOLVER   271420 DPushes remaining with DInf 0.0000000e+00              1181s
+[2019-03-21 19:29:45] SOLVER   269188 DPushes remaining with DInf 0.0000000e+00              1185s
+[2019-03-21 19:29:50] SOLVER   266212 DPushes remaining with DInf 0.0000000e+00              1191s
+[2019-03-21 19:29:55] SOLVER   263978 DPushes remaining with DInf 0.0000000e+00              1195s
+[2019-03-21 19:30:00] SOLVER   260140 DPushes remaining with DInf 0.0000000e+00              1200s
+[2019-03-21 19:30:06] SOLVER   256420 DPushes remaining with DInf 0.0000000e+00              1206s
+[2019-03-21 19:30:10] SOLVER   254188 DPushes remaining with DInf 0.0000000e+00              1210s
+[2019-03-21 19:30:15] SOLVER   251211 DPushes remaining with DInf 0.0000000e+00              1215s
+[2019-03-21 19:30:20] SOLVER   248235 DPushes remaining with DInf 0.0000000e+00              1221s
+[2019-03-21 19:30:25] SOLVER   246003 DPushes remaining with DInf 0.0000000e+00              1226s
+[2019-03-21 19:30:31] SOLVER   243771 DPushes remaining with DInf 0.0000000e+00              1231s
+[2019-03-21 19:30:35] SOLVER   241539 DPushes remaining with DInf 0.0000000e+00              1235s
+[2019-03-21 19:30:40] SOLVER   237819 DPushes remaining with DInf 0.0000000e+00              1241s
+[2019-03-21 19:30:46] SOLVER   234099 DPushes remaining with DInf 0.0000000e+00              1246s
+[2019-03-21 19:30:50] SOLVER   231123 DPushes remaining with DInf 0.0000000e+00              1250s
+[2019-03-21 19:30:55] SOLVER   226659 DPushes remaining with DInf 0.0000000e+00              1256s
+[2019-03-21 19:31:00] SOLVER   223683 DPushes remaining with DInf 0.0000000e+00              1260s
+[2019-03-21 19:31:05] SOLVER   219963 DPushes remaining with DInf 0.0000000e+00              1265s
+[2019-03-21 19:31:10] SOLVER   216987 DPushes remaining with DInf 0.0000000e+00              1270s
+[2019-03-21 19:31:15] SOLVER   213267 DPushes remaining with DInf 0.0000000e+00              1275s
+[2019-03-21 19:31:20] SOLVER   209547 DPushes remaining with DInf 0.0000000e+00              1281s
+[2019-03-21 19:31:25] SOLVER   205827 DPushes remaining with DInf 0.0000000e+00              1285s
+[2019-03-21 19:31:30] SOLVER   202107 DPushes remaining with DInf 0.0000000e+00              1290s
+[2019-03-21 19:31:36] SOLVER   198387 DPushes remaining with DInf 0.0000000e+00              1296s
+[2019-03-21 19:31:40] SOLVER   196155 DPushes remaining with DInf 0.0000000e+00              1300s
+[2019-03-21 19:31:47] SOLVER   192435 DPushes remaining with DInf 0.0000000e+00              1308s
+[2019-03-21 19:31:51] SOLVER   190947 DPushes remaining with DInf 0.0000000e+00              1311s
+[2019-03-21 19:31:56] SOLVER   187971 DPushes remaining with DInf 0.0000000e+00              1316s
+[2019-03-21 19:32:00] SOLVER   184995 DPushes remaining with DInf 0.0000000e+00              1321s
+[2019-03-21 19:32:05] SOLVER   182019 DPushes remaining with DInf 0.0000000e+00              1325s
+[2019-03-21 19:32:10] SOLVER   179043 DPushes remaining with DInf 0.0000000e+00              1330s
+[2019-03-21 19:32:15] SOLVER   176067 DPushes remaining with DInf 0.0000000e+00              1335s
+[2019-03-21 19:32:20] SOLVER   172347 DPushes remaining with DInf 0.0000000e+00              1340s
+[2019-03-21 19:32:26] SOLVER   168627 DPushes remaining with DInf 0.0000000e+00              1346s
+[2019-03-21 19:32:31] SOLVER   165651 DPushes remaining with DInf 0.0000000e+00              1351s
+[2019-03-21 19:32:35] SOLVER   162675 DPushes remaining with DInf 0.0000000e+00              1356s
+[2019-03-21 19:32:40] SOLVER   159699 DPushes remaining with DInf 0.0000000e+00              1360s
+[2019-03-21 19:32:45] SOLVER   157467 DPushes remaining with DInf 0.0000000e+00              1365s
+[2019-03-21 19:32:51] SOLVER   154491 DPushes remaining with DInf 0.0000000e+00              1372s
+[2019-03-21 19:32:56] SOLVER   152259 DPushes remaining with DInf 0.0000000e+00              1376s
+[2019-03-21 19:33:00] SOLVER   150027 DPushes remaining with DInf 0.0000000e+00              1380s
+[2019-03-21 19:33:06] SOLVER   147795 DPushes remaining with DInf 0.0000000e+00              1386s
+[2019-03-21 19:33:10] SOLVER   146307 DPushes remaining with DInf 0.0000000e+00              1391s
+[2019-03-21 19:33:15] SOLVER   143331 DPushes remaining with DInf 0.0000000e+00              1396s
+[2019-03-21 19:33:20] SOLVER   140355 DPushes remaining with DInf 0.0000000e+00              1401s
+[2019-03-21 19:33:25] SOLVER   138122 DPushes remaining with DInf 0.0000000e+00              1405s
+[2019-03-21 19:33:30] SOLVER   135890 DPushes remaining with DInf 0.0000000e+00              1411s
+[2019-03-21 19:33:35] SOLVER   133658 DPushes remaining with DInf 0.0000000e+00              1415s
+[2019-03-21 19:33:41] SOLVER   130682 DPushes remaining with DInf 0.0000000e+00              1421s
+[2019-03-21 19:33:46] SOLVER   127706 DPushes remaining with DInf 0.0000000e+00              1426s
+[2019-03-21 19:33:50] SOLVER   124730 DPushes remaining with DInf 0.0000000e+00              1431s
+[2019-03-21 19:33:56] SOLVER   121754 DPushes remaining with DInf 0.0000000e+00              1437s
+[2019-03-21 19:34:01] SOLVER   119522 DPushes remaining with DInf 0.0000000e+00              1441s
+[2019-03-21 19:34:06] SOLVER   116546 DPushes remaining with DInf 0.0000000e+00              1446s
+[2019-03-21 19:34:10] SOLVER   114314 DPushes remaining with DInf 0.0000000e+00              1450s
+[2019-03-21 19:34:17] SOLVER   111338 DPushes remaining with DInf 0.0000000e+00              1457s
+[2019-03-21 19:34:21] SOLVER   109850 DPushes remaining with DInf 0.0000000e+00              1461s
+[2019-03-21 19:34:28] SOLVER   108362 DPushes remaining with DInf 0.0000000e+00              1468s
+[2019-03-21 19:34:31] SOLVER   107618 DPushes remaining with DInf 0.0000000e+00              1471s
+[2019-03-21 19:34:35] SOLVER   106130 DPushes remaining with DInf 0.0000000e+00              1476s
+[2019-03-21 19:34:41] SOLVER   104642 DPushes remaining with DInf 0.0000000e+00              1481s
+[2019-03-21 19:34:46] SOLVER   103154 DPushes remaining with DInf 0.0000000e+00              1486s
+[2019-03-21 19:34:50] SOLVER   101666 DPushes remaining with DInf 0.0000000e+00              1491s
+[2019-03-21 19:34:55] SOLVER   99434 DPushes remaining with DInf 0.0000000e+00              1495s
+[2019-03-21 19:35:01] SOLVER   97202 DPushes remaining with DInf 0.0000000e+00              1501s
+[2019-03-21 19:35:05] SOLVER   95714 DPushes remaining with DInf 0.0000000e+00              1505s
+[2019-03-21 19:35:12] SOLVER   93482 DPushes remaining with DInf 0.0000000e+00              1512s
+[2019-03-21 19:35:17] SOLVER   91994 DPushes remaining with DInf 0.0000000e+00              1517s
+[2019-03-21 19:35:22] SOLVER   90506 DPushes remaining with DInf 0.0000000e+00              1522s
+[2019-03-21 19:35:27] SOLVER   89018 DPushes remaining with DInf 0.0000000e+00              1527s
+[2019-03-21 19:35:31] SOLVER   88274 DPushes remaining with DInf 0.0000000e+00              1531s
+[2019-03-21 19:35:36] SOLVER   86042 DPushes remaining with DInf 0.0000000e+00              1537s
+[2019-03-21 19:35:40] SOLVER   85298 DPushes remaining with DInf 0.0000000e+00              1540s
+[2019-03-21 19:35:45] SOLVER   83810 DPushes remaining with DInf 0.0000000e+00              1546s
+[2019-03-21 19:35:50] SOLVER   81578 DPushes remaining with DInf 0.0000000e+00              1550s
+[2019-03-21 19:35:57] SOLVER   79346 DPushes remaining with DInf 0.0000000e+00              1557s
+[2019-03-21 19:36:01] SOLVER   77858 DPushes remaining with DInf 0.0000000e+00              1561s
+[2019-03-21 19:36:06] SOLVER   76370 DPushes remaining with DInf 0.0000000e+00              1566s
+[2019-03-21 19:36:10] SOLVER   74882 DPushes remaining with DInf 0.0000000e+00              1570s
+[2019-03-21 19:36:17] SOLVER   72650 DPushes remaining with DInf 0.0000000e+00              1577s
+[2019-03-21 19:36:20] SOLVER   71906 DPushes remaining with DInf 0.0000000e+00              1580s
+[2019-03-21 19:36:27] SOLVER   69674 DPushes remaining with DInf 0.0000000e+00              1587s
+[2019-03-21 19:36:30] SOLVER   68930 DPushes remaining with DInf 0.0000000e+00              1590s
+[2019-03-21 19:36:36] SOLVER   67442 DPushes remaining with DInf 0.0000000e+00              1596s
+[2019-03-21 19:36:40] SOLVER   66698 DPushes remaining with DInf 0.0000000e+00              1600s
+[2019-03-21 19:36:46] SOLVER   65210 DPushes remaining with DInf 0.0000000e+00              1607s
+[2019-03-21 19:36:52] SOLVER   64466 DPushes remaining with DInf 0.0000000e+00              1612s
+[2019-03-21 19:36:56] SOLVER   63722 DPushes remaining with DInf 0.0000000e+00              1616s
+[2019-03-21 19:37:02] SOLVER   62234 DPushes remaining with DInf 0.0000000e+00              1622s
+[2019-03-21 19:37:05] SOLVER   61490 DPushes remaining with DInf 0.0000000e+00              1625s
+[2019-03-21 19:37:11] SOLVER   60002 DPushes remaining with DInf 0.0000000e+00              1631s
+[2019-03-21 19:37:16] SOLVER   59258 DPushes remaining with DInf 0.0000000e+00              1636s
+[2019-03-21 19:37:21] SOLVER   58514 DPushes remaining with DInf 0.0000000e+00              1641s
+[2019-03-21 19:37:26] SOLVER   57770 DPushes remaining with DInf 0.0000000e+00              1646s
+[2019-03-21 19:37:31] SOLVER   57026 DPushes remaining with DInf 0.0000000e+00              1651s
+[2019-03-21 19:37:37] SOLVER   55538 DPushes remaining with DInf 0.0000000e+00              1657s
+[2019-03-21 19:37:43] SOLVER   54050 DPushes remaining with DInf 0.0000000e+00              1664s
+[2019-03-21 19:37:46] SOLVER   53306 DPushes remaining with DInf 0.0000000e+00              1666s
+[2019-03-21 19:37:54] SOLVER   51818 DPushes remaining with DInf 0.0000000e+00              1674s
+[2019-03-21 19:38:01] SOLVER   51074 DPushes remaining with DInf 0.0000000e+00              1682s
+[2019-03-21 19:38:15] SOLVER   50330 DPushes remaining with DInf 0.0000000e+00              1695s
+[2019-03-21 19:38:24] SOLVER   49586 DPushes remaining with DInf 0.0000000e+00              1705s
+[2019-03-21 19:38:32] SOLVER   48842 DPushes remaining with DInf 0.0000000e+00              1713s
+[2019-03-21 19:38:38] SOLVER   48098 DPushes remaining with DInf 0.0000000e+00              1718s
+[2019-03-21 19:38:42] SOLVER   47354 DPushes remaining with DInf 0.0000000e+00              1723s
+[2019-03-21 19:38:47] SOLVER   46610 DPushes remaining with DInf 0.0000000e+00              1728s
+[2019-03-21 19:38:52] SOLVER   45866 DPushes remaining with DInf 0.0000000e+00              1733s
+[2019-03-21 19:38:57] SOLVER   45122 DPushes remaining with DInf 0.0000000e+00              1738s
+[2019-03-21 19:39:02] SOLVER   44378 DPushes remaining with DInf 0.0000000e+00              1742s
+[2019-03-21 19:39:07] SOLVER   43634 DPushes remaining with DInf 0.0000000e+00              1747s
+[2019-03-21 19:39:10] SOLVER   42890 DPushes remaining with DInf 0.0000000e+00              1751s
+[2019-03-21 19:39:19] SOLVER   41402 DPushes remaining with DInf 0.0000000e+00              1760s
+[2019-03-21 19:39:27] SOLVER   40658 DPushes remaining with DInf 0.0000000e+00              1767s
+[2019-03-21 19:39:36] SOLVER   39914 DPushes remaining with DInf 0.0000000e+00              1777s
+[2019-03-21 19:39:44] SOLVER   39170 DPushes remaining with DInf 0.0000000e+00              1784s
+[2019-03-21 19:39:51] SOLVER   38426 DPushes remaining with DInf 0.0000000e+00              1792s
+[2019-03-21 19:39:58] SOLVER   37682 DPushes remaining with DInf 0.0000000e+00              1798s
+[2019-03-21 19:40:09] SOLVER   36938 DPushes remaining with DInf 0.0000000e+00              1810s
+[2019-03-21 19:40:16] SOLVER   36194 DPushes remaining with DInf 0.0000000e+00              1816s
+[2019-03-21 19:40:23] SOLVER   35450 DPushes remaining with DInf 0.0000000e+00              1823s
+[2019-03-21 19:40:31] SOLVER   34706 DPushes remaining with DInf 0.0000000e+00              1831s
+[2019-03-21 19:40:38] SOLVER   33962 DPushes remaining with DInf 0.0000000e+00              1838s
+[2019-03-21 19:40:41] SOLVER   33218 DPushes remaining with DInf 0.0000000e+00              1841s
+[2019-03-21 19:40:49] SOLVER   32474 DPushes remaining with DInf 0.0000000e+00              1849s
+[2019-03-21 19:40:55] SOLVER   31730 DPushes remaining with DInf 0.0000000e+00              1855s
+[2019-03-21 19:41:01] SOLVER   30986 DPushes remaining with DInf 0.0000000e+00              1861s
+[2019-03-21 19:41:08] SOLVER   29498 DPushes remaining with DInf 0.0000000e+00              1869s
+[2019-03-21 19:41:14] SOLVER   28754 DPushes remaining with DInf 0.0000000e+00              1874s
+[2019-03-21 19:41:23] SOLVER   28010 DPushes remaining with DInf 0.0000000e+00              1883s
+[2019-03-21 19:41:28] SOLVER   27266 DPushes remaining with DInf 0.0000000e+00              1889s
+[2019-03-21 19:41:33] SOLVER   26522 DPushes remaining with DInf 0.0000000e+00              1893s
+[2019-03-21 19:41:39] SOLVER   25778 DPushes remaining with DInf 0.0000000e+00              1899s
+[2019-03-21 19:41:45] SOLVER   25034 DPushes remaining with DInf 0.0000000e+00              1905s
+[2019-03-21 19:41:50] SOLVER   24290 DPushes remaining with DInf 0.0000000e+00              1911s
+[2019-03-21 19:41:55] SOLVER   23546 DPushes remaining with DInf 0.0000000e+00              1915s
+[2019-03-21 19:42:06] SOLVER   22058 DPushes remaining with DInf 0.0000000e+00              1926s
+[2019-03-21 19:42:11] SOLVER   21314 DPushes remaining with DInf 0.0000000e+00              1932s
+[2019-03-21 19:42:17] SOLVER   20570 DPushes remaining with DInf 0.0000000e+00              1937s
+[2019-03-21 19:42:25] SOLVER   19826 DPushes remaining with DInf 0.0000000e+00              1946s
+[2019-03-21 19:42:38] SOLVER   19082 DPushes remaining with DInf 0.0000000e+00              1959s
+[2019-03-21 19:42:57] SOLVER   18338 DPushes remaining with DInf 0.0000000e+00              1977s
+[2019-03-21 19:43:09] SOLVER   17594 DPushes remaining with DInf 0.0000000e+00              1990s
+[2019-03-21 19:43:21] SOLVER   16850 DPushes remaining with DInf 0.0000000e+00              2001s
+[2019-03-21 19:43:37] SOLVER   16106 DPushes remaining with DInf 0.0000000e+00              2017s
+[2019-03-21 19:44:01] SOLVER   15362 DPushes remaining with DInf 0.0000000e+00              2041s
+[2019-03-21 19:44:20] SOLVER   14618 DPushes remaining with DInf 0.0000000e+00              2061s
+[2019-03-21 19:44:44] SOLVER   13874 DPushes remaining with DInf 0.0000000e+00              2084s
+[2019-03-21 19:45:11] SOLVER   13130 DPushes remaining with DInf 0.0000000e+00              2112s
+[2019-03-21 19:45:41] SOLVER   12386 DPushes remaining with DInf 0.0000000e+00              2141s
+[2019-03-21 19:46:04] SOLVER   11642 DPushes remaining with DInf 0.0000000e+00              2164s
+[2019-03-21 19:46:29] SOLVER   10898 DPushes remaining with DInf 0.0000000e+00              2189s
+[2019-03-21 19:46:58] SOLVER   10154 DPushes remaining with DInf 0.0000000e+00              2218s
+[2019-03-21 19:47:22] SOLVER   9410 DPushes remaining with DInf 0.0000000e+00              2242s
+[2019-03-21 19:47:43] SOLVER   8666 DPushes remaining with DInf 0.0000000e+00              2264s
+[2019-03-21 19:48:11] SOLVER   7922 DPushes remaining with DInf 0.0000000e+00              2292s
+[2019-03-21 19:48:37] SOLVER   7178 DPushes remaining with DInf 0.0000000e+00              2317s
+[2019-03-21 19:49:02] SOLVER   6434 DPushes remaining with DInf 0.0000000e+00              2342s
+[2019-03-21 19:49:31] SOLVER   5690 DPushes remaining with DInf 0.0000000e+00              2371s
+[2019-03-21 19:49:57] SOLVER   4946 DPushes remaining with DInf 0.0000000e+00              2397s
+[2019-03-21 19:50:19] SOLVER   4202 DPushes remaining with DInf 0.0000000e+00              2419s
+[2019-03-21 19:50:43] SOLVER   3458 DPushes remaining with DInf 0.0000000e+00              2443s
+[2019-03-21 19:51:10] SOLVER   2714 DPushes remaining with DInf 0.0000000e+00              2470s
+[2019-03-21 19:51:31] SOLVER   1970 DPushes remaining with DInf 0.0000000e+00              2492s
+[2019-03-21 19:51:56] SOLVER   1226 DPushes remaining with DInf 0.0000000e+00              2517s
+[2019-03-21 19:52:25] SOLVER   482 DPushes remaining with DInf 0.0000000e+00              2546s
+[2019-03-21 19:52:43] SOLVER   0 DPushes remaining with DInf 0.0000000e+00              2564s
+[2019-03-21 19:52:43] SOLVER   Restart crossover...
+[2019-03-21 19:52:44] SOLVER   1113544 DPushes remaining with DInf 0.0000000e+00              2565s
+[2019-03-21 19:52:45] SOLVER   928962 DPushes remaining with DInf 0.0000000e+00              2566s
+[2019-03-21 19:52:50] SOLVER   871691 DPushes remaining with DInf 0.0000000e+00              2570s
+[2019-03-21 19:52:55] SOLVER   866483 DPushes remaining with DInf 0.0000000e+00              2575s
+[2019-03-21 19:53:00] SOLVER   861275 DPushes remaining with DInf 0.0000000e+00              2580s
+[2019-03-21 19:53:05] SOLVER   856811 DPushes remaining with DInf 0.0000000e+00              2585s
+[2019-03-21 19:53:10] SOLVER   852347 DPushes remaining with DInf 0.0000000e+00              2590s
+[2019-03-21 19:53:15] SOLVER   847883 DPushes remaining with DInf 0.0000000e+00              2595s
+[2019-03-21 19:53:20] SOLVER   844163 DPushes remaining with DInf 0.0000000e+00              2600s
+[2019-03-21 19:53:25] SOLVER   839699 DPushes remaining with DInf 0.0000000e+00              2605s
+[2019-03-21 19:53:30] SOLVER   834491 DPushes remaining with DInf 0.0000000e+00              2610s
+[2019-03-21 19:53:35] SOLVER   830027 DPushes remaining with DInf 0.0000000e+00              2616s
+[2019-03-21 19:53:40] SOLVER   825563 DPushes remaining with DInf 0.0000000e+00              2621s
+[2019-03-21 19:53:45] SOLVER   821843 DPushes remaining with DInf 0.0000000e+00              2625s
+[2019-03-21 19:53:50] SOLVER   817379 DPushes remaining with DInf 0.0000000e+00              2631s
+[2019-03-21 19:53:55] SOLVER   813659 DPushes remaining with DInf 0.0000000e+00              2635s
+[2019-03-21 19:54:00] SOLVER   808451 DPushes remaining with DInf 0.0000000e+00              2640s
+[2019-03-21 19:54:06] SOLVER   803987 DPushes remaining with DInf 0.0000000e+00              2646s
+[2019-03-21 19:54:10] SOLVER   799522 DPushes remaining with DInf 0.0000000e+00              2650s
+[2019-03-21 19:54:15] SOLVER   793990 DPushes remaining with DInf 0.0000000e+00              2655s
+[2019-03-21 19:54:20] SOLVER   788778 DPushes remaining with DInf 0.0000000e+00              2661s
+[2019-03-21 19:54:25] SOLVER   783921 DPushes remaining with DInf 0.0000000e+00              2665s
+[2019-03-21 19:54:30] SOLVER   778568 DPushes remaining with DInf 0.0000000e+00              2670s
+[2019-03-21 19:54:35] SOLVER   772614 DPushes remaining with DInf 0.0000000e+00              2676s
+[2019-03-21 19:54:40] SOLVER   767405 DPushes remaining with DInf 0.0000000e+00              2681s
+[2019-03-21 19:54:45] SOLVER   762941 DPushes remaining with DInf 0.0000000e+00              2685s
+[2019-03-21 19:54:50] SOLVER   759215 DPushes remaining with DInf 0.0000000e+00              2690s
+[2019-03-21 19:54:55] SOLVER   754751 DPushes remaining with DInf 0.0000000e+00              2695s
+[2019-03-21 19:55:00] SOLVER   750286 DPushes remaining with DInf 0.0000000e+00              2701s
+[2019-03-21 19:55:05] SOLVER   746565 DPushes remaining with DInf 0.0000000e+00              2705s
+[2019-03-21 19:55:10] SOLVER   741356 DPushes remaining with DInf 0.0000000e+00              2710s
+[2019-03-21 19:55:15] SOLVER   736891 DPushes remaining with DInf 0.0000000e+00              2715s
+[2019-03-21 19:55:20] SOLVER   733171 DPushes remaining with DInf 0.0000000e+00              2720s
+[2019-03-21 19:55:25] SOLVER   728705 DPushes remaining with DInf 0.0000000e+00              2726s
+[2019-03-21 19:55:30] SOLVER   724984 DPushes remaining with DInf 0.0000000e+00              2730s
+[2019-03-21 19:55:35] SOLVER   720519 DPushes remaining with DInf 0.0000000e+00              2736s
+[2019-03-21 19:55:40] SOLVER   716799 DPushes remaining with DInf 0.0000000e+00              2740s
+[2019-03-21 19:55:45] SOLVER   710847 DPushes remaining with DInf 0.0000000e+00              2745s
+[2019-03-21 19:55:50] SOLVER   704151 DPushes remaining with DInf 0.0000000e+00              2751s
+[2019-03-21 19:55:55] SOLVER   698199 DPushes remaining with DInf 0.0000000e+00              2756s
+[2019-03-21 19:56:00] SOLVER   693735 DPushes remaining with DInf 0.0000000e+00              2760s
+[2019-03-21 19:56:05] SOLVER   688527 DPushes remaining with DInf 0.0000000e+00              2765s
+[2019-03-21 19:56:10] SOLVER   682575 DPushes remaining with DInf 0.0000000e+00              2770s
+[2019-03-21 19:56:15] SOLVER   677367 DPushes remaining with DInf 0.0000000e+00              2775s
+[2019-03-21 19:56:20] SOLVER   672159 DPushes remaining with DInf 0.0000000e+00              2781s
+[2019-03-21 19:56:25] SOLVER   667695 DPushes remaining with DInf 0.0000000e+00              2785s
+[2019-03-21 19:56:30] SOLVER   663231 DPushes remaining with DInf 0.0000000e+00              2790s
+[2019-03-21 19:56:35] SOLVER   658767 DPushes remaining with DInf 0.0000000e+00              2796s
+[2019-03-21 19:56:40] SOLVER   654303 DPushes remaining with DInf 0.0000000e+00              2800s
+[2019-03-21 19:56:45] SOLVER   649839 DPushes remaining with DInf 0.0000000e+00              2805s
+[2019-03-21 19:56:50] SOLVER   644630 DPushes remaining with DInf 0.0000000e+00              2810s
+[2019-03-21 19:56:55] SOLVER   639422 DPushes remaining with DInf 0.0000000e+00              2815s
+[2019-03-21 19:57:00] SOLVER   634214 DPushes remaining with DInf 0.0000000e+00              2821s
+[2019-03-21 19:57:05] SOLVER   630494 DPushes remaining with DInf 0.0000000e+00              2825s
+[2019-03-21 19:57:10] SOLVER   626030 DPushes remaining with DInf 0.0000000e+00              2831s
+[2019-03-21 19:57:15] SOLVER   622310 DPushes remaining with DInf 0.0000000e+00              2836s
+[2019-03-21 19:57:21] SOLVER   617846 DPushes remaining with DInf 0.0000000e+00              2841s
+[2019-03-21 19:57:25] SOLVER   614870 DPushes remaining with DInf 0.0000000e+00              2845s
+[2019-03-21 19:57:30] SOLVER   611894 DPushes remaining with DInf 0.0000000e+00              2850s
+[2019-03-21 19:57:35] SOLVER   608918 DPushes remaining with DInf 0.0000000e+00              2855s
+[2019-03-21 19:57:41] SOLVER   605198 DPushes remaining with DInf 0.0000000e+00              2861s
+[2019-03-21 19:57:45] SOLVER   602222 DPushes remaining with DInf 0.0000000e+00              2865s
+[2019-03-21 19:57:50] SOLVER   598502 DPushes remaining with DInf 0.0000000e+00              2870s
+[2019-03-21 19:57:56] SOLVER   594038 DPushes remaining with DInf 0.0000000e+00              2876s
+[2019-03-21 19:58:00] SOLVER   589574 DPushes remaining with DInf 0.0000000e+00              2881s
+[2019-03-21 19:58:05] SOLVER   585110 DPushes remaining with DInf 0.0000000e+00              2886s
+[2019-03-21 19:58:10] SOLVER   581390 DPushes remaining with DInf 0.0000000e+00              2890s
+[2019-03-21 19:58:15] SOLVER   576926 DPushes remaining with DInf 0.0000000e+00              2895s
+[2019-03-21 19:58:20] SOLVER   572462 DPushes remaining with DInf 0.0000000e+00              2901s
+[2019-03-21 19:58:25] SOLVER   569486 DPushes remaining with DInf 0.0000000e+00              2905s
+[2019-03-21 19:58:31] SOLVER   565766 DPushes remaining with DInf 0.0000000e+00              2911s
+[2019-03-21 19:58:36] SOLVER   562790 DPushes remaining with DInf 0.0000000e+00              2916s
+[2019-03-21 19:58:41] SOLVER   559814 DPushes remaining with DInf 0.0000000e+00              2921s
+[2019-03-21 19:58:45] SOLVER   556838 DPushes remaining with DInf 0.0000000e+00              2926s
+[2019-03-21 19:58:51] SOLVER   553118 DPushes remaining with DInf 0.0000000e+00              2931s
+[2019-03-21 19:58:55] SOLVER   550142 DPushes remaining with DInf 0.0000000e+00              2935s
+[2019-03-21 19:59:00] SOLVER   546422 DPushes remaining with DInf 0.0000000e+00              2940s
+[2019-03-21 19:59:05] SOLVER   541957 DPushes remaining with DInf 0.0000000e+00              2946s
+[2019-03-21 19:59:10] SOLVER   537493 DPushes remaining with DInf 0.0000000e+00              2951s
+[2019-03-21 19:59:15] SOLVER   534517 DPushes remaining with DInf 0.0000000e+00              2955s
+[2019-03-21 19:59:20] SOLVER   530797 DPushes remaining with DInf 0.0000000e+00              2960s
+[2019-03-21 19:59:25] SOLVER   527821 DPushes remaining with DInf 0.0000000e+00              2965s
+[2019-03-21 19:59:30] SOLVER   524845 DPushes remaining with DInf 0.0000000e+00              2971s
+[2019-03-21 19:59:35] SOLVER   522613 DPushes remaining with DInf 0.0000000e+00              2975s
+[2019-03-21 19:59:40] SOLVER   518893 DPushes remaining with DInf 0.0000000e+00              2980s
+[2019-03-21 19:59:45] SOLVER   515173 DPushes remaining with DInf 0.0000000e+00              2985s
+[2019-03-21 19:59:50] SOLVER   510709 DPushes remaining with DInf 0.0000000e+00              2990s
+[2019-03-21 19:59:55] SOLVER   505397 DPushes remaining with DInf 0.0000000e+00              2995s
+[2019-03-21 20:00:00] SOLVER   499344 DPushes remaining with DInf 0.0000000e+00              3001s
+[2019-03-21 20:00:05] SOLVER   494136 DPushes remaining with DInf 0.0000000e+00              3005s
+[2019-03-21 20:00:10] SOLVER   488928 DPushes remaining with DInf 0.0000000e+00              3010s
+[2019-03-21 20:00:15] SOLVER   483561 DPushes remaining with DInf 0.0000000e+00              3015s
+[2019-03-21 20:00:20] SOLVER   478353 DPushes remaining with DInf 0.0000000e+00              3021s
+[2019-03-21 20:00:25] SOLVER   473888 DPushes remaining with DInf 0.0000000e+00              3025s
+[2019-03-21 20:00:30] SOLVER   469424 DPushes remaining with DInf 0.0000000e+00              3030s
+[2019-03-21 20:00:36] SOLVER   464960 DPushes remaining with DInf 0.0000000e+00              3036s
+[2019-03-21 20:00:40] SOLVER   461240 DPushes remaining with DInf 0.0000000e+00              3041s
+[2019-03-21 20:00:45] SOLVER   456776 DPushes remaining with DInf 0.0000000e+00              3046s
+[2019-03-21 20:00:50] SOLVER   451335 DPushes remaining with DInf 0.0000000e+00              3051s
+[2019-03-21 20:00:55] SOLVER   445753 DPushes remaining with DInf 0.0000000e+00              3056s
+[2019-03-21 20:01:00] SOLVER   441143 DPushes remaining with DInf 0.0000000e+00              3060s
+[2019-03-21 20:01:05] SOLVER   434948 DPushes remaining with DInf 0.0000000e+00              3066s
+[2019-03-21 20:01:10] SOLVER   429269 DPushes remaining with DInf 0.0000000e+00              3071s
+[2019-03-21 20:01:15] SOLVER   423942 DPushes remaining with DInf 0.0000000e+00              3075s
+[2019-03-21 20:01:20] SOLVER   418080 DPushes remaining with DInf 0.0000000e+00              3080s
+[2019-03-21 20:01:25] SOLVER   413156 DPushes remaining with DInf 0.0000000e+00              3085s
+[2019-03-21 20:01:30] SOLVER   407755 DPushes remaining with DInf 0.0000000e+00              3091s
+[2019-03-21 20:01:35] SOLVER   403967 DPushes remaining with DInf 0.0000000e+00              3095s
+[2019-03-21 20:01:41] SOLVER   398624 DPushes remaining with DInf 0.0000000e+00              3101s
+[2019-03-21 20:01:46] SOLVER   394904 DPushes remaining with DInf 0.0000000e+00              3106s
+[2019-03-21 20:01:50] SOLVER   391928 DPushes remaining with DInf 0.0000000e+00              3110s
+[2019-03-21 20:01:55] SOLVER   387464 DPushes remaining with DInf 0.0000000e+00              3116s
+[2019-03-21 20:02:00] SOLVER   383000 DPushes remaining with DInf 0.0000000e+00              3121s
+[2019-03-21 20:02:06] SOLVER   378536 DPushes remaining with DInf 0.0000000e+00              3126s
+[2019-03-21 20:02:10] SOLVER   374816 DPushes remaining with DInf 0.0000000e+00              3131s
+[2019-03-21 20:02:15] SOLVER   371096 DPushes remaining with DInf 0.0000000e+00              3136s
+[2019-03-21 20:02:20] SOLVER   367331 DPushes remaining with DInf 0.0000000e+00              3140s
+[2019-03-21 20:02:25] SOLVER   363611 DPushes remaining with DInf 0.0000000e+00              3146s
+[2019-03-21 20:02:30] SOLVER   360635 DPushes remaining with DInf 0.0000000e+00              3150s
+[2019-03-21 20:02:35] SOLVER   356915 DPushes remaining with DInf 0.0000000e+00              3156s
+[2019-03-21 20:02:40] SOLVER   353939 DPushes remaining with DInf 0.0000000e+00              3160s
+[2019-03-21 20:02:46] SOLVER   350219 DPushes remaining with DInf 0.0000000e+00              3166s
+[2019-03-21 20:02:50] SOLVER   348731 DPushes remaining with DInf 0.0000000e+00              3170s
+[2019-03-21 20:02:55] SOLVER   346499 DPushes remaining with DInf 0.0000000e+00              3176s
+[2019-03-21 20:03:00] SOLVER   343523 DPushes remaining with DInf 0.0000000e+00              3180s
+[2019-03-21 20:03:05] SOLVER   339803 DPushes remaining with DInf 0.0000000e+00              3185s
+[2019-03-21 20:03:10] SOLVER   336083 DPushes remaining with DInf 0.0000000e+00              3191s
+[2019-03-21 20:03:16] SOLVER   332363 DPushes remaining with DInf 0.0000000e+00              3196s
+[2019-03-21 20:03:21] SOLVER   329387 DPushes remaining with DInf 0.0000000e+00              3201s
+[2019-03-21 20:03:26] SOLVER   326411 DPushes remaining with DInf 0.0000000e+00              3206s
+[2019-03-21 20:03:31] SOLVER   323435 DPushes remaining with DInf 0.0000000e+00              3211s
+[2019-03-21 20:03:36] SOLVER   319715 DPushes remaining with DInf 0.0000000e+00              3216s
+[2019-03-21 20:03:40] SOLVER   317483 DPushes remaining with DInf 0.0000000e+00              3220s
+[2019-03-21 20:03:45] SOLVER   314507 DPushes remaining with DInf 0.0000000e+00              3225s
+[2019-03-21 20:03:51] SOLVER   310787 DPushes remaining with DInf 0.0000000e+00              3231s
+[2019-03-21 20:03:55] SOLVER   307811 DPushes remaining with DInf 0.0000000e+00              3236s
+[2019-03-21 20:04:00] SOLVER   304091 DPushes remaining with DInf 0.0000000e+00              3241s
+[2019-03-21 20:04:06] SOLVER   300371 DPushes remaining with DInf 0.0000000e+00              3246s
+[2019-03-21 20:04:11] SOLVER   297395 DPushes remaining with DInf 0.0000000e+00              3251s
+[2019-03-21 20:04:16] SOLVER   294419 DPushes remaining with DInf 0.0000000e+00              3256s
+[2019-03-21 20:04:21] SOLVER   291443 DPushes remaining with DInf 0.0000000e+00              3261s
+[2019-03-21 20:04:25] SOLVER   289211 DPushes remaining with DInf 0.0000000e+00              3265s
+[2019-03-21 20:04:30] SOLVER   286235 DPushes remaining with DInf 0.0000000e+00              3270s
+[2019-03-21 20:04:35] SOLVER   283259 DPushes remaining with DInf 0.0000000e+00              3275s
+[2019-03-21 20:04:40] SOLVER   281027 DPushes remaining with DInf 0.0000000e+00              3280s
+[2019-03-21 20:04:46] SOLVER   278051 DPushes remaining with DInf 0.0000000e+00              3286s
+[2019-03-21 20:04:50] SOLVER   275819 DPushes remaining with DInf 0.0000000e+00              3290s
+[2019-03-21 20:04:56] SOLVER   272843 DPushes remaining with DInf 0.0000000e+00              3296s
+[2019-03-21 20:05:00] SOLVER   270611 DPushes remaining with DInf 0.0000000e+00              3300s
+[2019-03-21 20:05:05] SOLVER   267635 DPushes remaining with DInf 0.0000000e+00              3306s
+[2019-03-21 20:05:11] SOLVER   264659 DPushes remaining with DInf 0.0000000e+00              3311s
+[2019-03-21 20:05:15] SOLVER   262425 DPushes remaining with DInf 0.0000000e+00              3315s
+[2019-03-21 20:05:21] SOLVER   259449 DPushes remaining with DInf 0.0000000e+00              3321s
+[2019-03-21 20:05:25] SOLVER   256473 DPushes remaining with DInf 0.0000000e+00              3326s
+[2019-03-21 20:05:30] SOLVER   253497 DPushes remaining with DInf 0.0000000e+00              3331s
+[2019-03-21 20:05:35] SOLVER   250520 DPushes remaining with DInf 0.0000000e+00              3336s
+[2019-03-21 20:05:41] SOLVER   247544 DPushes remaining with DInf 0.0000000e+00              3341s
+[2019-03-21 20:05:45] SOLVER   245312 DPushes remaining with DInf 0.0000000e+00              3346s
+[2019-03-21 20:05:50] SOLVER   243080 DPushes remaining with DInf 0.0000000e+00              3351s
+[2019-03-21 20:05:55] SOLVER   240104 DPushes remaining with DInf 0.0000000e+00              3355s
+[2019-03-21 20:06:00] SOLVER   237128 DPushes remaining with DInf 0.0000000e+00              3361s
+[2019-03-21 20:06:05] SOLVER   234152 DPushes remaining with DInf 0.0000000e+00              3365s
+[2019-03-21 20:06:11] SOLVER   230432 DPushes remaining with DInf 0.0000000e+00              3371s
+[2019-03-21 20:06:15] SOLVER   226712 DPushes remaining with DInf 0.0000000e+00              3375s
+[2019-03-21 20:06:20] SOLVER   222992 DPushes remaining with DInf 0.0000000e+00              3380s
+[2019-03-21 20:06:25] SOLVER   219272 DPushes remaining with DInf 0.0000000e+00              3385s
+[2019-03-21 20:06:30] SOLVER   215552 DPushes remaining with DInf 0.0000000e+00              3390s
+[2019-03-21 20:06:36] SOLVER   211832 DPushes remaining with DInf 0.0000000e+00              3396s
+[2019-03-21 20:06:40] SOLVER   208112 DPushes remaining with DInf 0.0000000e+00              3401s
+[2019-03-21 20:06:45] SOLVER   204392 DPushes remaining with DInf 0.0000000e+00              3406s
+[2019-03-21 20:06:50] SOLVER   201416 DPushes remaining with DInf 0.0000000e+00              3411s
+[2019-03-21 20:06:55] SOLVER   199184 DPushes remaining with DInf 0.0000000e+00              3415s
+[2019-03-21 20:07:01] SOLVER   196952 DPushes remaining with DInf 0.0000000e+00              3421s
+[2019-03-21 20:07:05] SOLVER   193976 DPushes remaining with DInf 0.0000000e+00              3426s
+[2019-03-21 20:07:11] SOLVER   191000 DPushes remaining with DInf 0.0000000e+00              3431s
+[2019-03-21 20:07:15] SOLVER   188024 DPushes remaining with DInf 0.0000000e+00              3436s
+[2019-03-21 20:07:20] SOLVER   185048 DPushes remaining with DInf 0.0000000e+00              3440s
+[2019-03-21 20:07:26] SOLVER   181328 DPushes remaining with DInf 0.0000000e+00              3446s
+[2019-03-21 20:07:30] SOLVER   179096 DPushes remaining with DInf 0.0000000e+00              3451s
+[2019-03-21 20:07:35] SOLVER   176864 DPushes remaining with DInf 0.0000000e+00              3455s
+[2019-03-21 20:07:41] SOLVER   173888 DPushes remaining with DInf 0.0000000e+00              3461s
+[2019-03-21 20:07:45] SOLVER   171656 DPushes remaining with DInf 0.0000000e+00              3466s
+[2019-03-21 20:07:50] SOLVER   169424 DPushes remaining with DInf 0.0000000e+00              3470s
+[2019-03-21 20:07:55] SOLVER   167192 DPushes remaining with DInf 0.0000000e+00              3475s
+[2019-03-21 20:08:01] SOLVER   164216 DPushes remaining with DInf 0.0000000e+00              3481s
+[2019-03-21 20:08:05] SOLVER   161984 DPushes remaining with DInf 0.0000000e+00              3486s
+[2019-03-21 20:08:10] SOLVER   159008 DPushes remaining with DInf 0.0000000e+00              3490s
+[2019-03-21 20:08:15] SOLVER   156032 DPushes remaining with DInf 0.0000000e+00              3495s
+[2019-03-21 20:08:21] SOLVER   153056 DPushes remaining with DInf 0.0000000e+00              3501s
+[2019-03-21 20:08:26] SOLVER   150080 DPushes remaining with DInf 0.0000000e+00              3506s
+[2019-03-21 20:08:30] SOLVER   147848 DPushes remaining with DInf 0.0000000e+00              3511s
+[2019-03-21 20:08:36] SOLVER   144872 DPushes remaining with DInf 0.0000000e+00              3516s
+[2019-03-21 20:08:40] SOLVER   142640 DPushes remaining with DInf 0.0000000e+00              3520s
+[2019-03-21 20:08:45] SOLVER   139664 DPushes remaining with DInf 0.0000000e+00              3526s
+[2019-03-21 20:08:51] SOLVER   136687 DPushes remaining with DInf 0.0000000e+00              3532s
+[2019-03-21 20:08:57] SOLVER   134455 DPushes remaining with DInf 0.0000000e+00              3537s
+[2019-03-21 20:09:00] SOLVER   132967 DPushes remaining with DInf 0.0000000e+00              3541s
+[2019-03-21 20:09:05] SOLVER   130735 DPushes remaining with DInf 0.0000000e+00              3545s
+[2019-03-21 20:09:11] SOLVER   127759 DPushes remaining with DInf 0.0000000e+00              3551s
+[2019-03-21 20:09:15] SOLVER   125527 DPushes remaining with DInf 0.0000000e+00              3555s
+[2019-03-21 20:09:21] SOLVER   122551 DPushes remaining with DInf 0.0000000e+00              3561s
+[2019-03-21 20:09:25] SOLVER   121063 DPushes remaining with DInf 0.0000000e+00              3566s
+[2019-03-21 20:09:31] SOLVER   118087 DPushes remaining with DInf 0.0000000e+00              3571s
+[2019-03-21 20:09:37] SOLVER   115855 DPushes remaining with DInf 0.0000000e+00              3577s
+[2019-03-21 20:09:42] SOLVER   114367 DPushes remaining with DInf 0.0000000e+00              3582s
+[2019-03-21 20:09:47] SOLVER   112879 DPushes remaining with DInf 0.0000000e+00              3587s
+[2019-03-21 20:09:51] SOLVER   111391 DPushes remaining with DInf 0.0000000e+00              3591s
+[2019-03-21 20:09:55] SOLVER   109903 DPushes remaining with DInf 0.0000000e+00              3595s
+[2019-03-21 20:10:00] SOLVER   108415 DPushes remaining with DInf 0.0000000e+00              3601s
+[2019-03-21 20:10:05] SOLVER   106927 DPushes remaining with DInf 0.0000000e+00              3606s
+[2019-03-21 20:10:12] SOLVER   104695 DPushes remaining with DInf 0.0000000e+00              3612s
+[2019-03-21 20:10:16] SOLVER   103207 DPushes remaining with DInf 0.0000000e+00              3616s
+[2019-03-21 20:10:20] SOLVER   101719 DPushes remaining with DInf 0.0000000e+00              3620s
+[2019-03-21 20:10:25] SOLVER   99487 DPushes remaining with DInf 0.0000000e+00              3626s
+[2019-03-21 20:10:31] SOLVER   97999 DPushes remaining with DInf 0.0000000e+00              3631s
+[2019-03-21 20:10:35] SOLVER   96511 DPushes remaining with DInf 0.0000000e+00              3635s
+[2019-03-21 20:10:41] SOLVER   94279 DPushes remaining with DInf 0.0000000e+00              3642s
+[2019-03-21 20:10:46] SOLVER   92791 DPushes remaining with DInf 0.0000000e+00              3646s
+[2019-03-21 20:10:52] SOLVER   90559 DPushes remaining with DInf 0.0000000e+00              3652s
+[2019-03-21 20:10:57] SOLVER   89071 DPushes remaining with DInf 0.0000000e+00              3657s
+[2019-03-21 20:11:02] SOLVER   87583 DPushes remaining with DInf 0.0000000e+00              3662s
+[2019-03-21 20:11:06] SOLVER   86095 DPushes remaining with DInf 0.0000000e+00              3666s
+[2019-03-21 20:11:11] SOLVER   84607 DPushes remaining with DInf 0.0000000e+00              3671s
+[2019-03-21 20:11:16] SOLVER   82375 DPushes remaining with DInf 0.0000000e+00              3676s
+[2019-03-21 20:11:20] SOLVER   80887 DPushes remaining with DInf 0.0000000e+00              3681s
+[2019-03-21 20:11:26] SOLVER   79399 DPushes remaining with DInf 0.0000000e+00              3687s
+[2019-03-21 20:11:30] SOLVER   77911 DPushes remaining with DInf 0.0000000e+00              3691s
+[2019-03-21 20:11:36] SOLVER   75679 DPushes remaining with DInf 0.0000000e+00              3696s
+[2019-03-21 20:11:40] SOLVER   73447 DPushes remaining with DInf 0.0000000e+00              3700s
+[2019-03-21 20:11:47] SOLVER   71215 DPushes remaining with DInf 0.0000000e+00              3707s
+[2019-03-21 20:11:51] SOLVER   70471 DPushes remaining with DInf 0.0000000e+00              3711s
+[2019-03-21 20:11:56] SOLVER   68983 DPushes remaining with DInf 0.0000000e+00              3716s
+[2019-03-21 20:12:02] SOLVER   67495 DPushes remaining with DInf 0.0000000e+00              3722s
+[2019-03-21 20:12:06] SOLVER   66751 DPushes remaining with DInf 0.0000000e+00              3726s
+[2019-03-21 20:12:12] SOLVER   65263 DPushes remaining with DInf 0.0000000e+00              3732s
+[2019-03-21 20:12:16] SOLVER   64519 DPushes remaining with DInf 0.0000000e+00              3736s
+[2019-03-21 20:12:21] SOLVER   63031 DPushes remaining with DInf 0.0000000e+00              3742s
+[2019-03-21 20:12:26] SOLVER   61543 DPushes remaining with DInf 0.0000000e+00              3747s
+[2019-03-21 20:12:31] SOLVER   60055 DPushes remaining with DInf 0.0000000e+00              3752s
+[2019-03-21 20:12:36] SOLVER   58567 DPushes remaining with DInf 0.0000000e+00              3756s
+[2019-03-21 20:12:41] SOLVER   57079 DPushes remaining with DInf 0.0000000e+00              3761s
+[2019-03-21 20:12:47] SOLVER   55591 DPushes remaining with DInf 0.0000000e+00              3767s
+[2019-03-21 20:12:52] SOLVER   54103 DPushes remaining with DInf 0.0000000e+00              3772s
+[2019-03-21 20:12:57] SOLVER   52615 DPushes remaining with DInf 0.0000000e+00              3778s
+[2019-03-21 20:13:01] SOLVER   51871 DPushes remaining with DInf 0.0000000e+00              3781s
+[2019-03-21 20:13:07] SOLVER   50383 DPushes remaining with DInf 0.0000000e+00              3787s
+[2019-03-21 20:13:10] SOLVER   49639 DPushes remaining with DInf 0.0000000e+00              3790s
+[2019-03-21 20:13:17] SOLVER   48151 DPushes remaining with DInf 0.0000000e+00              3797s
+[2019-03-21 20:13:20] SOLVER   47407 DPushes remaining with DInf 0.0000000e+00              3800s
+[2019-03-21 20:13:27] SOLVER   45919 DPushes remaining with DInf 0.0000000e+00              3807s
+[2019-03-21 20:13:30] SOLVER   45175 DPushes remaining with DInf 0.0000000e+00              3810s
+[2019-03-21 20:13:38] SOLVER   44431 DPushes remaining with DInf 0.0000000e+00              3819s
+[2019-03-21 20:13:44] SOLVER   43687 DPushes remaining with DInf 0.0000000e+00              3824s
+[2019-03-21 20:13:47] SOLVER   42943 DPushes remaining with DInf 0.0000000e+00              3828s
+[2019-03-21 20:13:51] SOLVER   42199 DPushes remaining with DInf 0.0000000e+00              3831s
+[2019-03-21 20:13:55] SOLVER   41455 DPushes remaining with DInf 0.0000000e+00              3835s
+[2019-03-21 20:14:08] SOLVER   39967 DPushes remaining with DInf 0.0000000e+00              3849s
+[2019-03-21 20:14:15] SOLVER   39223 DPushes remaining with DInf 0.0000000e+00              3855s
+[2019-03-21 20:14:22] SOLVER   38479 DPushes remaining with DInf 0.0000000e+00              3862s
+[2019-03-21 20:14:26] SOLVER   37735 DPushes remaining with DInf 0.0000000e+00              3867s
+[2019-03-21 20:14:31] SOLVER   36991 DPushes remaining with DInf 0.0000000e+00              3871s
+[2019-03-21 20:14:36] SOLVER   36247 DPushes remaining with DInf 0.0000000e+00              3876s
+[2019-03-21 20:14:44] SOLVER   34759 DPushes remaining with DInf 0.0000000e+00              3885s
+[2019-03-21 20:14:49] SOLVER   34015 DPushes remaining with DInf 0.0000000e+00              3889s
+[2019-03-21 20:14:51] SOLVER   33271 DPushes remaining with DInf 0.0000000e+00              3891s
+[2019-03-21 20:14:57] SOLVER   31783 DPushes remaining with DInf 0.0000000e+00              3898s
+[2019-03-21 20:15:01] SOLVER   31039 DPushes remaining with DInf 0.0000000e+00              3902s
+[2019-03-21 20:15:08] SOLVER   27996 DPushes remaining with DInf 0.0000000e+00              3908s
+[2019-03-21 20:15:11] SOLVER   27252 DPushes remaining with DInf 0.0000000e+00              3911s
+[2019-03-21 20:15:17] SOLVER   26508 DPushes remaining with DInf 0.0000000e+00              3917s
+[2019-03-21 20:15:22] SOLVER   25764 DPushes remaining with DInf 0.0000000e+00              3922s
+[2019-03-21 20:15:28] SOLVER   25020 DPushes remaining with DInf 0.0000000e+00              3929s
+[2019-03-21 20:15:36] SOLVER   24276 DPushes remaining with DInf 0.0000000e+00              3937s
+[2019-03-21 20:15:46] SOLVER   23532 DPushes remaining with DInf 0.0000000e+00              3946s
+[2019-03-21 20:15:55] SOLVER   22044 DPushes remaining with DInf 0.0000000e+00              3955s
+[2019-03-21 20:16:03] SOLVER   21300 DPushes remaining with DInf 0.0000000e+00              3963s
+[2019-03-21 20:16:14] SOLVER   20556 DPushes remaining with DInf 0.0000000e+00              3974s
+[2019-03-21 20:16:22] SOLVER   19812 DPushes remaining with DInf 0.0000000e+00              3983s
+[2019-03-21 20:16:31] SOLVER   19068 DPushes remaining with DInf 0.0000000e+00              3991s
+[2019-03-21 20:16:45] SOLVER   18324 DPushes remaining with DInf 0.0000000e+00              4006s
+[2019-03-21 20:16:58] SOLVER   17580 DPushes remaining with DInf 0.0000000e+00              4018s
+[2019-03-21 20:17:08] SOLVER   16836 DPushes remaining with DInf 0.0000000e+00              4028s
+[2019-03-21 20:17:17] SOLVER   16092 DPushes remaining with DInf 0.0000000e+00              4038s
+[2019-03-21 20:17:30] SOLVER   15348 DPushes remaining with DInf 0.0000000e+00              4051s
+[2019-03-21 20:17:51] SOLVER   14604 DPushes remaining with DInf 0.0000000e+00              4071s
+[2019-03-21 20:18:09] SOLVER   13860 DPushes remaining with DInf 0.0000000e+00              4089s
+[2019-03-21 20:18:29] SOLVER   13116 DPushes remaining with DInf 0.0000000e+00              4109s
+[2019-03-21 20:18:52] SOLVER   12372 DPushes remaining with DInf 0.0000000e+00              4132s
+[2019-03-21 20:19:13] SOLVER   11628 DPushes remaining with DInf 0.0000000e+00              4153s
+[2019-03-21 20:19:31] SOLVER   10884 DPushes remaining with DInf 0.0000000e+00              4171s
+[2019-03-21 20:19:49] SOLVER   10140 DPushes remaining with DInf 0.0000000e+00              4190s
+[2019-03-21 20:20:10] SOLVER   9396 DPushes remaining with DInf 0.0000000e+00              4211s
+[2019-03-21 20:20:30] SOLVER   8652 DPushes remaining with DInf 0.0000000e+00              4230s
+[2019-03-21 20:20:47] SOLVER   7908 DPushes remaining with DInf 0.0000000e+00              4247s
+[2019-03-21 20:21:03] SOLVER   7164 DPushes remaining with DInf 0.0000000e+00              4263s
+[2019-03-21 20:21:22] SOLVER   6420 DPushes remaining with DInf 0.0000000e+00              4282s
+[2019-03-21 20:21:43] SOLVER   5676 DPushes remaining with DInf 0.0000000e+00              4304s
+[2019-03-21 20:22:03] SOLVER   4932 DPushes remaining with DInf 0.0000000e+00              4323s
+[2019-03-21 20:22:18] SOLVER   4188 DPushes remaining with DInf 0.0000000e+00              4339s
+[2019-03-21 20:22:34] SOLVER   3444 DPushes remaining with DInf 0.0000000e+00              4355s
+[2019-03-21 20:22:53] SOLVER   2700 DPushes remaining with DInf 0.0000000e+00              4373s
+[2019-03-21 20:23:08] SOLVER   1956 DPushes remaining with DInf 0.0000000e+00              4388s
+[2019-03-21 20:23:27] SOLVER   1212 DPushes remaining with DInf 0.0000000e+00              4407s
+[2019-03-21 20:23:47] SOLVER   468 DPushes remaining with DInf 0.0000000e+00              4427s
+[2019-03-21 20:24:02] SOLVER   0 DPushes remaining with DInf 0.0000000e+00              4442s
+[2019-03-21 20:24:02] SOLVER   1819831 PPushes remaining with PInf 8.7100116e+03              4443s
+[2019-03-21 20:29:54] SOLVER   1202834 PPushes remaining with PInf 9.4958401e+02              4794s
+[2019-03-21 20:31:32] SOLVER   1124236 PPushes remaining with PInf 8.5239296e+02              4892s
+[2019-03-21 20:32:39] SOLVER   1070319 PPushes remaining with PInf 8.0436719e+02              4960s
+[2019-03-21 20:33:32] SOLVER   1031684 PPushes remaining with PInf 7.5422041e+02              5012s
+[2019-03-21 20:34:11] SOLVER   1001341 PPushes remaining with PInf 7.0205617e+02              5051s
+[2019-03-21 20:34:49] SOLVER   946075 PPushes remaining with PInf 6.5913561e+02              5090s
+[2019-03-21 20:35:16] SOLVER   924979 PPushes remaining with PInf 6.4508571e+02              5116s
+[2019-03-21 20:35:36] SOLVER   909017 PPushes remaining with PInf 6.2680671e+02              5136s
+[2019-03-21 20:35:58] SOLVER   897145 PPushes remaining with PInf 6.1395234e+02              5158s
+[2019-03-21 20:36:15] SOLVER   888042 PPushes remaining with PInf 6.0703701e+02              5176s
+[2019-03-21 20:36:26] SOLVER   879878 PPushes remaining with PInf 5.9883786e+02              5186s
+[2019-03-21 20:36:39] SOLVER   874549 PPushes remaining with PInf 5.9182696e+02              5199s
+[2019-03-21 20:36:50] SOLVER   869424 PPushes remaining with PInf 5.8831219e+02              5210s
+[2019-03-21 20:36:57] SOLVER   865156 PPushes remaining with PInf 5.8158827e+02              5218s
+[2019-03-21 20:37:06] SOLVER   861891 PPushes remaining with PInf 5.8020183e+02              5226s
+[2019-03-21 20:37:12] SOLVER   859649 PPushes remaining with PInf 5.7788731e+02              5232s
+[2019-03-21 20:37:21] SOLVER   856228 PPushes remaining with PInf 5.7317143e+02              5241s
+[2019-03-21 20:37:26] SOLVER   853732 PPushes remaining with PInf 5.7246005e+02              5246s
+[2019-03-21 20:37:31] SOLVER   851403 PPushes remaining with PInf 5.7123375e+02              5251s
+[2019-03-21 20:37:36] SOLVER   850072 PPushes remaining with PInf 5.7042797e+02              5256s
+[2019-03-21 20:38:48] SOLVER   848251 PPushes remaining with PInf 5.6809025e+02              5329s
+[2019-03-21 20:40:57] SOLVER   831325 PPushes remaining with PInf 3.5582674e+02              5457s
+[2019-03-21 20:41:34] SOLVER   814491 PPushes remaining with PInf 3.4196285e+02              5494s
+[2019-03-21 20:42:57] SOLVER   765702 PPushes remaining with PInf 3.0064791e+02              5577s
+[2019-03-21 20:45:06] SOLVER   731645 PPushes remaining with PInf 2.6771807e+02              5706s
+[2019-03-21 20:46:02] SOLVER   673325 PPushes remaining with PInf 2.2847632e+02              5762s
+[2019-03-21 20:47:38] SOLVER   633329 PPushes remaining with PInf 2.0798391e+02              5858s
+[2019-03-21 20:50:42] SOLVER   577059 PPushes remaining with PInf 1.9101331e+02              6042s
+[2019-03-21 20:50:55] SOLVER   533118 PPushes remaining with PInf 1.5458536e+02              6055s
+[2019-03-21 20:50:59] SOLVER   530099 PPushes remaining with PInf 1.4589637e+02              6059s
+[2019-03-21 20:51:06] SOLVER   526157 PPushes remaining with PInf 1.4237815e+02              6067s
+[2019-03-21 20:51:11] SOLVER   524384 PPushes remaining with PInf 1.3423128e+02              6071s
+[2019-03-21 20:51:18] SOLVER   521795 PPushes remaining with PInf 1.1136483e+02              6078s
+[2019-03-21 20:51:20] SOLVER   520925 PPushes remaining with PInf 1.0736901e+02              6081s
+[2019-03-21 20:51:53] SOLVER   511516 PPushes remaining with PInf 9.5621765e+01              6114s
+[2019-03-21 20:52:54] SOLVER   426377 PPushes remaining with PInf 9.0036271e+01              6174s
+[2019-03-21 20:53:29] SOLVER   394938 PPushes remaining with PInf 8.7875463e+01              6210s
+[2019-03-21 20:53:43] SOLVER   381042 PPushes remaining with PInf 8.6659103e+01              6224s
+[2019-03-21 20:53:58] SOLVER   366198 PPushes remaining with PInf 8.6225140e+01              6239s
+[2019-03-21 20:54:08] SOLVER   356577 PPushes remaining with PInf 8.5526624e+01              6249s
+[2019-03-21 20:54:17] SOLVER   350554 PPushes remaining with PInf 8.4397976e+01              6257s
+[2019-03-21 20:54:21] SOLVER   344617 PPushes remaining with PInf 8.3634634e+01              6262s
+[2019-03-21 20:54:26] SOLVER   334916 PPushes remaining with PInf 8.2770552e+01              6266s
+[2019-03-21 20:55:10] SOLVER   278373 PPushes remaining with PInf 8.4512684e+01              6311s
+[2019-03-21 20:56:45] SOLVER   218137 PPushes remaining with PInf 8.1580831e+01              6405s
+[2019-03-21 20:57:51] SOLVER   182815 PPushes remaining with PInf 8.0812266e+01              6472s
+[2019-03-21 20:58:57] SOLVER   166567 PPushes remaining with PInf 7.8712856e+01              6537s
+[2019-03-21 20:59:20] SOLVER   158245 PPushes remaining with PInf 7.7214464e+01              6560s
+[2019-03-21 20:59:28] SOLVER   144317 PPushes remaining with PInf 6.6413750e+01              6569s
+[2019-03-21 20:59:37] SOLVER   139158 PPushes remaining with PInf 6.4631533e+01              6578s
+[2019-03-21 20:59:57] SOLVER   133464 PPushes remaining with PInf 5.9515331e+01              6598s
+[2019-03-21 21:00:02] SOLVER   121821 PPushes remaining with PInf 4.9292813e+01              6602s
+[2019-03-21 21:00:05] SOLVER   118826 PPushes remaining with PInf 4.8669052e+01              6605s
+[2019-03-21 21:00:10] SOLVER   111281 PPushes remaining with PInf 4.2967000e+01              6610s
+[2019-03-21 21:00:16] SOLVER   96828 PPushes remaining with PInf 3.9038137e+01              6616s
+[2019-03-21 21:00:23] SOLVER   80547 PPushes remaining with PInf 3.7321801e+01              6623s
+[2019-03-21 21:00:25] SOLVER   78187 PPushes remaining with PInf 3.7301534e+01              6625s
+[2019-03-21 21:00:32] SOLVER   73812 PPushes remaining with PInf 3.7235484e+01              6632s
+[2019-03-21 21:00:38] SOLVER   71441 PPushes remaining with PInf 3.7167882e+01              6638s
+[2019-03-21 21:00:41] SOLVER   69359 PPushes remaining with PInf 3.7071063e+01              6642s
+[2019-03-21 21:00:48] SOLVER   65781 PPushes remaining with PInf 3.7071051e+01              6648s
+[2019-03-21 21:03:43] SOLVER   57885 PPushes remaining with PInf 3.7889792e+01              6823s
+[2019-03-21 21:05:50] SOLVER   51798 PPushes remaining with PInf 3.6526049e+01              6950s
+[2019-03-21 21:08:11] SOLVER   47426 PPushes remaining with PInf 3.5804411e+01              7091s
+[2019-03-21 21:12:10] SOLVER   41941 PPushes remaining with PInf 3.4626998e+01              7330s
+[2019-03-21 21:15:03] SOLVER   36984 PPushes remaining with PInf 3.1829418e+01              7503s
+[2019-03-21 21:17:29] SOLVER   31402 PPushes remaining with PInf 3.0329254e+01              7649s
+[2019-03-21 21:18:44] SOLVER   26744 PPushes remaining with PInf 2.8267392e+01              7725s
+[2019-03-21 21:20:15] SOLVER   22831 PPushes remaining with PInf 2.2850408e+01              7816s
+[2019-03-21 21:21:00] SOLVER   19369 PPushes remaining with PInf 1.7676683e+01              7860s
+[2019-03-21 21:21:36] SOLVER   16224 PPushes remaining with PInf 1.1276517e+01              7897s
+[2019-03-21 21:22:12] SOLVER   12211 PPushes remaining with PInf 5.7191237e+00              7933s
+[2019-03-21 21:22:30] SOLVER   9034 PPushes remaining with PInf 5.5511679e+00              7950s
+[2019-03-21 21:22:36] SOLVER   7108 PPushes remaining with PInf 4.0798638e+00              7956s
+[2019-03-21 21:22:41] SOLVER   5086 PPushes remaining with PInf 3.0180429e+00              7962s
+[2019-03-21 21:22:46] SOLVER   3219 PPushes remaining with PInf 1.7081003e+00              7966s
+[2019-03-21 21:22:53] SOLVER   3 PPushes remaining with PInf 8.2400405e-01              7973s
+[2019-03-21 21:22:55] SOLVER   0 PPushes remaining with PInf 8.2399511e-01              7975s
+[2019-03-21 21:22:56] SOLVER   Push phase complete: Pinf 8.2399511e-01, Dinf 5.8285766e+10   7976s
+[2019-03-21 21:22:57] SOLVER   Iteration    Objective       Primal Inf.    Dual Inf.      Time
+[2019-03-21 21:22:57] SOLVER   2894757    3.3637728e+11   0.000000e+00   5.828577e+10   7977s
+[2019-03-21 21:23:32] SOLVER   2895510    3.3637577e+11   0.000000e+00   1.201874e+09   8012s
+[2019-03-21 21:24:00] SOLVER   2896255    3.3637575e+11   0.000000e+00   1.209940e+09   8040s
+[2019-03-21 21:24:31] SOLVER   2896999    3.3637573e+11   0.000000e+00   3.702353e+09   8072s
+[2019-03-21 21:24:46] SOLVER   2897743    3.3637572e+11   0.000000e+00   8.626099e+08   8087s
+[2019-03-21 21:24:59] SOLVER   2898487    3.3637572e+11   0.000000e+00   8.625052e+08   8099s
+[2019-03-21 21:25:27] SOLVER   2899231    3.3637572e+11   0.000000e+00   8.624384e+08   8127s
+[2019-03-21 21:25:39] SOLVER   2899975    3.3637572e+11   0.000000e+00   8.628863e+08   8139s
+[2019-03-21 21:25:57] SOLVER   2900719    3.3637572e+11   0.000000e+00   8.628405e+08   8157s
+[2019-03-21 21:26:22] SOLVER   2901463    3.3637571e+11   0.000000e+00   4.836611e+10   8182s
+[2019-03-21 21:26:56] SOLVER   2902207    3.3637571e+11   0.000000e+00   4.558614e+09   8216s
+[2019-03-21 21:27:29] SOLVER   2902951    3.3637571e+11   0.000000e+00   4.457385e+09   8250s
+[2019-03-21 21:27:48] SOLVER   2903695    3.3637571e+11   0.000000e+00   4.457551e+09   8268s
+[2019-03-21 21:28:03] SOLVER   2904439    3.3637571e+11   0.000000e+00   4.452914e+09   8283s
+[2019-03-21 21:28:24] SOLVER   2905183    3.3637571e+11   0.000000e+00   2.538110e+10   8304s
+[2019-03-21 21:28:44] SOLVER   2905927    3.3637571e+11   0.000000e+00   1.988737e+10   8324s
+[2019-03-21 21:29:06] SOLVER   2906671    3.3637564e+11   0.000000e+00   1.653904e+09   8347s
+[2019-03-21 21:29:24] SOLVER   2907415    3.3637548e+11   0.000000e+00   4.179281e+10   8364s
+[2019-03-21 21:29:46] SOLVER   2908159    3.3637548e+11   0.000000e+00   4.178386e+10   8386s
+[2019-03-21 21:29:53] SOLVER   2908903    3.3637548e+11   0.000000e+00   4.177137e+10   8393s
+[2019-03-21 21:29:55] SOLVER   2909692    3.3637548e+11   0.000000e+00   4.177136e+10   8396s
+[2019-03-21 21:30:09] SOLVER   2910436    3.3637548e+11   0.000000e+00   4.177040e+10   8410s
+[2019-03-21 21:30:51] SOLVER   2911181    3.3637544e+11   0.000000e+00   4.191991e+07   8451s
+[2019-03-21 21:31:29] SOLVER   2911925    3.3637541e+11   0.000000e+00   4.268523e+07   8489s
+[2019-03-21 21:32:09] SOLVER   2912669    3.3637537e+11   0.000000e+00   5.003935e+07   8529s
+[2019-03-21 21:32:47] SOLVER   2913413    3.3637535e+11   0.000000e+00   8.085053e+07   8567s
+[2019-03-21 21:33:04] SOLVER   2914157    3.3637534e+11   0.000000e+00   8.091163e+07   8584s
+[2019-03-21 21:33:53] SOLVER   2914901    3.3637533e+11   0.000000e+00   8.320619e+06   8633s
+[2019-03-21 21:34:35] SOLVER   2915645    3.3637532e+11   0.000000e+00   5.776032e+06   8675s
+[2019-03-21 21:35:02] SOLVER   2916389    3.3637532e+11   0.000000e+00   2.219866e+07   8702s
+[2019-03-21 21:35:20] SOLVER   2917133    3.3637532e+11   0.000000e+00   9.161649e+06   8720s
+[2019-03-21 21:35:33] SOLVER   2917877    3.3637532e+11   0.000000e+00   9.160851e+06   8733s
+[2019-03-21 21:35:49] SOLVER   2918621    3.3637532e+11   0.000000e+00   9.366747e+06   8749s
+[2019-03-21 21:36:04] SOLVER   2919365    3.3637532e+11   0.000000e+00   3.395649e+08   8764s
+[2019-03-21 21:36:17] SOLVER   2920109    3.3637532e+11   0.000000e+00   2.065189e+07   8777s
+[2019-03-21 21:36:26] SOLVER   2920853    3.3637532e+11   0.000000e+00   2.064913e+07   8786s
+[2019-03-21 21:36:41] SOLVER   2921597    3.3637531e+11   0.000000e+00   6.288653e+06   8801s
+[2019-03-21 21:36:57] SOLVER   2922341    3.3637531e+11   0.000000e+00   1.423379e+05   8817s
+[2019-03-21 21:37:39] SOLVER   2923085    3.3637531e+11   0.000000e+00   5.791679e+06   8859s
+[2019-03-21 21:38:13] SOLVER   2923829    3.3637530e+11   0.000000e+00   1.524428e+07   8894s
+[2019-03-21 21:38:31] SOLVER   2924573    3.3637530e+11   0.000000e+00   3.075257e+06   8911s
+[2019-03-21 21:38:46] SOLVER   2925317    3.3637530e+11   0.000000e+00   2.787197e+06   8926s
+[2019-03-21 21:39:15] SOLVER   2926061    3.3637529e+11   0.000000e+00   1.625070e+07   8955s
+[2019-03-21 21:39:58] SOLVER   2926805    3.3637529e+11   0.000000e+00   3.438472e+03   8998s
+[2019-03-21 21:40:22] SOLVER   2927009    3.3637529e+11   0.000000e+00   0.000000e+00   9022s
+[2019-03-21 21:40:31] SOLVER   2927009    3.3637529e+11   0.000000e+00   3.000000e-06   9031s
+[2019-03-21 21:40:35] SOLVER   Extra 2 simplex iterations after uncrush
+[2019-03-21 21:40:35] SOLVER   2927011    3.3637529e+11   0.000000e+00   0.000000e+00   9035s
+[2019-03-21 21:40:35] SOLVER   Solved with barrier
+[2019-03-21 21:40:35] SOLVER   Solved in 2927011 iterations and 9034.85 seconds
+[2019-03-21 21:40:35] SOLVER   Optimal objective  3.363752926e+11
+[2019-03-21 21:40:35] SOLVER   Warning: unscaled primal violation = 0.000800818 and residual = 0.000800818
+[2019-03-21 21:40:37] SOLVER   Changed value of parameter LogFile to
+[2019-03-21 21:40:37] SOLVER   Prev: /cluster/work/cpesm/trtim/ose-model-comparison/tmpb1sgg03v.log  Default:
+[2019-03-21 21:42:23] INFO     Backend: solver finished running. Time since start: 3:00:31.455452
+[2019-03-21 21:42:25] INFO     Backend: loaded results
+[2019-03-21 21:43:01] INFO     Backend: generated solution array. Time since start: 3:01:09.115704
+[2019-03-21 21:43:01] INFO     Postprocessing: started
+[2019-03-21 21:44:40] INFO     Postprocessing: All values < 1e-10 set to 0 in carrier_prod, carrier_con, storage, capacity_factor
+[2019-03-21 21:44:40] INFO     Postprocessing: ended. Time since start: 3:02:48.499554
+Calliope 0.6.4-dev starting at 2019-03-21 18:41:51
+
+Model name:   Open Source Modelling -- Euro Calliope model
+Model size:   34 locations, 17 technologies, 4380 timesteps
+
+Starting model run...
+Saving NetCDF results to file: build/output/minus6/03.nc
+
+Calliope run complete. Elapsed: 10971.1 seconds (time at exit: 2019-03-21 21:44:43)
