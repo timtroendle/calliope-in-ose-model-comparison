@@ -4,7 +4,7 @@ include: "rules/construct.smk"
 include: "rules/analyse.smk"
 include: "rules/sync.smk"
 
-configfile: "config/dev.yaml"
+configfile: "config/default.yaml"
 localrules: all, report, clean
 
 

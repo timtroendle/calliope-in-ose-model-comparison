@@ -26,30 +26,32 @@ def model_output(scenario):
 
 
 @pytest.fixture(scope="module")
-def generated_electricity(model_output):
+def generated_electricity(model_output, variables):
     prod = model_output.get_formatted_array("carrier_prod").to_dataframe(name="carrier_prod")
     prod = prod.groupby(["locs", "techs"]).carrier_prod.sum().reset_index()
     prod.drop(index=prod[prod.techs.str.contains("transmission")].index, inplace=True)
     prod.locs = prod.locs.str[:3]
     prod.techs = prod.techs.map(lambda tech: tech if tech[-4] != "_" else tech[:-4])
-    return prod.groupby(["locs", "techs"]).carrier_prod.sum().reset_index().pivot(
-        index="locs",
-        columns="techs",
-        values="carrier_prod"
-    )
+    return (prod.groupby(["locs", "techs"])
+                .carrier_prod
+                .sum()
+                .reset_index()
+                .pivot(index="locs", columns="techs", values="carrier_prod")
+                .mul(1 / variables["scaling-factors"]["power"]))
 
 
 @pytest.fixture(scope="module")
-def consumption(model_output):
+def consumption(model_output, variables):
     con = model_output.get_formatted_array("carrier_con").to_dataframe(name="carrier_con")
     con = con.groupby(["locs", "techs"]).carrier_con.sum().reset_index()
     con.drop(index=con[con.techs.str.contains("transmission")].index, inplace=True)
     con.locs = con.locs.str[:3]
-    return con.groupby(["locs", "techs"]).carrier_con.sum().reset_index().pivot(
-        index="locs",
-        columns="techs",
-        values="carrier_con"
-    )
+    return (con.groupby(["locs", "techs"])
+               .carrier_con
+               .sum()
+               .reset_index()
+               .pivot(index="locs", columns="techs", values="carrier_con")
+               .mul(1 / variables["scaling-factors"]["power"]))
 
 
 @pytest.fixture()

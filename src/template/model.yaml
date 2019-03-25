@@ -15,20 +15,20 @@ overrides:
         techs.battery.costs.monetary.interest_rate: 0.04 # {own assumption}
         techs.battery.costs.monetary.om_annual: 0  # {own_assumptions}
         techs.battery.costs.monetary.om_prod: 0  # {own_assumptions}
-        techs.nuclear.costs.monetary.om_con: 1.69 # €/MWh
-        techs.lignite.costs.monetary.om_con: 3.96 # €/MWh
-        techs.coal.costs.monetary.om_con: 9.72 # €/MWh
-        techs.ccgt.costs.monetary.om_con: 31.68 # €/MWh
-        techs.nuclear.costs.monetary.om_prod: 1.018 # €/MWh 0.658 + (0.03 € / kg CO2eq) * (12 kg CO2eq/MWh)
-        techs.lignite.costs.monetary.om_prod: 28.615 # €/MWh 1.315 + (0.03 € / kg CO2eq) * (910 kg CO2eq/MWh)
-        techs.coal.costs.monetary.om_prod: 25.915 # €/MWh 1.315 + (0.03 € / kg CO2eq) * (820 kg CO2eq/MWh)
-        techs.ccgt.costs.monetary.om_prod: 14.832 # €/MWh 0.132 + (0.03 € / kg CO2eq) * (490 kg CO2eq/MWh)
+        techs.nuclear.costs.monetary.om_con: {{ 1.69 * monetary_scaling_factor }} # [{{ 1 / monetary_scaling_factor }} €/MWh]
+        techs.lignite.costs.monetary.om_con: {{ 3.96 * monetary_scaling_factor }} # [{{ 1 / monetary_scaling_factor }} €/MWh]
+        techs.coal.costs.monetary.om_con: {{ 9.72 * monetary_scaling_factor }} # [{{ 1 / monetary_scaling_factor }} €/MWh]
+        techs.ccgt.costs.monetary.om_con: {{ 31.68 * monetary_scaling_factor }} # [{{ 1 / monetary_scaling_factor }} €/MWh]
+        techs.nuclear.costs.monetary.om_prod: {{ 1.018 * monetary_scaling_factor }} # [{{ 1 / monetary_scaling_factor }} €/MWh] 0.658 + (0.03 € / kg CO2eq) * (12 kg CO2eq/MWh)
+        techs.lignite.costs.monetary.om_prod: {{ 28.615 * monetary_scaling_factor }} # [{{ 1 / monetary_scaling_factor }} €/MWh] 1.315 + (0.03 € / kg CO2eq) * (910 kg CO2eq/MWh)
+        techs.coal.costs.monetary.om_prod: {{ 25.915 * monetary_scaling_factor }} # [{{ 1 / monetary_scaling_factor }} €/MWh] 1.315 + (0.03 € / kg CO2eq) * (820 kg CO2eq/MWh)
+        techs.ccgt.costs.monetary.om_prod: {{ 14.832 * monetary_scaling_factor }} # [{{ 1 / monetary_scaling_factor }} €/MWh] 0.132 + (0.03 € / kg CO2eq) * (490 kg CO2eq/MWh)
     diw_battery_baseline_cost:
-        techs.battery.costs.monetary.energy_cap: 135140 # EUR per MW {Schmidt et al. 2017 and own assumptions}
-        techs.battery.costs.monetary.storage_cap: 315320 # EUR per MWh Schmidt et al. 2017 and own assumptions capacity
+        techs.battery.costs.monetary.energy_cap: {{ 135140 * monetary_scaling_factor }} # [{{ 1 / monetary_scaling_factor }} EUR per MW] {Schmidt et al. 2017 and own assumptions}
+        techs.battery.costs.monetary.storage_cap: {{ 315320 * monetary_scaling_factor }} # [{{ 1 / monetary_scaling_factor }} EUR per MWh] Schmidt et al. 2017 and own assumptions capacity
     diw_battery_low_cost:
-        techs.battery.costs.monetary.energy_cap: 67570 # EUR per MW
-        techs.battery.costs.monetary.storage_cap: 157660 # EUR per MWh
+        techs.battery.costs.monetary.energy_cap: {{ 67570 * monetary_scaling_factor }} # [{{ 1 / monetary_scaling_factor }} EUR per MW]
+        techs.battery.costs.monetary.storage_cap: {{ 157660 * monetary_scaling_factor }} # [{{ 1 / monetary_scaling_factor }} EUR per MWh]
     equal_interest_rate: # harmonise interest rates
         tech_groups.conversion.costs.monetary.interest_rate: 0.04
         tech_groups.conversion_plus.costs.monetary.interest_rate: 0.04
@@ -258,11 +258,11 @@ model:
     name: 'Open Source Modelling -- Euro Calliope model'
     calliope_version: 0.6.4
     timeseries_data_path: './'
-    subset_time: ['{{ config.from_date }}', '{{ config.to_date }}']
-    {% if config.resolution != "1H" %}
+    subset_time: ['{{ from_date }}', '{{ to_date }}']
+    {% if resolution != "1H" %}
     time:
         function: resample
-        function_options: {'resolution': '{{ config.resolution }}'}
+        function_options: {'resolution': '{{ resolution }}'}
     {% endif %}
 run:
     solver: gurobi
@@ -290,8 +290,8 @@ techs:
             lifetime: 60 # [JRC ETRI 2014]
         costs:
             monetary:
-                energy_cap: 5620000 # EUR2013/MW, [JRC ETRI 2014]
-                om_annual: 84300 # EUR2013/MW/year, [JRC ETRI 2014]
+                energy_cap: {{ 5620000 * monetary_scaling_factor }} # [{{ 1 / monetary_scaling_factor }} EUR2013/MW], [JRC ETRI 2014]
+                om_annual: {{ 84300 * monetary_scaling_factor }} # [{{ 1 / monetary_scaling_factor }} EUR2013/MW/year], [JRC ETRI 2014]
     biomass: # based on Anaerobic digestion from [JRC ETRI 2014]
         essentials:
             name: Biomass
@@ -303,9 +303,9 @@ techs:
             lifetime: 20
         costs:
             monetary:
-                energy_cap: 2760000  # 2013 EUR/MW
-                om_prod: 3.1  # 2013 EUR/MWh
-                om_annual: 113160  # 2013 EUR/MW/yr 2760000 * 4.1%
-                om_con: 16.2 # medium price taken from [@EuropeanEnvironmentAgency:2013]d
+                energy_cap: {{ 2760000 * monetary_scaling_factor }}  # [{{ 1 / monetary_scaling_factor }} 2013 EUR/MW]
+                om_prod: {{ 3.1 * monetary_scaling_factor }}  # [{{ 1 / monetary_scaling_factor }} 2013 EUR/MWh]
+                om_annual: {{ 113160 * monetary_scaling_factor }}  # [{{ 1 / monetary_scaling_factor }} 2013 EUR/MW/yr] 2760000 * 4.1%
+                om_con: {{ 16.2 * monetary_scaling_factor }} # [{{ 1 / monetary_scaling_factor }} EUR/MWh] medium price taken from [@EuropeanEnvironmentAgency:2013]
             co2:
                 om_prod: 0

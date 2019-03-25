@@ -3,12 +3,12 @@ import calliope
 import pandas as pd
 
 
-def excavate_trade(path_to_results, path_to_trade_amounts):
+def excavate_trade(path_to_results, scaling_factor, path_to_trade_amounts):
     """Excavate trade between countries from the model results."""
     model = calliope.read_netcdf(path_to_results)
 
-    imports = _read_imports(model) / 1e3 # from MWh to GWh
-    exports = _read_exports(model) / 1e3 # from MWh to GWh
+    imports = _read_imports(model).div(scaling_factor * 1e3) # from MWh to GWh
+    exports = _read_exports(model).div(scaling_factor * 1e3) # from MWh to GWh
 
     pd.DataFrame(
         index=imports.index,
@@ -42,5 +42,6 @@ def _read_exports(model):
 if __name__ == "__main__":
     excavate_trade(
         path_to_results=snakemake.input.results[0],
-        path_to_trade_amounts=snakemake.output[0]
+        path_to_trade_amounts=snakemake.output[0],
+        scaling_factor=snakemake.params.scaling_factor
     )

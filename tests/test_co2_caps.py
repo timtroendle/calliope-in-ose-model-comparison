@@ -24,7 +24,7 @@ def model_output(scenario):
 
 
 @pytest.fixture(scope="module")
-def co2_emissions(model_output):
+def co2_emissions(model_output, variables):
     return (model_output.get_formatted_array("cost")
                         .to_dataframe()
                         .reset_index()
@@ -32,7 +32,8 @@ def co2_emissions(model_output):
                         .sum()
                         .reset_index()
                         .pivot(columns="costs", index="locs", values="cost")
-                        .loc[:, "co2"])
+                        .loc[:, "co2"]
+                        .mul( 1 / variables["scaling-factors"]["co2"]))
 
 
 class Base:

@@ -4,12 +4,12 @@ import seaborn as sns
 import calliope
 
 
-def visualise_model_results(path_to_results, path_to_figure):
+def visualise_model_results(path_to_results, scaling_factor, path_to_figure):
     """Plot the results."""
     model = calliope.read_netcdf(path_to_results)
 
-    generation = _create_generation_timeseries(model) / 1e3 # from MW to GW
-    consumption = _create_consumption_timeseries(model) / 1e3 # from MW to GW
+    generation = _create_generation_timeseries(model).div(scaling_factor * 1e3) # from MW to GW
+    consumption = _create_consumption_timeseries(model).div(scaling_factor * 1e3) # from MW to GW
 
     generation = generation.reindex(columns=generation.columns.union(consumption.columns), fill_value=0)
     consumption = consumption.reindex(columns=generation.columns.union(consumption.columns), fill_value=0)
@@ -59,5 +59,6 @@ def _create_consumption_timeseries(model):
 if __name__ == "__main__":
     visualise_model_results(
         path_to_results=snakemake.input.results[0],
-        path_to_figure=snakemake.output[0]
+        path_to_figure=snakemake.output[0],
+        scaling_factor=snakemake.params.scaling_factor
     )
