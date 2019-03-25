@@ -270,6 +270,7 @@ run:
     mode: plan
     solver_options:
         Threads: 4
+        Method: 2 # use barrier, but do not run simplex in parallel
 techs:
     demand_elec:
         essentials:
