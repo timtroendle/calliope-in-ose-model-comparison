@@ -9,28 +9,29 @@ links:
     {{ row.fromLocation }},{{ row.toLocation }}.techs:
         ac_transmission:
             constraints:
-                energy_cap_equals: {{ row.capacity_go }} # MW
+                energy_cap_equals: {{ row.capacity_go }} # [{{ unit_scaling_factor }} MW]
                 one_way: true
     {{ row.toLocation }},{{ row.fromLocation }}.techs:
         ac_transmission:
             constraints:
-                energy_cap_equals: {{ row.capacity_return }} # MW
+                energy_cap_equals: {{ row.capacity_return }} # [{{ unit_scaling_factor }} MW]
                 one_way: true
     {% endfor %}
 """
 
 
-def generate_links(path_to_ntc, path_to_result):
+def generate_links(path_to_ntc, scaling_factor, path_to_result):
     """Generate a file that represents links in Calliope."""
-    ntcs = _read_ntcs(path_to_ntc)
+    ntcs = _read_ntcs(path_to_ntc, scaling_factor)
     links = jinja2.Template(TEMPLATE).render(
-        ntcs=ntcs
+        ntcs=ntcs,
+        unit_scaling_factor=1 / scaling_factor
     )
     with open(path_to_result, "w") as result_file:
         result_file.write(links)
 
 
-def _read_ntcs(path_to_ntc):
+def _read_ntcs(path_to_ntc, scaling_factor):
     data = pd.read_excel(path_to_ntc, sheet_name="NTC", skiprows=1)
     data["fromLocation"] = data["Border"].map(
         lambda x: pycountry.countries.lookup(x.split("-")[0][:2]).alpha_3
@@ -66,11 +67,14 @@ def _read_ntcs(path_to_ntc):
 
     return (data.groupby(["fromLocation", "toLocation"])
                 .agg({"capacity_go": "sum", "capacity_return": "sum"})
+                .astype(pd.np.float32)
+                .mul(scaling_factor)
                 .reset_index())
 
 
 if __name__ == "__main__":
     generate_links(
-        snakemake.input.ntc,
-        snakemake.output[0]
+        path_to_ntc=snakemake.input.ntc,
+        path_to_result=snakemake.output[0],
+        scaling_factor=snakemake.params.scaling_factor
     )

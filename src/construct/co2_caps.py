@@ -10,21 +10,25 @@ group_constraints:
     co2_cap_{{ country }}:
         locs: ["{{ country }}"]
         cost_max:
-            co2: {{ cap }}
+            co2: {{ cap }} # [{{ unit_scaling_factor }} Mt]
     {% endfor %}
 """
 
 
-def generate_co2_caps(path_to_caps, path_to_yaml, path_to_csv):
+def generate_co2_caps(path_to_caps, scaling_factor, path_to_yaml, path_to_csv):
     """Create Calliope file defining CO2 caps."""
-    raw = _read_caps(path_to_caps)
+    raw = _read_caps(path_to_caps, scaling_factor)
     raw.to_csv(path_to_csv, index=True, header=True)
 
+    caps = jinja2.Template(TEMPLATE).render(
+        caps=raw["co2_cap"],
+        unit_scaling_factor=1 / scaling_factor
+    )
     with open(path_to_yaml, "w") as result_file:
-        result_file.write(jinja2.Template(TEMPLATE).render(caps=raw["co2_cap"]))
+        result_file.write(caps)
 
 
-def _read_caps(path_to_data):
+def _read_caps(path_to_data, scaling_factor):
     data = pd.read_excel(
         path_to_data,
         sheet_name="bounds on RES and CO2",
@@ -41,12 +45,13 @@ def _read_caps(path_to_data):
         columns={"2030 Power generation/District heating (Mt of CO2 eq.)": "co2_cap"},
         inplace=True
     )
-    return data * 1e3 # from Mt to kt
+    return data.mul(scaling_factor)
 
 
 if __name__ == "__main__":
     generate_co2_caps(
         path_to_caps=snakemake.input.caps,
         path_to_yaml=snakemake.output.yaml,
-        path_to_csv=snakemake.output.csv
+        path_to_csv=snakemake.output.csv,
+        scaling_factor=snakemake.params.scaling_factor
     )

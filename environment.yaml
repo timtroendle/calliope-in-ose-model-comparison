@@ -38,6 +38,7 @@ dependencies:
     - xarray<0.11
     - pip:
         - pytest-pythonpath # adds the root path "./" to PYTHONPATH
+        - pytest-variables
         - pandoc-tablenos
         - pandoc-fignos
         - pantable

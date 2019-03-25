@@ -3,7 +3,7 @@ import pandas as pd
 import pycountry
 
 
-def preprocess_load_data(path_to_raw_load, assumed_year, path_to_result):
+def preprocess_load_data(path_to_raw_load, assumed_year, scaling_factor, path_to_result):
     """Preprocess the load data to be compatible with Calliope."""
     data = pd.read_excel(path_to_raw_load, sheet_name="load (MW)", index_col=0)
     data.index = pd.date_range(
@@ -36,7 +36,7 @@ def preprocess_load_data(path_to_raw_load, assumed_year, path_to_result):
         inplace=True
     )
     data = data.groupby(data.columns, axis='columns').sum()
-    data = data * (-1)
+    data = data.mul(-1).mul(scaling_factor)
     data.to_csv(path_to_result, index=True, header=True)
 
 
@@ -44,5 +44,6 @@ if __name__ == "__main__":
     preprocess_load_data(
         path_to_raw_load=snakemake.input.raw,
         assumed_year=snakemake.config["year"],
-        path_to_result=snakemake.output[0]
+        path_to_result=snakemake.output[0],
+        scaling_factor=snakemake.params.scaling_factor
     )

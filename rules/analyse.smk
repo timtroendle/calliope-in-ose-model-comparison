@@ -1,4 +1,4 @@
-configfile: "config/dev.yaml"
+configfile: "config/default.yaml"
 
 rule run:
     message: "Run the model for scenario {wildcards.scenario}."
@@ -14,6 +14,7 @@ rule plot:
     input:
         src = "src/analyse/vis.py",
         results = rules.run.output
+    params: scaling_factor = config["scaling-factors"]["power"]
     output: "build/output/{scenario}/plot.png"
     script: "../src/analyse/vis.py"
 
@@ -23,6 +24,7 @@ rule capacity:
     input:
         src = "src/analyse/capacity.py",
         results = rules.run.output
+    params: scaling_factor = config["scaling-factors"]["power"]
     output:
         raw = "build/output/{scenario}/capacity-raw.csv",
         publish = "build/output/{scenario}/capacity-publish.csv"
@@ -34,6 +36,7 @@ rule storage_capacity:
     input:
         src = "src/analyse/storage_capacity.py",
         results = rules.run.output
+    params: scaling_factor = config["scaling-factors"]["power"]
     output:
         raw = "build/output/{scenario}/storage-capacity-raw.csv",
         publish = "build/output/{scenario}/storage-capacity-publish.csv"
@@ -45,6 +48,7 @@ rule trade:
     input:
         src = "src/analyse/trade.py",
         results = rules.run.output
+    params: scaling_factor = config["scaling-factors"]["power"]
     output: "build/output/{scenario}/trade.csv"
     script: "../src/analyse/trade.py"
 
@@ -76,6 +80,9 @@ rule cost:
     input:
         src = "src/analyse/cost.py",
         results = expand("build/output/{scenario}/results.nc", scenario=config["scenarios"])
+    params:
+        power_scaling_factor = config["scaling-factors"]["power"],
+        monetary_scaling_factor = config["scaling-factors"]["monetary"]
     output:
         "build/output/cost.csv"
     script: "../src/analyse/cost.py"
@@ -88,6 +95,17 @@ rule test:
         "tests/test_renewable_shares.py",
         expand("build/output/{scenario}/capacity-raw.csv", scenario=config["scenarios"]),
         expand("build/output/{scenario}/results.nc", scenario=config["scenarios"])
+    params:
+        scaling_factors = config["scaling-factors"]
     output: "build/test-report.html"
-    shell:
-        "py.test ./tests/ --html={output} --self-contained-html"
+    run:
+        import json
+        from pathlib import Path
+        variables = {
+            "scaling-factors": params.scaling_factors
+        }
+        with open("variables.json", "w") as f_variables:
+            json.dump(variables, fp=f_variables)
+
+        shell("py.test ./tests/ --html={output} --self-contained-html --variables=variables.json")
+        Path("variables.json").unlink()

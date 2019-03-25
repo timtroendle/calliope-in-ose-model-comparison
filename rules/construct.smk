@@ -1,6 +1,9 @@
 subworkflow eurocalliope:
     workdir: "./euro-calliope"
     snakefile: "./euro-calliope/Snakefile"
+    configfile: "./config/default.yaml"
+
+configfile: "./config/default.yaml"
 
 localrules: copy_euro_calliope, model, pumped_hydro, raw_run_of_river_data_zipped
 
@@ -45,6 +48,7 @@ rule preprocess_load:
     input:
         src = "src/construct/load.py",
         raw = "data/load_time_series.xlsx"
+    params: scaling_factor = config["scaling-factors"]["power"]
     output: "build/model/electricity-demand.csv"
     script: "../src/construct/load.py"
 
@@ -63,6 +67,7 @@ rule links:
     input:
         src = "src/construct/links.py",
         ntc = "data/NTC.xlsx"
+    params: scaling_factor = config["scaling-factors"]["power"]
     output: "build/model/links.yaml"
     script: "../src/construct/links.py"
 
@@ -72,6 +77,7 @@ rule generation_capacities:
     input:
         src = "src/construct/capacity.py",
         capacity = "data/generation_capacity.xlsx"
+    params: scaling_factor = config["scaling-factors"]["power"]
     output:
         csv = "build/input/capacity.csv",
         yaml = "build/model/capacity.yaml"
@@ -103,6 +109,7 @@ rule co2_caps:
     input:
         src = "src/construct/co2_caps.py",
         caps = "data/bound_RES_and_CO2.xlsx"
+    params: scaling_factor = config["scaling-factors"]["co2"]
     output:
         csv = "build/input/co2-caps.csv",
         yaml = "build/model/co2-caps.yaml"
@@ -129,12 +136,33 @@ rule model:
         rules.run_of_river_capacity_factors.output,
         legacy_techs = "src/template/legacy-tech.yaml",
         definition = "src/template/model.yaml"
+    params:
+        from_date = config["from_date"],
+        to_date = config["to_date"],
+        resolution = config["resolution"],
+        power_scaling_factor = config["scaling-factors"]["power"],
+        monetary_scaling_factor = config["scaling-factors"]["monetary"],
+        co2_scaling_factor = config["scaling-factors"]["co2"]
     output:
         legacy_techs = "build/model/legacy-tech.yaml",
         model = "build/model/model.yaml"
     run:
         import jinja2
 
-        shell("cp {input.legacy_techs} {output.legacy_techs}")
+        specific_monetary_scaling_factor = params.monetary_scaling_factor / params.power_scaling_factor
+        specific_co2_scaling_factor = params.co2_scaling_factor / params.power_scaling_factor
+
+        with open(input.legacy_techs, "r") as template, open(output.legacy_techs, "w") as result_file:
+            result_file.write(jinja2.Template(template.read()).render(
+                monetary_scaling_factor=specific_monetary_scaling_factor,
+                co2_scaling_factor=specific_co2_scaling_factor,
+            ))
+
         with open(input.definition, "r") as template, open(output.model, "w") as result_file:
-            result_file.write(jinja2.Template(template.read()).render(config=config))
+            result_file.write(jinja2.Template(template.read()).render(
+                monetary_scaling_factor=specific_monetary_scaling_factor,
+                co2_scaling_factor=specific_co2_scaling_factor,
+                from_date=params.from_date,
+                to_date=params.to_date,
+                resolution=params.resolution
+            ))

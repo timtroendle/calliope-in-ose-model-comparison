@@ -28,45 +28,46 @@ locations:
         techs:
             wind_onshore_monopoly:
                 constraints:
-                    energy_cap_min: {{ techs.wind_onshore_monopoly }} # MW
+                    energy_cap_min: {{ techs.wind_onshore_monopoly }} # [{{ unit_scaling_factor }} MW]
             wind_offshore:
                 constraints:
-                    energy_cap_min: {{ techs.wind_offshore }} # MW
+                    energy_cap_min: {{ techs.wind_offshore }} # [{{ unit_scaling_factor }} MW]
             roof_mounted_pv:
                 constraints:
-                    energy_cap_min: {{ techs.roof_mounted_pv }} # MW
+                    energy_cap_min: {{ techs.roof_mounted_pv }} # [{{ unit_scaling_factor }} MW]
             hydro_run_of_river:
                 constraints:
-                    energy_cap_equals: {{ techs.hydro_run_of_river }} # MW
+                    energy_cap_equals: {{ techs.hydro_run_of_river }} # [{{ unit_scaling_factor }} MW]
             biomass:
                 constraints:
-                    energy_cap_equals: {{ techs.biomass }} # MW
+                    energy_cap_equals: {{ techs.biomass }} # [{{ unit_scaling_factor }} MW]
             pumped_hydro:
                 constraints:
-                    energy_cap_equals: {{ techs.pumped_hydro }} # MW
+                    energy_cap_equals: {{ techs.pumped_hydro }} # [{{ unit_scaling_factor }} MW]
             coal:
                 constraints:
-                    energy_cap_max: {{ techs.coal }} # MW
+                    energy_cap_max: {{ techs.coal }} # [{{ unit_scaling_factor }} MW]
             lignite:
                 constraints:
-                    energy_cap_max: {{ techs.lignite }} # MW
+                    energy_cap_max: {{ techs.lignite }} # [{{ unit_scaling_factor }} MW]
             ccgt:
                 constraints:
-                    energy_cap_max: {{ techs.ccgt }} # MW
+                    energy_cap_max: {{ techs.ccgt }} # [{{ unit_scaling_factor }} MW]
             nuclear:
                 constraints:
-                    energy_cap_max: {{ techs.nuclear }} # MW
+                    energy_cap_max: {{ techs.nuclear }} # [{{ unit_scaling_factor }} MW]
     {% endfor %}
 """
 
 
-def generate_generation_capacities(path_to_data, path_to_yaml, path_to_csv):
+def generate_generation_capacities(path_to_data, scaling_factor, path_to_yaml, path_to_csv):
     """Create Calliope file defining bounds of generation capacities."""
     raw = _read_generation_capacities(path_to_data)
     raw.to_csv(path_to_csv, index=True, header=True)
 
     capacities = jinja2.Template(TEMPLATE).render(
-        capacities=raw
+        capacities=raw.mul(scaling_factor),
+        unit_scaling_factor=1 / scaling_factor
     )
     with open(path_to_yaml, "w") as result_file:
         result_file.write(capacities)
@@ -110,5 +111,6 @@ if __name__ == "__main__":
     generate_generation_capacities(
         path_to_data=snakemake.input.capacity,
         path_to_yaml=snakemake.output.yaml,
-        path_to_csv=snakemake.output.csv
+        path_to_csv=snakemake.output.csv,
+        scaling_factor=snakemake.params.scaling_factor
     )
