@@ -6,7 +6,7 @@ __default__:
 run:
     runtime: 1439
     cores: 4
-    memory: 12000
+    memory: 24000
 test:
     runtime: 15
     cores: 1
