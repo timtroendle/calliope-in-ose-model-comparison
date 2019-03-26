@@ -93,6 +93,7 @@ rule test:
     input:
         "tests/test_capacity_constraints.py",
         "tests/test_renewable_shares.py",
+        "tests/test_co2_caps.py",
         expand("build/output/{scenario}/capacity-raw.csv", scenario=config["scenarios"]),
         expand("build/output/{scenario}/results.nc", scenario=config["scenarios"])
     params:

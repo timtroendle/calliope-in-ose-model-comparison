@@ -29,6 +29,9 @@ overrides:
     diw_battery_low_cost:
         techs.battery.costs.monetary.energy_cap: {{ 67570 * monetary_scaling_factor }} # [{{ 1 / monetary_scaling_factor }} EUR per MW]
         techs.battery.costs.monetary.storage_cap: {{ 157660 * monetary_scaling_factor }} # [{{ 1 / monetary_scaling_factor }} EUR per MWh]
+    diw_battery_lowest_cost:
+        techs.battery.costs.monetary.energy_cap: {{ 33785 * monetary_scaling_factor }} # [{{ 1 / monetary_scaling_factor }} EUR per MW]
+        techs.battery.costs.monetary.storage_cap: {{ 78830 * monetary_scaling_factor }} # [{{ 1 / monetary_scaling_factor }} EUR per MWh]
     equal_interest_rate: # harmonise interest rates
         tech_groups.conversion.costs.monetary.interest_rate: 0.04
         tech_groups.conversion_plus.costs.monetary.interest_rate: 0.04
@@ -249,8 +252,10 @@ overrides:
 scenarios:
     baseline: ["diw_assumptions", "diw_battery_baseline_cost", "equal_interest_rate", "no_hydrogen"]
     low-cost: ["diw_assumptions", "diw_battery_low_cost", "equal_interest_rate", "no_hydrogen"]
+    lowest-cost: ["diw_assumptions", "diw_battery_lowest_cost", "equal_interest_rate", "no_hydrogen"]
     baseline-germany: ["diw_assumptions", "diw_battery_baseline_cost", "germany_only", "equal_interest_rate", "no_hydrogen"]
     low-cost-germany: ["diw_assumptions", "diw_battery_low_cost", "germany_only", "equal_interest_rate", "no_hydrogen"]
+    lowest-cost-germany: ["diw_assumptions", "diw_battery_lowest_cost", "germany_only", "equal_interest_rate", "no_hydrogen"]
     low-cost-no-co2-caps: ["diw_assumptions", "diw_battery_low_cost", "equal_interest_rate", "no_co2_caps", "no_hydrogen"] # performance test
     low-cost-no-run-of-river: ["diw_assumptions", "diw_battery_low_cost", "equal_interest_rate", "no_run_of_river", "no_hydrogen"] # performance test
     low-cost-no-nothing: ["diw_assumptions", "diw_battery_low_cost", "equal_interest_rate", "no_run_of_river", "no_co2_caps", "no_hydrogen"] # performance test

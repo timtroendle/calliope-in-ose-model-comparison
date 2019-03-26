@@ -9,8 +9,8 @@ PATH_TO_REQUESTED_CO2_CAPS = PATH_TO_BUILD / "input" / "co2-caps.csv"
 PATH_TO_OUTPUT = PATH_TO_BUILD / "output"
 FILENAME_RESULTS = Path("results.nc")
 EPSILON = 0.001 # 1 t CO2eq
-EUROPE_SCENARIOS = ["baseline", "low-cost"]
-GERMANY_SCENARIOS = ["baseline-germany", "low-cost-germany"]
+EUROPE_SCENARIOS = ["baseline", "low-cost", "lowest-cost"]
+GERMANY_SCENARIOS = ["baseline-germany", "low-cost-germany", "lowest-cost-germany"]
 
 
 @pytest.fixture(scope="module")

@@ -10,5 +10,7 @@ scaling-factors:
 scenarios:
     - baseline
     - low-cost
+    - lowest-cost
     - baseline-germany
     - low-cost-germany
+    - lowest-cost-germany
