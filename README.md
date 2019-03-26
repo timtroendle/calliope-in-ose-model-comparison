@@ -16,14 +16,6 @@ This repository contains the entire scientific project, including code and repor
 
 4. Provide the input data for Euro-Calliope, as defined in "Getting Ready" in  `./euro-calliope/README.md`.
 
-5. Provide the following data manually:
-
-* Copy the load time series into `./data/load_time_series.xlsx` # TODO check in?
-* Copy the 8760 steps renewables time series into `./data/res_time_series_8760h.xlsx` # TODO check in?
-* Copy the NTC data into `./data/NTC.xlsx` # TODO check in?
-* Copy the generation capacities into `./data/generation_capacity.xlsx` # TODO check in?
-* Copy the RES and CO2 bounds into `./data/bound_RES_and_CO2.xlsx` # TODO check in?
-
 ## Run the analysis
 
     snakemake --use-conda
