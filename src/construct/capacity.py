@@ -3,6 +3,8 @@ import jinja2
 import pandas as pd
 import pycountry
 
+BIOMASS_CAPACITY_FACTOR = 7500 / 8760 # ASSUME by DIW
+
 TECH_MAP = {
     "Biofuels": "biofuels", # ASSUME inexistent
     "Gas": "ccgt", # ASSUME all gas to be CCGT
@@ -63,6 +65,7 @@ locations:
 def generate_generation_capacities(path_to_data, scaling_factor, path_to_yaml, path_to_csv):
     """Create Calliope file defining bounds of generation capacities."""
     raw = _read_generation_capacities(path_to_data)
+    raw.loc[:, "biomass"] = raw.loc[:, "biomass"] * BIOMASS_CAPACITY_FACTOR
     raw.to_csv(path_to_csv, index=True, header=True)
 
     capacities = jinja2.Template(TEMPLATE).render(
