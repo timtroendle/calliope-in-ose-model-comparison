@@ -39,6 +39,8 @@ overrides:
         tech_groups.supply.costs.monetary.interest_rate: 0.04
         tech_groups.supply_plus.costs.monetary.interest_rate: 0.04
         tech_groups.transmission.costs.monetary.interest_rate: 0.04
+    fixed_battery_c_rate:
+        techs.battery.constraints.energy_cap_per_storage_cap_equals: 1
     germany_only:
         model.time.fiunction: resample
         model.time.function_options: {'resolution': '1H'}
@@ -250,15 +252,12 @@ overrides:
         locations.SVN.techs.hydrogen.exists: False
         locations.SWE.techs.hydrogen.exists: False
 scenarios:
-    baseline: ["diw_assumptions", "diw_battery_baseline_cost", "equal_interest_rate", "no_hydrogen"]
-    low-cost: ["diw_assumptions", "diw_battery_low_cost", "equal_interest_rate", "no_hydrogen"]
-    lowest-cost: ["diw_assumptions", "diw_battery_lowest_cost", "equal_interest_rate", "no_hydrogen"]
-    baseline-germany: ["diw_assumptions", "diw_battery_baseline_cost", "germany_only", "equal_interest_rate", "no_hydrogen"]
-    low-cost-germany: ["diw_assumptions", "diw_battery_low_cost", "germany_only", "equal_interest_rate", "no_hydrogen"]
-    lowest-cost-germany: ["diw_assumptions", "diw_battery_lowest_cost", "germany_only", "equal_interest_rate", "no_hydrogen"]
-    low-cost-no-co2-caps: ["diw_assumptions", "diw_battery_low_cost", "equal_interest_rate", "no_co2_caps", "no_hydrogen"] # performance test
-    low-cost-no-run-of-river: ["diw_assumptions", "diw_battery_low_cost", "equal_interest_rate", "no_run_of_river", "no_hydrogen"] # performance test
-    low-cost-no-nothing: ["diw_assumptions", "diw_battery_low_cost", "equal_interest_rate", "no_run_of_river", "no_co2_caps", "no_hydrogen"] # performance test
+    baseline: ["diw_assumptions", "diw_battery_baseline_cost", "equal_interest_rate", "fixed_battery_c_rate", "no_hydrogen"]
+    low-cost: ["diw_assumptions", "diw_battery_low_cost", "equal_interest_rate", "fixed_battery_c_rate", "no_hydrogen"]
+    lowest-cost: ["diw_assumptions", "diw_battery_lowest_cost", "equal_interest_rate", "fixed_battery_c_rate", "no_hydrogen"]
+    baseline-germany: ["diw_assumptions", "diw_battery_baseline_cost", "germany_only", "equal_interest_rate", "fixed_battery_c_rate", "no_hydrogen"]
+    low-cost-germany: ["diw_assumptions", "diw_battery_low_cost", "germany_only", "equal_interest_rate", "fixed_battery_c_rate", "no_hydrogen"]
+    lowest-cost-germany: ["diw_assumptions", "diw_battery_lowest_cost", "germany_only", "equal_interest_rate", "fixed_battery_c_rate", "no_hydrogen"]
 model:
     name: 'Open Source Modelling -- Euro Calliope model'
     calliope_version: 0.6.4
@@ -273,6 +272,10 @@ run:
     solver: gurobi
     solver_io: python
     mode: plan
+    objective_options: {
+        'cost_class': {'monetary': 1},
+        'sense': 'minimize'
+    }
     solver_options:
         Threads: 4
         Method: 2 # use barrier, but do not run simplex in parallel

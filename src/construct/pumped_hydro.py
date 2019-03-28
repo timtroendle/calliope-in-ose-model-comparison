@@ -48,7 +48,7 @@ locations:
         techs:
             pumped_hydro:
                 constraints:
-                    charge_rate: {{ charge_rate }} # [1/h]
+                    energy_cap_per_storage_cap_equals: {{ charge_rate }} # [1/h]
     {% endfor %}
 """
 
