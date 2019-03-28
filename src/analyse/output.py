@@ -6,11 +6,20 @@ import calliope
 import pandas as pd
 
 
+MODEL_NAME = "euro-calliope"
 TOTAL_COVERED_REGION = "total covered region"
 GERMANY = "DEU"
 LOCATIONS = [TOTAL_COVERED_REGION, GERMANY]
 RE_TECHS = ["open_field_pv", "roof_mounted_pv", "wind_onshore_monopoly",
             "wind_onshore_competing", "wind_offshore", "hydro_run_of_river"]
+SCENARIO_NAME_MAP = {
+    "baseline": "Baseline battery costs|Full geographic coverage|Without sector coupling",
+    "low-cost": "50percent battery costs|Full geographic coverage|Without sector coupling",
+    "lowest-cost": "25percent battery costs|Full geographic coverage|Without sector coupling",
+    "baseline-germany": "Baseline battery costs|Germany only|Without sector coupling",
+    "low-cost-germany": "50percent battery costs|Germany only|Without sector coupling",
+    "lowest-cost-germany": "25percent battery costs|Germany only|Without sector coupling"
+}
 
 
 def excavate_all_results(paths_to_scenarios, scaling_factors, path_to_output):
@@ -21,10 +30,13 @@ def excavate_all_results(paths_to_scenarios, scaling_factors, path_to_output):
     }
     variables = _set_up_variables()
     scaling_factors = _prepare_scaling_factors(scaling_factors)
-    _excavate_data(scenarios, variables, scaling_factors).to_csv(
+    data = _excavate_data(scenarios, variables, scaling_factors).reset_index()
+    data["model"] = MODEL_NAME
+    data["scenario"] = data["scenario"].map(SCENARIO_NAME_MAP)
+    data[["model", "scenario", "region", "variable", "value"]].to_csv(
         path_to_output,
         header=True,
-        index=True
+        index=False
     )
 
 

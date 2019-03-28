@@ -9,5 +9,5 @@ run:
     memory: 24000
 test:
     runtime: 15
-    cores: 1
-    memory: 16000
+output:
+    runtime: 30
