@@ -7,9 +7,10 @@ import pandas as pd
 
 
 MODEL_NAME = "euro-calliope"
-TOTAL_COVERED_REGION = "total covered region"
-GERMANY = "DEU"
-LOCATIONS = [TOTAL_COVERED_REGION, GERMANY]
+TOTAL_COVERED_REGION = "Total covered region"
+GERMANY_IN = "DEU"
+GERMANY_OUT = "DE"
+LOCATIONS = [TOTAL_COVERED_REGION, GERMANY_OUT]
 RE_TECHS = ["open_field_pv", "roof_mounted_pv", "wind_onshore_monopoly",
             "wind_onshore_competing", "wind_offshore", "hydro_run_of_river"]
 SCENARIO_NAME_MAP = {
@@ -58,7 +59,7 @@ def _excavate_variable(data, scenarios, variable_name, variable_function, scalin
         for scenario_name, scenario_data in scenarios.items()
     }
     for scenario, scenario_values in values.items():
-        data.loc[(scenario, GERMANY, variable_name)] = scenario_values.loc[GERMANY]
+        data.loc[(scenario, GERMANY_OUT, variable_name)] = scenario_values.loc[GERMANY_IN]
         data.loc[(scenario, TOTAL_COVERED_REGION, variable_name)] = scenario_values.sum()
         if variable_name == "Energy|Electricity|Renewable curtailment|Relative":
             data.loc[(scenario, TOTAL_COVERED_REGION, variable_name)] = scenario_values.mean()
@@ -170,7 +171,7 @@ def _excavate_levelised_total_cost(data, scaling_factors):
     lcoe = (data.get_formatted_array("total_levelised_cost")
                 .to_dataframe()
                 .loc[("electricity", "monetary"), "total_levelised_cost"]) / scaling_factors["specific_cost"]
-    return pd.Series([lcoe], index=[GERMANY])
+    return pd.Series([lcoe], index=[GERMANY_IN])
 
 
 def _excavate_cost_variable(data, scaling_factors):
@@ -200,7 +201,7 @@ def _excavate_transmission_capacity(data, scaling_factors):
                         .energy_cap
                         .sum())
     if len(capacity.index) == 0: # happens for Germany only scenarios
-        return pd.Series([0], index=[GERMANY])
+        return pd.Series([0], index=[GERMANY_IN])
     else:
         return capacity
 
@@ -247,7 +248,7 @@ def _excavate_transmission_generation(data, scaling_factors):
                             .carrier_prod
                             .sum())
     if len(generation.index) == 0: # happens for Germany only scenarios
-        return pd.Series([0], index=[GERMANY])
+        return pd.Series([0], index=[GERMANY_IN])
     else:
         return generation
 
@@ -297,7 +298,7 @@ def _excavate_transmission_consumption(data, scaling_factors):
                               .carrier_con
                               .sum())
     if len(consumption.index) == 0: # happens for Germany only scenarios
-        return pd.Series([0], index=[GERMANY])
+        return pd.Series([0], index=[GERMANY_IN])
     else:
         return consumption
 
