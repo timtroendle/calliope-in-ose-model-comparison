@@ -39,8 +39,6 @@ overrides:
         tech_groups.supply.costs.monetary.interest_rate: 0.04
         tech_groups.supply_plus.costs.monetary.interest_rate: 0.04
         tech_groups.transmission.costs.monetary.interest_rate: 0.04
-    fixed_battery_c_rate:
-        techs.battery.constraints.energy_cap_per_storage_cap_equals: 1
     germany_only:
         model.time.fiunction: resample
         model.time.function_options: {'resolution': '1H'}
@@ -252,12 +250,12 @@ overrides:
         locations.SVN.techs.hydrogen.exists: False
         locations.SWE.techs.hydrogen.exists: False
 scenarios:
-    baseline: ["diw_assumptions", "diw_battery_baseline_cost", "equal_interest_rate", "fixed_battery_c_rate", "no_hydrogen"]
-    low-cost: ["diw_assumptions", "diw_battery_low_cost", "equal_interest_rate", "fixed_battery_c_rate", "no_hydrogen"]
-    lowest-cost: ["diw_assumptions", "diw_battery_lowest_cost", "equal_interest_rate", "fixed_battery_c_rate", "no_hydrogen"]
-    baseline-germany: ["diw_assumptions", "diw_battery_baseline_cost", "germany_only", "equal_interest_rate", "fixed_battery_c_rate", "no_hydrogen"]
-    low-cost-germany: ["diw_assumptions", "diw_battery_low_cost", "germany_only", "equal_interest_rate", "fixed_battery_c_rate", "no_hydrogen"]
-    lowest-cost-germany: ["diw_assumptions", "diw_battery_lowest_cost", "germany_only", "equal_interest_rate", "fixed_battery_c_rate", "no_hydrogen"]
+    baseline: ["diw_assumptions", "diw_battery_baseline_cost", "equal_interest_rate", "no_hydrogen"]
+    low-cost: ["diw_assumptions", "diw_battery_low_cost", "equal_interest_rate", "no_hydrogen"]
+    lowest-cost: ["diw_assumptions", "diw_battery_lowest_cost", "equal_interest_rate", "no_hydrogen"]
+    baseline-germany: ["diw_assumptions", "diw_battery_baseline_cost", "germany_only", "equal_interest_rate", "no_hydrogen"]
+    low-cost-germany: ["diw_assumptions", "diw_battery_low_cost", "germany_only", "equal_interest_rate", "no_hydrogen"]
+    lowest-cost-germany: ["diw_assumptions", "diw_battery_lowest_cost", "germany_only", "equal_interest_rate", "no_hydrogen"]
 model:
     name: 'Open Source Modelling -- Euro Calliope model'
     calliope_version: 0.6.4
