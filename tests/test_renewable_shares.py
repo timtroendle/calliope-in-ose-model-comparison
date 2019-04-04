@@ -10,7 +10,8 @@ PATH_TO_OUTPUT = PATH_TO_BUILD / "output"
 FILENAME_RESULTS = Path("results.nc")
 EPSILON = 0.01
 RE_TECHS = ["open_field_pv", "roof_mounted_pv", "wind_onshore_monopoly",
-            "wind_onshore_competing", "wind_offshore", "hydro_run_of_river", "biomass"]
+            "wind_onshore_competing", "wind_offshore", "hydro_run_of_river",
+            "hydro_reservoir", "biomass"]
 EUROPE_SCENARIOS = ["baseline", "low-cost", "lowest-cost"]
 GERMANY_SCENARIOS = ["baseline-germany", "low-cost-germany", "lowest-cost-germany"]
 

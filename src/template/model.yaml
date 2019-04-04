@@ -41,8 +41,6 @@ overrides:
         tech_groups.supply_plus.costs.monetary.interest_rate: 0.04
         tech_groups.transmission.costs.monetary.interest_rate: 0.04
     germany_only:
-        model.time.fiunction: resample
-        model.time.function_options: {'resolution': '1H'}
         # locations
         locations.ALB.exists: False
         locations.AUT.exists: False
@@ -291,6 +289,20 @@ techs:
     hydro_run_of_river:
         essentials:
             name: 'Run of river hydro power'
+            parent: supply
+            carrier: electricity
+        constraints:
+            energy_cap_max: inf
+            resource: file=run-of-river.csv:capacityfactor
+            resource_unit: energy_per_cap
+            lifetime: 60 # [JRC ETRI 2014]
+        costs:
+            monetary:
+                energy_cap: {{ 5620000 * monetary_scaling_factor }} # [{{ 1 / monetary_scaling_factor }} EUR2013/MW], [JRC ETRI 2014]
+                om_annual: {{ 84300 * monetary_scaling_factor }} # [{{ 1 / monetary_scaling_factor }} EUR2013/MW/year], [JRC ETRI 2014]
+    hydro_reservoir: # ASSUME ignoring the actual reservoir here, as we do not know their size
+        essentials:
+            name: 'Reservoir hydro power'
             parent: supply
             carrier: electricity
         constraints:

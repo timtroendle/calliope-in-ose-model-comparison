@@ -11,7 +11,7 @@ TECH_MAP = {
     "Hard coal": "coal",
     "Hydro-pump": "pumped_hydro",
     "Hydro-run": "hydro_run_of_river",
-    "Hydro-turbine": "hydro_turbine", # ASSUME ignore
+    "Hydro-turbine": "hydro_turbine",
     "Lignite": "lignite",
     "Nuclear": "nuclear",
     "Oil": "oil", # ASSUME doesnt exist in electricity (was 1.9% in 2015)
@@ -40,6 +40,9 @@ locations:
             hydro_run_of_river:
                 constraints:
                     energy_cap_equals: {{ techs.hydro_run_of_river }} # [{{ unit_scaling_factor }} MW]
+            hydro_reservoir:
+                constraints:
+                    energy_cap_equals: {{ techs.hydro_reservoir }} # [{{ unit_scaling_factor }} MW]
             biomass:
                 constraints:
                     energy_cap_equals: {{ techs.biomass }} # [{{ unit_scaling_factor }} MW]
@@ -107,6 +110,8 @@ def _read_generation_capacities(path_to_data):
         columns=lambda name: TECH_MAP[name.strip().replace('\n', '').replace('\r', '')],
         inplace=True
     )
+    data["hydro_reservoir"] = data["hydro_turbine"] - data["pumped_hydro"]
+    data["hydro_reservoir"] = data["hydro_reservoir"].where(data["hydro_reservoir"] >= 0, other=0)
     return data.groupby(data.index).sum().groupby(data.columns, axis="columns").sum()
 
 
