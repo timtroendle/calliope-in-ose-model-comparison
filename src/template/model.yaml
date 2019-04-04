@@ -12,6 +12,7 @@ import:
 overrides:
     diw_assumptions:
         techs.battery.constraints.energy_eff: 0.9591663046625439  # 0.9592 * 0.9592 ~ 0.92 round trip efficiency {Schmidt et al. 2017}
+        techs.battery.constraints.lifetime: 12 # {own assumption}
         techs.battery.costs.monetary.interest_rate: 0.04 # {own assumption}
         techs.battery.costs.monetary.om_annual: 0  # {own_assumptions}
         techs.battery.costs.monetary.om_prod: 0  # {own_assumptions}
