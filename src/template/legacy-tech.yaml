@@ -8,7 +8,6 @@ techs:
         constraints:
             energy_eff: 0.44  # Coal ASC with FGD medium nth o.a.k., {parsons2011}
             resource: inf
-            energy_cap_min_use: 0.5  # Assumption
             lifetime: 25
         costs:
             monetary:
@@ -26,7 +25,6 @@ techs:
         constraints:
             energy_eff: 0.44  # Coal ASC with FGD medium nth o.a.k., {parsons2011}
             resource: inf
-            energy_cap_min_use: 0.5  # Assumption
             lifetime: 25
         costs:
             monetary:
