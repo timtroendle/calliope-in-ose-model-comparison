@@ -331,7 +331,7 @@ def _excavate_peak_demand(data, scaling_factors):
                 .reset_index()
                 .groupby(["techs", "locs"])
                 .carrier_con
-                .max()
+                .min()
                 .loc["demand_elec"]
                 .mul(-1)
                 .div(scaling_factors["power"]))
