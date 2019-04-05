@@ -7,15 +7,13 @@ TEMPLATE = """
 links:
     {% for row_id, row in ntcs.iterrows() %}
     {{ row.fromLocation }},{{ row.toLocation }}.techs:
-        ac_transmission:
+        uni_directional_ac_transmission_A:
             constraints:
                 energy_cap_equals: {{ row.capacity_go }} # [{{ unit_scaling_factor }} MW]
-                one_way: true
     {{ row.toLocation }},{{ row.fromLocation }}.techs:
-        ac_transmission:
+        uni_directional_ac_transmission_B:
             constraints:
                 energy_cap_equals: {{ row.capacity_return }} # [{{ unit_scaling_factor }} MW]
-                one_way: true
     {% endfor %}
 """
 

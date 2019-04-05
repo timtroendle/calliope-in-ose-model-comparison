@@ -1,7 +1,6 @@
 import:
     - './renewable-techs.yaml'
     - './locations.yaml'
-    - './link-techs.yaml'
     - './storage-techs.yaml'
     - './links.yaml'
     - './capacity.yaml'
@@ -293,6 +292,26 @@ techs:
             carrier: electricity
         constraints:
             resource: file=electricity-demand.csv
+    uni_directional_ac_transmission_A:
+        # A and B are necessary to model uni directional constraints in both directions
+        # https://github.com/calliope-project/calliope/issues/215
+        essentials:
+            name: "High voltage AC transmission line A"
+            parent: transmission
+            carrier: electricity
+        constraints:
+            energy_eff_per_distance: 0.99999995 # [1/m]
+            one_way: true
+    uni_directional_ac_transmission_B:
+        # A and B are necessary to model uni directional constraints in both directions
+        # https://github.com/calliope-project/calliope/issues/215
+        essentials:
+            name: "High voltage AC transmission line B"
+            parent: transmission
+            carrier: electricity
+        constraints:
+            energy_eff_per_distance: 0.99999995 # [1/m]
+            one_way: true
     hydro_run_of_river:
         essentials:
             name: 'Run of river hydro power'
