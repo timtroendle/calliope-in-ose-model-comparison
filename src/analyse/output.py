@@ -131,8 +131,8 @@ def _set_up_variables():
         "Energy|Sector coupling|Electric vehicles|G2V": None,
         "Energy|Sector coupling|Powertoheat": None,
         "Energy|Sector coupling|Electrolysis": None,
-        "Cycles|Electricity|Storage|Liion": None,
-        "Cycles|Electricity|Storage|Pumped hydro": None,
+        "Cycles|Electricity|Storage|Liion": lambda data, sf: _excavate_cycles_for_tech(data, ["battery"], sf),
+        "Cycles|Electricity|Storage|Pumped hydro": lambda data, sf: _excavate_cycles_for_tech(data, ["pumped_hydro"], sf),
         "Cycles|Electricity|Storage|Other": None,
         "Carbon emissions": _excavate_co2_total_system,
         "Price|Electricity|Weighted average": None,
@@ -346,6 +346,12 @@ def _excavate_co2_total_system(data, scaling_factors):
                 .sum()
                 .loc["co2"]
                 .div(scaling_factors["co2"]))
+
+
+def _excavate_cycles_for_tech(data, tech, scaling_factors):
+    charge = data.get_formatted_array("carrier_con").sel(techs=tech)
+    storage_cap = data.get_formatted_array("storage_cap").sel(techs=tech)
+    return (charge.sum(dim="timesteps") * (-1) / storage_cap)
 
 
 if __name__ == "__main__":
