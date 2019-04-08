@@ -12,6 +12,12 @@ group_constraints:
         cost_max:
             co2: {{ cap }} # [{{ unit_scaling_factor }} Mt]
     {% endfor %}
+
+overrides:
+    tight_co2_caps:
+        {% for country, cap in caps.iteritems() %}
+        group_constraints.co2_cap_{{ country }}.cost_max.co2: {{ cap / 2 }} # [{{ unit_scaling_factor }} Mt]
+        {% endfor %}
 """
 
 
