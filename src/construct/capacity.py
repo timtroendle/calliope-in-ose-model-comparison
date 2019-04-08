@@ -14,7 +14,7 @@ TECH_MAP = {
     "Hydro-turbine": "hydro_turbine",
     "Lignite": "lignite",
     "Nuclear": "nuclear",
-    "Oil": "oil", # ASSUME doesnt exist in electricity (was 1.9% in 2015)
+    "Oil": "oils",
     "Othernon-RES": "ccgt", # ASSUME ccgt
     "Other RES": "biomass", # ASSUME biomass
     "Solar-thermal": "solar_thermal", # ignored for electricity
@@ -55,6 +55,9 @@ locations:
             lignite:
                 constraints:
                     energy_cap_max: {{ techs.lignite }} # [{{ unit_scaling_factor }} MW]
+            oils:
+                constraints:
+                    energy_cap_max: {{ techs.oils }} # [{{ unit_scaling_factor }} MW]
             ccgt:
                 constraints:
                     energy_cap_max: {{ techs.ccgt }} # [{{ unit_scaling_factor }} MW]
