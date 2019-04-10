@@ -1,7 +1,6 @@
 from pathlib import Path
 
 import pytest
-import calliope
 import pandas as pd
 
 PATH_TO_BUILD = Path(__file__).parent / ".." / "build"
@@ -9,8 +8,6 @@ PATH_TO_REQUESTED_CO2_CAPS = PATH_TO_BUILD / "input" / "co2-caps.csv"
 PATH_TO_OUTPUT = PATH_TO_BUILD / "output"
 FILENAME_RESULTS = Path("results.nc")
 EPSILON = 0.001 # 1 t CO2eq
-EUROPE_SCENARIOS = ["baseline", "low-cost", "lowest-cost"]
-GERMANY_SCENARIOS = ["baseline-germany", "low-cost-germany", "lowest-cost-germany"]
 
 
 @pytest.fixture(scope="module")
@@ -18,22 +15,17 @@ def requested_caps():
     return pd.read_csv(PATH_TO_REQUESTED_CO2_CAPS, index_col=0).iloc[:, 0]
 
 
-@pytest.fixture(scope="session")
-def model_output(scenario):
-    return calliope.read_netcdf(PATH_TO_OUTPUT / scenario / FILENAME_RESULTS)
-
-
 @pytest.fixture(scope="module")
-def co2_emissions(model_output, variables):
-    return (model_output.get_formatted_array("cost")
-                        .to_dataframe()
-                        .reset_index()
-                        .groupby(["locs", "costs"])
-                        .sum()
-                        .reset_index()
-                        .pivot(columns="costs", index="locs", values="cost")
-                        .loc[:, "co2"]
-                        .mul( 1 / variables["scaling-factors"]["co2"]))
+def co2_emissions(model, variables):
+    return (model.get_formatted_array("cost")
+                 .to_dataframe()
+                 .reset_index()
+                 .groupby(["locs", "costs"])
+                 .sum()
+                 .reset_index()
+                 .pivot(columns="costs", index="locs", values="cost")
+                 .loc[:, "co2"]
+                 .mul(1 / variables["scaling-factors"]["co2"]))
 
 
 class Base:
@@ -51,9 +43,9 @@ class TestAllEurope(Base):
     def country(self, request):
         return request.param
 
-    @pytest.fixture(scope="session", params=EUROPE_SCENARIOS)
-    def scenario(self, request):
-        return request.param
+    @pytest.fixture(scope="module")
+    def model(self, europe_model):
+        return europe_model
 
 
 class TestGermanyOnly(Base):
@@ -62,6 +54,6 @@ class TestGermanyOnly(Base):
     def country(self):
         return "DEU"
 
-    @pytest.fixture(scope="session", params=GERMANY_SCENARIOS)
-    def scenario(self, request):
-        return request.param
+    @pytest.fixture(scope="module")
+    def model(self, germany_model):
+        return germany_model

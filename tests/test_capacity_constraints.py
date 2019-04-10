@@ -5,11 +5,7 @@ import pandas as pd
 
 PATH_TO_BUILD = Path(__file__).parent / ".." / "build"
 PATH_TO_CAPACITY_CONSTRAINTS = PATH_TO_BUILD / "input" / "capacity.csv"
-PATH_TO_OUTPUT_DIRECTORY = PATH_TO_BUILD / "output"
-FILENAME_CAPACITY = Path("capacity-raw.csv")
 EPSILON = 0.001 # 1 kW
-EUROPE_SCENARIOS = ["baseline", "low-cost", "lowest-cost"]
-GERMANY_SCENARIOS = ["baseline-germany", "low-cost-germany", "lowest-cost-germany"]
 
 
 @pytest.fixture(scope="module")
@@ -18,11 +14,8 @@ def capacity_constraints():
 
 
 @pytest.fixture(scope="module")
-def installed_capacity(scenario):
-    return pd.read_csv(
-        PATH_TO_OUTPUT_DIRECTORY / scenario / FILENAME_CAPACITY,
-        index_col=0
-    ) * 1e3 # from GW to MW
+def installed_capacity(model, variables):
+    return model.get_formatted_array("energy_cap") / variables["scaling-factors"]["power"]
 
 
 class Base:
@@ -58,9 +51,9 @@ class TestAllEurope(Base):
     def country(self, request):
         return request.param
 
-    @pytest.fixture(scope="module", params=EUROPE_SCENARIOS)
-    def scenario(self, request):
-        return request.param
+    @pytest.fixture(scope="module")
+    def model(self, europe_model):
+        return europe_model
 
 
 class TestGermanyOnly(Base):
@@ -69,6 +62,6 @@ class TestGermanyOnly(Base):
     def country(self):
         return "DEU"
 
-    @pytest.fixture(scope="module", params=GERMANY_SCENARIOS)
-    def scenario(self, request):
-        return request.param
+    @pytest.fixture(scope="module")
+    def model(self, germany_model):
+        return germany_model

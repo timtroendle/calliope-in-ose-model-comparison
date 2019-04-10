@@ -1,19 +1,14 @@
 from pathlib import Path
 
 import pytest
-import calliope
 import pandas as pd
 
 PATH_TO_BUILD = Path(__file__).parent / ".." / "build"
 PATH_TO_REQUESTED_RENEWABLE_SHARES = PATH_TO_BUILD / "input" / "renewable-shares.csv"
-PATH_TO_OUTPUT = PATH_TO_BUILD / "output"
-FILENAME_RESULTS = Path("results.nc")
 EPSILON = 0.01
 RE_TECHS = ["open_field_pv", "roof_mounted_pv", "wind_onshore_monopoly",
             "wind_onshore_competing", "wind_offshore", "hydro_run_of_river",
             "hydro_reservoir", "biomass"]
-EUROPE_SCENARIOS = ["baseline", "low-cost", "lowest-cost"]
-GERMANY_SCENARIOS = ["baseline-germany", "low-cost-germany", "lowest-cost-germany"]
 
 
 @pytest.fixture(scope="module")
@@ -21,14 +16,9 @@ def requested_shares(request):
     return pd.read_csv(PATH_TO_REQUESTED_RENEWABLE_SHARES, index_col=0).iloc[:, 0]
 
 
-@pytest.fixture(scope="session")
-def model_output(scenario):
-    return calliope.read_netcdf(PATH_TO_OUTPUT / scenario / FILENAME_RESULTS)
-
-
 @pytest.fixture(scope="module")
-def generated_electricity(model_output, variables):
-    prod = model_output.get_formatted_array("carrier_prod").to_dataframe(name="carrier_prod")
+def generation(model, variables):
+    prod = model.get_formatted_array("carrier_prod").to_dataframe(name="carrier_prod")
     prod = prod.groupby(["locs", "techs"]).carrier_prod.sum().reset_index()
     prod.drop(index=prod[prod.techs.str.contains("transmission")].index, inplace=True)
     prod.locs = prod.locs.str[:3]
@@ -42,8 +32,8 @@ def generated_electricity(model_output, variables):
 
 
 @pytest.fixture(scope="module")
-def consumption(model_output, variables):
-    con = model_output.get_formatted_array("carrier_con").to_dataframe(name="carrier_con")
+def consumption(model, variables):
+    con = model.get_formatted_array("carrier_con").to_dataframe(name="carrier_con")
     con = con.groupby(["locs", "techs"]).carrier_con.sum().reset_index()
     con.drop(index=con[con.techs.str.contains("transmission")].index, inplace=True)
     con.locs = con.locs.str[:3]
@@ -56,8 +46,8 @@ def consumption(model_output, variables):
 
 
 @pytest.fixture()
-def re_share(generated_electricity, consumption, country):
-    re_prod = generated_electricity.loc[country, RE_TECHS].sum()
+def re_share(generation, consumption, country):
+    re_prod = generation.loc[country, RE_TECHS].sum()
     return re_prod / (consumption.loc[country, "demand_elec"] * -1)
 
 
@@ -81,9 +71,9 @@ class TestAllEurope(Base):
     def country(self, request):
         return request.param
 
-    @pytest.fixture(scope="session", params=EUROPE_SCENARIOS)
-    def scenario(self, request):
-        return request.param
+    @pytest.fixture(scope="module")
+    def model(self, europe_model):
+        return europe_model
 
 
 class TestGermanyOnly(Base):
@@ -92,6 +82,6 @@ class TestGermanyOnly(Base):
     def country(self):
         return "DEU"
 
-    @pytest.fixture(scope="session", params=GERMANY_SCENARIOS)
-    def scenario(self, request):
-        return request.param
+    @pytest.fixture(scope="module")
+    def model(self, germany_model):
+        return germany_model
