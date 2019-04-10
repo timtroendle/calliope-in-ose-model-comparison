@@ -110,6 +110,7 @@ rule cost:
 rule test:
     message: "Run tests"
     input:
+        "src/analyse/test_runner.py",
         "tests/test_capacity_constraints.py",
         "tests/test_renewable_shares.py",
         "tests/test_co2_caps.py",
@@ -118,16 +119,5 @@ rule test:
         results = expand("build/output/{scenario}/results.nc", scenario=config["scenarios"])
     params:
         scaling_factors = config["scaling-factors"]
-    output: "build/test-report.html"
-    run:
-        import json
-        from pathlib import Path
-        variables = {
-            "scaling-factors": params.scaling_factors,
-            "scenarios": input.results
-        }
-        with open("variables.json", "w") as f_variables:
-            json.dump(variables, fp=f_variables)
-
-        shell("py.test --html={output} --self-contained-html --variables=variables.json")
-        Path("variables.json").unlink()
+    output: "build/logs/test-report.html"
+    script: "../src/analyse/test_runner.py"

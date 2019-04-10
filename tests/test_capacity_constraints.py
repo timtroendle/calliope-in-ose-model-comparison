@@ -14,8 +14,8 @@ def capacity_constraints():
 
 
 @pytest.fixture(scope="module")
-def installed_capacity(model, variables):
-    return model.get_formatted_array("energy_cap") / variables["scaling-factors"]["power"]
+def installed_capacity(model, scaling_factors):
+    return model.get_formatted_array("energy_cap") / scaling_factors["power"]
 
 
 class Base:

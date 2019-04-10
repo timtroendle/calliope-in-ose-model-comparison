@@ -16,10 +16,10 @@ def requested_caps():
 
 
 @pytest.fixture(scope="module")
-def co2_emissions(model, variables):
+def co2_emissions(model, scaling_factors):
     return (model.get_formatted_array("cost")
                  .sel(costs="co2")
-                 .sum(dim="techs")) / variables["scaling-factors"]["co2"]
+                 .sum(dim="techs")) / scaling_factors["co2"]
 
 
 class Base:

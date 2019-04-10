@@ -17,19 +17,19 @@ def requested_shares(request):
 
 
 @pytest.fixture(scope="module")
-def renewable_generation(model, variables):
+def renewable_generation(model, scaling_factors):
     return (model.get_formatted_array("carrier_prod")
                  .sel(carriers="electricity", techs=RE_TECHS)
-                 .sum(dim=["timesteps", "techs"])) / variables["scaling-factors"]["power"]
+                 .sum(dim=["timesteps", "techs"])) / scaling_factors["power"]
 
 
 @pytest.fixture(scope="module")
-def demand(model, variables):
+def demand(model, scaling_factors):
     return (
         model.get_formatted_array("carrier_con")
              .sel(carriers="electricity", techs="demand_elec")
              .sum(dim=["timesteps"])
-    ) / variables["scaling-factors"]["power"]
+    ) / scaling_factors["power"]
 
 
 @pytest.fixture()
