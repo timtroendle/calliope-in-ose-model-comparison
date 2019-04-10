@@ -17,38 +17,24 @@ def requested_shares(request):
 
 
 @pytest.fixture(scope="module")
-def generation(model, variables):
-    prod = model.get_formatted_array("carrier_prod").to_dataframe(name="carrier_prod")
-    prod = prod.groupby(["locs", "techs"]).carrier_prod.sum().reset_index()
-    prod.drop(index=prod[prod.techs.str.contains("transmission")].index, inplace=True)
-    prod.locs = prod.locs.str[:3]
-    prod.techs = prod.techs.map(lambda tech: tech if tech[-4] != "_" else tech[:-4])
-    return (prod.groupby(["locs", "techs"])
-                .carrier_prod
-                .sum()
-                .reset_index()
-                .pivot(index="locs", columns="techs", values="carrier_prod")
-                .mul(1 / variables["scaling-factors"]["power"]))
+def renewable_generation(model, variables):
+    return (model.get_formatted_array("carrier_prod")
+                 .sel(carriers="electricity", techs=RE_TECHS)
+                 .sum(dim=["timesteps", "techs"])) / variables["scaling-factors"]["power"]
 
 
 @pytest.fixture(scope="module")
-def consumption(model, variables):
-    con = model.get_formatted_array("carrier_con").to_dataframe(name="carrier_con")
-    con = con.groupby(["locs", "techs"]).carrier_con.sum().reset_index()
-    con.drop(index=con[con.techs.str.contains("transmission")].index, inplace=True)
-    con.locs = con.locs.str[:3]
-    return (con.groupby(["locs", "techs"])
-               .carrier_con
-               .sum()
-               .reset_index()
-               .pivot(index="locs", columns="techs", values="carrier_con")
-               .mul(1 / variables["scaling-factors"]["power"]))
+def demand(model, variables):
+    return (
+        model.get_formatted_array("carrier_con")
+             .sel(carriers="electricity", techs="demand_elec")
+             .sum(dim=["timesteps"])
+    ) / variables["scaling-factors"]["power"]
 
 
 @pytest.fixture()
-def re_share(generation, consumption, country):
-    re_prod = generation.loc[country, RE_TECHS].sum()
-    return re_prod / (consumption.loc[country, "demand_elec"] * -1)
+def re_share(renewable_generation, demand, country):
+    return renewable_generation.sel(locs=country) / (demand.sel(locs=country) * -1)
 
 
 @pytest.fixture()
