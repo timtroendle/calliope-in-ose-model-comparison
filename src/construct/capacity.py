@@ -3,16 +3,18 @@ import jinja2
 import pandas as pd
 import pycountry
 
+BIOMASS_CAPACITY_FACTOR = 7500 / 8760 # ASSUME by DIW
+
 TECH_MAP = {
     "Biofuels": "biofuels", # ASSUME inexistent
     "Gas": "ccgt", # ASSUME all gas to be CCGT
     "Hard coal": "coal",
     "Hydro-pump": "pumped_hydro",
     "Hydro-run": "hydro_run_of_river",
-    "Hydro-turbine": "hydro_turbine", # ASSUME ignore
+    "Hydro-turbine": "hydro_turbine",
     "Lignite": "lignite",
     "Nuclear": "nuclear",
-    "Oil": "oil", # ASSUME doesnt exist in electricity (was 1.9% in 2015)
+    "Oil": "oils",
     "Othernon-RES": "ccgt", # ASSUME ccgt
     "Other RES": "biomass", # ASSUME biomass
     "Solar-thermal": "solar_thermal", # ignored for electricity
@@ -38,6 +40,9 @@ locations:
             hydro_run_of_river:
                 constraints:
                     energy_cap_equals: {{ techs.hydro_run_of_river }} # [{{ unit_scaling_factor }} MW]
+            hydro_reservoir:
+                constraints:
+                    energy_cap_equals: {{ techs.hydro_reservoir }} # [{{ unit_scaling_factor }} MW]
             biomass:
                 constraints:
                     energy_cap_equals: {{ techs.biomass }} # [{{ unit_scaling_factor }} MW]
@@ -50,6 +55,9 @@ locations:
             lignite:
                 constraints:
                     energy_cap_max: {{ techs.lignite }} # [{{ unit_scaling_factor }} MW]
+            oils:
+                constraints:
+                    energy_cap_max: {{ techs.oils }} # [{{ unit_scaling_factor }} MW]
             ccgt:
                 constraints:
                     energy_cap_max: {{ techs.ccgt }} # [{{ unit_scaling_factor }} MW]
@@ -63,6 +71,7 @@ locations:
 def generate_generation_capacities(path_to_data, scaling_factor, path_to_yaml, path_to_csv):
     """Create Calliope file defining bounds of generation capacities."""
     raw = _read_generation_capacities(path_to_data)
+    raw.loc[:, "biomass"] = raw.loc[:, "biomass"] * BIOMASS_CAPACITY_FACTOR
     raw.to_csv(path_to_csv, index=True, header=True)
 
     capacities = jinja2.Template(TEMPLATE).render(
@@ -104,6 +113,8 @@ def _read_generation_capacities(path_to_data):
         columns=lambda name: TECH_MAP[name.strip().replace('\n', '').replace('\r', '')],
         inplace=True
     )
+    data["hydro_reservoir"] = data["hydro_turbine"] - data["pumped_hydro"]
+    data["hydro_reservoir"] = data["hydro_reservoir"].where(data["hydro_reservoir"] >= 0, other=0)
     return data.groupby(data.index).sum().groupby(data.columns, axis="columns").sum()
 
 

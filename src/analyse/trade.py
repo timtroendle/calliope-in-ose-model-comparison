@@ -41,7 +41,7 @@ def _read_exports(model):
 
 if __name__ == "__main__":
     excavate_trade(
-        path_to_results=snakemake.input.results[0],
+        path_to_results=snakemake.input.results,
         path_to_trade_amounts=snakemake.output[0],
         scaling_factor=snakemake.params.scaling_factor
     )

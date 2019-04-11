@@ -10,7 +10,8 @@ group_constraints:
     renewable_share_{{ country }}:
         locs: ["{{ country }}"]
         techs: ["wind_onshore_monopoly", "wind_onshore_competing", "wind_offshore",
-                "open_field_pv", "roof_mounted_pv", "hydro_run_of_river", "biomass"]
+                "open_field_pv", "roof_mounted_pv", "hydro_run_of_river", "hydro_reservoir",
+                "biomass"]
         demand_share_min:
             electricity: {{ share }}
     {% endfor %}

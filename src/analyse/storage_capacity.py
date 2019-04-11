@@ -32,7 +32,7 @@ def _read_capacities(model):
 
 if __name__ == "__main__":
     excavate_installed_storage_capacities(
-        path_to_results=snakemake.input.results[0],
+        path_to_results=snakemake.input.results,
         path_to_capacities_raw=snakemake.output.raw,
         path_to_capacities_publish=snakemake.output.publish,
         scaling_factor=snakemake.params.scaling_factor

@@ -20,7 +20,22 @@ onerror:
 
 rule all:
     message: "Run entire analysis and compile report."
-    input: "build/report.html"
+    input:
+        "build/report.html",
+        "build/output/all-results.csv"
+
+
+rule output:
+    message: "Collect all results in standardised format."
+    input:
+        src = "src/analyse/output.py",
+        scenarios = expand(
+            "build/output/{scenario}/results.nc",
+            scenario=[scenario for scenario in config["scenarios"]]
+        )
+    params: scaling_factors = config["scaling-factors"]
+    output: "build/output/all-results.csv"
+    script: "src/analyse/output.py"
 
 
 rule report:

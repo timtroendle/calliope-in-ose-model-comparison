@@ -58,7 +58,7 @@ def _create_consumption_timeseries(model):
 
 if __name__ == "__main__":
     visualise_model_results(
-        path_to_results=snakemake.input.results[0],
+        path_to_results=snakemake.input.results,
         path_to_figure=snakemake.output[0],
         scaling_factor=snakemake.params.scaling_factor
     )

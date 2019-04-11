@@ -8,7 +8,6 @@ techs:
         constraints:
             energy_eff: 0.44  # Coal ASC with FGD medium nth o.a.k., {parsons2011}
             resource: inf
-            energy_cap_min_use: 0.5  # Assumption
             lifetime: 25
         costs:
             monetary:
@@ -26,7 +25,23 @@ techs:
         constraints:
             energy_eff: 0.44  # Coal ASC with FGD medium nth o.a.k., {parsons2011}
             resource: inf
-            energy_cap_min_use: 0.5  # Assumption
+            lifetime: 25
+        costs:
+            monetary:
+                energy_cap: {{ 2160180 * monetary_scaling_factor }}  # [{{ 1 / monetary_scaling_factor }} 2016 EUR/MWh], Coal ASC with FGD medium nth o.a.k., {parsons2011}
+                om_prod: {{ 1.315 * monetary_scaling_factor }}  # [{{ 1 / monetary_scaling_factor }} 2016 EUR/MWh], Coal ASC with FGD medium nth o.a.k., {parsons2011}
+                om_annual: {{ 46030 * monetary_scaling_factor }}  # [{{ 1 / monetary_scaling_factor }} 2016 EUR/MW/yr], Coal ASC with FGD medium nth o.a.k., {parsons2011}
+                om_con:  {{ 10.92 * monetary_scaling_factor }}  # [{{ 1 / monetary_scaling_factor }} 2016 EUR/MWh] net, medium, Table 6.3, {mott2010} (with 1 GJ = 0.277777 MWh)
+            co2:
+                om_prod:  {{ 0.000000910 * co2_scaling_factor }}  # [{{ 1 / co2_scaling_factor }} Mt] CO2eq/MWh, {ipcc_ar5_wg3} # ASSUME max of IPCC range for coal
+    oils: # ASSUME copy of lignite
+        essentials:
+            name: Oil
+            carrier: electricity
+            parent: supply
+        constraints:
+            energy_eff: 0.44  # Coal ASC with FGD medium nth o.a.k., {parsons2011}
+            resource: inf
             lifetime: 25
         costs:
             monetary:

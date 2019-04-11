@@ -1,7 +1,7 @@
 year: 2015
 from_date: "2015-01-01"
 to_date: "2015-12-31"
-resolution: "2H"
+resolution: "1H"
 scaling-factors:
     power: 0.001 # from MW to GW
     area: 0.001 # from km to 1000 km2
@@ -10,5 +10,8 @@ scaling-factors:
 scenarios:
     - baseline
     - low-cost
+    - lowest-cost
     - baseline-germany
     - low-cost-germany
+    - lowest-cost-germany
+    - tight-co2-caps-germany

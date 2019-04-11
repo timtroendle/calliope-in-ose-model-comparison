@@ -1,7 +1,6 @@
 import:
     - './renewable-techs.yaml'
     - './locations.yaml'
-    - './link-techs.yaml'
     - './storage-techs.yaml'
     - './links.yaml'
     - './capacity.yaml'
@@ -11,7 +10,8 @@ import:
     - './co2-caps.yaml'
 overrides:
     diw_assumptions:
-        techs.battery.energy_eff: 0.9591663046625439  # 0.9592 * 0.9592 ~ 0.92 round trip efficiency {Schmidt et al. 2017}
+        techs.battery.constraints.energy_eff: 0.9591663046625439  # 0.9592 * 0.9592 ~ 0.92 round trip efficiency {Schmidt et al. 2017}
+        techs.battery.constraints.lifetime: 12 # {own assumption}
         techs.battery.costs.monetary.interest_rate: 0.04 # {own assumption}
         techs.battery.costs.monetary.om_annual: 0  # {own_assumptions}
         techs.battery.costs.monetary.om_prod: 0  # {own_assumptions}
@@ -29,6 +29,16 @@ overrides:
     diw_battery_low_cost:
         techs.battery.costs.monetary.energy_cap: {{ 67570 * monetary_scaling_factor }} # [{{ 1 / monetary_scaling_factor }} EUR per MW]
         techs.battery.costs.monetary.storage_cap: {{ 157660 * monetary_scaling_factor }} # [{{ 1 / monetary_scaling_factor }} EUR per MWh]
+    diw_battery_lowest_cost:
+        techs.battery.costs.monetary.energy_cap: {{ 33785 * monetary_scaling_factor }} # [{{ 1 / monetary_scaling_factor }} EUR per MW]
+        techs.battery.costs.monetary.storage_cap: {{ 78830 * monetary_scaling_factor }} # [{{ 1 / monetary_scaling_factor }} EUR per MWh]
+    jrc_etri_2014_renewable_costs:
+        techs.wind_offshore.costs.monetary.energy_cap: {{ 2580000 * monetary_scaling_factor }} # [{{ 1 / monetary_scaling_factor  }} EUR2013/MW]
+        techs.wind_offshore.costs.monetary.om_annual: {{ 2580000 * 0.03 * monetary_scaling_factor }} # [{{ 1 / monetary_scaling_factor  }} EUR2013/MW/yr]
+        tech_groups.wind_onshore.costs.monetary.energy_cap: {{ 1300000 * monetary_scaling_factor }} # [{{ 1 / monetary_scaling_factor  }} EUR2013/MW]
+        tech_groups.wind_onshore.costs.monetary.om_annual: {{ 1300000 * 0.022 * monetary_scaling_factor }} # [{{ 1 / monetary_scaling_factor  }} EUR2013/MW/yr]
+        tech_groups.pv.costs.monetary.energy_cap: {{ 640000 * monetary_scaling_factor }} # [{{ 1 / monetary_scaling_factor  }} EUR2013/MW]
+        tech_groups.pv.costs.monetary.om_annual: {{ 640000 * 0.017 * monetary_scaling_factor }} # [{{ 1 / monetary_scaling_factor  }} EUR2013/MW/yr]
     equal_interest_rate: # harmonise interest rates
         tech_groups.conversion.costs.monetary.interest_rate: 0.04
         tech_groups.conversion_plus.costs.monetary.interest_rate: 0.04
@@ -36,9 +46,10 @@ overrides:
         tech_groups.supply.costs.monetary.interest_rate: 0.04
         tech_groups.supply_plus.costs.monetary.interest_rate: 0.04
         tech_groups.transmission.costs.monetary.interest_rate: 0.04
+    battery_c_rate:
+        techs.battery.constraints.energy_cap_per_storage_cap_min: 0.25 # max 4h full-power discharge
+        techs.battery.constraints.energy_cap_per_storage_cap_max: 4 # min 1/4h full-power discharge
     germany_only:
-        model.time.fiunction: resample
-        model.time.function_options: {'resolution': '1H'}
         # locations
         locations.ALB.exists: False
         locations.AUT.exists: False
@@ -247,13 +258,13 @@ overrides:
         locations.SVN.techs.hydrogen.exists: False
         locations.SWE.techs.hydrogen.exists: False
 scenarios:
-    baseline: ["diw_assumptions", "diw_battery_baseline_cost", "equal_interest_rate", "no_hydrogen"]
-    low-cost: ["diw_assumptions", "diw_battery_low_cost", "equal_interest_rate", "no_hydrogen"]
-    baseline-germany: ["diw_assumptions", "diw_battery_baseline_cost", "germany_only", "equal_interest_rate", "no_hydrogen"]
-    low-cost-germany: ["diw_assumptions", "diw_battery_low_cost", "germany_only", "equal_interest_rate", "no_hydrogen"]
-    low-cost-no-co2-caps: ["diw_assumptions", "diw_battery_low_cost", "equal_interest_rate", "no_co2_caps", "no_hydrogen"] # performance test
-    low-cost-no-run-of-river: ["diw_assumptions", "diw_battery_low_cost", "equal_interest_rate", "no_run_of_river", "no_hydrogen"] # performance test
-    low-cost-no-nothing: ["diw_assumptions", "diw_battery_low_cost", "equal_interest_rate", "no_run_of_river", "no_co2_caps", "no_hydrogen"] # performance test
+    baseline: ["diw_assumptions", "diw_battery_baseline_cost", "jrc_etri_2014_renewable_costs", "battery_c_rate", "equal_interest_rate", "no_hydrogen"]
+    low-cost: ["diw_assumptions", "diw_battery_low_cost", "jrc_etri_2014_renewable_costs", "battery_c_rate", "equal_interest_rate", "no_hydrogen"]
+    lowest-cost: ["diw_assumptions", "diw_battery_lowest_cost", "jrc_etri_2014_renewable_costs", "battery_c_rate", "equal_interest_rate", "no_hydrogen"]
+    baseline-germany: ["diw_assumptions", "diw_battery_baseline_cost", "jrc_etri_2014_renewable_costs", "battery_c_rate", "germany_only", "equal_interest_rate", "no_hydrogen"]
+    low-cost-germany: ["diw_assumptions", "diw_battery_low_cost", "jrc_etri_2014_renewable_costs", "battery_c_rate", "germany_only", "equal_interest_rate", "no_hydrogen"]
+    lowest-cost-germany: ["diw_assumptions", "diw_battery_lowest_cost", "jrc_etri_2014_renewable_costs", "battery_c_rate", "germany_only", "equal_interest_rate", "no_hydrogen"]
+    tight-co2-caps-germany: ["diw_assumptions", "diw_battery_baseline_cost", "jrc_etri_2014_renewable_costs", "battery_c_rate", "germany_only", "equal_interest_rate", "no_hydrogen", "tight_co2_caps"]
 model:
     name: 'Open Source Modelling -- Euro Calliope model'
     calliope_version: 0.6.4
@@ -268,9 +279,15 @@ run:
     solver: gurobi
     solver_io: python
     mode: plan
+    objective_options: {
+        'cost_class': {'monetary': 1},
+        'sense': 'minimize'
+    }
     solver_options:
         Threads: 4
         Method: 2 # use barrier, but do not run simplex in parallel
+        FeasibilityTol: 1e-5
+        OptimalityTol: 1e-5
 techs:
     demand_elec:
         essentials:
@@ -279,9 +296,43 @@ techs:
             carrier: electricity
         constraints:
             resource: file=electricity-demand.csv
+    uni_directional_ac_transmission_A:
+        # A and B are necessary to model uni directional constraints in both directions
+        # https://github.com/calliope-project/calliope/issues/215
+        essentials:
+            name: "High voltage AC transmission line A"
+            parent: transmission
+            carrier: electricity
+        constraints:
+            energy_eff_per_distance: 0.99999995 # [1/m]
+            one_way: true
+    uni_directional_ac_transmission_B:
+        # A and B are necessary to model uni directional constraints in both directions
+        # https://github.com/calliope-project/calliope/issues/215
+        essentials:
+            name: "High voltage AC transmission line B"
+            parent: transmission
+            carrier: electricity
+        constraints:
+            energy_eff_per_distance: 0.99999995 # [1/m]
+            one_way: true
     hydro_run_of_river:
         essentials:
             name: 'Run of river hydro power'
+            parent: supply
+            carrier: electricity
+        constraints:
+            energy_cap_max: inf
+            resource: file=run-of-river.csv:capacityfactor
+            resource_unit: energy_per_cap
+            lifetime: 60 # [JRC ETRI 2014]
+        costs:
+            monetary:
+                energy_cap: {{ 5620000 * monetary_scaling_factor }} # [{{ 1 / monetary_scaling_factor }} EUR2013/MW], [JRC ETRI 2014]
+                om_annual: {{ 84300 * monetary_scaling_factor }} # [{{ 1 / monetary_scaling_factor }} EUR2013/MW/year], [JRC ETRI 2014]
+    hydro_reservoir: # ASSUME ignoring the actual reservoir here, as we do not know their size
+        essentials:
+            name: 'Reservoir hydro power'
             parent: supply
             carrier: electricity
         constraints:
