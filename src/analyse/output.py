@@ -1,8 +1,10 @@
 """Collect all results in standardised format."""
 import functools
 from pathlib import Path
+from dataclasses import dataclass
 
 import calliope
+import numpy as np
 import pandas as pd
 
 
@@ -11,6 +13,7 @@ TOTAL_COVERED_REGION = "Total covered region"
 GERMANY_IN = "DEU"
 GERMANY_OUT = "DE"
 LOCATIONS = [TOTAL_COVERED_REGION, GERMANY_OUT]
+CARRIER = "electricity"
 RE_TECHS = ["open_field_pv", "roof_mounted_pv", "wind_onshore_monopoly",
             "wind_onshore_competing", "wind_offshore", "hydro_run_of_river"]
 SCENARIO_NAME_MAP = {
@@ -21,6 +24,13 @@ SCENARIO_NAME_MAP = {
     "low-cost-germany": "50percent battery costs|Germany only|Without sector coupling",
     "lowest-cost-germany": "25percent battery costs|Germany only|Without sector coupling"
 }
+
+
+@dataclass
+class Variable:
+    name: str
+    value_function: callable = None
+    aggregation_function: callable = np.sum
 
 
 def excavate_all_results(paths_to_scenarios, scaling_factors, path_to_output):
@@ -43,26 +53,28 @@ def excavate_all_results(paths_to_scenarios, scaling_factors, path_to_output):
 
 def _excavate_data(scenarios, variables, scaling_factors):
     index = pd.MultiIndex.from_product(
-        [scenarios.keys(), LOCATIONS, variables.keys()],
+        [scenarios.keys(), LOCATIONS, [variable.name for variable in variables]],
         names=["scenario", "region", "variable"]
     )
     data = pd.Series(index=index, name="value")
-    for variable_name, variable_function in variables.items():
-        if variable_function:
-            _excavate_variable(data, scenarios, variable_name, variable_function, scaling_factors)
+    for variable in variables:
+        if variable.value_function:
+            _excavate_variable(data, scenarios, variable, scaling_factors)
     return data
 
 
-def _excavate_variable(data, scenarios, variable_name, variable_function, scaling_factors):
+def _excavate_variable(data, scenarios, variable, scaling_factors):
     values = {
-        scenario_name: variable_function(scenario_data, scaling_factors)
+        scenario_name: variable.value_function(scenario_data, scaling_factors)
         for scenario_name, scenario_data in scenarios.items()
     }
     for scenario, scenario_values in values.items():
-        data.loc[(scenario, GERMANY_OUT, variable_name)] = scenario_values.loc[GERMANY_IN]
-        data.loc[(scenario, TOTAL_COVERED_REGION, variable_name)] = scenario_values.sum()
-        if variable_name == "Energy|Electricity|Renewable curtailment|Relative":
-            data.loc[(scenario, TOTAL_COVERED_REGION, variable_name)] = scenario_values.mean()
+        data.loc[(scenario, GERMANY_OUT, variable.name)] = scenario_values.loc[GERMANY_IN]
+        try:
+            total_value = scenario_values.agg(variable.aggregation_function)
+        except AttributeError: # scenario_values are xarray DataArray
+            total_value = scenario_values.to_pandas().agg(variable.aggregation_function).item()
+        data.loc[(scenario, TOTAL_COVERED_REGION, variable.name)] = total_value
 
 
 def _prepare_scaling_factors(scaling_factors):
@@ -74,75 +86,75 @@ def _prepare_scaling_factors(scaling_factors):
 
 
 def _set_up_variables():
-    return {
-        "Cost|Total system": _excavate_cost_total_system,
-        "Cost|Capacity": _excavate_cost_capacity,
-        "Cost|Average total system": _excavate_levelised_total_cost,
-        "Cost|Variable": _excavate_cost_variable,
-        "Cost|Network": None,
-        "Capacity|Electricity|Nuclear": lambda data, sf: _excavate_capacity_for_tech(data, ["nuclear"], sf),
-        "Capacity|Electricity|Lignite": lambda data, sf: _excavate_capacity_for_tech(data, ["lignite"], sf),
-        "Capacity|Electricity|Hard coal": lambda data, sf: _excavate_capacity_for_tech(data, ["coal"], sf),
-        "Capacity|Electricity|Gas CCGT": lambda data, sf: _excavate_capacity_for_tech(data, ["ccgt"], sf),
-        "Capacity|Electricity|Gas OCGT": None,
-        "Capacity|Electricity|Oil": None,
-        "Capacity|Electricity|Other nonrenewable": None,
-        "Capacity|Electricity|Wind onshore": lambda data, sf: _excavate_capacity_for_tech(data, ["wind_onshore_monopoly", "wind_onshore_competing"], sf),
-        "Capacity|Electricity|Wind offshore": lambda data, sf: _excavate_capacity_for_tech(data, ["wind_offshore"], sf),
-        "Capacity|Electricity|Solar PV": lambda data, sf: _excavate_capacity_for_tech(data, ["open_field_pv", "roof_mounted_pv"], sf),
-        "Capacity|Electricity|Solar CSP": None,
-        "Capacity|Electricity|Hydro ROR": lambda data, sf: _excavate_capacity_for_tech(data, ["hydro_run_of_river"], sf),
-        "Capacity|Electricity|Hydro Reservoir": None,
-        "Capacity|Electricity|Bioenergy": lambda data, sf: _excavate_capacity_for_tech(data, ["biomass"], sf),
-        "Capacity|Electricity|Other renewable": None,
-        "Capacity|Electricity|Storage|Liion|Power": lambda data, sf: _excavate_capacity_for_tech(data, ["battery"], sf),
-        "Capacity|Electricity|Storage|Liion|Energy": lambda data, sf: _excavate_storage_capacity_for_tech(data, ["battery"], sf),
-        "Capacity|Electricity|Storage|Pumped hydro|Power": lambda data, sf: _excavate_capacity_for_tech(data, ["pumped_hydro"], sf),
-        "Capacity|Electricity|Storage|Pumped hydro|Energy": lambda data, sf: _excavate_storage_capacity_for_tech(data, ["pumped_hydro"], sf),
-        "Capacity|Electricity|Storage|Other|Power": None,
-        "Capacity|Electricity|Storage|Other|Energy": None,
-        "Capacity|Electricity|Gross import": _excavate_transmission_capacity,
-        "Capacity|Electricity|Gross export": _excavate_transmission_capacity,
-        "Capacity|Sector coupling|Electric vehicles": None,
-        "Capacity|Sector coupling|Powertoheat": None,
-        "Capacity|Sector coupling|Electrolysis": None,
-        "Energy|Electricity|Nuclear": lambda data, sf: _excavate_generation_for_tech(data, ["nuclear"], sf),
-        "Energy|Electricity|Lignite": lambda data, sf: _excavate_generation_for_tech(data, ["lignite"], sf),
-        "Energy|Electricity|Hard coal": lambda data, sf: _excavate_generation_for_tech(data, ["coal"], sf),
-        "Energy|Electricity|Gas CCGT": lambda data, sf: _excavate_generation_for_tech(data, ["ccgt"], sf),
-        "Energy|Electricity|Gas OCGT": None,
-        "Energy|Electricity|Oil": None,
-        "Energy|Electricity|Other nonrenewable": None,
-        "Energy|Electricity|Wind onshore": lambda data, sf: _excavate_generation_for_tech(data, ["wind_onshore_monopoly", "wind_onshore_competing"], sf),
-        "Energy|Electricity|Wind offshore": lambda data, sf: _excavate_generation_for_tech(data, ["wind_offshore"], sf),
-        "Energy|Electricity|Solar PV": lambda data, sf: _excavate_generation_for_tech(data, ["open_field_pv", "roof_mounted_pv"], sf),
-        "Energy|Electricity|Solar CSP": None,
-        "Energy|Electricity|Hydro ROR": lambda data, sf: _excavate_generation_for_tech(data, ["hydro_run_of_river"], sf),
-        "Energy|Electricity|Hydro Reservoir": None,
-        "Energy|Electricity|Bioenergy": lambda data, sf: _excavate_generation_for_tech(data, ["biomass"], sf),
-        "Energy|Electricity|Other renewable": None,
-        "Energy|Electricity|Renewable curtailment|Absolute": _excavate_absolute_curtailment,
-        "Energy|Electricity|Renewable curtailment|Relative": _excavate_relative_curtailment,
-        "Energy|Electricity|Storage|Liion": lambda data, sf: _excavate_generation_for_tech(data, ["battery"], sf),
-        "Energy|Electricity|Storage|Pumped hydro": lambda data, sf: _excavate_generation_for_tech(data, ["pumped_hydro"], sf),
-        "Energy|Electricity|Storage|Other": None,
-        "Energy|Electricity|Gross import": _excavate_transmission_generation,
-        "Energy|Electricity|Gross export": _excavate_transmission_consumption,
-        "Energy|Sector coupling|Electric vehicles|G2V": None,
-        "Energy|Sector coupling|Powertoheat": None,
-        "Energy|Sector coupling|Electrolysis": None,
-        "Cycles|Electricity|Storage|Liion": lambda data, sf: _excavate_cycles_for_tech(data, ["battery"], sf),
-        "Cycles|Electricity|Storage|Pumped hydro": lambda data, sf: _excavate_cycles_for_tech(data, ["pumped_hydro"], sf),
-        "Cycles|Electricity|Storage|Other": None,
-        "Carbon emissions": _excavate_co2_total_system,
-        "Price|Electricity|Weighted average": None,
-        "Price|Electricity|Storage|Liion|Weighted average charging": None,
-        "Price|Electricity|Storage|Liion|Weighted average discharging": None,
-        "Startups|Electricity|Total number": None,
-        "Startups|Electricity|Total cost": None,
-        "Energy|Electricity|Peak demand": _excavate_peak_demand,
-        "Energy|Electricity|Total demand": _excavate_demand,
-    }
+    return [
+        Variable("Cost|Total system", _excavate_cost_total_system),
+        Variable("Cost|Capacity", _excavate_cost_capacity),
+        Variable("Cost|Average total system", _excavate_levelised_total_cost),
+        Variable("Cost|Variable", _excavate_cost_variable),
+        Variable("Cost|Network"),
+        Variable("Capacity|Electricity|Nuclear", lambda data, sf: _excavate_capacity_for_tech(data, ["nuclear"], sf)),
+        Variable("Capacity|Electricity|Lignite", lambda data, sf: _excavate_capacity_for_tech(data, ["lignite"], sf)),
+        Variable("Capacity|Electricity|Hard coal", lambda data, sf: _excavate_capacity_for_tech(data, ["coal"], sf)),
+        Variable("Capacity|Electricity|Gas CCGT", lambda data, sf: _excavate_capacity_for_tech(data, ["ccgt"], sf)),
+        Variable("Capacity|Electricity|Gas OCGT"),
+        Variable("Capacity|Electricity|Oil"),
+        Variable("Capacity|Electricity|Other nonrenewable"),
+        Variable("Capacity|Electricity|Wind onshore", lambda data, sf: _excavate_capacity_for_tech(data, ["wind_onshore_monopoly", "wind_onshore_competing"], sf)),
+        Variable("Capacity|Electricity|Wind offshore", lambda data, sf: _excavate_capacity_for_tech(data, ["wind_offshore"], sf)),
+        Variable("Capacity|Electricity|Solar PV", lambda data, sf: _excavate_capacity_for_tech(data, ["open_field_pv", "roof_mounted_pv"], sf)),
+        Variable("Capacity|Electricity|Solar CSP"),
+        Variable("Capacity|Electricity|Hydro ROR", lambda data, sf: _excavate_capacity_for_tech(data, ["hydro_run_of_river"], sf)),
+        Variable("Capacity|Electricity|Hydro Reservoir"),
+        Variable("Capacity|Electricity|Bioenergy", lambda data, sf: _excavate_capacity_for_tech(data, ["biomass"], sf)),
+        Variable("Capacity|Electricity|Other renewable"),
+        Variable("Capacity|Electricity|Storage|Liion|Power", lambda data, sf: _excavate_capacity_for_tech(data, ["battery"], sf)),
+        Variable("Capacity|Electricity|Storage|Liion|Energy", lambda data, sf: _excavate_storage_capacity_for_tech(data, ["battery"], sf)),
+        Variable("Capacity|Electricity|Storage|Pumped hydro|Power", lambda data, sf: _excavate_capacity_for_tech(data, ["pumped_hydro"], sf)),
+        Variable("Capacity|Electricity|Storage|Pumped hydro|Energy", lambda data, sf: _excavate_storage_capacity_for_tech(data, ["pumped_hydro"], sf)),
+        Variable("Capacity|Electricity|Storage|Other|Power"),
+        Variable("Capacity|Electricity|Storage|Other|Energy"),
+        Variable("Capacity|Electricity|Gross import", _excavate_transmission_capacity),
+        Variable("Capacity|Electricity|Gross export", _excavate_transmission_capacity),
+        Variable("Capacity|Sector coupling|Electric vehicles"),
+        Variable("Capacity|Sector coupling|Powertoheat"),
+        Variable("Capacity|Sector coupling|Electrolysis"),
+        Variable("Energy|Electricity|Nuclear", lambda data, sf: _excavate_generation_for_tech(data, ["nuclear"], sf)),
+        Variable("Energy|Electricity|Lignite", lambda data, sf: _excavate_generation_for_tech(data, ["lignite"], sf)),
+        Variable("Energy|Electricity|Hard coal", lambda data, sf: _excavate_generation_for_tech(data, ["coal"], sf)),
+        Variable("Energy|Electricity|Gas CCGT", lambda data, sf: _excavate_generation_for_tech(data, ["ccgt"], sf)),
+        Variable("Energy|Electricity|Gas OCGT"),
+        Variable("Energy|Electricity|Oil"),
+        Variable("Energy|Electricity|Other nonrenewable"),
+        Variable("Energy|Electricity|Wind onshore", lambda data, sf: _excavate_generation_for_tech(data, ["wind_onshore_monopoly", "wind_onshore_competing"], sf)),
+        Variable("Energy|Electricity|Wind offshore", lambda data, sf: _excavate_generation_for_tech(data, ["wind_offshore"], sf)),
+        Variable("Energy|Electricity|Solar PV", lambda data, sf: _excavate_generation_for_tech(data, ["open_field_pv", "roof_mounted_pv"], sf)),
+        Variable("Energy|Electricity|Solar CSP"),
+        Variable("Energy|Electricity|Hydro ROR", lambda data, sf: _excavate_generation_for_tech(data, ["hydro_run_of_river"], sf)),
+        Variable("Energy|Electricity|Hydro Reservoir"),
+        Variable("Energy|Electricity|Bioenergy", lambda data, sf: _excavate_generation_for_tech(data, ["biomass"], sf)),
+        Variable("Energy|Electricity|Other renewable"),
+        Variable("Energy|Electricity|Renewable curtailment|Absolute", _excavate_absolute_curtailment),
+        Variable("Energy|Electricity|Renewable curtailment|Relative", _excavate_relative_curtailment, np.mean),
+        Variable("Energy|Electricity|Storage|Liion", lambda data, sf: _excavate_generation_for_tech(data, ["battery"], sf)),
+        Variable("Energy|Electricity|Storage|Pumped hydro", lambda data, sf: _excavate_generation_for_tech(data, ["pumped_hydro"], sf)),
+        Variable("Energy|Electricity|Storage|Other"),
+        Variable("Energy|Electricity|Gross import", _excavate_transmission_generation),
+        Variable("Energy|Electricity|Gross export", _excavate_transmission_consumption),
+        Variable("Energy|Sector coupling|Electric vehicles|G2V"),
+        Variable("Energy|Sector coupling|Powertoheat"),
+        Variable("Energy|Sector coupling|Electrolysis"),
+        Variable("Cycles|Electricity|Storage|Liion", lambda data, sf: _excavate_cycles_for_tech(data, ["battery"], sf)),
+        Variable("Cycles|Electricity|Storage|Pumped hydro", lambda data, sf: _excavate_cycles_for_tech(data, ["pumped_hydro"], sf)),
+        Variable("Cycles|Electricity|Storage|Other"),
+        Variable("Carbon emissions", _excavate_co2_total_system),
+        Variable("Price|Electricity|Weighted average"),
+        Variable("Price|Electricity|Storage|Liion|Weighted average charging"),
+        Variable("Price|Electricity|Storage|Liion|Weighted average discharging"),
+        Variable("Startups|Electricity|Total number"),
+        Variable("Startups|Electricity|Total cost"),
+        Variable("Energy|Electricity|Peak demand", _excavate_peak_demand),
+        Variable("Energy|Electricity|Total demand", _excavate_demand),
+    ]
 
 
 def _excavate_cost_total_system(data, scaling_factors):
@@ -349,7 +361,7 @@ def _excavate_co2_total_system(data, scaling_factors):
 
 
 def _excavate_cycles_for_tech(data, tech, scaling_factors):
-    charge = data.get_formatted_array("carrier_con").sel(techs=tech)
+    charge = data.get_formatted_array("carrier_con").sel(techs=tech, carriers=CARRIER)
     storage_cap = data.get_formatted_array("storage_cap").sel(techs=tech)
     return (charge.sum(dim="timesteps") * (-1) / storage_cap)
 
