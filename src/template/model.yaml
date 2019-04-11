@@ -46,6 +46,9 @@ overrides:
         tech_groups.supply.costs.monetary.interest_rate: 0.04
         tech_groups.supply_plus.costs.monetary.interest_rate: 0.04
         tech_groups.transmission.costs.monetary.interest_rate: 0.04
+    battery_c_rate:
+        techs.battery.constraints.energy_cap_per_storage_cap_min: 0.25 # max 4h full-power discharge
+        techs.battery.constraints.energy_cap_per_storage_cap_max: 4 # min 1/4h full-power discharge
     germany_only:
         # locations
         locations.ALB.exists: False
@@ -255,13 +258,13 @@ overrides:
         locations.SVN.techs.hydrogen.exists: False
         locations.SWE.techs.hydrogen.exists: False
 scenarios:
-    baseline: ["diw_assumptions", "diw_battery_baseline_cost", "jrc_etri_2014_renewable_costs", "equal_interest_rate", "no_hydrogen"]
-    low-cost: ["diw_assumptions", "diw_battery_low_cost", "jrc_etri_2014_renewable_costs", "equal_interest_rate", "no_hydrogen"]
-    lowest-cost: ["diw_assumptions", "diw_battery_lowest_cost", "jrc_etri_2014_renewable_costs", "equal_interest_rate", "no_hydrogen"]
-    baseline-germany: ["diw_assumptions", "diw_battery_baseline_cost", "jrc_etri_2014_renewable_costs", "germany_only", "equal_interest_rate", "no_hydrogen"]
-    low-cost-germany: ["diw_assumptions", "diw_battery_low_cost", "jrc_etri_2014_renewable_costs", "germany_only", "equal_interest_rate", "no_hydrogen"]
-    lowest-cost-germany: ["diw_assumptions", "diw_battery_lowest_cost", "jrc_etri_2014_renewable_costs", "germany_only", "equal_interest_rate", "no_hydrogen"]
-    tight-co2-caps-germany: ["diw_assumptions", "diw_battery_baseline_cost", "jrc_etri_2014_renewable_costs", "germany_only", "equal_interest_rate", "no_hydrogen", "tight_co2_caps"]
+    baseline: ["diw_assumptions", "diw_battery_baseline_cost", "jrc_etri_2014_renewable_costs", "battery_c_rate", "equal_interest_rate", "no_hydrogen"]
+    low-cost: ["diw_assumptions", "diw_battery_low_cost", "jrc_etri_2014_renewable_costs", "battery_c_rate", "equal_interest_rate", "no_hydrogen"]
+    lowest-cost: ["diw_assumptions", "diw_battery_lowest_cost", "jrc_etri_2014_renewable_costs", "battery_c_rate", "equal_interest_rate", "no_hydrogen"]
+    baseline-germany: ["diw_assumptions", "diw_battery_baseline_cost", "jrc_etri_2014_renewable_costs", "battery_c_rate", "germany_only", "equal_interest_rate", "no_hydrogen"]
+    low-cost-germany: ["diw_assumptions", "diw_battery_low_cost", "jrc_etri_2014_renewable_costs", "battery_c_rate", "germany_only", "equal_interest_rate", "no_hydrogen"]
+    lowest-cost-germany: ["diw_assumptions", "diw_battery_lowest_cost", "jrc_etri_2014_renewable_costs", "battery_c_rate", "germany_only", "equal_interest_rate", "no_hydrogen"]
+    tight-co2-caps-germany: ["diw_assumptions", "diw_battery_baseline_cost", "jrc_etri_2014_renewable_costs", "battery_c_rate", "germany_only", "equal_interest_rate", "no_hydrogen", "tight_co2_caps"]
 model:
     name: 'Open Source Modelling -- Euro Calliope model'
     calliope_version: 0.6.4
