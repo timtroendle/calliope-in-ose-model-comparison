@@ -22,7 +22,8 @@ rule all:
     message: "Run entire analysis and compile report."
     input:
         "build/report.html",
-        "build/output/all-results.csv"
+        "build/output/all-results.csv",
+        "build/output/all-ts-results.csv"
 
 
 rule output:
@@ -36,6 +37,21 @@ rule output:
     params: scaling_factors = config["scaling-factors"]
     output: "build/output/all-results.csv"
     script: "src/analyse/output.py"
+
+
+
+rule ts_output:
+    message: "Collect all time series results in standardised format."
+    input:
+        src = "src/analyse/ts_output.py",
+        scenarios = expand(
+            "build/output/{scenario}/results.nc",
+            scenario=[scenario for scenario in config["scenarios"]]
+        )
+    params: scaling_factors = config["scaling-factors"]
+    output: "build/output/all-ts-results.csv"
+    conda: "envs/output.yaml"
+    script: "src/analyse/ts_output.py"
 
 
 rule report:

@@ -48,10 +48,10 @@ def excavate_all_results(paths_to_scenarios, scaling_factors, path_to_output):
     variables = _set_up_variables()
     scaling_factors = _prepare_scaling_factors(scaling_factors)
     data = _excavate_data(scenarios, variables, scaling_factors).reset_index()
-    data["model"] = MODEL_NAME
-    data["scenario"] = data["scenario"].map(SCENARIO_NAME_MAP)
-    data["region"] = data["region"].map(_rename_region)
-    data[["model", "scenario", "region", "variable", "value"]].to_csv(
+    data["Model"] = MODEL_NAME
+    data["Scenario"] = data["Scenario"].map(SCENARIO_NAME_MAP)
+    data["Region"] = data["Region"].map(_rename_region)
+    data[["Model", "Scenario", "Region", "Variable", "Value"]].to_csv(
         path_to_output,
         header=True,
         index=False
@@ -70,15 +70,15 @@ def _excavate_data(scenarios, variables, scaling_factors):
     germany_scenarios = [scenario for scenario in scenarios.keys() if "germany" in scenario]
     index_europe = pd.MultiIndex.from_product(
         [european_scenarios, ALL_COUNTRIES + [TOTAL_COVERED_REGION], [variable.name for variable in variables]],
-        names=["scenario", "region", "variable"]
+        names=["Scenario", "Region", "Variable"]
     )
     index_germany = pd.MultiIndex.from_product(
         [germany_scenarios, [TOTAL_COVERED_REGION], [variable.name for variable in variables]],
-        names=["scenario", "region", "variable"]
+        names=["Scenario", "Region", "Variable"]
     )
     data = pd.concat([
-        pd.Series(index=index_europe, name="value"),
-        pd.Series(index=index_germany, name="value")
+        pd.Series(index=index_europe, name="Value"),
+        pd.Series(index=index_germany, name="Value")
     ])
     for variable in variables:
         if variable.value_function:
