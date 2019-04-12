@@ -1,0 +1,36 @@
+Sender: LSF System <lsfadmin@eu-a6-001-10>
+Subject: Job 88996008: <calliope run ../../build/model/model.yaml --save_netcdf ../../build/output/minus4/02.nc --scenario baseline --override_dict "{run.solver_options.FeasibilityTol: 1e-4, run.solver_options.OptimalityTol: 1e-5}"> in cluster <euler> Exited
+
+Job <calliope run ../../build/model/model.yaml --save_netcdf ../../build/output/minus4/02.nc --scenario baseline --override_dict "{run.solver_options.FeasibilityTol: 1e-4, run.solver_options.OptimalityTol: 1e-5}"> was submitted from host <eu-login-14-ng> by user <trtim> in cluster <euler> at Thu Apr 11 12:20:55 2019
+Job was executed on host(s) <4*eu-a6-001-10>, in queue <bigmem.24h>, as user <trtim> in cluster <euler> at Thu Apr 11 12:22:16 2019
+</cluster/home/trtim> was used as the home directory.
+</cluster/home/trtim/Develop/ose-model-comparison/performance-analysis/2019-04-11> was used as the working directory.
+Started at Thu Apr 11 12:22:16 2019
+Terminated at Thu Apr 11 15:19:15 2019
+Results reported at Thu Apr 11 15:19:15 2019
+
+Your job looked like:
+
+------------------------------------------------------------
+# LSBATCH: User input
+calliope run ../../build/model/model.yaml --save_netcdf ../../build/output/minus4/02.nc --scenario baseline --override_dict "{run.solver_options.FeasibilityTol: 1e-4, run.solver_options.OptimalityTol: 1e-5}"
+------------------------------------------------------------
+
+Exited with exit code 127.
+
+Resource usage summary:
+
+    CPU time :                                   0.68 sec.
+    Max Memory :                                 6 MB
+    Average Memory :                             2.00 MB
+    Total Requested Memory :                     96000.00 MB
+    Delta Memory :                               95994.00 MB
+    Max Swap :                                   -
+    Max Processes :                              2
+    Max Threads :                                3
+    Run time :                                   660 sec.
+    Turnaround time :                            10700 sec.
+
+The output (if any) follows:
+
+/cluster/shadow/.lsbatch/1554978055.88996008: line 8: calliope: command not found

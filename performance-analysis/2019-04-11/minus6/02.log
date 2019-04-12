@@ -1,0 +1,1124 @@
+Sender: LSF System <lsfadmin@eu-dl-f3-01>
+Subject: Job 88996002: <calliope run ../../build/model/model.yaml --save_netcdf ../../build/output/minus6/02.nc --scenario baseline --override_dict "{run.solver_options.FeasibilityTol: 1e-6, run.solver_options.OptimalityTol: 1e-5}"> in cluster <euler> Exited
+
+Job <calliope run ../../build/model/model.yaml --save_netcdf ../../build/output/minus6/02.nc --scenario baseline --override_dict "{run.solver_options.FeasibilityTol: 1e-6, run.solver_options.OptimalityTol: 1e-5}"> was submitted from host <eu-login-14-ng> by user <trtim> in cluster <euler> at Thu Apr 11 12:20:54 2019
+Job was executed on host(s) <4*eu-dl-f3-01>, in queue <bigmem.24h>, as user <trtim> in cluster <euler> at Thu Apr 11 12:21:18 2019
+</cluster/home/trtim> was used as the home directory.
+</cluster/home/trtim/Develop/ose-model-comparison/performance-analysis/2019-04-11> was used as the working directory.
+Started at Thu Apr 11 12:21:18 2019
+Terminated at Fri Apr 12 12:20:53 2019
+Results reported at Fri Apr 12 12:20:53 2019
+
+Your job looked like:
+
+------------------------------------------------------------
+# LSBATCH: User input
+calliope run ../../build/model/model.yaml --save_netcdf ../../build/output/minus6/02.nc --scenario baseline --override_dict "{run.solver_options.FeasibilityTol: 1e-6, run.solver_options.OptimalityTol: 1e-5}"
+------------------------------------------------------------
+
+TERM_RUNLIMIT: job killed after reaching LSF run time limit.
+Exited with exit code 140.
+
+Resource usage summary:
+
+    CPU time :                                   100935.88 sec.
+    Max Memory :                                 82235 MB
+    Average Memory :                             74938.65 MB
+    Total Requested Memory :                     96000.00 MB
+    Delta Memory :                               13765.00 MB
+    Max Swap :                                   -
+    Max Processes :                              3
+    Max Threads :                                8
+    Run time :                                   86376 sec.
+    Turnaround time :                            86399 sec.
+
+The output (if any) follows:
+
+Calliope 0.6.4-dev starting at 2019-04-11 12:23:04
+
+/cluster/work/cpesm/trtim/.conda/envs/ose-model-comparison/lib/python3.6/site-packages/dask/config.py:168: YAMLLoadWarning:
+
+calling yaml.load() without Loader=... is deprecated, as the default Loader is unsafe. Please read https://msg.pyyaml.org/load for full details.
+
+[2019-04-11 12:23:04] INFO     Model: initialising
+[2019-04-11 12:23:06] INFO     Override applied to run.solver_options.FeasibilityTol: 1e-05 -> 1e-06
+Override applied to run.solver_options.OptimalityTol: 1e-05 -> 1e-05
+[2019-04-11 12:23:06] INFO     Using scenario `baseline` leading to the application of overrides `['diw_assumptions', 'diw_battery_baseline_cost', 'jrc_etri_2014_renewable_costs', 'battery_c_rate', 'equal_interest_rate', 'no_hydrogen']`.
+[2019-04-11 12:23:07] INFO     `locations.ALB.techs.hydrogen.exists`:False applied from override as new configuration
+`locations.AUT.techs.hydrogen.exists`:False applied from override as new configuration
+`locations.BEL.techs.hydrogen.exists`:False applied from override as new configuration
+`locations.BGR.techs.hydrogen.exists`:False applied from override as new configuration
+`locations.BIH.techs.hydrogen.exists`:False applied from override as new configuration
+`locations.CHE.techs.hydrogen.exists`:False applied from override as new configuration
+`locations.CYP.techs.hydrogen.exists`:False applied from override as new configuration
+`locations.CZE.techs.hydrogen.exists`:False applied from override as new configuration
+`locations.DEU.techs.hydrogen.exists`:False applied from override as new configuration
+`locations.DNK.techs.hydrogen.exists`:False applied from override as new configuration
+`locations.ESP.techs.hydrogen.exists`:False applied from override as new configuration
+`locations.EST.techs.hydrogen.exists`:False applied from override as new configuration
+`locations.FIN.techs.hydrogen.exists`:False applied from override as new configuration
+`locations.FRA.techs.hydrogen.exists`:False applied from override as new configuration
+`locations.GBR.techs.hydrogen.exists`:False applied from override as new configuration
+`locations.GRC.techs.hydrogen.exists`:False applied from override as new configuration
+`locations.HRV.techs.hydrogen.exists`:False applied from override as new configuration
+`locations.HUN.techs.hydrogen.exists`:False applied from override as new configuration
+`locations.IRL.techs.hydrogen.exists`:False applied from override as new configuration
+`locations.ITA.techs.hydrogen.exists`:False applied from override as new configuration
+`locations.LTU.techs.hydrogen.exists`:False applied from override as new configuration
+`locations.LUX.techs.hydrogen.exists`:False applied from override as new configuration
+`locations.LVA.techs.hydrogen.exists`:False applied from override as new configuration
+`locations.MKD.techs.hydrogen.exists`:False applied from override as new configuration
+`locations.MNE.techs.hydrogen.exists`:False applied from override as new configuration
+`locations.NLD.techs.hydrogen.exists`:False applied from override as new configuration
+`locations.NOR.techs.hydrogen.exists`:False applied from override as new configuration
+`locations.POL.techs.hydrogen.exists`:False applied from override as new configuration
+`locations.PRT.techs.hydrogen.exists`:False applied from override as new configuration
+`locations.ROU.techs.hydrogen.exists`:False applied from override as new configuration
+`locations.SRB.techs.hydrogen.exists`:False applied from override as new configuration
+`locations.SVK.techs.hydrogen.exists`:False applied from override as new configuration
+`locations.SVN.techs.hydrogen.exists`:False applied from override as new configuration
+`locations.SWE.techs.hydrogen.exists`:False applied from override as new configuration
+`tech_groups.conversion.costs.monetary.interest_rate`:0.04 applied from override as new configuration
+`tech_groups.conversion_plus.costs.monetary.interest_rate`:0.04 applied from override as new configuration
+Override applied to tech_groups.pv.costs.monetary.energy_cap: 1401.49 -> 640.0
+Override applied to tech_groups.pv.costs.monetary.om_annual: 12.66 -> 10.88
+`tech_groups.storage.costs.monetary.interest_rate`:0.04 applied from override as new configuration
+`tech_groups.supply.costs.monetary.interest_rate`:0.04 applied from override as new configuration
+`tech_groups.supply_plus.costs.monetary.interest_rate`:0.04 applied from override as new configuration
+`tech_groups.transmission.costs.monetary.interest_rate`:0.04 applied from override as new configuration
+Override applied to tech_groups.wind_onshore.costs.monetary.energy_cap: 1316.28 -> 1300.0
+Override applied to tech_groups.wind_onshore.costs.monetary.om_annual: 49.72 -> 28.6
+`techs.battery.constraints.energy_cap_per_storage_cap_max`:4 applied from override as new configuration
+`techs.battery.constraints.energy_cap_per_storage_cap_min`:0.25 applied from override as new configuration
+Override applied to techs.battery.constraints.energy_eff: 0.95 -> 0.9591663046625439
+Override applied to techs.battery.constraints.lifetime: 20 -> 12
+Override applied to techs.battery.costs.monetary.energy_cap: 713.47 -> 135.14000000000001
+`techs.battery.costs.monetary.interest_rate`:0.04 applied from override as new configuration
+Override applied to techs.battery.costs.monetary.om_annual: 12.48 -> 0
+Override applied to techs.battery.costs.monetary.om_prod: 0.0028 -> 0
+Override applied to techs.battery.costs.monetary.storage_cap: 322.73 -> 315.32
+Override applied to techs.ccgt.costs.monetary.om_con: 0.03761 -> 0.03168
+Override applied to techs.ccgt.costs.monetary.om_prod: 0.000132 -> 0.014832000000000001
+Override applied to techs.coal.costs.monetary.om_con: 0.010920000000000001 -> 0.009720000000000001
+Override applied to techs.coal.costs.monetary.om_prod: 0.001315 -> 0.025915
+Override applied to techs.lignite.costs.monetary.om_con: 0.010920000000000001 -> 0.00396
+Override applied to techs.lignite.costs.monetary.om_prod: 0.001315 -> 0.028614999999999998
+Override applied to techs.nuclear.costs.monetary.om_con: 0.0064 -> 0.0016899999999999999
+Override applied to techs.nuclear.costs.monetary.om_prod: 0.0006580000000000001 -> 0.001018
+Override applied to techs.wind_offshore.costs.monetary.energy_cap: 4246.25 -> 2580.0
+Override applied to techs.wind_offshore.costs.monetary.om_annual: 113.0 -> 77.4
+[2019-04-11 12:23:09] WARNING  Warning: Possible issues found during model processing:
+ * `pumped_hydro` at `ALB` has no constraint to explicitly connect `energy_cap` to `storage_cap`, consider defining a `energy_cap_per_storage_cap_min/max/equals` constraint
+ * `pumped_hydro` at `CYP` has no constraint to explicitly connect `energy_cap` to `storage_cap`, consider defining a `energy_cap_per_storage_cap_min/max/equals` constraint
+ * `pumped_hydro` at `DNK` has no constraint to explicitly connect `energy_cap` to `storage_cap`, consider defining a `energy_cap_per_storage_cap_min/max/equals` constraint
+ * `pumped_hydro` at `EST` has no constraint to explicitly connect `energy_cap` to `storage_cap`, consider defining a `energy_cap_per_storage_cap_min/max/equals` constraint
+ * `pumped_hydro` at `FIN` has no constraint to explicitly connect `energy_cap` to `storage_cap`, consider defining a `energy_cap_per_storage_cap_min/max/equals` constraint
+ * `pumped_hydro` at `HUN` has no constraint to explicitly connect `energy_cap` to `storage_cap`, consider defining a `energy_cap_per_storage_cap_min/max/equals` constraint
+ * `pumped_hydro` at `LVA` has no constraint to explicitly connect `energy_cap` to `storage_cap`, consider defining a `energy_cap_per_storage_cap_min/max/equals` constraint
+ * `pumped_hydro` at `MKD` has no constraint to explicitly connect `energy_cap` to `storage_cap`, consider defining a `energy_cap_per_storage_cap_min/max/equals` constraint
+ * `pumped_hydro` at `MNE` has no constraint to explicitly connect `energy_cap` to `storage_cap`, consider defining a `energy_cap_per_storage_cap_min/max/equals` constraint
+ * `pumped_hydro` at `NLD` has no constraint to explicitly connect `energy_cap` to `storage_cap`, consider defining a `energy_cap_per_storage_cap_min/max/equals` constraint
+
+[2019-04-11 12:23:09] INFO     Model: preprocessing stage 1 (model_run)
+[2019-04-11 12:23:21] INFO     Model: preprocessing stage 2 (model_data)
+[2019-04-11 12:23:37] INFO     Model: preprocessing complete. Time since start: 0:00:32.044684
+Model name:   Open Source Modelling -- Euro Calliope model
+Model size:   34 locations, 19 technologies, 8760 timesteps
+
+Starting model run...
+[2019-04-11 12:23:37] INFO     Backend: starting model run
+[2019-04-11 13:24:04] INFO     Backend: model generated. Time since start: 1:00:59.361700
+[2019-04-11 13:24:04] INFO     Backend: sending model to solver
+[2019-04-11 14:16:34] SOLVER   Parameter OutputFlag unchanged
+[2019-04-11 14:16:34] SOLVER   Value: 1  Min: 0  Max: 1  Default: 1
+[2019-04-11 14:16:34] SOLVER   Changed value of parameter LogFile to /cluster/work/cpesm/trtim/ose-model-comparison/performance-analysis/2019-04-11/tmpif2p29o4.log
+[2019-04-11 14:16:34] SOLVER   Prev: gurobi.log  Default:
+[2019-04-11 14:16:34] SOLVER   Parameter FeasibilityTol unchanged
+[2019-04-11 14:16:34] SOLVER   Value: 1e-06  Min: 1e-09  Max: 0.01  Default: 1e-06
+[2019-04-11 14:16:34] SOLVER   Changed value of parameter Method to 2
+[2019-04-11 14:16:34] SOLVER   Prev: -1  Min: -1  Max: 5  Default: -1
+[2019-04-11 14:16:34] SOLVER   Changed value of parameter OptimalityTol to 1e-05
+[2019-04-11 14:16:34] SOLVER   Prev: 1e-06  Min: 1e-09  Max: 0.01  Default: 1e-06
+[2019-04-11 14:16:34] SOLVER   Changed value of parameter Threads to 4
+[2019-04-11 14:16:34] SOLVER   Prev: 0  Min: 0  Max: 1024  Default: 0
+[2019-04-11 14:16:34] SOLVER   Optimize a model with 22166104 rows, 17558336 columns and 59282184 nonzeros
+[2019-04-11 14:16:34] SOLVER   Coefficient statistics:
+[2019-04-11 14:16:34] SOLVER   Matrix range     [4e-06, 3e+02]
+[2019-04-11 14:16:34] SOLVER   Objective range  [1e+00, 1e+00]
+[2019-04-11 14:16:34] SOLVER   Bounds range     [5e-02, 2e+03]
+[2019-04-11 14:16:34] SOLVER   RHS range        [7e-03, 2e+03]
+[2019-04-11 14:16:40] SOLVER   Presolve removed 0 rows and 0 columns (presolve time = 5s) ...
+[2019-04-11 14:16:47] SOLVER   Presolve removed 15476635 rows and 10209933 columns (presolve time = 13s) ...
+[2019-04-11 14:16:53] SOLVER   Presolve removed 15476635 rows and 10385133 columns (presolve time = 19s) ...
+[2019-04-11 14:16:56] SOLVER   Presolve removed 15481502 rows and 10390000 columns (presolve time = 21s) ...
+[2019-04-11 14:17:07] SOLVER   Presolve removed 17474125 rows and 12382623 columns (presolve time = 33s) ...
+[2019-04-11 14:17:10] SOLVER   Presolve removed 17526430 rows and 12382633 columns (presolve time = 36s) ...
+[2019-04-11 14:17:15] SOLVER   Presolve removed 17526430 rows and 12382633 columns (presolve time = 40s) ...
+[2019-04-11 14:17:18] SOLVER   Presolve removed 17526430 rows and 12382633 columns
+[2019-04-11 14:17:19] SOLVER   Presolve time: 44.92s
+[2019-04-11 14:17:19] SOLVER   Presolved: 4639674 rows, 5175703 columns, 18946368 nonzeros
+[2019-04-11 14:18:27] SOLVER   Ordering time: 0.00s
+[2019-04-11 14:18:36] SOLVER   Barrier statistics:
+[2019-04-11 14:18:36] SOLVER   Dense cols : 316
+[2019-04-11 14:18:36] SOLVER   AA' NZ     : 1.571e+07
+[2019-04-11 14:18:36] SOLVER   Factor NZ  : 1.071e+08 (roughly 5.0 GBytes of memory)
+[2019-04-11 14:18:36] SOLVER   Factor Ops : 2.943e+10 (roughly 1 second per iteration)
+[2019-04-11 14:18:36] SOLVER   Threads    : 4
+[2019-04-11 14:18:41] SOLVER   Objective                Residual
+[2019-04-11 14:18:41] SOLVER   Iter       Primal          Dual         Primal    Dual     Compl     Time
+[2019-04-11 14:18:42] SOLVER   0   1.82922804e+08 -2.31953075e+08  2.94e+07 1.94e-01  9.17e+04   128s
+[2019-04-11 14:18:48] SOLVER   1   1.68686302e+08 -2.47939929e+08  1.96e+07 3.01e+01  6.27e+04   134s
+[2019-04-11 14:18:57] SOLVER   2   1.67287158e+08 -2.63782611e+08  1.87e+07 2.02e+01  5.28e+04   143s
+[2019-04-11 14:19:07] SOLVER   3   1.62186162e+08 -2.97268622e+08  1.59e+07 1.79e+01  4.77e+04   153s
+[2019-04-11 14:19:14] SOLVER   4   1.53817695e+08 -6.16618906e+08  1.50e+07 1.60e+01  4.49e+04   160s
+[2019-04-11 14:19:21] SOLVER   5   1.38438994e+08 -1.06611084e+09  1.34e+07 1.27e+01  4.02e+04   167s
+[2019-04-11 14:19:27] SOLVER   6   1.16060137e+08 -1.28702698e+09  1.18e+07 1.30e+01  3.55e+04   173s
+[2019-04-11 14:19:35] SOLVER   7   1.07929971e+08 -1.98618686e+09  1.08e+07 1.04e+01  3.22e+04   181s
+[2019-04-11 14:19:43] SOLVER   8   5.20102664e+07 -2.36886231e+09  4.00e+06 8.34e+00  1.39e+04   189s
+[2019-04-11 14:19:52] SOLVER   9   2.31382862e+07 -2.51497918e+09  8.64e+05 6.66e+00  4.99e+03   198s
+[2019-04-11 14:19:58] SOLVER   10   1.95671050e+07 -2.39873484e+09  4.66e+05 5.47e+00  3.40e+03   204s
+[2019-04-11 14:20:06] SOLVER   11   1.69387245e+07 -1.96346829e+09  2.54e+05 3.84e+00  2.12e+03   212s
+[2019-04-11 14:20:16] SOLVER   12   1.55129539e+07 -1.19354886e+09  1.02e+05 1.27e+00  8.14e+02   222s
+[2019-04-11 14:20:24] SOLVER   13   1.48199818e+07 -8.10754497e+08  3.71e+04 6.08e-01  3.67e+02   230s
+[2019-04-11 14:20:31] SOLVER   14   1.44915960e+07 -7.94660988e+08  1.03e+04 5.90e-01  2.79e+02   237s
+[2019-04-11 14:20:37] SOLVER   15   1.44007192e+07 -3.86691761e+08  4.43e+03 2.19e-01  1.11e+02   243s
+[2019-04-11 14:20:43] SOLVER   16   1.41233775e+07 -1.13905032e+08  5.88e+02 5.37e-02  2.80e+01   249s
+[2019-04-11 14:20:51] SOLVER   17   1.30805428e+07 -4.34900604e+07  2.86e+01 1.39e-02  9.01e+00   257s
+[2019-04-11 14:21:01] SOLVER   18   9.65252210e+06 -1.18929199e+07  1.57e+00 3.04e-03  2.63e+00   267s
+[2019-04-11 14:21:09] SOLVER   19   5.30718396e+06 -6.37325480e+06  3.02e-01 1.51e-03  1.27e+00   275s
+[2019-04-11 14:21:16] SOLVER   20   4.18620265e+06 -3.56608316e+06  1.48e-01 8.83e-04  7.96e-01   282s
+[2019-04-11 14:21:22] SOLVER   21   3.49531127e+06 -2.35612700e+06  9.53e-02 6.05e-04  5.82e-01   288s
+[2019-04-11 14:21:30] SOLVER   22   2.46663420e+06 -1.40645090e+06  3.53e-02 3.85e-04  3.71e-01   296s
+[2019-04-11 14:21:40] SOLVER   23   1.97164251e+06 -9.10927746e+05  1.80e-02 2.65e-04  2.69e-01   306s
+[2019-04-11 14:21:48] SOLVER   24   1.67538020e+06 -5.92094957e+05  1.03e-02 1.90e-04  2.09e-01   314s
+[2019-04-11 14:21:55] SOLVER   25   1.47723704e+06 -4.81034825e+05  4.17e-03 1.65e-04  1.79e-01   321s
+[2019-04-11 14:22:01] SOLVER   26   1.19161030e+06 -2.91740033e+05  6.81e-05 1.15e-04  1.34e-01   327s
+[2019-04-11 14:22:07] SOLVER   27   1.00656936e+06 -2.34966731e+05  5.31e-05 1.02e-04  1.12e-01   333s
+[2019-04-11 14:22:15] SOLVER   28   8.87866383e+05 -9.59438688e+04  4.53e-05 7.24e-05  8.79e-02   341s
+[2019-04-11 14:22:25] SOLVER   29   7.78380510e+05 -3.97880471e+04  3.76e-05 6.21e-05  7.28e-02   351s
+[2019-04-11 14:22:33] SOLVER   30   6.44942960e+05  3.13181161e+04  2.74e-05 4.49e-05  5.44e-02   359s
+[2019-04-11 14:22:39] SOLVER   31   6.09378629e+05  4.89818755e+04  2.47e-05 4.19e-05  4.96e-02   365s
+[2019-04-11 14:22:46] SOLVER   32   5.65923192e+05  7.49215355e+04  2.13e-05 3.58e-05  4.34e-02   372s
+[2019-04-11 14:22:54] SOLVER   33   5.15930763e+05  1.43555718e+05  1.78e-05 2.19e-05  3.28e-02   380s
+[2019-04-11 14:23:00] SOLVER   34   4.87009962e+05  1.68679633e+05  1.57e-05 1.70e-05  2.80e-02   386s
+[2019-04-11 14:23:08] SOLVER   35   4.46848080e+05  1.86376782e+05  1.29e-05 1.37e-05  2.29e-02   394s
+[2019-04-11 14:23:18] SOLVER   36   4.13508938e+05  2.02369350e+05  1.08e-05 1.08e-05  1.85e-02   404s
+[2019-04-11 14:23:27] SOLVER   37   3.89340993e+05  2.05843251e+05  9.14e-06 1.02e-05  1.61e-02   413s
+[2019-04-11 14:23:33] SOLVER   38   3.86653111e+05  2.08771396e+05  8.93e-06 9.73e-06  1.56e-02   419s
+[2019-04-11 14:23:39] SOLVER   39   3.82349599e+05  2.11333937e+05  8.60e-06 9.91e-06  1.50e-02   425s
+[2019-04-11 14:23:47] SOLVER   40   3.67320957e+05  2.16851280e+05  7.53e-06 8.68e-06  1.32e-02   433s
+[2019-04-11 14:23:54] SOLVER   41   3.64399716e+05  2.19093892e+05  7.30e-06 8.39e-06  1.27e-02   440s
+[2019-04-11 14:24:01] SOLVER   42   3.58140715e+05  2.22345194e+05  6.85e-06 7.64e-06  1.19e-02   447s
+[2019-04-11 14:24:12] SOLVER   43   3.53147699e+05  2.28714079e+05  6.50e-06 6.74e-06  1.09e-02   458s
+[2019-04-11 14:24:20] SOLVER   44   3.48476206e+05  2.31318277e+05  6.13e-06 6.36e-06  1.03e-02   466s
+[2019-04-11 14:24:26] SOLVER   45   3.45028792e+05  2.32089979e+05  5.86e-06 6.24e-06  9.90e-03   472s
+[2019-04-11 14:24:32] SOLVER   46   3.43945853e+05  2.33080458e+05  5.77e-06 6.09e-06  9.72e-03   479s
+[2019-04-11 14:24:40] SOLVER   47   3.41606634e+05  2.34152905e+05  5.59e-06 5.92e-06  9.42e-03   486s
+[2019-04-11 14:24:47] SOLVER   48   3.38984221e+05  2.34963292e+05  5.38e-06 5.79e-06  9.12e-03   493s
+[2019-04-11 14:24:55] SOLVER   49   3.35353948e+05  2.37276092e+05  5.12e-06 5.43e-06  8.60e-03   501s
+[2019-04-11 14:25:03] SOLVER   50   3.33010675e+05  2.37641462e+05  4.93e-06 5.37e-06  8.36e-03   509s
+[2019-04-11 14:25:15] SOLVER   51   3.27213852e+05  2.39433192e+05  4.53e-06 5.09e-06  7.69e-03   521s
+[2019-04-11 14:25:25] SOLVER   52   3.22702734e+05  2.40660491e+05  4.19e-06 4.88e-06  7.19e-03   531s
+[2019-04-11 14:25:33] SOLVER   53   3.21374520e+05  2.42493803e+05  4.09e-06 4.59e-06  6.91e-03   539s
+[2019-04-11 14:25:40] SOLVER   54   3.18468936e+05  2.42978758e+05  3.85e-06 4.52e-06  6.62e-03   546s
+[2019-04-11 14:25:46] SOLVER   55   3.17168009e+05  2.43904309e+05  3.75e-06 4.37e-06  6.42e-03   552s
+[2019-04-11 14:25:52] SOLVER   56   3.15956705e+05  2.44773117e+05  3.65e-06 4.23e-06  6.24e-03   558s
+[2019-04-11 14:26:03] SOLVER   57   1.82922804e+08 -5.41610265e+09  2.94e+07 1.94e-01  2.14e+06   569s
+[2019-04-11 14:26:10] SOLVER   58   1.73495525e+08 -5.93486827e+09  2.02e+07 7.18e+02  1.54e+06   576s
+[2019-04-11 14:26:16] SOLVER   59   1.72128151e+08 -6.31811459e+09  1.92e+07 4.78e+02  1.28e+06   582s
+[2019-04-11 14:26:24] SOLVER   60   1.68205179e+08 -6.85675923e+09  1.67e+07 4.36e+02  1.19e+06   590s
+[2019-04-11 14:26:30] SOLVER   61   1.59812822e+08 -1.38720585e+10  1.55e+07 3.73e+02  1.09e+06   596s
+[2019-04-11 14:26:38] SOLVER   62   1.38153634e+08 -2.70317308e+10  1.35e+07 3.09e+02  9.57e+05   604s
+[2019-04-11 14:26:48] SOLVER   63   1.16568315e+08 -5.26737727e+10  1.15e+07 2.56e+02  8.24e+05   614s
+[2019-04-11 14:26:56] SOLVER   64   5.38861249e+07 -6.35380684e+10  4.67e+06 2.03e+02  3.82e+05   622s
+[2019-04-11 14:27:02] SOLVER   65   2.47104655e+07 -6.59610964e+10  1.08e+06 1.67e+02  1.39e+05   628s
+[2019-04-11 14:27:09] SOLVER   66   2.01627599e+07 -6.20030240e+10  5.38e+05 1.36e+02  9.04e+04   635s
+[2019-04-11 14:27:17] SOLVER   67   1.85033752e+07 -5.42153771e+10  3.43e+05 1.03e+02  6.47e+04   643s
+[2019-04-11 14:27:23] SOLVER   68   1.68761118e+07 -4.70290025e+10  1.67e+05 8.03e+01  4.37e+04   649s
+[2019-04-11 14:27:31] SOLVER   69   1.59192657e+07 -2.66924084e+10  7.21e+04 2.83e+01  1.72e+04   657s
+[2019-04-11 14:27:40] SOLVER   70   1.39130528e+07 -2.41162241e+10  2.91e+04 2.40e+01  1.11e+04   666s
+[2019-04-11 14:27:49] SOLVER   71   1.32295633e+07 -2.30970465e+10  1.74e+04 2.26e+01  9.34e+03   675s
+[2019-04-11 14:27:55] SOLVER   72   1.31068544e+07 -8.19567257e+09  4.13e+03 5.07e+00  2.31e+03   681s
+[2019-04-11 14:28:01] SOLVER   73   1.30849354e+07 -2.16540275e+09  2.03e+03 8.28e-01  4.70e+02   687s
+[2019-04-11 14:28:09] SOLVER   74   1.30178998e+07 -4.53326001e+08  5.09e+01 1.16e-01  7.39e+01   695s
+[2019-04-11 14:28:15] SOLVER   75   1.24495075e+07 -7.86468209e+07  7.10e-01 2.06e-02  1.36e+01   701s
+[2019-04-11 14:28:23] SOLVER   76   1.00415491e+07 -2.01236176e+07  1.06e-04 4.23e-03  3.70e+00   709s
+[2019-04-11 14:28:33] SOLVER   77   5.62316044e+06 -7.65218412e+06  3.25e-05 1.40e-03  1.41e+00   719s
+[2019-04-11 14:28:41] SOLVER   78   3.98786386e+06 -3.96724433e+06  1.93e-05 7.34e-04  7.93e-01   727s
+[2019-04-11 14:28:47] SOLVER   79   3.31170603e+06 -2.81809888e+06  1.43e-05 5.35e-04  5.97e-01   733s
+[2019-04-11 14:28:54] SOLVER   80   2.67560350e+06 -1.90343300e+06  1.03e-05 3.76e-04  4.36e-01   740s
+[2019-04-11 14:29:01] SOLVER   81   2.27669985e+06 -1.10309212e+06  8.60e-06 2.36e-04  3.14e-01   747s
+[2019-04-11 14:29:11] SOLVER   82   1.75125861e+06 -6.09247585e+05  6.45e-06 1.43e-04  2.15e-01   757s
+[2019-04-11 14:29:19] SOLVER   83   1.28629387e+06 -4.59093067e+05  4.36e-06 1.13e-04  1.57e-01   765s
+[2019-04-11 14:29:26] SOLVER   84   1.10754462e+06 -2.81742882e+05  3.52e-06 8.68e-05  1.25e-01   772s
+[2019-04-11 14:29:32] SOLVER   85   9.97568830e+05 -1.47770213e+05  3.03e-06 6.46e-05  1.02e-01   778s
+[2019-04-11 14:29:38] SOLVER   86   9.00971239e+05 -7.37816593e+04  2.61e-06 5.07e-05  8.66e-02   784s
+[2019-04-11 14:29:46] SOLVER   87   8.22309434e+05 -3.97081793e+04  2.31e-06 4.74e-05  7.65e-02   792s
+[2019-04-11 14:29:56] SOLVER   88   6.69004701e+05  2.70813140e+03  1.67e-06 3.74e-05  5.89e-02   802s
+[2019-04-11 14:30:04] SOLVER   89   5.69008254e+05  7.41830625e+04  1.25e-06 2.77e-05  4.37e-02   810s
+[2019-04-11 14:30:10] SOLVER   90   5.44843014e+05  8.35761584e+04  1.15e-06 2.62e-05  4.07e-02   816s
+[2019-04-11 14:30:16] SOLVER   91   5.24941252e+05  1.04013393e+05  1.06e-06 2.34e-05  3.71e-02   823s
+[2019-04-11 14:30:24] SOLVER   92   4.68704899e+05  1.38565923e+05  8.27e-07 1.75e-05  2.90e-02   830s
+[2019-04-11 14:30:31] SOLVER   93   4.52196970e+05  1.59765631e+05  7.56e-07 1.45e-05  2.57e-02   837s
+[2019-04-11 14:30:38] SOLVER   94   4.23223856e+05  1.77901209e+05  6.48e-07 1.19e-05  2.15e-02   844s
+[2019-04-11 14:30:48] SOLVER   95   3.98212790e+05  1.92100086e+05  5.48e-07 9.97e-06  1.81e-02   854s
+[2019-04-11 14:30:57] SOLVER   96   3.87829396e+05  1.97484528e+05  5.09e-07 9.29e-06  1.67e-02   863s
+[2019-04-11 14:31:03] SOLVER   97   3.83523425e+05  2.01339523e+05  4.90e-07 8.80e-06  1.60e-02   869s
+[2019-04-11 14:31:09] SOLVER   98   3.77772263e+05  2.03630688e+05  4.65e-07 8.52e-06  1.53e-02   875s
+[2019-04-11 14:31:17] SOLVER   99   3.63460753e+05  2.09852231e+05  4.07e-07 7.74e-06  1.35e-02   883s
+[2019-04-11 14:31:23] SOLVER   100   3.60047548e+05  2.12402456e+05  3.92e-07 7.42e-06  1.30e-02   889s
+[2019-04-11 14:31:31] SOLVER   101   3.52246932e+05  2.15683413e+05  3.60e-07 7.01e-06  1.20e-02   897s
+[2019-04-11 14:31:41] SOLVER   102   3.48281422e+05  2.19725257e+05  3.44e-07 6.50e-06  1.13e-02   907s
+[2019-04-11 14:31:49] SOLVER   103   3.45344541e+05  2.24742261e+05  3.32e-07 5.88e-06  1.06e-02   915s
+[2019-04-11 14:31:55] SOLVER   104   3.43000595e+05  2.25715019e+05  3.22e-07 5.75e-06  1.03e-02   921s
+[2019-04-11 14:32:02] SOLVER   105   3.37493390e+05  2.26642563e+05  2.97e-07 5.63e-06  9.72e-03   928s
+[2019-04-11 14:32:10] SOLVER   106   3.34953719e+05  2.27921101e+05  2.86e-07 5.47e-06  9.38e-03   936s
+[2019-04-11 14:32:16] SOLVER   107   3.32786418e+05  2.30204607e+05  2.76e-07 5.19e-06  8.99e-03   942s
+[2019-04-11 14:32:24] SOLVER   108   3.30449808e+05  2.31805072e+05  2.66e-07 5.00e-06  8.65e-03   950s
+[2019-04-11 14:32:34] SOLVER   109   3.26269023e+05  2.33620592e+05  2.48e-07 4.76e-06  8.12e-03   960s
+[2019-04-11 14:32:42] SOLVER   110   3.22426076e+05  2.34962974e+05  2.32e-07 4.58e-06  7.67e-03   968s
+[2019-04-11 14:32:48] SOLVER   111   3.20522344e+05  2.35507516e+05  2.23e-07 4.51e-06  7.45e-03   974s
+[2019-04-11 14:32:54] SOLVER   112   3.19322148e+05  2.36407598e+05  2.18e-07 4.40e-06  7.27e-03   980s
+[2019-04-11 14:33:02] SOLVER   113   3.16482062e+05  2.38593274e+05  2.05e-07 4.13e-06  6.83e-03   988s
+[2019-04-11 14:33:08] SOLVER   114   3.15694009e+05  2.39260912e+05  2.02e-07 4.05e-06  6.70e-03   994s
+[2019-04-11 14:33:16] SOLVER   115   3.13817558e+05  2.41391609e+05  1.94e-07 3.79e-06  6.35e-03  1002s
+[2019-04-11 14:33:26] SOLVER   116   3.11539605e+05  2.42315297e+05  1.84e-07 3.67e-06  6.07e-03  1012s
+[2019-04-11 14:33:34] SOLVER   117   3.10247930e+05  2.43348914e+05  1.78e-07 3.54e-06  5.86e-03  1020s
+[2019-04-11 14:33:41] SOLVER   118   3.09159577e+05  2.44989063e+05  1.73e-07 3.42e-06  5.62e-03  1027s
+[2019-04-11 14:33:47] SOLVER   119   3.08017192e+05  2.45600501e+05  1.67e-07 3.36e-06  5.47e-03  1033s
+[2019-04-11 14:33:55] SOLVER   120   3.05912824e+05  2.46631558e+05  1.58e-07 3.26e-06  5.19e-03  1041s
+[2019-04-11 14:34:01] SOLVER   121   3.05289801e+05  2.47131481e+05  1.55e-07 3.20e-06  5.10e-03  1047s
+[2019-04-11 14:34:10] SOLVER   122   3.03336189e+05  2.48012331e+05  1.47e-07 3.11e-06  4.85e-03  1056s
+[2019-04-11 14:34:20] SOLVER   123   3.01479703e+05  2.48858100e+05  1.39e-07 3.01e-06  4.61e-03  1066s
+[2019-04-11 14:34:28] SOLVER   124   3.00842479e+05  2.49983551e+05  1.36e-07 2.88e-06  4.46e-03  1074s
+[2019-04-11 14:34:34] SOLVER   125   3.00133028e+05  2.50941405e+05  1.32e-07 2.76e-06  4.31e-03  1080s
+[2019-04-11 14:34:40] SOLVER   126   2.99441382e+05  2.51232836e+05  1.29e-07 2.73e-06  4.22e-03  1086s
+[2019-04-11 14:34:49] SOLVER   127   2.98788913e+05  2.51540857e+05  1.26e-07 2.69e-06  4.14e-03  1095s
+[2019-04-11 14:34:55] SOLVER   128   2.98056711e+05  2.51954901e+05  1.22e-07 2.64e-06  4.04e-03  1101s
+[2019-04-11 14:35:03] SOLVER   129   2.97568363e+05  2.52253599e+05  1.20e-07 2.60e-06  3.97e-03  1109s
+[2019-04-11 14:35:13] SOLVER   130   2.96687772e+05  2.53460399e+05  1.16e-07 2.45e-06  3.79e-03  1119s
+[2019-04-11 14:35:21] SOLVER   131   2.95161605e+05  2.53852076e+05  1.09e-07 2.41e-06  3.62e-03  1127s
+[2019-04-11 14:35:27] SOLVER   132   2.94808518e+05  2.54220295e+05  1.07e-07 2.36e-06  3.56e-03  1133s
+[2019-04-11 14:35:34] SOLVER   133   2.94029696e+05  2.54611352e+05  1.04e-07 2.31e-06  3.45e-03  1140s
+[2019-04-11 14:35:42] SOLVER   134   2.93697618e+05  2.55193570e+05  1.02e-07 2.24e-06  3.37e-03  1148s
+[2019-04-11 14:35:48] SOLVER   135   2.93175452e+05  2.55475394e+05  9.97e-08 2.20e-06  3.30e-03  1154s
+[2019-04-11 14:35:56] SOLVER   136   2.92418109e+05  2.56046326e+05  9.62e-08 2.13e-06  3.19e-03  1162s
+[2019-04-11 14:36:04] SOLVER   137   2.92088569e+05  2.56091192e+05  9.46e-08 2.12e-06  3.15e-03  1170s
+[2019-04-11 14:36:16] SOLVER   138   2.91564324e+05  2.56302126e+05  9.21e-08 2.08e-06  3.09e-03  1182s
+[2019-04-11 14:36:26] SOLVER   139   2.90645624e+05  2.57227509e+05  8.78e-08 1.96e-06  2.93e-03  1192s
+[2019-04-11 14:36:35] SOLVER   140   2.90440099e+05  2.57295350e+05  8.68e-08 1.95e-06  2.90e-03  1201s
+[2019-04-11 14:36:41] SOLVER   141   2.90258054e+05  2.57502116e+05  8.59e-08 1.93e-06  2.87e-03  1207s
+[2019-04-11 14:36:47] SOLVER   142   2.89900523e+05  2.57664316e+05  8.42e-08 1.91e-06  2.82e-03  1213s
+[2019-04-11 14:36:54] SOLVER   143   2.89527864e+05  2.58000088e+05  8.24e-08 1.87e-06  2.76e-03  1220s
+[2019-04-11 14:37:00] SOLVER   144   2.89219917e+05  2.58636795e+05  8.08e-08 1.79e-06  2.68e-03  1226s
+[2019-04-11 14:37:06] SOLVER   145   2.88478862e+05  2.58979325e+05  7.71e-08 1.75e-06  2.58e-03  1232s
+[2019-04-11 14:37:12] SOLVER   146   2.88140861e+05  2.59183027e+05  7.55e-08 1.72e-06  2.53e-03  1238s
+[2019-04-11 14:37:21] SOLVER   147   2.87828457e+05  2.59516458e+05  7.40e-08 1.68e-06  2.48e-03  1247s
+[2019-04-11 14:37:27] SOLVER   148   2.87652827e+05  2.59728243e+05  7.32e-08 1.66e-06  2.44e-03  1253s
+[2019-04-11 14:37:35] SOLVER   149   2.87038724e+05  2.60239710e+05  7.03e-08 1.59e-06  2.35e-03  1261s
+[2019-04-11 14:37:45] SOLVER   150   2.86643646e+05  2.60951145e+05  6.84e-08 1.51e-06  2.25e-03  1271s
+[2019-04-11 14:37:53] SOLVER   151   2.86277272e+05  2.61269729e+05  6.67e-08 1.47e-06  2.19e-03  1279s
+[2019-04-11 14:38:00] SOLVER   152   2.85774560e+05  2.61841374e+05  6.42e-08 1.40e-06  2.09e-03  1286s
+[2019-04-11 14:38:06] SOLVER   153   2.85450718e+05  2.62322138e+05  6.26e-08 1.34e-06  2.02e-03  1292s
+[2019-04-11 14:38:14] SOLVER   154   2.84460213e+05  2.62796276e+05  5.80e-08 1.28e-06  1.90e-03  1300s
+[2019-04-11 14:38:20] SOLVER   155   2.84069948e+05  2.63215369e+05  5.61e-08 1.22e-06  1.83e-03  1306s
+[2019-04-11 14:38:29] SOLVER   156   2.83801264e+05  2.63543919e+05  5.48e-08 1.18e-06  1.77e-03  1315s
+[2019-04-11 14:38:39] SOLVER   157   2.83238516e+05  2.63935937e+05  5.23e-08 1.13e-06  1.69e-03  1325s
+[2019-04-11 14:38:46] SOLVER   158   2.82587920e+05  2.64357730e+05  4.93e-08 1.08e-06  1.60e-03  1332s
+[2019-04-11 14:38:53] SOLVER   159   2.82378298e+05  2.64726136e+05  4.83e-08 1.03e-06  1.54e-03  1339s
+[2019-04-11 14:38:59] SOLVER   160   2.82248941e+05  2.64883002e+05  4.77e-08 1.01e-06  1.52e-03  1345s
+[2019-04-11 14:39:07] SOLVER   161   2.82103619e+05  2.65003333e+05  4.70e-08 9.91e-07  1.50e-03  1353s
+[2019-04-11 14:39:14] SOLVER   162   2.81980311e+05  2.65100263e+05  4.64e-08 9.78e-07  1.48e-03  1360s
+[2019-04-11 14:39:22] SOLVER   163   2.81570685e+05  2.65271870e+05  4.45e-08 9.55e-07  1.43e-03  1368s
+[2019-04-11 14:39:32] SOLVER   164   2.81291466e+05  2.65676077e+05  4.33e-08 9.01e-07  1.37e-03  1378s
+[2019-04-11 14:39:40] SOLVER   165   2.80968771e+05  2.65921336e+05  4.18e-08 8.68e-07  1.32e-03  1386s
+[2019-04-11 14:39:46] SOLVER   166   2.80632485e+05  2.66120269e+05  4.02e-08 8.41e-07  1.27e-03  1392s
+[2019-04-11 14:39:52] SOLVER   167   2.80547890e+05  2.66213279e+05  3.98e-08 8.28e-07  1.25e-03  1398s
+[2019-04-11 14:40:01] SOLVER   168   2.80246078e+05  2.66339017e+05  3.84e-08 8.11e-07  1.22e-03  1407s
+[2019-04-11 14:40:07] SOLVER   169   2.80153544e+05  2.66408558e+05  3.80e-08 8.02e-07  1.20e-03  1413s
+[2019-04-11 14:40:15] SOLVER   170   2.80077461e+05  2.66504030e+05  3.76e-08 7.89e-07  1.19e-03  1421s
+[2019-04-11 14:40:25] SOLVER   171   2.79946612e+05  2.66945673e+05  3.70e-08 7.29e-07  1.14e-03  1431s
+[2019-04-11 14:40:33] SOLVER   172   2.79550462e+05  2.67084187e+05  3.52e-08 7.11e-07  1.09e-03  1439s
+[2019-04-11 14:40:39] SOLVER   173   2.79442369e+05  2.67192891e+05  3.46e-08 6.96e-07  1.07e-03  1445s
+[2019-04-11 14:40:46] SOLVER   174   2.79273390e+05  2.67348148e+05  3.38e-08 6.75e-07  1.04e-03  1452s
+[2019-04-11 14:40:54] SOLVER   175   2.79042107e+05  2.67514038e+05  3.28e-08 6.53e-07  1.01e-03  1460s
+[2019-04-11 14:41:00] SOLVER   176   2.78878749e+05  2.67752452e+05  3.20e-08 6.22e-07  9.74e-04  1466s
+[2019-04-11 14:41:08] SOLVER   177   2.78678933e+05  2.67830405e+05  3.10e-08 6.11e-07  9.49e-04  1474s
+[2019-04-11 14:41:18] SOLVER   178   2.78499589e+05  2.67937965e+05  3.01e-08 5.96e-07  9.24e-04  1484s
+[2019-04-11 14:41:26] SOLVER   179   2.78303273e+05  2.68039728e+05  2.92e-08 5.83e-07  8.98e-04  1492s
+[2019-04-11 14:41:32] SOLVER   180   2.78169299e+05  2.68147865e+05  2.86e-08 5.68e-07  8.77e-04  1498s
+[2019-04-11 14:41:39] SOLVER   181   2.78032996e+05  2.68258520e+05  2.79e-08 5.53e-07  8.55e-04  1505s
+[2019-04-11 14:41:47] SOLVER   182   2.77921736e+05  2.68312572e+05  2.74e-08 5.46e-07  8.41e-04  1513s
+[2019-04-11 14:41:53] SOLVER   183   2.77820892e+05  2.68376979e+05  2.69e-08 5.37e-07  8.27e-04  1519s
+[2019-04-11 14:42:01] SOLVER   184   2.77732636e+05  2.68482602e+05  2.64e-08 5.23e-07  8.10e-04  1527s
+[2019-04-11 14:42:11] SOLVER   185   2.77610112e+05  2.68647661e+05  2.59e-08 5.01e-07  7.84e-04  1537s
+[2019-04-11 14:42:19] SOLVER   186   2.77460362e+05  2.68725430e+05  2.52e-08 4.91e-07  7.65e-04  1545s
+[2019-04-11 14:42:25] SOLVER   187   2.77414196e+05  2.68739169e+05  2.50e-08 4.89e-07  7.59e-04  1552s
+[2019-04-11 14:42:32] SOLVER   188   2.77271371e+05  2.68870757e+05  2.42e-08 4.72e-07  7.35e-04  1558s
+[2019-04-11 14:42:40] SOLVER   189   2.77198457e+05  2.68933880e+05  2.39e-08 4.64e-07  7.23e-04  1566s
+[2019-04-11 14:42:47] SOLVER   190   2.77168862e+05  2.68967302e+05  2.37e-08 4.59e-07  7.18e-04  1573s
+[2019-04-11 14:42:55] SOLVER   191   2.77131233e+05  2.69169262e+05  2.35e-08 4.34e-07  6.97e-04  1581s
+[2019-04-11 14:43:03] SOLVER   192   2.76977003e+05  2.69272904e+05  2.27e-08 4.21e-07  6.74e-04  1589s
+[2019-04-11 14:43:11] SOLVER   193   2.76926550e+05  2.69328017e+05  2.25e-08 4.15e-07  6.65e-04  1597s
+[2019-04-11 14:43:21] SOLVER   194   2.76841891e+05  2.69390738e+05  2.20e-08 4.07e-07  6.52e-04  1607s
+[2019-04-11 14:43:29] SOLVER   195   2.76771437e+05  2.69462026e+05  2.17e-08 3.99e-07  6.40e-04  1615s
+[2019-04-11 14:43:35] SOLVER   196   2.76594337e+05  2.69505929e+05  2.07e-08 3.94e-07  6.20e-04  1622s
+[2019-04-11 14:43:42] SOLVER   197   2.76522230e+05  2.69557394e+05  2.03e-08 3.87e-07  6.10e-04  1628s
+[2019-04-11 14:43:48] SOLVER   198   2.76421419e+05  2.69741716e+05  1.98e-08 3.65e-07  5.85e-04  1634s
+[2019-04-11 14:43:56] SOLVER   199   2.76331367e+05  2.69829487e+05  1.93e-08 3.55e-07  5.69e-04  1642s
+[2019-04-11 14:44:03] SOLVER   200   2.76246679e+05  2.69960542e+05  1.88e-08 3.39e-07  5.50e-04  1649s
+[2019-04-11 14:44:11] SOLVER   201   2.76100899e+05  2.70054895e+05  1.81e-08 3.28e-07  5.29e-04  1657s
+[2019-04-11 14:44:21] SOLVER   202   2.76012216e+05  2.70123196e+05  1.76e-08 3.20e-07  5.15e-04  1667s
+[2019-04-11 14:44:28] SOLVER   203   2.75922920e+05  2.70143415e+05  1.72e-08 3.18e-07  5.06e-04  1674s
+[2019-04-11 14:44:35] SOLVER   204   2.75880235e+05  2.70193203e+05  1.70e-08 3.12e-07  4.98e-04  1681s
+[2019-04-11 14:44:41] SOLVER   205   2.75824976e+05  2.70241086e+05  1.66e-08 3.06e-07  4.89e-04  1687s
+[2019-04-11 14:44:49] SOLVER   206   2.75716920e+05  2.70282931e+05  1.61e-08 3.02e-07  4.76e-04  1695s
+[2019-04-11 14:44:56] SOLVER   207   2.75683616e+05  2.70352796e+05  1.59e-08 2.94e-07  4.67e-04  1702s
+[2019-04-11 14:45:04] SOLVER   208   2.75625599e+05  2.70367358e+05  1.55e-08 2.92e-07  4.60e-04  1710s
+[2019-04-11 14:45:14] SOLVER   209   2.75557204e+05  2.70412834e+05  1.51e-08 2.87e-07  4.50e-04  1720s
+[2019-04-11 14:45:22] SOLVER   210   2.75392823e+05  2.70452310e+05  1.42e-08 2.83e-07  4.32e-04  1728s
+[2019-04-11 14:45:28] SOLVER   211   2.75352210e+05  2.70516744e+05  1.39e-08 2.75e-07  4.23e-04  1734s
+[2019-04-11 14:45:35] SOLVER   212   2.75302300e+05  2.70561699e+05  1.37e-08 2.70e-07  4.15e-04  1741s
+[2019-04-11 14:45:43] SOLVER   213   2.75283662e+05  2.70590044e+05  1.35e-08 2.67e-07  4.11e-04  1749s
+[2019-04-11 14:45:49] SOLVER   214   2.75273440e+05  2.70611351e+05  1.35e-08 2.65e-07  4.08e-04  1755s
+[2019-04-11 14:45:57] SOLVER   215   2.75201821e+05  2.70642163e+05  1.31e-08 2.61e-07  3.99e-04  1763s
+[2019-04-11 14:46:07] SOLVER   216   2.75099938e+05  2.70705368e+05  1.25e-08 2.54e-07  3.85e-04  1773s
+[2019-04-11 14:46:15] SOLVER   217   2.75050410e+05  2.70766823e+05  1.22e-08 2.48e-07  3.75e-04  1781s
+[2019-04-11 14:46:22] SOLVER   218   2.75039055e+05  2.70803606e+05  1.21e-08 2.44e-07  3.71e-04  1788s
+[2019-04-11 14:46:28] SOLVER   219   2.75001003e+05  2.70824244e+05  1.19e-08 2.41e-07  3.66e-04  1794s
+[2019-04-11 14:46:36] SOLVER   220   2.74966234e+05  2.70832477e+05  1.17e-08 2.40e-07  3.62e-04  1802s
+[2019-04-11 14:46:44] SOLVER   221   2.74957226e+05  2.70875430e+05  1.17e-08 2.35e-07  3.57e-04  1810s
+[2019-04-11 14:46:52] SOLVER   222   2.74916486e+05  2.70930492e+05  1.14e-08 2.30e-07  3.49e-04  1818s
+[2019-04-11 14:46:59] SOLVER   223   2.74838945e+05  2.70947308e+05  1.10e-08 2.28e-07  3.41e-04  1825s
+[2019-04-11 14:47:07] SOLVER   224   2.74805015e+05  2.71018054e+05  1.08e-08 2.20e-07  3.31e-04  1833s
+[2019-04-11 14:47:13] SOLVER   225   2.74776670e+05  2.71036927e+05  1.06e-08 2.18e-07  3.27e-04  1839s
+[2019-04-11 14:47:21] SOLVER   226   2.74715208e+05  2.71102816e+05  1.03e-08 2.10e-07  3.16e-04  1847s
+[2019-04-11 14:47:30] SOLVER   227   2.74677380e+05  2.71157367e+05  1.01e-08 2.04e-07  3.08e-04  1856s
+[2019-04-11 14:47:40] SOLVER   228   2.74636074e+05  2.71191796e+05  9.88e-09 2.00e-07  3.01e-04  1866s
+[2019-04-11 14:47:50] SOLVER   229   2.74584705e+05  2.71217187e+05  9.58e-09 1.97e-07  2.95e-04  1876s
+[2019-04-11 14:47:58] SOLVER   230   2.74562717e+05  2.71249196e+05  9.45e-09 1.93e-07  2.90e-04  1884s
+[2019-04-11 14:48:04] SOLVER   231   2.74516898e+05  2.71282703e+05  9.23e-09 1.89e-07  2.83e-04  1890s
+[2019-04-11 14:48:11] SOLVER   232   2.74497343e+05  2.71318700e+05  9.12e-09 1.85e-07  2.78e-04  1897s
+[2019-04-11 14:48:17] SOLVER   233   2.74466391e+05  2.71338831e+05  8.96e-09 1.83e-07  2.74e-04  1903s
+[2019-04-11 14:48:23] SOLVER   234   2.74445744e+05  2.71349663e+05  8.84e-09 1.81e-07  2.71e-04  1909s
+[2019-04-11 14:48:29] SOLVER   235   2.74434436e+05  2.71361721e+05  8.77e-09 1.80e-07  2.69e-04  1915s
+[2019-04-11 14:48:38] SOLVER   236   2.74399976e+05  2.71391987e+05  8.60e-09 1.76e-07  2.63e-04  1924s
+[2019-04-11 14:48:48] SOLVER   237   2.74363735e+05  2.71449337e+05  8.41e-09 1.70e-07  2.55e-04  1934s
+[2019-04-11 14:48:56] SOLVER   238   2.74322431e+05  2.71461883e+05  8.16e-09 1.68e-07  2.50e-04  1942s
+[2019-04-11 14:49:02] SOLVER   239   2.74318684e+05  2.71462384e+05  8.14e-09 1.68e-07  2.50e-04  1948s
+[2019-04-11 14:49:09] SOLVER   240   2.74301817e+05  2.71483993e+05  8.05e-09 1.65e-07  2.47e-04  1955s
+[2019-04-11 14:49:15] SOLVER   241   2.74260710e+05  2.71518419e+05  7.86e-09 1.61e-07  2.40e-04  1961s
+[2019-04-11 14:49:23] SOLVER   242   2.74213356e+05  2.71543649e+05  7.62e-09 1.58e-07  2.34e-04  1969s
+[2019-04-11 14:49:33] SOLVER   243   2.74202172e+05  2.71568840e+05  7.56e-09 1.55e-07  2.30e-04  1979s
+[2019-04-11 14:49:41] SOLVER   244   2.74146916e+05  2.71599340e+05  7.31e-09 1.51e-07  2.23e-04  1987s
+[2019-04-11 14:49:47] SOLVER   245   2.74138658e+05  2.71651209e+05  7.26e-09 1.45e-07  2.18e-04  1993s
+[2019-04-11 14:49:53] SOLVER   246   2.74118106e+05  2.71686754e+05  7.14e-09 1.40e-07  2.13e-04  1999s
+[2019-04-11 14:50:02] SOLVER   247   2.74083103e+05  2.71709070e+05  6.98e-09 1.38e-07  2.08e-04  2008s
+[2019-04-11 14:50:08] SOLVER   248   2.74074256e+05  2.71722751e+05  6.94e-09 1.36e-07  2.06e-04  2014s
+[2019-04-11 14:50:16] SOLVER   249   2.74035777e+05  2.71735424e+05  6.73e-09 1.34e-07  2.01e-04  2022s
+[2019-04-11 14:50:24] SOLVER   250   2.74015708e+05  2.71744612e+05  6.62e-09 1.33e-07  1.99e-04  2031s
+[2019-04-11 14:50:36] SOLVER   251   2.73984879e+05  2.71786635e+05  6.46e-09 1.28e-07  1.92e-04  2042s
+[2019-04-11 14:50:46] SOLVER   252   2.73939849e+05  2.71819450e+05  6.22e-09 1.24e-07  1.86e-04  2053s
+[2019-04-11 14:50:55] SOLVER   253   2.73912904e+05  2.71840138e+05  6.07e-09 1.22e-07  1.81e-04  2061s
+[2019-04-11 14:51:01] SOLVER   254   2.73884643e+05  2.71846209e+05  5.91e-09 1.21e-07  1.78e-04  2067s
+[2019-04-11 14:51:07] SOLVER   255   2.73871748e+05  2.71862127e+05  5.83e-09 1.19e-07  1.76e-04  2073s
+[2019-04-11 14:51:14] SOLVER   256   2.73864465e+05  2.71888841e+05  5.79e-09 1.16e-07  1.73e-04  2080s
+[2019-04-11 14:51:20] SOLVER   257   2.73848341e+05  2.71901834e+05  5.69e-09 1.14e-07  1.70e-04  2086s
+[2019-04-11 14:51:26] SOLVER   258   2.73830740e+05  2.71926645e+05  5.58e-09 1.12e-07  1.67e-04  2092s
+[2019-04-11 14:51:33] SOLVER   259   2.73806817e+05  2.71950054e+05  5.43e-09 1.09e-07  1.63e-04  2099s
+[2019-04-11 14:51:39] SOLVER   260   2.73788980e+05  2.71963790e+05  5.32e-09 1.08e-07  1.60e-04  2105s
+[2019-04-11 14:51:47] SOLVER   261   2.73774622e+05  2.71971947e+05  5.24e-09 1.07e-07  1.58e-04  2113s
+[2019-04-11 14:51:57] SOLVER   262   2.73749041e+05  2.71985393e+05  5.09e-09 1.05e-07  1.54e-04  2123s
+[2019-04-11 14:52:06] SOLVER   263   2.73746384e+05  2.71986225e+05  5.07e-09 1.05e-07  1.54e-04  2132s
+[2019-04-11 14:52:13] SOLVER   264   2.73725741e+05  2.72000414e+05  4.95e-09 1.03e-07  1.51e-04  2139s
+[2019-04-11 14:52:19] SOLVER   265   2.73705132e+05  2.72013106e+05  4.84e-09 1.02e-07  1.48e-04  2145s
+[2019-04-11 14:52:27] SOLVER   266   2.73693827e+05  2.72040966e+05  4.78e-09 9.84e-08  1.45e-04  2153s
+[2019-04-11 14:52:35] SOLVER   267   2.73685329e+05  2.72042345e+05  4.72e-09 9.83e-08  1.44e-04  2161s
+[2019-04-11 14:52:44] SOLVER   268   2.73682362e+05  2.72051088e+05  4.71e-09 9.72e-08  1.43e-04  2170s
+[2019-04-11 14:52:50] SOLVER   269   2.73679706e+05  2.72059787e+05  4.69e-09 9.62e-08  1.42e-04  2176s
+[2019-04-11 14:52:58] SOLVER   270   2.73658377e+05  2.72088723e+05  4.57e-09 9.29e-08  1.37e-04  2184s
+[2019-04-11 14:53:08] SOLVER   271   2.73640973e+05  2.72101416e+05  4.47e-09 9.15e-08  1.35e-04  2194s
+[2019-04-11 14:53:16] SOLVER   272   2.73615832e+05  2.72109195e+05  4.33e-09 9.06e-08  1.32e-04  2202s
+[2019-04-11 14:53:23] SOLVER   273   2.73610814e+05  2.72125277e+05  4.30e-09 8.87e-08  1.30e-04  2209s
+[2019-04-11 14:53:29] SOLVER   274   2.73590103e+05  2.72138879e+05  4.17e-09 8.71e-08  1.27e-04  2215s
+[2019-04-11 14:53:35] SOLVER   275   2.73575190e+05  2.72161118e+05  4.09e-09 8.45e-08  1.24e-04  2221s
+[2019-04-11 14:53:43] SOLVER   276   2.73564329e+05  2.72167525e+05  4.02e-09 8.37e-08  1.22e-04  2229s
+[2019-04-11 14:53:53] SOLVER   277   2.73548966e+05  2.72192396e+05  3.93e-09 8.09e-08  1.19e-04  2239s
+[2019-04-11 14:54:01] SOLVER   278   2.73540632e+05  2.72207921e+05  3.88e-09 7.91e-08  1.17e-04  2247s
+[2019-04-11 14:54:08] SOLVER   279   2.73526282e+05  2.72222259e+05  3.80e-09 7.75e-08  1.14e-04  2254s
+[2019-04-11 14:54:14] SOLVER   280   2.73521159e+05  2.72244533e+05  3.77e-09 7.49e-08  1.12e-04  2260s
+[2019-04-11 14:54:22] SOLVER   281   2.73504514e+05  2.72263571e+05  3.67e-09 7.27e-08  1.09e-04  2268s
+[2019-04-11 14:54:28] SOLVER   282   2.73488930e+05  2.72287158e+05  3.58e-09 6.99e-08  1.05e-04  2274s
+[2019-04-11 14:54:37] SOLVER   283   2.73471102e+05  2.72306549e+05  3.48e-09 6.76e-08  1.02e-04  2283s
+[2019-04-11 14:54:45] SOLVER   284   2.73464451e+05  2.72311671e+05  3.44e-09 6.70e-08  1.01e-04  2291s
+[2019-04-11 14:54:58] SOLVER   285   2.73457034e+05  2.72317932e+05  3.39e-09 6.64e-08  9.97e-05  2304s
+[2019-04-11 14:55:08] SOLVER   286   2.73423601e+05  2.72369794e+05  3.20e-09 6.06e-08  9.22e-05  2314s
+[2019-04-11 14:55:17] SOLVER   287   2.73398956e+05  2.72398220e+05  3.05e-09 5.75e-08  8.76e-05  2323s
+[2019-04-11 14:55:24] SOLVER   288   2.73389151e+05  2.72408190e+05  2.99e-09 5.64e-08  8.59e-05  2330s
+[2019-04-11 14:55:30] SOLVER   289   2.73381346e+05  2.72420616e+05  2.94e-09 5.50e-08  8.41e-05  2336s
+[2019-04-11 14:55:36] SOLVER   290   2.73371375e+05  2.72436889e+05  2.88e-09 5.32e-08  8.18e-05  2342s
+[2019-04-11 14:55:43] SOLVER   291   2.73365147e+05  2.72449559e+05  2.84e-09 5.17e-08  8.01e-05  2349s
+[2019-04-11 14:55:49] SOLVER   292   2.73363963e+05  2.72454571e+05  2.83e-09 5.11e-08  7.96e-05  2355s
+[2019-04-11 14:55:56] SOLVER   293   2.73361277e+05  2.72461290e+05  2.82e-09 5.04e-08  7.88e-05  2362s
+[2019-04-11 14:56:03] SOLVER   294   2.73359807e+05  2.72466457e+05  2.81e-09 4.98e-08  7.82e-05  2369s
+[2019-04-11 14:56:10] SOLVER   295   2.73351239e+05  2.72469215e+05  2.76e-09 4.95e-08  7.72e-05  2376s
+[2019-04-11 14:56:18] SOLVER   296   2.73341575e+05  2.72471049e+05  2.70e-09 4.93e-08  7.62e-05  2384s
+[2019-04-11 14:56:26] SOLVER   297   2.73333683e+05  2.72474908e+05  2.65e-09 4.88e-08  7.52e-05  2392s
+[2019-04-11 14:56:37] SOLVER   298   2.73330158e+05  2.72479840e+05  2.63e-09 4.83e-08  7.44e-05  2403s
+[2019-04-11 14:56:47] SOLVER   299   2.73315978e+05  2.72484921e+05  2.54e-09 4.77e-08  7.27e-05  2413s
+[2019-04-11 14:56:55] SOLVER   300   2.73305272e+05  2.72495990e+05  2.84e-09 4.66e-08  7.08e-05  2421s
+[2019-04-11 14:57:01] SOLVER   301   2.73298219e+05  2.72503387e+05  3.53e-09 4.58e-08  6.96e-05  2427s
+[2019-04-11 14:57:07] SOLVER   302   2.73293465e+05  2.72509861e+05  3.33e-09 4.50e-08  6.86e-05  2433s
+[2019-04-11 14:57:14] SOLVER   303   2.73284253e+05  2.72515152e+05  2.98e-09 4.44e-08  6.73e-05  2440s
+[2019-04-11 14:57:21] SOLVER   304   2.73282242e+05  2.72521229e+05  2.96e-09 4.38e-08  6.66e-05  2447s
+[2019-04-11 14:57:28] SOLVER   305   2.73275949e+05  2.72524212e+05  3.30e-09 4.34e-08  6.58e-05  2454s
+[2019-04-11 14:57:36] SOLVER   306   2.73261425e+05  2.72533306e+05  3.07e-09 4.24e-08  6.37e-05  2462s
+[2019-04-11 14:57:44] SOLVER   307   2.73255748e+05  2.72543574e+05  3.58e-09 4.12e-08  6.23e-05  2470s
+[2019-04-11 14:57:52] SOLVER   308   2.73248310e+05  2.72555044e+05  3.33e-09 4.00e-08  6.07e-05  2478s
+[2019-04-11 14:57:58] SOLVER   309   2.73243617e+05  2.72558160e+05  3.08e-09 3.96e-08  6.00e-05  2484s
+[2019-04-11 14:58:06] SOLVER   310   2.73232480e+05  2.72565347e+05  2.79e-09 3.88e-08  5.84e-05  2492s
+[2019-04-11 14:58:16] SOLVER   311   2.73226075e+05  2.72587443e+05  2.36e-09 3.65e-08  5.59e-05  2502s
+[2019-04-11 14:58:25] SOLVER   312   2.73214993e+05  2.72593672e+05  2.12e-09 3.58e-08  5.44e-05  2511s
+[2019-04-11 14:58:31] SOLVER   313   2.73212897e+05  2.72597950e+05  2.10e-09 3.53e-08  5.38e-05  2517s
+[2019-04-11 14:58:38] SOLVER   314   2.73210919e+05  2.72604825e+05  2.17e-09 3.45e-08  5.30e-05  2524s
+[2019-04-11 14:58:46] SOLVER   315   2.73197188e+05  2.72607659e+05  2.18e-09 3.42e-08  5.16e-05  2532s
+[2019-04-11 14:58:53] SOLVER   316   2.73192008e+05  2.72613407e+05  2.08e-09 3.35e-08  5.06e-05  2539s
+[2019-04-11 14:59:01] SOLVER   317   2.73186333e+05  2.72622926e+05  2.11e-09 3.24e-08  4.93e-05  2547s
+[2019-04-11 14:59:09] SOLVER   318   2.73181398e+05  2.72633244e+05  2.06e-09 3.12e-08  4.80e-05  2555s
+[2019-04-11 14:59:20] SOLVER   319   2.73177434e+05  2.72637139e+05  2.11e-09 3.08e-08  4.73e-05  2566s
+[2019-04-11 14:59:29] SOLVER   320   2.73174842e+05  2.72639739e+05  2.35e-09 3.05e-08  4.68e-05  2575s
+[2019-04-11 14:59:38] SOLVER   321   2.73165803e+05  2.72643008e+05  5.12e-09 3.01e-08  4.58e-05  2584s
+[2019-04-11 14:59:44] SOLVER   322   2.73161811e+05  2.72652150e+05  5.38e-09 2.91e-08  4.46e-05  2590s
+[2019-04-11 14:59:50] SOLVER   323   2.73157397e+05  2.72657816e+05  5.48e-09 2.84e-08  4.37e-05  2596s
+[2019-04-11 14:59:57] SOLVER   324   2.73152168e+05  2.72665180e+05  4.57e-09 2.75e-08  4.26e-05  2603s
+[2019-04-11 15:00:03] SOLVER   325   2.73148534e+05  2.72667424e+05  4.21e-09 2.73e-08  4.21e-05  2609s
+[2019-04-11 15:00:09] SOLVER   326   2.73141860e+05  2.72668890e+05  3.42e-09 2.71e-08  4.14e-05  2615s
+[2019-04-11 15:00:17] SOLVER   327   2.73136273e+05  2.72674403e+05  3.30e-09 2.65e-08  4.04e-05  2623s
+[2019-04-11 15:00:27] SOLVER   328   2.73132021e+05  2.72684458e+05  2.99e-09 2.53e-08  3.92e-05  2633s
+[2019-04-11 15:00:35] SOLVER   329   2.73130283e+05  2.72685835e+05  2.74e-09 2.51e-08  3.89e-05  2641s
+[2019-04-11 15:00:42] SOLVER   330   2.73124279e+05  2.72687291e+05  3.54e-09 2.50e-08  3.82e-05  2648s
+[2019-04-11 15:00:48] SOLVER   331   2.73116741e+05  2.72690610e+05  2.61e-09 2.46e-08  3.73e-05  2654s
+[2019-04-11 15:00:55] SOLVER   332   2.73115307e+05  2.72692719e+05  2.61e-09 2.43e-08  3.70e-05  2661s
+[2019-04-11 15:01:02] SOLVER   333   2.73114216e+05  2.72697116e+05  2.64e-09 2.38e-08  3.65e-05  2668s
+[2019-04-11 15:01:13] SOLVER   334   2.73103788e+05  2.72700903e+05  2.23e-09 2.34e-08  3.53e-05  2679s
+[2019-04-11 15:01:21] SOLVER   335   2.73095663e+05  2.72704263e+05  2.92e-09 2.29e-08  3.43e-05  2687s
+[2019-04-11 15:01:27] SOLVER   336   2.73092306e+05  2.72709936e+05  2.81e-09 2.23e-08  3.35e-05  2693s
+[2019-04-11 15:01:33] SOLVER   337   2.73089518e+05  2.72715018e+05  2.73e-09 2.16e-08  3.28e-05  2699s
+[2019-04-11 15:01:41] SOLVER   338   2.73086918e+05  2.72716775e+05  2.52e-09 2.14e-08  3.24e-05  2707s
+[2019-04-11 15:01:48] SOLVER   339   2.73081650e+05  2.72721081e+05  3.20e-09 2.09e-08  3.16e-05  2714s
+[2019-04-11 15:01:58] SOLVER   340   2.73081524e+05  2.72721271e+05  3.17e-09 2.09e-08  3.15e-05  2724s
+[2019-04-11 15:02:08] SOLVER   341   2.73072667e+05  2.72728917e+05  3.55e-09 1.99e-08  3.01e-05  2734s
+[2019-04-11 15:02:17] SOLVER   342   2.73070686e+05  2.72729551e+05  3.55e-09 1.98e-08  2.99e-05  2743s
+[2019-04-11 15:02:23] SOLVER   343   2.73065930e+05  2.72734918e+05  3.81e-09 1.91e-08  2.90e-05  2749s
+[2019-04-11 15:02:29] SOLVER   344   2.73064902e+05  2.72738447e+05  3.76e-09 1.87e-08  2.86e-05  2755s
+[2019-04-11 15:02:36] SOLVER   345   2.73061116e+05  2.72739762e+05  3.56e-09 1.85e-08  2.81e-05  2762s
+[2019-04-11 15:02:44] SOLVER   346   2.73056596e+05  2.72742698e+05  3.74e-09 1.82e-08  2.75e-05  2770s
+[2019-04-11 15:02:53] SOLVER   347   2.73052818e+05  2.72748271e+05  2.81e-09 1.75e-08  2.67e-05  2779s
+[2019-04-11 15:03:01] SOLVER   348   2.73046329e+05  2.72751249e+05  1.78e-09 1.71e-08  2.58e-05  2787s
+[2019-04-11 15:03:08] SOLVER   349   2.73045435e+05  2.72754123e+05  1.74e-09 1.68e-08  2.55e-05  2794s
+[2019-04-11 15:03:14] SOLVER   350   2.73042317e+05  2.72755560e+05  2.55e-09 1.66e-08  2.51e-05  2800s
+[2019-04-11 15:03:22] SOLVER   351   2.73040599e+05  2.72759541e+05  1.95e-09 1.61e-08  2.46e-05  2808s
+[2019-04-11 15:03:28] SOLVER   352   2.73034426e+05  2.72761744e+05  2.74e-09 1.59e-08  2.39e-05  2814s
+[2019-04-11 15:03:36] SOLVER   353   2.73031050e+05  2.72766401e+05  3.48e-09 1.53e-08  2.32e-05  2822s
+[2019-04-11 15:03:45] SOLVER   354   2.73025212e+05  2.72772994e+05  3.31e-09 1.45e-08  2.21e-05  2831s
+[2019-04-11 15:03:54] SOLVER   355   2.73022376e+05  2.72775934e+05  2.42e-09 1.42e-08  2.16e-05  2840s
+[2019-04-11 15:04:00] SOLVER   356   2.73018970e+05  2.72777021e+05  4.18e-09 1.40e-08  2.12e-05  2846s
+[2019-04-11 15:04:07] SOLVER   357   2.73016087e+05  2.72780398e+05  5.15e-09 1.36e-08  2.06e-05  2853s
+[2019-04-11 15:04:15] SOLVER   358   2.73013444e+05  2.72782526e+05  5.20e-09 1.34e-08  2.02e-05  2861s
+[2019-04-11 15:04:25] SOLVER   359   2.73011050e+05  2.72784922e+05  4.86e-09 1.31e-08  1.98e-05  2871s
+[2019-04-11 15:04:33] SOLVER   360   2.73007101e+05  2.72788728e+05  4.86e-09 1.27e-08  1.91e-05  2879s
+[2019-04-11 15:04:39] SOLVER   361   2.73002845e+05  2.72790864e+05  4.31e-09 1.24e-08  1.86e-05  2885s
+[2019-04-11 15:04:45] SOLVER   362   2.73000570e+05  2.72794776e+05  4.53e-09 1.20e-08  1.80e-05  2891s
+[2019-04-11 15:04:53] SOLVER   363   2.72997401e+05  2.72797373e+05  5.13e-09 1.16e-08  1.75e-05  2899s
+[2019-04-11 15:05:02] SOLVER   364   2.72995513e+05  2.72799271e+05  5.84e-09 1.14e-08  1.72e-05  2908s
+[2019-04-11 15:05:12] SOLVER   365   2.72991250e+05  2.72802472e+05  4.61e-09 1.11e-08  1.65e-05  2918s
+[2019-04-11 15:05:19] SOLVER   366   2.72989998e+05  2.72805147e+05  4.18e-09 1.07e-08  1.62e-05  2925s
+[2019-04-11 15:05:26] SOLVER   367   2.72988170e+05  2.72807921e+05  3.66e-09 1.04e-08  1.58e-05  2932s
+[2019-04-11 15:05:32] SOLVER   368   2.72984876e+05  2.72810365e+05  3.59e-09 1.01e-08  1.53e-05  2938s
+[2019-04-11 15:05:40] SOLVER   369   2.72983997e+05  2.72813416e+05  3.33e-09 9.75e-09  1.49e-05  2946s
+[2019-04-11 15:05:50] SOLVER   370   2.72979166e+05  2.72817900e+05  6.08e-09 9.22e-09  1.41e-05  2956s
+[2019-04-11 15:05:59] SOLVER   371   2.72978247e+05  2.72818475e+05  6.03e-09 9.15e-09  1.40e-05  2965s
+[2019-04-11 15:06:05] SOLVER   372   2.72976372e+05  2.72821231e+05  6.30e-09 8.81e-09  1.36e-05  2971s
+[2019-04-11 15:06:11] SOLVER   373   2.72975153e+05  2.72823364e+05  6.58e-09 8.56e-09  1.33e-05  2977s
+[2019-04-11 15:06:19] SOLVER   374   2.72972992e+05  2.72825548e+05  5.97e-09 8.30e-09  1.29e-05  2985s
+[2019-04-11 15:06:26] SOLVER   375   2.72969978e+05  2.72827437e+05  6.98e-09 8.07e-09  1.25e-05  2992s
+[2019-04-11 15:06:36] SOLVER   376   2.72969911e+05  2.72827691e+05  6.99e-09 8.04e-09  1.24e-05  3002s
+[2019-04-11 15:06:42] SOLVER   377   2.72969176e+05  2.72829703e+05  7.32e-09 7.79e-09  1.22e-05  3008s
+[2019-04-11 15:06:50] SOLVER   378   2.72966485e+05  2.72830950e+05  8.23e-09 7.64e-09  1.19e-05  3016s
+[2019-04-11 15:07:01] SOLVER   379   2.72965189e+05  2.72831895e+05  7.50e-09 7.53e-09  1.17e-05  3027s
+[2019-04-11 15:07:09] SOLVER   380   2.72963202e+05  2.72834140e+05  7.06e-09 7.25e-09  1.13e-05  3035s
+[2019-04-11 15:07:15] SOLVER   381   2.72961037e+05  2.72836251e+05  6.99e-09 6.99e-09  1.09e-05  3041s
+[2019-04-11 15:07:21] SOLVER   382   2.72960256e+05  2.72837127e+05  6.75e-09 6.89e-09  1.08e-05  3047s
+[2019-04-11 15:07:30] SOLVER   383   2.72958577e+05  2.72838563e+05  6.16e-09 6.72e-09  1.05e-05  3056s
+[2019-04-11 15:07:39] SOLVER   384   2.72956128e+05  2.72840566e+05  6.60e-09 6.47e-09  1.01e-05  3065s
+[2019-04-11 15:07:47] SOLVER   385   2.72954574e+05  2.72842274e+05  7.91e-09 6.26e-09  9.83e-06  3073s
+[2019-04-11 15:07:54] SOLVER   386   2.72954206e+05  2.72842869e+05  8.14e-09 6.19e-09  9.74e-06  3080s
+[2019-04-11 15:08:01] SOLVER   387   2.72953036e+05  2.72843402e+05  9.07e-09 6.12e-09  9.60e-06  3087s
+[2019-04-11 15:08:10] SOLVER   388   2.72951012e+05  2.72844219e+05  1.05e-08 6.02e-09  9.35e-06  3096s
+[2019-04-11 15:08:17] SOLVER   389   2.72950391e+05  2.72845528e+05  1.07e-08 5.86e-09  9.18e-06  3103s
+[2019-04-11 15:08:25] SOLVER   390   2.72948797e+05  2.72847861e+05  1.13e-08 5.58e-09  8.83e-06  3111s
+[2019-04-11 15:08:36] SOLVER   391   2.72947285e+05  2.72851477e+05  1.11e-08 5.15e-09  8.39e-06  3122s
+[2019-04-11 15:08:45] SOLVER   392   2.72944827e+05  2.72853313e+05  1.27e-08 4.95e-09  8.01e-06  3131s
+[2019-04-11 15:08:53] SOLVER   393   2.72943743e+05  2.72853622e+05  1.30e-08 4.91e-09  7.89e-06  3139s
+[2019-04-11 15:09:00] SOLVER   394   2.72943373e+05  2.72854978e+05  1.30e-08 4.76e-09  7.74e-06  3146s
+[2019-04-11 15:09:09] SOLVER   395   2.72941828e+05  2.72856202e+05  1.28e-08 4.62e-09  7.49e-06  3155s
+[2019-04-11 15:09:19] SOLVER   396   2.72940724e+05  2.72858251e+05  1.33e-08 4.39e-09  7.22e-06  3165s
+[2019-04-11 15:09:28] SOLVER   397   2.72939755e+05  2.72858791e+05  1.26e-08 4.33e-09  7.09e-06  3174s
+[2019-04-11 15:09:35] SOLVER   398   2.72939349e+05  2.72859282e+05  1.30e-08 4.27e-09  7.01e-06  3181s
+[2019-04-11 15:09:44] SOLVER   399   2.72937708e+05  2.72860565e+05  1.35e-08 4.13e-09  6.75e-06  3190s
+[2019-04-11 15:09:52] SOLVER   400   2.72936807e+05  2.72861636e+05  1.30e-08 4.01e-09  6.58e-06  3198s
+[2019-04-11 15:10:02] SOLVER   401   2.72935225e+05  2.72862809e+05  9.62e-09 3.87e-09  6.34e-06  3208s
+[2019-04-11 15:10:13] SOLVER   402   2.72934394e+05  2.72863247e+05  8.42e-09 3.82e-09  6.23e-06  3219s
+[2019-04-11 15:10:23] SOLVER   403   2.72934000e+05  2.72863532e+05  8.34e-09 3.79e-09  6.17e-06  3229s
+[2019-04-11 15:10:31] SOLVER   404   2.72933766e+05  2.72863703e+05  8.28e-09 3.77e-09  6.13e-06  3238s
+[2019-04-11 15:10:40] SOLVER   405   2.72933410e+05  2.72863913e+05  8.21e-09 3.75e-09  6.08e-06  3246s
+[2019-04-11 15:10:50] SOLVER   406   2.72932377e+05  2.72865181e+05  8.01e-09 3.60e-09  5.88e-06  3257s
+[2019-04-11 15:11:00] SOLVER   407   2.72930709e+05  2.72866111e+05  6.88e-09 3.50e-09  5.65e-06  3266s
+[2019-04-11 15:11:08] SOLVER   408   2.72929409e+05  2.72866948e+05  7.11e-09 3.41e-09  5.47e-06  3274s
+[2019-04-11 15:11:16] SOLVER   409   2.72928361e+05  2.72867451e+05  6.89e-09 3.35e-09  5.33e-06  3282s
+[2019-04-11 15:11:27] SOLVER   410   2.72927693e+05  2.72868151e+05  6.77e-09 3.27e-09  5.21e-06  3293s
+[2019-04-11 15:11:39] SOLVER   411   2.72926190e+05  2.72869613e+05  6.37e-09 3.11e-09  4.95e-06  3305s
+[2019-04-11 15:11:49] SOLVER   412   2.72925139e+05  2.72870369e+05  6.15e-09 3.02e-09  4.79e-06  3315s
+[2019-04-11 15:11:57] SOLVER   413   2.72923977e+05  2.72870828e+05  5.91e-09 2.97e-09  4.65e-06  3323s
+[2019-04-11 15:12:05] SOLVER   414   2.72923270e+05  2.72871303e+05  5.76e-09 2.91e-09  4.55e-06  3331s
+[2019-04-11 15:12:13] SOLVER   415   2.72922077e+05  2.72872261e+05  5.73e-09 2.81e-09  4.36e-06  3339s
+[2019-04-11 15:12:22] SOLVER   416   2.72921393e+05  2.72872991e+05  6.21e-09 2.73e-09  4.24e-06  3348s
+[2019-04-11 15:12:30] SOLVER   417   2.72920520e+05  2.72873768e+05  5.06e-09 2.64e-09  4.09e-06  3357s
+[2019-04-11 15:12:38] SOLVER   418   2.72919832e+05  2.72874743e+05  4.92e-09 2.53e-09  3.95e-06  3364s
+[2019-04-11 15:12:46] SOLVER   419   2.72919743e+05  2.72875101e+05  4.91e-09 2.48e-09  3.91e-06  3372s
+[2019-04-11 15:12:56] SOLVER   420   2.72918919e+05  2.72875893e+05  5.61e-09 2.40e-09  3.77e-06  3382s
+[2019-04-11 15:13:08] SOLVER   421   2.72917577e+05  2.72876592e+05  5.24e-09 2.32e-09  3.59e-06  3394s
+[2019-04-11 15:13:19] SOLVER   422   2.72916209e+05  2.72877394e+05  4.93e-09 2.22e-09  3.40e-06  3405s
+[2019-04-11 15:13:27] SOLVER   423   2.72915592e+05  2.72877950e+05  4.78e-09 2.15e-09  3.29e-06  3413s
+[2019-04-11 15:13:36] SOLVER   424   2.72914858e+05  2.72878387e+05  4.60e-09 2.10e-09  3.19e-06  3422s
+[2019-04-11 15:13:46] SOLVER   425   2.72914398e+05  2.72878716e+05  4.53e-09 2.06e-09  3.12e-06  3432s
+[2019-04-11 15:13:58] SOLVER   426   2.72913581e+05  2.72879494e+05  4.26e-09 1.97e-09  2.98e-06  3444s
+[2019-04-11 15:14:08] SOLVER   427   2.72912914e+05  2.72879995e+05  4.05e-09 1.92e-09  2.88e-06  3454s
+[2019-04-11 15:14:17] SOLVER   428   2.72912519e+05  2.72880276e+05  3.96e-09 1.88e-09  2.82e-06  3463s
+[2019-04-11 15:14:27] SOLVER   429   2.72911726e+05  2.72880913e+05  3.78e-09 1.80e-09  2.70e-06  3473s
+[2019-04-11 15:14:41] SOLVER   430   2.72910916e+05  2.72881681e+05  3.59e-09 1.71e-09  2.56e-06  3487s
+[2019-04-11 15:14:52] SOLVER   431   2.72910213e+05  2.72882181e+05  3.43e-09 1.65e-09  2.45e-06  3498s
+[2019-04-11 15:15:00] SOLVER   432   2.72909805e+05  2.72882655e+05  3.33e-09 1.60e-09  2.38e-06  3507s
+[2019-04-11 15:15:09] SOLVER   433   2.72909517e+05  2.72883018e+05  3.26e-09 1.55e-09  2.32e-06  3515s
+[2019-04-11 15:15:18] SOLVER   434   2.72909179e+05  2.72883362e+05  3.18e-09 1.51e-09  2.26e-06  3524s
+[2019-04-11 15:15:28] SOLVER   435   2.72908421e+05  2.72883896e+05  2.83e-09 1.45e-09  2.15e-06  3534s
+[2019-04-11 15:15:42] SOLVER   436   2.72908201e+05  2.72884092e+05  2.78e-09 1.42e-09  2.11e-06  3548s
+[2019-04-11 15:15:52] SOLVER   437   2.72907657e+05  2.72884880e+05  2.66e-09 1.33e-09  1.99e-06  3558s
+[2019-04-11 15:16:00] SOLVER   438   2.72907606e+05  2.72885137e+05  2.65e-09 1.30e-09  1.97e-06  3566s
+[2019-04-11 15:16:09] SOLVER   439   2.72907317e+05  2.72885523e+05  2.58e-09 1.25e-09  1.91e-06  3575s
+[2019-04-11 15:16:19] SOLVER   440   2.72906669e+05  2.72886248e+05  2.45e-09 1.16e-09  1.79e-06  3586s
+[2019-04-11 15:16:30] SOLVER   441   2.72906433e+05  2.72886356e+05  2.39e-09 1.15e-09  1.76e-06  3596s
+[2019-04-11 15:16:42] SOLVER   442   2.72905844e+05  2.72886879e+05  2.27e-09 1.08e-09  1.66e-06  3608s
+[2019-04-11 15:16:54] SOLVER   443   2.72905271e+05  2.72887319e+05  2.17e-09 1.03e-09  1.57e-06  3620s
+[2019-04-11 15:17:04] SOLVER   444   2.72905017e+05  2.72887631e+05  1.93e-09 9.91e-10  1.52e-06  3630s
+[2019-04-11 15:17:13] SOLVER   445   2.72904930e+05  2.72887677e+05  1.91e-09 9.85e-10  1.51e-06  3639s
+[2019-04-11 15:17:21] SOLVER   446   2.72904666e+05  2.72887963e+05  1.86e-09 9.50e-10  1.46e-06  3647s
+[2019-04-11 15:17:30] SOLVER   447   2.72904550e+05  2.72888206e+05  1.83e-09 9.20e-10  1.43e-06  3656s
+[2019-04-11 15:17:40] SOLVER   448   2.72904349e+05  2.72888367e+05  1.79e-09 9.01e-10  1.40e-06  3666s
+[2019-04-11 15:17:52] SOLVER   449   2.72903955e+05  2.72888741e+05  1.42e-09 8.56e-10  1.33e-06  3678s
+[2019-04-11 15:18:02] SOLVER   450   2.72903596e+05  2.72888946e+05  1.34e-09 8.31e-10  1.28e-06  3688s
+[2019-04-11 15:18:10] SOLVER   451   2.72903576e+05  2.72889094e+05  1.33e-09 8.13e-10  1.27e-06  3696s
+[2019-04-11 15:18:22] SOLVER   452   2.72903350e+05  2.72889343e+05  1.30e-09 7.82e-10  1.23e-06  3708s
+[2019-04-11 15:18:30] SOLVER   453   2.72903226e+05  2.72889564e+05  1.27e-09 7.55e-10  1.20e-06  3716s
+[2019-04-11 15:18:41] SOLVER   454   2.72903013e+05  2.72889685e+05  1.24e-09 7.40e-10  1.17e-06  3727s
+[2019-04-11 15:18:54] SOLVER   455   2.72902888e+05  2.72889937e+05  1.23e-09 7.09e-10  1.13e-06  3740s
+[2019-04-11 15:19:05] SOLVER   456   2.72902683e+05  2.72890076e+05  1.20e-09 6.92e-10  1.10e-06  3751s
+[2019-04-11 15:19:13] SOLVER   457   2.72902458e+05  2.72890247e+05  1.16e-09 6.71e-10  1.07e-06  3759s
+[2019-04-11 15:19:22] SOLVER   458   2.72902302e+05  2.72890333e+05  1.13e-09 6.60e-10  1.05e-06  3768s
+[2019-04-11 15:19:32] SOLVER   459   2.72902197e+05  2.72890482e+05  1.11e-09 6.41e-10  1.03e-06  3778s
+[2019-04-11 15:19:43] SOLVER   460   2.72902001e+05  2.72890526e+05  1.08e-09 6.36e-10  1.00e-06  3789s
+[2019-04-11 15:19:57] SOLVER   461   2.72901852e+05  2.72890580e+05  1.04e-09 6.29e-10  9.87e-07  3803s
+[2019-04-11 15:20:09] SOLVER   462   2.72901605e+05  2.72890942e+05  1.03e-09 5.83e-10  9.33e-07  3815s
+[2019-04-11 15:20:19] SOLVER   463   2.72901397e+05  2.72891077e+05  9.97e-10 5.66e-10  9.03e-07  3825s
+[2019-04-11 15:20:28] SOLVER   464   2.72901316e+05  2.72891129e+05  9.83e-10 5.60e-10  8.92e-07  3834s
+[2019-04-11 15:20:36] SOLVER   465   2.72901224e+05  2.72891257e+05  9.67e-10 5.43e-10  8.72e-07  3842s
+[2019-04-11 15:20:44] SOLVER   466   2.72901020e+05  2.72891331e+05  9.32e-10 5.34e-10  8.48e-07  3850s
+[2019-04-11 15:20:55] SOLVER   467   2.72900814e+05  2.72891473e+05  9.00e-10 5.16e-10  8.18e-07  3861s
+[2019-04-11 15:21:09] SOLVER   468   2.72900696e+05  2.72891746e+05  8.81e-10 4.81e-10  7.83e-07  3875s
+[2019-04-11 15:21:19] SOLVER   469   2.72900379e+05  2.72891780e+05  8.40e-10 4.77e-10  7.53e-07  3885s
+[2019-04-11 15:21:28] SOLVER   470   2.72900304e+05  2.72891934e+05  8.27e-10 4.58e-10  7.33e-07  3894s
+[2019-04-11 15:21:36] SOLVER   471   2.72900243e+05  2.72892059e+05  8.16e-10 4.42e-10  7.16e-07  3902s
+[2019-04-11 15:21:45] SOLVER   472   2.72900195e+05  2.72892102e+05  8.08e-10 4.37e-10  7.08e-07  3911s
+[2019-04-11 15:21:56] SOLVER   473   2.72900091e+05  2.72892143e+05  7.90e-10 4.31e-10  6.96e-07  3922s
+[2019-04-11 15:22:07] SOLVER   474   2.72900065e+05  2.72892201e+05  7.86e-10 4.24e-10  6.88e-07  3933s
+[2019-04-11 15:22:18] SOLVER   475   2.72899899e+05  2.72892286e+05  7.59e-10 4.13e-10  6.66e-07  3944s
+[2019-04-11 15:22:27] SOLVER   476   2.72899723e+05  2.72892417e+05  7.28e-10 3.97e-10  6.39e-07  3953s
+[2019-04-11 15:22:38] SOLVER   477   2.72899458e+05  2.72892486e+05  6.84e-10 3.88e-10  6.10e-07  3964s
+[2019-04-11 15:22:46] SOLVER   478   2.72899402e+05  2.72892529e+05  6.74e-10 3.82e-10  6.02e-07  3972s
+[2019-04-11 15:22:58] SOLVER   479   2.72899220e+05  2.72892613e+05  6.43e-10 3.72e-10  5.78e-07  3984s
+[2019-04-11 15:23:12] SOLVER   480   2.72899194e+05  2.72892657e+05  6.39e-10 3.66e-10  5.72e-07  3998s
+[2019-04-11 15:23:23] SOLVER   481   2.72899075e+05  2.72892832e+05  6.18e-10 3.44e-10  5.46e-07  4009s
+[2019-04-11 15:23:32] SOLVER   482   2.72898965e+05  2.72892887e+05  5.99e-10 3.37e-10  5.32e-07  4018s
+[2019-04-11 15:23:40] SOLVER   483   2.72898822e+05  2.72892956e+05  5.74e-10 3.28e-10  5.13e-07  4026s
+[2019-04-11 15:23:49] SOLVER   484   2.72898735e+05  2.72892993e+05  5.59e-10 3.23e-10  5.03e-07  4035s
+[2019-04-11 15:23:59] SOLVER   485   2.72898596e+05  2.72893078e+05  5.78e-10 3.13e-10  4.83e-07  4045s
+[2019-04-11 15:24:13] SOLVER   486   2.72898527e+05  2.72893202e+05  5.65e-10 2.97e-10  4.66e-07  4059s
+[2019-04-11 15:24:24] SOLVER   487   2.72898376e+05  2.72893240e+05  5.36e-10 2.92e-10  4.49e-07  4070s
+[2019-04-11 15:24:33] SOLVER   488   2.72898325e+05  2.72893341e+05  5.26e-10 2.80e-10  4.36e-07  4079s
+[2019-04-11 15:24:41] SOLVER   489   2.72898263e+05  2.72893360e+05  5.15e-10 2.77e-10  4.29e-07  4087s
+[2019-04-11 15:24:49] SOLVER   490   2.72898175e+05  2.72893406e+05  4.98e-10 2.72e-10  4.17e-07  4095s
+[2019-04-11 15:25:01] SOLVER   491   2.72898100e+05  2.72893472e+05  4.84e-10 2.63e-10  4.05e-07  4107s
+[2019-04-11 15:25:15] SOLVER   492   2.72898052e+05  2.72893533e+05  4.75e-10 2.56e-10  3.96e-07  4121s
+[2019-04-11 15:25:26] SOLVER   493   2.72897916e+05  2.72893648e+05  4.50e-10 2.41e-10  3.74e-07  4132s
+[2019-04-11 15:25:35] SOLVER   494   2.72897849e+05  2.72893723e+05  4.37e-10 2.32e-10  3.61e-07  4141s
+[2019-04-11 15:25:43] SOLVER   495   2.72897765e+05  2.72893735e+05  4.21e-10 2.31e-10  3.53e-07  4149s
+[2019-04-11 15:25:52] SOLVER   496   2.72897710e+05  2.72893813e+05  4.11e-10 2.21e-10  3.41e-07  4158s
+[2019-04-11 15:26:03] SOLVER   497   2.72897632e+05  2.72893882e+05  3.96e-10 2.12e-10  3.28e-07  4169s
+[2019-04-11 15:26:17] SOLVER   498   2.72897505e+05  2.72893938e+05  3.73e-10 2.05e-10  3.12e-07  4183s
+[2019-04-11 15:26:40] SOLVER   499   2.72897485e+05  2.72893963e+05  3.69e-10 3.99e-10  3.08e-07  4206s
+[2019-04-11 15:26:49] SOLVER   500   2.72897463e+05  2.72894026e+05  3.65e-10 3.93e-10  3.01e-07  4215s
+[2019-04-11 15:26:57] SOLVER   501   2.72897420e+05  2.72894047e+05  3.57e-10 4.01e-10  2.95e-07  4223s
+[2019-04-11 15:27:06] SOLVER   502   2.72897400e+05  2.72894099e+05  3.53e-10 3.81e-10  2.89e-07  4232s
+[2019-04-11 15:27:14] SOLVER   503   2.72897357e+05  2.72894126e+05  3.45e-10 3.63e-10  2.83e-07  4240s
+[2019-04-11 15:27:26] SOLVER   504   2.72897324e+05  2.72894158e+05  3.39e-10 3.50e-10  2.77e-07  4252s
+[2019-04-11 15:27:34] SOLVER   505   2.72897317e+05  2.72894163e+05  3.37e-10 3.66e-10  2.76e-07  4260s
+[2019-04-11 15:27:45] SOLVER   506   2.72897268e+05  2.72894210e+05  3.28e-10 3.42e-10  2.68e-07  4271s
+[2019-04-11 15:27:59] SOLVER   507   2.72897128e+05  2.72894256e+05  3.02e-10 1.64e-10  2.51e-07  4285s
+[2019-04-11 15:28:11] SOLVER   508   2.72897076e+05  2.72894303e+05  2.92e-10 1.58e-10  2.43e-07  4297s
+[2019-04-11 15:28:19] SOLVER   509   2.72897049e+05  2.72894327e+05  2.87e-10 1.55e-10  2.38e-07  4305s
+[2019-04-11 15:28:27] SOLVER   510   2.72897023e+05  2.72894347e+05  2.82e-10 1.53e-10  2.34e-07  4314s
+[2019-04-11 15:28:36] SOLVER   511   2.72897002e+05  2.72894366e+05  2.78e-10 1.50e-10  2.31e-07  4322s
+[2019-04-11 15:28:47] SOLVER   512   2.72896953e+05  2.72894436e+05  2.68e-10 1.41e-10  2.20e-07  4333s
+[2019-04-11 15:28:57] SOLVER   513   2.72896892e+05  2.72894463e+05  2.57e-10 1.38e-10  2.13e-07  4343s
+[2019-04-11 15:29:08] SOLVER   514   2.72896878e+05  2.72894482e+05  2.54e-10 1.35e-10  2.10e-07  4354s
+[2019-04-11 15:29:22] SOLVER   515   2.72896839e+05  2.72894560e+05  2.48e-10 1.25e-10  1.99e-07  4368s
+[2019-04-11 15:29:33] SOLVER   516   2.72896818e+05  2.72894599e+05  2.44e-10 1.20e-10  1.94e-07  4379s
+[2019-04-11 15:29:42] SOLVER   517   2.72896776e+05  2.72894624e+05  2.36e-10 1.17e-10  1.88e-07  4388s
+[2019-04-11 15:29:53] SOLVER   518   2.72896728e+05  2.72894650e+05  2.27e-10 1.14e-10  1.82e-07  4399s
+[2019-04-11 15:30:01] SOLVER   519   2.72896703e+05  2.72894685e+05  2.22e-10 1.09e-10  1.77e-07  4407s
+[2019-04-11 15:30:12] SOLVER   520   2.72896603e+05  2.72894712e+05  2.04e-10 1.06e-10  1.65e-07  4418s
+[2019-04-11 15:30:27] SOLVER   521   2.72896567e+05  2.72894758e+05  1.97e-10 9.98e-11  1.58e-07  4433s
+[2019-04-11 15:30:38] SOLVER   522   2.72896539e+05  2.72894807e+05  1.92e-10 9.35e-11  1.52e-07  4444s
+[2019-04-11 15:30:46] SOLVER   523   2.72896527e+05  2.72894828e+05  1.90e-10 9.07e-11  1.49e-07  4452s
+[2019-04-11 15:31:04] SOLVER   524   2.72896461e+05  2.72894854e+05  1.77e-10 1.57e-09  1.41e-07  4470s
+[2019-04-11 15:31:15] SOLVER   525   2.72896428e+05  2.72894896e+05  1.71e-10 1.47e-09  1.34e-07  4481s
+[2019-04-11 15:31:31] SOLVER   526   2.72896345e+05  2.72894943e+05  1.56e-10 1.45e-09  1.23e-07  4497s
+[2019-04-11 15:31:42] SOLVER   527   2.72896321e+05  2.72894963e+05  1.51e-10 1.40e-09  1.19e-07  4509s
+[2019-04-11 15:31:51] SOLVER   528   2.72896306e+05  2.72894976e+05  1.48e-10 1.37e-09  1.16e-07  4517s
+[2019-04-11 15:31:59] SOLVER   529   2.72896282e+05  2.72895008e+05  1.44e-10 1.29e-09  1.12e-07  4525s
+[2019-04-11 15:32:08] SOLVER   530   2.72896241e+05  2.72895019e+05  1.36e-10 1.26e-09  1.07e-07  4534s
+[2019-04-11 15:32:19] SOLVER   531   2.72896212e+05  2.72895036e+05  1.31e-10 1.21e-09  1.03e-07  4545s
+[2019-04-11 15:32:33] SOLVER   532   2.72896148e+05  2.72895089e+05  1.19e-10 1.08e-09  9.27e-08  4559s
+[2019-04-11 15:32:44] SOLVER   533   2.72896134e+05  2.72895105e+05  1.16e-10 1.04e-09  9.00e-08  4570s
+[2019-04-11 15:32:53] SOLVER   534   2.72896119e+05  2.72895116e+05  1.13e-10 1.02e-09  8.78e-08  4579s
+[2019-04-11 15:33:09] SOLVER   535   2.72896095e+05  2.72895129e+05  1.09e-10 2.74e-09  8.45e-08  4595s
+[2019-04-11 15:33:26] SOLVER   536   2.72896047e+05  2.72895160e+05  9.99e-11 2.49e-09  7.76e-08  4612s
+[2019-04-11 15:33:43] SOLVER   537   2.72896026e+05  2.72895165e+05  9.60e-11 2.47e-09  7.54e-08  4629s
+[2019-04-11 15:33:59] SOLVER   538   2.72895973e+05  2.72895193e+05  8.61e-11 1.48e-07  6.83e-08  4645s
+[2019-04-11 15:34:08] SOLVER   539   2.72895960e+05  2.72895215e+05  8.36e-11 1.39e-07  6.52e-08  4654s
+[2019-04-11 15:34:19] SOLVER   540   2.72895934e+05  2.72895234e+05  7.83e-11 1.30e-07  6.13e-08  4665s
+[2019-04-11 15:34:28] SOLVER   541   2.72895919e+05  2.72895252e+05  7.54e-11 1.22e-07  5.83e-08  4674s
+[2019-04-11 15:34:36] SOLVER   542   2.72895902e+05  2.72895265e+05  7.22e-11 1.16e-07  5.57e-08  4682s
+[2019-04-11 15:34:48] SOLVER   543   2.72895899e+05  2.72895269e+05  7.16e-11 1.14e-07  5.51e-08  4694s
+[2019-04-11 15:35:05] SOLVER   544   2.72895874e+05  2.72895284e+05  1.49e-10 1.69e-07  5.16e-08  4711s
+[2019-04-11 15:35:20] SOLVER   545   2.72895865e+05  2.72895292e+05  1.45e-10 1.64e-07  5.02e-08  4727s
+[2019-04-11 15:35:28] SOLVER   546   2.72895856e+05  2.72895297e+05  1.41e-10 1.60e-07  4.89e-08  4735s
+[2019-04-11 15:35:37] SOLVER   547   2.72895839e+05  2.72895307e+05  1.34e-10 1.53e-07  4.66e-08  4743s
+[2019-04-11 15:35:45] SOLVER   548   2.72895829e+05  2.72895312e+05  1.30e-10 1.49e-07  4.53e-08  4751s
+[2019-04-11 15:35:57] SOLVER   549   2.72895824e+05  2.72895317e+05  1.28e-10 1.46e-07  4.44e-08  4763s
+[2019-04-11 15:36:14] SOLVER   550   2.72895800e+05  2.72895327e+05  1.18e-10 1.38e-07  4.14e-08  4780s
+[2019-04-11 15:36:28] SOLVER   551   2.72895795e+05  2.72895330e+05  8.28e-10 1.51e-06  4.07e-08  4794s
+[2019-04-11 15:36:39] SOLVER   552   2.72895790e+05  2.72895348e+05  8.12e-10 1.37e-06  3.86e-08  4805s
+[2019-04-11 15:36:47] SOLVER   553   2.72895784e+05  2.72895358e+05  2.54e-09 1.90e-05  3.81e-08  4813s
+[2019-04-11 15:36:48] SOLVER   Barrier solved model in 553 iterations and 4813.11 seconds
+[2019-04-11 15:36:48] SOLVER   Optimal objective 2.72895784e+05
+[2019-04-11 15:36:51] SOLVER   Crossover log...
+[2019-04-11 15:36:55] SOLVER   587631 DPushes remaining with DInf 1.8694229e+04              4821s
+[2019-04-11 15:37:00] SOLVER   571290 DPushes remaining with DInf 1.8258610e+04              4826s
+[2019-04-11 15:37:05] SOLVER   569783 DPushes remaining with DInf 1.8253024e+04              4831s
+[2019-04-11 15:37:11] SOLVER   567783 DPushes remaining with DInf 1.8253024e+04              4837s
+[2019-04-11 15:37:17] SOLVER   565783 DPushes remaining with DInf 1.8253024e+04              4843s
+[2019-04-11 15:37:20] SOLVER   564783 DPushes remaining with DInf 1.8253024e+04              4846s
+[2019-04-11 15:37:26] SOLVER   562783 DPushes remaining with DInf 1.8253024e+04              4852s
+[2019-04-11 15:37:30] SOLVER   561783 DPushes remaining with DInf 1.8253024e+04              4856s
+[2019-04-11 15:37:38] SOLVER   559783 DPushes remaining with DInf 1.8253024e+04              4864s
+[2019-04-11 15:37:42] SOLVER   558783 DPushes remaining with DInf 1.8253024e+04              4868s
+[2019-04-11 15:37:45] SOLVER   557783 DPushes remaining with DInf 1.8253024e+04              4871s
+[2019-04-11 15:37:52] SOLVER   555783 DPushes remaining with DInf 1.8253024e+04              4878s
+[2019-04-11 15:37:55] SOLVER   554783 DPushes remaining with DInf 1.8253024e+04              4882s
+[2019-04-11 15:37:59] SOLVER   553783 DPushes remaining with DInf 1.8253024e+04              4885s
+[2019-04-11 15:38:06] SOLVER   551783 DPushes remaining with DInf 1.8253024e+04              4892s
+[2019-04-11 15:38:10] SOLVER   550783 DPushes remaining with DInf 1.8253024e+04              4896s
+[2019-04-11 15:38:16] SOLVER   548783 DPushes remaining with DInf 1.8253024e+04              4902s
+[2019-04-11 15:38:22] SOLVER   546783 DPushes remaining with DInf 1.8253024e+04              4908s
+[2019-04-11 15:38:25] SOLVER   545783 DPushes remaining with DInf 1.8253024e+04              4911s
+[2019-04-11 15:38:31] SOLVER   543783 DPushes remaining with DInf 1.8253024e+04              4917s
+[2019-04-11 15:38:34] SOLVER   542783 DPushes remaining with DInf 1.8253024e+04              4920s
+[2019-04-11 15:38:40] SOLVER   540783 DPushes remaining with DInf 1.8253024e+04              4926s
+[2019-04-11 15:38:46] SOLVER   538281 DPushes remaining with DInf 1.8252109e+04              4932s
+[2019-04-11 15:38:49] SOLVER   537128 DPushes remaining with DInf 1.8252109e+04              4935s
+[2019-04-11 15:38:55] SOLVER   534903 DPushes remaining with DInf 1.8249710e+04              4941s
+[2019-04-11 15:39:00] SOLVER   532238 DPushes remaining with DInf 1.8248223e+04              4946s
+[2019-04-11 15:39:07] SOLVER   528430 DPushes remaining with DInf 1.8228483e+04              4953s
+[2019-04-11 15:39:10] SOLVER   526613 DPushes remaining with DInf 1.8226626e+04              4956s
+[2019-04-11 15:39:17] SOLVER   523153 DPushes remaining with DInf 1.8223264e+04              4963s
+[2019-04-11 15:39:20] SOLVER   521512 DPushes remaining with DInf 1.8221722e+04              4966s
+[2019-04-11 15:39:27] SOLVER   518490 DPushes remaining with DInf 1.8219318e+04              4973s
+[2019-04-11 15:39:30] SOLVER   517003 DPushes remaining with DInf 1.8218167e+04              4976s
+[2019-04-11 15:39:36] SOLVER   514141 DPushes remaining with DInf 1.8216174e+04              4982s
+[2019-04-11 15:39:40] SOLVER   512814 DPushes remaining with DInf 1.8215459e+04              4986s
+[2019-04-11 15:39:46] SOLVER   510223 DPushes remaining with DInf 1.8214080e+04              4992s
+[2019-04-11 15:39:52] SOLVER   507648 DPushes remaining with DInf 1.8212727e+04              4998s
+[2019-04-11 15:39:55] SOLVER   506435 DPushes remaining with DInf 1.8212179e+04              5001s
+[2019-04-11 15:40:01] SOLVER   504151 DPushes remaining with DInf 1.8211467e+04              5007s
+[2019-04-11 15:40:06] SOLVER   501906 DPushes remaining with DInf 1.8211259e+04              5012s
+[2019-04-11 15:40:11] SOLVER   499660 DPushes remaining with DInf 1.8211112e+04              5017s
+[2019-04-11 15:40:16] SOLVER   497485 DPushes remaining with DInf 1.8211035e+04              5022s
+[2019-04-11 15:40:21] SOLVER   495285 DPushes remaining with DInf 1.8210006e+04              5027s
+[2019-04-11 15:40:24] SOLVER   492858 DPushes remaining with DInf 1.8208068e+04              5030s
+[2019-04-11 15:40:30] SOLVER   488521 DPushes remaining with DInf 1.8207911e+04              5036s
+[2019-04-11 15:40:36] SOLVER   484624 DPushes remaining with DInf 1.8207730e+04              5042s
+[2019-04-11 15:40:41] SOLVER   481322 DPushes remaining with DInf 1.8207631e+04              5047s
+[2019-04-11 15:40:46] SOLVER   477373 DPushes remaining with DInf 1.8205454e+04              5052s
+[2019-04-11 15:40:49] SOLVER   475868 DPushes remaining with DInf 1.8204177e+04              5055s
+[2019-04-11 15:40:54] SOLVER   473097 DPushes remaining with DInf 1.8202855e+04              5060s
+[2019-04-11 15:41:00] SOLVER   469987 DPushes remaining with DInf 1.8202761e+04              5066s
+[2019-04-11 15:41:06] SOLVER   466742 DPushes remaining with DInf 1.8202654e+04              5072s
+[2019-04-11 15:41:11] SOLVER   464306 DPushes remaining with DInf 1.8202624e+04              5077s
+[2019-04-11 15:41:14] SOLVER   463101 DPushes remaining with DInf 1.8202620e+04              5080s
+[2019-04-11 15:41:20] SOLVER   460669 DPushes remaining with DInf 1.8202591e+04              5086s
+[2019-04-11 15:41:25] SOLVER   458411 DPushes remaining with DInf 1.8202560e+04              5092s
+[2019-04-11 15:41:31] SOLVER   456216 DPushes remaining with DInf 1.8202510e+04              5097s
+[2019-04-11 15:41:34] SOLVER   455046 DPushes remaining with DInf 1.8202484e+04              5100s
+[2019-04-11 15:41:41] SOLVER   452728 DPushes remaining with DInf 1.8202354e+04              5107s
+[2019-04-11 15:41:44] SOLVER   451597 DPushes remaining with DInf 1.8202332e+04              5110s
+[2019-04-11 15:41:51] SOLVER   449453 DPushes remaining with DInf 1.8202270e+04              5117s
+[2019-04-11 15:41:57] SOLVER   447407 DPushes remaining with DInf 1.8202241e+04              5123s
+[2019-04-11 15:42:00] SOLVER   446397 DPushes remaining with DInf 1.8202076e+04              5126s
+[2019-04-11 15:42:05] SOLVER   444044 DPushes remaining with DInf 1.8202064e+04              5131s
+[2019-04-11 15:42:11] SOLVER   441840 DPushes remaining with DInf 1.8202047e+04              5137s
+[2019-04-11 15:42:16] SOLVER   439560 DPushes remaining with DInf 1.8202041e+04              5142s
+[2019-04-11 15:42:21] SOLVER   436866 DPushes remaining with DInf 1.8201788e+04              5147s
+[2019-04-11 15:42:26] SOLVER   434232 DPushes remaining with DInf 1.8201781e+04              5152s
+[2019-04-11 15:42:29] SOLVER   432846 DPushes remaining with DInf 1.8201780e+04              5155s
+[2019-04-11 15:42:35] SOLVER   429986 DPushes remaining with DInf 1.8201742e+04              5161s
+[2019-04-11 15:42:41] SOLVER   427051 DPushes remaining with DInf 1.8201667e+04              5167s
+[2019-04-11 15:42:46] SOLVER   424017 DPushes remaining with DInf 1.8201651e+04              5172s
+[2019-04-11 15:42:51] SOLVER   421500 DPushes remaining with DInf 1.8201646e+04              5177s
+[2019-04-11 15:42:54] SOLVER   420294 DPushes remaining with DInf 1.8201637e+04              5180s
+[2019-04-11 15:42:59] SOLVER   417885 DPushes remaining with DInf 1.8201635e+04              5185s
+[2019-04-11 15:43:05] SOLVER   415387 DPushes remaining with DInf 1.8201627e+04              5191s
+[2019-04-11 15:43:10] SOLVER   412797 DPushes remaining with DInf 1.8201623e+04              5196s
+[2019-04-11 15:43:15] SOLVER   410204 DPushes remaining with DInf 1.8201605e+04              5201s
+[2019-04-11 15:43:20] SOLVER   407820 DPushes remaining with DInf 1.8201588e+04              5206s
+[2019-04-11 15:43:25] SOLVER   405443 DPushes remaining with DInf 1.8201584e+04              5211s
+[2019-04-11 15:43:30] SOLVER   402999 DPushes remaining with DInf 1.8201582e+04              5216s
+[2019-04-11 15:43:36] SOLVER   400456 DPushes remaining with DInf 1.8201582e+04              5222s
+[2019-04-11 15:43:41] SOLVER   397660 DPushes remaining with DInf 1.8199159e+04              5227s
+[2019-04-11 15:43:47] SOLVER   394659 DPushes remaining with DInf 1.8199146e+04              5233s
+[2019-04-11 15:43:50] SOLVER   393088 DPushes remaining with DInf 1.8199146e+04              5236s
+[2019-04-11 15:43:58] SOLVER   389826 DPushes remaining with DInf 1.8199032e+04              5244s
+[2019-04-11 15:44:02] SOLVER   388075 DPushes remaining with DInf 1.8199018e+04              5248s
+[2019-04-11 15:44:06] SOLVER   386258 DPushes remaining with DInf 1.8197376e+04              5252s
+[2019-04-11 15:44:10] SOLVER   384586 DPushes remaining with DInf 1.8197376e+04              5256s
+[2019-04-11 15:44:14] SOLVER   382560 DPushes remaining with DInf 1.8156848e+04              5260s
+[2019-04-11 15:44:23] SOLVER   378087 DPushes remaining with DInf 1.8155221e+04              5269s
+[2019-04-11 15:44:28] SOLVER   375330 DPushes remaining with DInf 1.8154144e+04              5274s
+[2019-04-11 15:44:34] SOLVER   372617 DPushes remaining with DInf 1.8154142e+04              5280s
+[2019-04-11 15:44:40] SOLVER   370122 DPushes remaining with DInf 1.8154121e+04              5286s
+[2019-04-11 15:44:46] SOLVER   367864 DPushes remaining with DInf 1.8154114e+04              5292s
+[2019-04-11 15:44:52] SOLVER   365533 DPushes remaining with DInf 1.8154100e+04              5298s
+[2019-04-11 15:44:56] SOLVER   364041 DPushes remaining with DInf 1.8154096e+04              5302s
+[2019-04-11 15:45:01] SOLVER   362207 DPushes remaining with DInf 1.8154062e+04              5307s
+[2019-04-11 15:45:06] SOLVER   360193 DPushes remaining with DInf 1.8154049e+04              5312s
+[2019-04-11 15:45:10] SOLVER   358070 DPushes remaining with DInf 1.8154038e+04              5316s
+[2019-04-11 15:45:15] SOLVER   356173 DPushes remaining with DInf 1.8154001e+04              5321s
+[2019-04-11 15:45:20] SOLVER   354347 DPushes remaining with DInf 1.8153971e+04              5326s
+[2019-04-11 15:45:24] SOLVER   352638 DPushes remaining with DInf 1.8153968e+04              5330s
+[2019-04-11 15:45:29] SOLVER   351023 DPushes remaining with DInf 1.8153923e+04              5335s
+[2019-04-11 15:45:38] SOLVER   348050 DPushes remaining with DInf 1.8153863e+04              5344s
+[2019-04-11 15:45:42] SOLVER   346703 DPushes remaining with DInf 1.8153801e+04              5348s
+[2019-04-11 15:45:46] SOLVER   345425 DPushes remaining with DInf 1.8153797e+04              5352s
+[2019-04-11 15:45:50] SOLVER   344187 DPushes remaining with DInf 1.8153791e+04              5356s
+[2019-04-11 15:45:54] SOLVER   343014 DPushes remaining with DInf 1.8153771e+04              5360s
+[2019-04-11 15:46:02] SOLVER   340862 DPushes remaining with DInf 1.8153748e+04              5368s
+[2019-04-11 15:46:05] SOLVER   339816 DPushes remaining with DInf 1.8153724e+04              5371s
+[2019-04-11 15:46:12] SOLVER   337750 DPushes remaining with DInf 1.8153645e+04              5379s
+[2019-04-11 15:46:16] SOLVER   336723 DPushes remaining with DInf 1.8153610e+04              5382s
+[2019-04-11 15:46:20] SOLVER   335704 DPushes remaining with DInf 1.8153594e+04              5386s
+[2019-04-11 15:46:28] SOLVER   333680 DPushes remaining with DInf 1.8153541e+04              5394s
+[2019-04-11 15:46:31] SOLVER   332673 DPushes remaining with DInf 1.8153505e+04              5397s
+[2019-04-11 15:46:35] SOLVER   331669 DPushes remaining with DInf 1.8153505e+04              5401s
+[2019-04-11 15:46:41] SOLVER   329627 DPushes remaining with DInf 1.8153485e+04              5407s
+[2019-04-11 15:46:47] SOLVER   327561 DPushes remaining with DInf 1.8153446e+04              5413s
+[2019-04-11 15:46:51] SOLVER   326516 DPushes remaining with DInf 1.8153446e+04              5417s
+[2019-04-11 15:46:57] SOLVER   324432 DPushes remaining with DInf 1.8153445e+04              5423s
+[2019-04-11 15:47:00] SOLVER   323409 DPushes remaining with DInf 1.8153445e+04              5426s
+[2019-04-11 15:47:06] SOLVER   321342 DPushes remaining with DInf 1.8153444e+04              5432s
+[2019-04-11 15:47:10] SOLVER   320315 DPushes remaining with DInf 1.8153419e+04              5436s
+[2019-04-11 15:47:16] SOLVER   318255 DPushes remaining with DInf 1.8153393e+04              5442s
+[2019-04-11 15:47:19] SOLVER   317231 DPushes remaining with DInf 1.8153388e+04              5445s
+[2019-04-11 15:47:26] SOLVER   315200 DPushes remaining with DInf 1.8153363e+04              5452s
+[2019-04-11 15:47:32] SOLVER   313177 DPushes remaining with DInf 1.8153332e+04              5458s
+[2019-04-11 15:47:35] SOLVER   312166 DPushes remaining with DInf 1.8153332e+04              5461s
+[2019-04-11 15:47:41] SOLVER   310155 DPushes remaining with DInf 1.8153328e+04              5467s
+[2019-04-11 15:47:44] SOLVER   309155 DPushes remaining with DInf 1.8153325e+04              5470s
+[2019-04-11 15:47:50] SOLVER   307142 DPushes remaining with DInf 1.8153325e+04              5476s
+[2019-04-11 15:47:56] SOLVER   305130 DPushes remaining with DInf 1.8153318e+04              5482s
+[2019-04-11 15:48:00] SOLVER   304122 DPushes remaining with DInf 1.8153315e+04              5486s
+[2019-04-11 15:48:08] SOLVER   302109 DPushes remaining with DInf 1.8153307e+04              5494s
+[2019-04-11 15:48:12] SOLVER   301105 DPushes remaining with DInf 1.8153305e+04              5498s
+[2019-04-11 15:48:15] SOLVER   300101 DPushes remaining with DInf 1.8153305e+04              5501s
+[2019-04-11 15:48:19] SOLVER   299093 DPushes remaining with DInf 1.8153297e+04              5505s
+[2019-04-11 15:48:27] SOLVER   297089 DPushes remaining with DInf 1.8153288e+04              5513s
+[2019-04-11 15:48:31] SOLVER   296086 DPushes remaining with DInf 1.8153287e+04              5517s
+[2019-04-11 15:48:35] SOLVER   295077 DPushes remaining with DInf 1.8153286e+04              5521s
+[2019-04-11 15:48:40] SOLVER   294070 DPushes remaining with DInf 1.8153251e+04              5526s
+[2019-04-11 15:48:44] SOLVER   293060 DPushes remaining with DInf 1.8153243e+04              5530s
+[2019-04-11 15:48:49] SOLVER   292057 DPushes remaining with DInf 1.8153235e+04              5535s
+[2019-04-11 15:48:55] SOLVER   291052 DPushes remaining with DInf 1.8153227e+04              5541s
+[2019-04-11 15:49:01] SOLVER   290043 DPushes remaining with DInf 1.8153215e+04              5547s
+[2019-04-11 15:49:06] SOLVER   289037 DPushes remaining with DInf 1.8153202e+04              5552s
+[2019-04-11 15:49:12] SOLVER   288035 DPushes remaining with DInf 1.8153191e+04              5558s
+[2019-04-11 15:49:17] SOLVER   287032 DPushes remaining with DInf 1.8153180e+04              5563s
+[2019-04-11 15:49:22] SOLVER   286028 DPushes remaining with DInf 1.8153174e+04              5568s
+[2019-04-11 15:49:27] SOLVER   285021 DPushes remaining with DInf 1.8153171e+04              5573s
+[2019-04-11 15:49:32] SOLVER   284017 DPushes remaining with DInf 1.8153169e+04              5578s
+[2019-04-11 15:49:38] SOLVER   283010 DPushes remaining with DInf 1.8153159e+04              5584s
+[2019-04-11 15:49:42] SOLVER   282006 DPushes remaining with DInf 1.8153148e+04              5588s
+[2019-04-11 15:49:47] SOLVER   281005 DPushes remaining with DInf 1.8153141e+04              5593s
+[2019-04-11 15:49:51] SOLVER   280004 DPushes remaining with DInf 1.8153136e+04              5597s
+[2019-04-11 15:49:55] SOLVER   279000 DPushes remaining with DInf 1.8153133e+04              5601s
+[2019-04-11 15:50:03] SOLVER   276997 DPushes remaining with DInf 1.8153128e+04              5609s
+[2019-04-11 15:50:07] SOLVER   275992 DPushes remaining with DInf 1.8153122e+04              5613s
+[2019-04-11 15:50:11] SOLVER   274991 DPushes remaining with DInf 1.8153122e+04              5617s
+[2019-04-11 15:50:15] SOLVER   273988 DPushes remaining with DInf 1.8153120e+04              5621s
+[2019-04-11 15:50:22] SOLVER   271237 DPushes remaining with DInf 1.8123688e+04              5628s
+[2019-04-11 15:50:25] SOLVER   269831 DPushes remaining with DInf 1.8123680e+04              5631s
+[2019-04-11 15:50:32] SOLVER   267215 DPushes remaining with DInf 1.8123673e+04              5638s
+[2019-04-11 15:50:36] SOLVER   265960 DPushes remaining with DInf 1.8123669e+04              5642s
+[2019-04-11 15:50:42] SOLVER   263401 DPushes remaining with DInf 1.8123654e+04              5648s
+[2019-04-11 15:50:45] SOLVER   262122 DPushes remaining with DInf 1.8123650e+04              5651s
+[2019-04-11 15:50:51] SOLVER   259698 DPushes remaining with DInf 1.8123642e+04              5657s
+[2019-04-11 15:50:56] SOLVER   257339 DPushes remaining with DInf 1.8123642e+04              5662s
+[2019-04-11 15:50:59] SOLVER   256176 DPushes remaining with DInf 1.8123642e+04              5665s
+[2019-04-11 15:51:05] SOLVER   253896 DPushes remaining with DInf 1.8123642e+04              5671s
+[2019-04-11 15:51:11] SOLVER   251667 DPushes remaining with DInf 1.8123642e+04              5677s
+[2019-04-11 15:51:16] SOLVER   249496 DPushes remaining with DInf 1.8123642e+04              5682s
+[2019-04-11 15:51:19] SOLVER   248431 DPushes remaining with DInf 1.8123642e+04              5685s
+[2019-04-11 15:51:24] SOLVER   246285 DPushes remaining with DInf 1.8123642e+04              5690s
+[2019-04-11 15:51:30] SOLVER   244140 DPushes remaining with DInf 1.8123642e+04              5696s
+[2019-04-11 15:51:35] SOLVER   242004 DPushes remaining with DInf 1.8123642e+04              5701s
+[2019-04-11 15:51:41] SOLVER   239878 DPushes remaining with DInf 1.8123642e+04              5707s
+[2019-04-11 15:51:46] SOLVER   237763 DPushes remaining with DInf 1.8123642e+04              5712s
+[2019-04-11 15:51:52] SOLVER   235643 DPushes remaining with DInf 1.8123642e+04              5718s
+[2019-04-11 15:51:55] SOLVER   234602 DPushes remaining with DInf 1.8123642e+04              5721s
+[2019-04-11 15:52:00] SOLVER   232520 DPushes remaining with DInf 1.8123642e+04              5726s
+[2019-04-11 15:52:05] SOLVER   230430 DPushes remaining with DInf 1.8123642e+04              5731s
+[2019-04-11 15:52:10] SOLVER   228119 DPushes remaining with DInf 1.8123642e+04              5736s
+[2019-04-11 15:52:16] SOLVER   222120 DPushes remaining with DInf 1.8123642e+04              5742s
+[2019-04-11 15:52:22] SOLVER   215339 DPushes remaining with DInf 1.8123642e+04              5748s
+[2019-04-11 15:52:25] SOLVER   210143 DPushes remaining with DInf 1.8123642e+04              5751s
+[2019-04-11 15:52:31] SOLVER   196739 DPushes remaining with DInf 1.8123642e+04              5757s
+[2019-04-11 15:52:36] SOLVER   178125 DPushes remaining with DInf 1.8123642e+04              5763s
+[2019-04-11 15:52:47] SOLVER   132859 DPushes remaining with DInf 1.8123642e+04              5773s
+[2019-04-11 15:52:52] SOLVER   117863 DPushes remaining with DInf 1.8123642e+04              5778s
+[2019-04-11 15:52:56] SOLVER   106439 DPushes remaining with DInf 1.8123642e+04              5782s
+[2019-04-11 15:53:01] SOLVER   101430 DPushes remaining with DInf 1.8123642e+04              5787s
+[2019-04-11 15:53:08] SOLVER   84775 DPushes remaining with DInf 1.8123642e+04              5794s
+[2019-04-11 15:53:11] SOLVER   78855 DPushes remaining with DInf 1.8112085e+04              5797s
+[2019-04-11 15:53:16] SOLVER   70094 DPushes remaining with DInf 1.8112085e+04              5802s
+[2019-04-11 15:53:21] SOLVER   64099 DPushes remaining with DInf 1.8112085e+04              5807s
+[2019-04-11 15:53:25] SOLVER   58433 DPushes remaining with DInf 1.8112085e+04              5811s
+[2019-04-11 15:53:30] SOLVER   53422 DPushes remaining with DInf 1.8112085e+04              5816s
+[2019-04-11 15:53:35] SOLVER   48628 DPushes remaining with DInf 1.8112085e+04              5821s
+[2019-04-11 15:53:40] SOLVER   43585 DPushes remaining with DInf 1.8112085e+04              5826s
+[2019-04-11 15:53:44] SOLVER   37877 DPushes remaining with DInf 1.8112085e+04              5830s
+[2019-04-11 15:53:49] SOLVER   30711 DPushes remaining with DInf 1.8112085e+04              5835s
+[2019-04-11 15:53:54] SOLVER   23920 DPushes remaining with DInf 1.8112085e+04              5840s
+[2019-04-11 15:54:00] SOLVER   18093 DPushes remaining with DInf 1.8112085e+04              5846s
+[2019-04-11 15:54:05] SOLVER   11453 DPushes remaining with DInf 1.8106866e+04              5851s
+[2019-04-11 15:54:09] SOLVER   6289 DPushes remaining with DInf 1.8091054e+04              5855s
+[2019-04-11 15:54:15] SOLVER   3916 DPushes remaining with DInf 1.8091054e+04              5861s
+[2019-04-11 15:54:20] SOLVER   1706 DPushes remaining with DInf 1.8041000e+04              5866s
+[2019-04-11 15:54:25] SOLVER   0 DPushes remaining with DInf 1.7974647e+04              5871s
+[2019-04-11 15:54:26] SOLVER   Warning: Markowitz tolerance tightened to 0.5
+[2019-04-11 15:54:27] SOLVER   4385941 PPushes remaining with PInf 2.7284209e-04              5873s
+[2019-04-11 15:54:51] SOLVER   1880193 PPushes remaining with PInf 6.5354672e-01              5897s
+[2019-04-11 15:57:51] SOLVER   1610563 PPushes remaining with PInf 6.2442853e-01              6077s
+[2019-04-11 16:00:14] SOLVER   1399710 PPushes remaining with PInf 6.2023776e-01              6220s
+[2019-04-11 16:01:28] SOLVER   1299829 PPushes remaining with PInf 6.4615943e-01              6294s
+[2019-04-11 16:02:20] SOLVER   1241112 PPushes remaining with PInf 5.6113385e-01              6346s
+[2019-04-11 16:03:04] SOLVER   1160541 PPushes remaining with PInf 6.2901593e-01              6390s
+[2019-04-11 16:03:38] SOLVER   1115017 PPushes remaining with PInf 5.9951318e-01              6424s
+[2019-04-11 16:04:28] SOLVER   1085055 PPushes remaining with PInf 5.6809911e-01              6474s
+[2019-04-11 16:06:19] SOLVER   1065600 PPushes remaining with PInf 5.5643658e-01              6585s
+[2019-04-11 16:07:08] SOLVER   1054609 PPushes remaining with PInf 5.4860850e-01              6634s
+[2019-04-11 16:08:54] SOLVER   1043450 PPushes remaining with PInf 5.4403444e-01              6740s
+[2019-04-11 16:09:45] SOLVER   1036202 PPushes remaining with PInf 4.9127405e-01              6791s
+[2019-04-11 16:10:10] SOLVER   1031069 PPushes remaining with PInf 4.9111774e-01              6816s
+[2019-04-11 16:10:36] SOLVER   1001852 PPushes remaining with PInf 4.8745255e-01              6842s
+[2019-04-11 16:10:56] SOLVER   994547 PPushes remaining with PInf 4.8840665e-01              6862s
+[2019-04-11 16:11:42] SOLVER   989065 PPushes remaining with PInf 4.8834048e-01              6908s
+[2019-04-11 16:12:45] SOLVER   985897 PPushes remaining with PInf 4.8638170e-01              6971s
+[2019-04-11 16:13:39] SOLVER   979756 PPushes remaining with PInf 5.0710528e-01              7025s
+[2019-04-11 16:14:35] SOLVER   975841 PPushes remaining with PInf 5.1454296e-01              7081s
+[2019-04-11 16:59:17] SOLVER   834421 PPushes remaining with PInf 2.7188419e+00              9763s
+[2019-04-11 16:59:32] SOLVER   803781 PPushes remaining with PInf 3.6872687e+00              9778s
+[2019-04-11 16:59:38] SOLVER   799941 PPushes remaining with PInf 3.1253230e+00              9784s
+[2019-04-11 16:59:42] SOLVER   797532 PPushes remaining with PInf 3.0206204e+00              9788s
+[2019-04-11 16:59:46] SOLVER   795313 PPushes remaining with PInf 2.9569370e+00              9792s
+[2019-04-11 16:59:56] SOLVER   793138 PPushes remaining with PInf 2.8818391e+00              9802s
+[2019-04-11 16:59:59] SOLVER   790977 PPushes remaining with PInf 2.4284484e+00              9806s
+[2019-04-11 17:00:06] SOLVER   786666 PPushes remaining with PInf 2.2299038e+00              9812s
+[2019-04-11 17:00:14] SOLVER   782358 PPushes remaining with PInf 2.1413335e+00              9820s
+[2019-04-11 17:02:01] SOLVER   780204 PPushes remaining with PInf 1.9895347e+00              9927s
+[2019-04-11 17:02:06] SOLVER   778050 PPushes remaining with PInf 1.9177761e+00              9932s
+[2019-04-11 17:48:31] SOLVER   487407 PPushes remaining with PInf 2.1245827e+00             12717s
+[2019-04-11 17:50:05] SOLVER   388212 PPushes remaining with PInf 2.2189171e+00             12811s
+[2019-04-11 18:12:04] SOLVER   288303 PPushes remaining with PInf 3.1703636e+00             14130s
+[2019-04-11 18:12:12] SOLVER   225529 PPushes remaining with PInf 4.8543990e+00             14138s
+[2019-04-11 18:12:18] SOLVER   195329 PPushes remaining with PInf 7.4526479e+00             14144s
+[2019-04-11 18:13:09] SOLVER   177159 PPushes remaining with PInf 1.1150482e+01             14195s
+[2019-04-11 18:13:16] SOLVER   167886 PPushes remaining with PInf 1.0850140e+01             14202s
+[2019-04-11 18:13:21] SOLVER   160489 PPushes remaining with PInf 1.0702934e+01             14207s
+[2019-04-11 18:13:29] SOLVER   158918 PPushes remaining with PInf 1.0422257e+01             14215s
+[2019-04-11 18:13:32] SOLVER   155912 PPushes remaining with PInf 1.0387843e+01             14218s
+[2019-04-11 18:13:34] SOLVER   152977 PPushes remaining with PInf 1.0355300e+01             14220s
+[2019-04-11 18:13:50] SOLVER   146736 PPushes remaining with PInf 1.0261180e+01             14237s
+[2019-04-11 18:13:54] SOLVER   144089 PPushes remaining with PInf 1.0172685e+01             14240s
+[2019-04-11 18:14:01] SOLVER   138773 PPushes remaining with PInf 1.0048807e+01             14247s
+[2019-04-11 18:14:07] SOLVER   133511 PPushes remaining with PInf 9.6991261e+00             14253s
+[2019-04-11 18:14:11] SOLVER   131008 PPushes remaining with PInf 9.6847253e+00             14257s
+[2019-04-11 18:14:17] SOLVER   126280 PPushes remaining with PInf 9.3907845e+00             14263s
+[2019-04-11 18:14:22] SOLVER   123996 PPushes remaining with PInf 8.4479591e+00             14268s
+[2019-04-11 18:14:26] SOLVER   121740 PPushes remaining with PInf 8.3554595e+00             14272s
+[2019-04-11 18:14:29] SOLVER   119497 PPushes remaining with PInf 8.3230416e+00             14275s
+[2019-04-11 18:14:40] SOLVER   115072 PPushes remaining with PInf 7.8976078e+00             14286s
+[2019-04-11 18:14:45] SOLVER   112879 PPushes remaining with PInf 7.8222871e+00             14291s
+[2019-04-11 18:14:56] SOLVER   108481 PPushes remaining with PInf 6.7566264e+00             14302s
+[2019-04-11 18:15:03] SOLVER   104121 PPushes remaining with PInf 7.0556633e+00             14309s
+[2019-04-11 18:15:07] SOLVER   101942 PPushes remaining with PInf 6.8667693e+00             14313s
+[2019-04-11 18:15:39] SOLVER   99768 PPushes remaining with PInf 5.2390481e+00             14345s
+[2019-04-11 18:15:45] SOLVER   97600 PPushes remaining with PInf 5.0359844e+00             14351s
+[2019-04-11 18:16:13] SOLVER   96010 PPushes remaining with PInf 4.9467115e+00             14379s
+[2019-04-11 18:16:16] SOLVER   93853 PPushes remaining with PInf 4.9502740e+00             14382s
+[2019-04-11 18:16:22] SOLVER   89544 PPushes remaining with PInf 4.9396055e+00             14388s
+[2019-04-11 18:16:28] SOLVER   87435 PPushes remaining with PInf 4.4989286e+00             14394s
+[2019-04-11 18:16:46] SOLVER   86368 PPushes remaining with PInf 4.3675285e+00             14412s
+[2019-04-11 18:16:52] SOLVER   84139 PPushes remaining with PInf 4.2673219e+00             14418s
+[2019-04-11 18:16:59] SOLVER   83088 PPushes remaining with PInf 4.2544868e+00             14425s
+[2019-04-11 18:24:07] SOLVER   62576 PPushes remaining with PInf 6.1143252e+01             14853s
+[2019-04-11 18:51:46] SOLVER   37725 PPushes remaining with PInf 5.3958890e+01             16512s
+[2019-04-11 18:58:18] SOLVER   28772 PPushes remaining with PInf 5.3623240e+01             16904s
+[2019-04-11 19:03:16] SOLVER   19095 PPushes remaining with PInf 5.8982717e+01             17202s
+[2019-04-11 19:03:29] SOLVER   10835 PPushes remaining with PInf 6.1239807e+01             17215s
+[2019-04-11 19:04:53] SOLVER   7727 PPushes remaining with PInf 7.2737555e+01             17299s
+[2019-04-11 19:05:26] SOLVER   5884 PPushes remaining with PInf 7.1726654e+01             17332s
+[2019-04-11 19:05:47] SOLVER   4577 PPushes remaining with PInf 7.1603111e+01             17353s
+[2019-04-11 19:05:54] SOLVER   3538 PPushes remaining with PInf 7.1595718e+01             17360s
+[2019-04-11 19:06:01] SOLVER   1866 PPushes remaining with PInf 7.1572169e+01             17367s
+[2019-04-11 19:06:20] SOLVER   92 PPushes remaining with PInf 7.1322415e+01             17386s
+[2019-04-11 19:07:18] SOLVER   0 PPushes remaining with PInf 7.0520517e+01             17444s
+[2019-04-11 19:07:19] SOLVER   Push phase complete: Pinf 7.0520517e+01, Dinf 1.7036374e+06  17445s
+[2019-04-11 19:07:45] SOLVER   Iteration    Objective       Primal Inf.    Dual Inf.      Time
+[2019-04-11 19:07:45] SOLVER   4898766    2.7289497e+05   0.000000e+00   1.703637e+06  17471s
+[2019-04-11 19:16:41] SOLVER   4899766    2.7289495e+05   0.000000e+00   3.435967e+06  18007s
+[2019-04-11 19:26:26] SOLVER   4900766    2.7289493e+05   0.000000e+00   6.959271e+05  18592s
+[2019-04-11 19:29:42] SOLVER   4901766    2.7289493e+05   0.000000e+00   1.537620e+05  18788s
+[2019-04-11 19:40:58] SOLVER   4902766    2.7289480e+05   0.000000e+00   2.747256e+06  19464s
+[2019-04-11 19:50:42] SOLVER   4903766    2.7289470e+05   0.000000e+00   4.438812e+06  20048s
+[2019-04-11 19:59:54] SOLVER   4904766    2.7289463e+05   0.000000e+00   5.673807e+06  20600s
+[2019-04-11 20:10:17] SOLVER   4905767    2.7289450e+05   0.000000e+00   5.242759e+06  21223s
+[2019-04-11 20:19:40] SOLVER   4906767    2.7289444e+05   0.000000e+00   2.762329e+05  21786s
+[2019-04-11 20:30:10] SOLVER   4907767    2.7289435e+05   0.000000e+00   5.975757e+04  22416s
+[2019-04-11 20:37:49] SOLVER   4908767    2.7289425e+05   0.000000e+00   4.087081e+05  22875s
+[2019-04-11 20:46:12] SOLVER   4909767    2.7289416e+05   0.000000e+00   1.334781e+06  23378s
+[2019-04-11 20:50:46] SOLVER   4910767    2.7289415e+05   0.000000e+00   2.870208e+05  23652s
+[2019-04-11 21:01:56] SOLVER   4911768    2.7289397e+05   0.000000e+00   1.684328e+06  24322s
+[2019-04-11 21:12:01] SOLVER   4912771    2.7289390e+05   0.000000e+00   7.082461e+05  24927s
+[2019-04-11 21:21:47] SOLVER   4913772    2.7289381e+05   0.000000e+00   1.349852e+06  25513s
+[2019-04-11 21:32:57] SOLVER   4914772    2.7289368e+05   0.000000e+00   4.268610e+05  26183s
+[2019-04-11 21:41:20] SOLVER   4915775    2.7289362e+05   0.000000e+00   1.990163e+06  26686s
+[2019-04-11 21:48:56] SOLVER   4916778    2.7289358e+05   0.000000e+00   4.478109e+05  27142s
+[2019-04-11 21:59:55] SOLVER   4917779    2.7289342e+05   0.000000e+00   2.270174e+05  27801s
+[2019-04-11 22:08:46] SOLVER   4918779    2.7289340e+05   0.000000e+00   7.350099e+04  28332s
+[2019-04-11 22:21:59] SOLVER   4919779    2.7289324e+05   0.000000e+00   1.319363e+06  29125s
+[2019-04-11 22:30:27] SOLVER   4920779    2.7289311e+05   0.000000e+00   7.937239e+06  29633s
+[2019-04-11 22:38:16] SOLVER   4921779    2.7289306e+05   0.000000e+00   4.422053e+05  30102s
+[2019-04-11 22:45:55] SOLVER   4922779    2.7289303e+05   0.000000e+00   1.175472e+05  30561s
+[2019-04-11 22:54:58] SOLVER   4923779    2.7289292e+05   0.000000e+00   4.510303e+05  31104s
+[2019-04-11 23:03:30] SOLVER   4924779    2.7289287e+05   0.000000e+00   5.880359e+05  31616s
+[2019-04-11 23:10:43] SOLVER   4925779    2.7289284e+05   0.000000e+00   1.212111e+05  32049s
+[2019-04-11 23:19:26] SOLVER   4926779    2.7289276e+05   0.000000e+00   2.454107e+05  32572s
+[2019-04-11 23:27:18] SOLVER   4927779    2.7289270e+05   0.000000e+00   2.849941e+04  33043s
+[2019-04-11 23:34:42] SOLVER   4928779    2.7289266e+05   0.000000e+00   1.302356e+06  33488s
+[2019-04-11 23:44:41] SOLVER   4929779    2.7289259e+05   0.000000e+00   2.016943e+04  34087s
+[2019-04-11 23:56:12] SOLVER   4930779    2.7289246e+05   0.000000e+00   6.522676e+04  34778s
+[2019-04-12 00:04:19] SOLVER   4931779    2.7289242e+05   0.000000e+00   7.986147e+05  35265s
+[2019-04-12 00:13:11] SOLVER   4932780    2.7289226e+05   0.000000e+00   7.762047e+04  35797s
+[2019-04-12 00:21:03] SOLVER   4933781    2.7289220e+05   0.000000e+00   9.071110e+04  36269s
+[2019-04-12 00:28:39] SOLVER   4934783    2.7289219e+05   0.000000e+00   2.400967e+04  36725s
+[2019-04-12 00:38:04] SOLVER   4935783    2.7289216e+05   0.000000e+00   4.164761e+05  37290s
+[2019-04-12 00:47:32] SOLVER   4936783    2.7289211e+05   0.000000e+00   3.101649e+05  37858s
+[2019-04-12 00:55:54] SOLVER   4937783    2.7289202e+05   0.000000e+00   1.042976e+06  38360s
+[2019-04-12 01:03:03] SOLVER   4938783    2.7289192e+05   0.000000e+00   5.926660e+04  38789s
+[2019-04-12 01:10:37] SOLVER   4939783    2.7289183e+05   0.000000e+00   1.255852e+06  39243s
+[2019-04-12 01:22:31] SOLVER   4940783    2.7289165e+05   0.000000e+00   7.934746e+05  39957s
+[2019-04-12 01:33:06] SOLVER   4941784    2.7289156e+05   0.000000e+00   4.557850e+04  40592s
+[2019-04-12 01:42:24] SOLVER   4942784    2.7289151e+05   0.000000e+00   1.056525e+05  41150s
+[2019-04-12 01:50:44] SOLVER   4943784    2.7289145e+05   0.000000e+00   9.791089e+04  41650s
+[2019-04-12 01:57:47] SOLVER   4944784    2.7289143e+05   0.000000e+00   3.169908e+05  42073s
+[2019-04-12 02:05:26] SOLVER   4945784    2.7289142e+05   0.000000e+00   5.505698e+04  42532s
+[2019-04-12 02:15:07] SOLVER   4946784    2.7289136e+05   0.000000e+00   7.442767e+03  43113s
+[2019-04-12 02:24:41] SOLVER   4947784    2.7289132e+05   0.000000e+00   2.370667e+04  43687s
+[2019-04-12 02:32:44] SOLVER   4948784    2.7289128e+05   0.000000e+00   9.095753e+03  44170s
+[2019-04-12 02:40:31] SOLVER   4949785    2.7289124e+05   0.000000e+00   1.240352e+05  44637s
+[2019-04-12 02:48:13] SOLVER   4950785    2.7289123e+05   0.000000e+00   9.726435e+04  45099s
+[2019-04-12 02:58:29] SOLVER   4951785    2.7289113e+05   0.000000e+00   3.389173e+04  45715s
+[2019-04-12 03:07:49] SOLVER   4952785    2.7289108e+05   0.000000e+00   9.964886e+05  46275s
+[2019-04-12 03:20:22] SOLVER   Warning: 1 variables dropped from basis
+[2019-04-12 03:20:23] SOLVER   Warning: switch to quad precision
+[2019-04-12 03:20:38] SOLVER   4953790    2.7289616e+05   0.000000e+00   9.964886e+05  47044s
+[2019-04-12 03:31:32] SOLVER   4954310    2.7289615e+05   0.000000e+00   4.626146e+05  47698s
+[2019-04-12 03:43:01] SOLVER   4955120    2.7289615e+05   0.000000e+00   1.399002e+06  48387s
+[2019-04-12 03:55:39] SOLVER   4956020    2.7289614e+05   0.000000e+00   3.839158e+05  49145s
+[2019-04-12 04:09:49] SOLVER   4956950    2.7289614e+05   0.000000e+00   5.479580e+04  49995s
+[2019-04-12 04:24:11] SOLVER   4957680    2.7289613e+05   0.000000e+00   6.288907e+04  50857s
+[2019-04-12 04:37:23] SOLVER   4958420    2.7289613e+05   0.000000e+00   4.709340e+04  51649s
+[2019-04-12 04:51:42] SOLVER   4959180    2.7289612e+05   0.000000e+00   3.178621e+04  52508s
+[2019-04-12 05:05:58] SOLVER   4959960    2.7289612e+05   0.000000e+00   5.708636e+04  53364s
+[2019-04-12 05:18:59] SOLVER   4960660    2.7289610e+05   0.000000e+00   6.108885e+05  54145s
+[2019-04-12 05:31:49] SOLVER   4961460    2.7289608e+05   0.000000e+00   6.238252e+05  54916s
+[2019-04-12 05:45:52] SOLVER   4962140    2.7289604e+05   0.000000e+00   7.372423e+04  55758s
+[2019-04-12 05:59:28] SOLVER   4962760    2.7289599e+05   0.000000e+00   2.777625e+05  56574s
+[2019-04-12 06:11:41] SOLVER   4963460    2.7289593e+05   0.000000e+00   1.022549e+06  57307s
+[2019-04-12 06:24:21] SOLVER   4964130    2.7289580e+05   0.000000e+00   4.843286e+05  58067s
+[2019-04-12 06:37:01] SOLVER   4964810    2.7289558e+05   0.000000e+00   5.966398e+05  58827s
+[2019-04-12 06:48:29] SOLVER   4965560    2.7289546e+05   0.000000e+00   1.758832e+06  59515s
+[2019-04-12 06:58:39] SOLVER   4966280    2.7289531e+05   0.000000e+00   1.203334e+06  60125s
+[2019-04-12 07:07:25] SOLVER   4967000    2.7289531e+05   0.000000e+00   1.202539e+06  60651s
+[2019-04-12 07:16:12] SOLVER   4967610    2.7289524e+05   0.000000e+00   6.290867e+05  61178s
+[2019-04-12 07:25:51] SOLVER   4968130    2.7289508e+05   0.000000e+00   2.258631e+06  61757s
+[2019-04-12 07:35:56] SOLVER   4968850    2.7289508e+05   0.000000e+00   2.256600e+06  62362s
+[2019-04-12 07:45:30] SOLVER   4969390    2.7289482e+05   0.000000e+00   3.434339e+05  62936s
+[2019-04-12 07:55:09] SOLVER   4969950    2.7289460e+05   0.000000e+00   3.440058e+06  63515s
+[2019-04-12 08:05:28] SOLVER   4970610    2.7289440e+05   0.000000e+00   7.961456e+06  64134s
+[2019-04-12 08:17:44] SOLVER   4971230    2.7289413e+05   0.000000e+00   6.663816e+06  64870s
+[2019-04-12 08:28:32] SOLVER   4971902    2.7289400e+05   0.000000e+00   2.498224e+05  65518s
+[2019-04-12 08:37:02] SOLVER   4972552    2.7289400e+05   0.000000e+00   1.626018e+05  66028s
+[2019-04-12 08:45:25] SOLVER   4973132    2.7289396e+05   0.000000e+00   2.673423e+05  66531s
+[2019-04-12 08:52:48] SOLVER   4973682    2.7289393e+05   0.000000e+00   1.681215e+06  66974s
+[2019-04-12 09:02:02] SOLVER   4974172    2.7289384e+05   0.000000e+00   6.427572e+06  67528s
+[2019-04-12 09:10:58] SOLVER   4974772    2.7289384e+05   0.000000e+00   6.282343e+06  68064s
+[2019-04-12 09:19:55] SOLVER   4975372    2.7289383e+05   0.000000e+00   3.699910e+06  68601s
+[2019-04-12 09:27:12] SOLVER   4975822    2.7289376e+05   0.000000e+00   8.478280e+05  69038s
+[2019-04-12 09:33:08] SOLVER   4976172    2.7289372e+05   0.000000e+00   7.778602e+06  69394s
+[2019-04-12 09:40:53] SOLVER   4976692    2.7289371e+05   0.000000e+00   2.504119e+06  69859s
+[2019-04-12 09:51:35] SOLVER   4977402    2.7289366e+05   0.000000e+00   9.806829e+06  70501s
+[2019-04-12 10:03:53] SOLVER   4978202    2.7289362e+05   0.000000e+00   5.077928e+05  71239s
+[2019-04-12 10:15:45] SOLVER   4979042    2.7289360e+05   0.000000e+00   4.121789e+05  71951s
+[2019-04-12 10:25:49] SOLVER   4979962    2.7289358e+05   0.000000e+00   1.053747e+05  72555s
+[2019-04-12 10:35:26] SOLVER   4980792    2.7289355e+05   0.000000e+00   6.300875e+05  73132s
+[2019-04-12 10:44:31] SOLVER   4981742    2.7289354e+05   0.000000e+00   8.465020e+05  73677s
+[2019-04-12 10:55:41] SOLVER   4982412    2.7289347e+05   0.000000e+00   8.701015e+06  74347s
+[2019-04-12 11:06:36] SOLVER   4983122    2.7289336e+05   0.000000e+00   2.320148e+05  75002s
+[2019-04-12 11:15:24] SOLVER   4983712    2.7289329e+05   0.000000e+00   7.728510e+05  75530s
+[2019-04-12 11:23:04] SOLVER   4984252    2.7289325e+05   0.000000e+00   1.579362e+06  75990s
+[2019-04-12 11:31:45] SOLVER   4984952    2.7289322e+05   0.000000e+00   4.991072e+05  76511s
+[2019-04-12 11:41:20] SOLVER   4985652    2.7289315e+05   0.000000e+00   8.768796e+05  77086s
+[2019-04-12 11:52:37] SOLVER   4986452    2.7289309e+05   0.000000e+00   1.306850e+05  77763s
+[2019-04-12 12:00:45] SOLVER   4987042    2.7289307e+05   0.000000e+00   1.597361e+05  78251s
+[2019-04-12 12:08:14] SOLVER   4987442    2.7289306e+05   0.000000e+00   3.090390e+05  78696s
+[2019-04-12 12:16:25] SOLVER   4988022    2.7289305e+05   0.000000e+00   2.766580e+05  79190s
+User defined signal 2
