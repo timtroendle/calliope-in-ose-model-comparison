@@ -6,14 +6,13 @@ __default__:
 run_europe:
     runtime: 7199
     cores: 4
-    memory: 24000
+    memory: 28000
 run_germany:
     cores: 4
     memory: 4000
 test:
     runtime: 15
 output:
-    runtime: 30
+    runtime: 60
 ts_output:
     runtime: 60
-    memory: 64000
