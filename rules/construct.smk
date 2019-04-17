@@ -26,6 +26,7 @@ rule run_of_river_capacity_factors:
         zip = rules.raw_run_of_river_data_zipped.output,
     shadow: "minimal"
     output: "build/model/run-of-river.csv"
+    conda: "../envs/default.yaml"
     script: "../src/construct/runoff.py"
 
 
@@ -50,6 +51,7 @@ rule preprocess_load:
         raw = "data/load_time_series.xlsx"
     params: scaling_factor = config["scaling-factors"]["power"]
     output: "build/model/electricity-demand.csv"
+    conda: "../envs/default.yaml"
     script: "../src/construct/load.py"
 
 
@@ -59,6 +61,7 @@ rule preprocess_capacityfactors:
         src = "src/construct/renewables.py",
         raw = "data/res_time_series_8760h.xlsx"
     output: "build/model/capacityfactors-{technology}.csv"
+    conda: "../envs/default.yaml"
     script: "../src/construct/renewables.py"
 
 
@@ -69,6 +72,7 @@ rule links:
         ntc = "data/NTC.xlsx"
     params: scaling_factor = config["scaling-factors"]["power"]
     output: "build/model/links.yaml"
+    conda: "../envs/default.yaml"
     script: "../src/construct/links.py"
 
 
@@ -81,6 +85,7 @@ rule generation_capacities:
     output:
         csv = "build/input/capacity.csv",
         yaml = "build/model/capacity.yaml"
+    conda: "../envs/default.yaml"
     script: "../src/construct/capacity.py"
 
 
@@ -90,6 +95,7 @@ rule pumped_hydro:
         src = "src/construct/pumped_hydro.py"
     output:
         yaml = "build/model/pumped-hydro.yaml"
+    conda: "../envs/default.yaml"
     script: "../src/construct/pumped_hydro.py"
 
 
@@ -101,6 +107,7 @@ rule renewable_shares:
     output:
         csv = "build/input/renewable-shares.csv",
         yaml = "build/model/renewable-shares.yaml"
+    conda: "../envs/default.yaml"
     script: "../src/construct/renewable_shares.py"
 
 
@@ -113,6 +120,7 @@ rule co2_caps:
     output:
         csv = "build/input/co2-caps.csv",
         yaml = "build/model/co2-caps.yaml"
+    conda: "../envs/default.yaml"
     script: "../src/construct/co2_caps.py"
 
 

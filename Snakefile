@@ -36,6 +36,7 @@ rule output:
         )
     params: scaling_factors = config["scaling-factors"]
     output: "build/output/all-results.csv"
+    conda: "envs/calliope.yaml"
     script: "src/analyse/output.py"
 
 
@@ -50,7 +51,7 @@ rule ts_output:
         )
     params: scaling_factors = config["scaling-factors"]
     output: "build/output/all-ts-results.csv"
-    conda: "envs/output.yaml"
+    conda: "envs/default.yaml"
     script: "src/analyse/ts_output.py"
 
 
@@ -76,6 +77,7 @@ rule report:
         rules.test.output
     output:
         "build/report.html"
+    conda: "envs/report.yaml"
     shell:
         """
         cd ./report

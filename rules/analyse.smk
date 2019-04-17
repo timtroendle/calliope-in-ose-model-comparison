@@ -13,6 +13,7 @@ rule run_europe:
     input:
         model = rules.model.output.model
     output: "build/output/{scenario}/results.nc"
+    conda: "../envs/calliope.yaml"
     shell:
         "calliope run {input.model} --save_netcdf {output} --scenario={wildcards.scenario}"
 
@@ -24,6 +25,7 @@ rule run_germany:
     output: "build/output/{scenario}/results.nc"
     wildcard_constraints:
         scenario = ".*(germany).*"
+    conda: "../envs/calliope.yaml"
     shell:
         "calliope run {input.model} --save_netcdf {output} --scenario={wildcards.scenario}"
 
@@ -35,6 +37,7 @@ rule plot:
         results = "build/output/{scenario}/results.nc"
     params: scaling_factor = config["scaling-factors"]["power"]
     output: "build/output/{scenario}/plot.png"
+    conda: "../envs/calliope.yaml"
     script: "../src/analyse/vis.py"
 
 
@@ -47,6 +50,7 @@ rule capacity:
     output:
         raw = "build/output/{scenario}/capacity-raw.csv",
         publish = "build/output/{scenario}/capacity-publish.csv"
+    conda: "../envs/calliope.yaml"
     script: "../src/analyse/capacity.py"
 
 
@@ -59,6 +63,7 @@ rule storage_capacity:
     output:
         raw = "build/output/{scenario}/storage-capacity-raw.csv",
         publish = "build/output/{scenario}/storage-capacity-publish.csv"
+    conda: "../envs/calliope.yaml"
     script: "../src/analyse/storage_capacity.py"
 
 
@@ -69,6 +74,7 @@ rule trade:
         results = "build/output/{scenario}/results.nc"
     params: scaling_factor = config["scaling-factors"]["power"]
     output: "build/output/{scenario}/trade.csv"
+    conda: "../envs/calliope.yaml"
     script: "../src/analyse/trade.py"
 
 
@@ -80,6 +86,7 @@ rule capacity_diff:
         other = "build/output/{scenario}/capacity-raw.csv"
     output:
         "build/output/{scenario}/capacity-diff.csv"
+    conda: "../envs/default.yaml"
     script: "../src/analyse/capacity_diff.py"
 
 
@@ -91,6 +98,7 @@ rule storage_capacity_diff:
         other = "build/output/{scenario}/storage-capacity-raw.csv"
     output:
         "build/output/{scenario}/storage-capacity-diff.csv"
+    conda: "../envs/default.yaml"
     script: "../src/analyse/storage_capacity_diff.py"
 
 
@@ -104,6 +112,7 @@ rule cost:
         monetary_scaling_factor = config["scaling-factors"]["monetary"]
     output:
         "build/output/cost.csv"
+    conda: "../envs/calliope.yaml"
     script: "../src/analyse/cost.py"
 
 
@@ -120,4 +129,5 @@ rule test:
     params:
         scaling_factors = config["scaling-factors"]
     output: "build/logs/test-report.html"
+    conda: "../envs/test.yaml"
     script: "../src/analyse/test_runner.py"
