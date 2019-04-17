@@ -5,12 +5,12 @@ channels:
     - gurobi
 dependencies:
     - python=3.7
-    - numpy=1.15.4
-    - pandas=0.23
+    - numpy=1.16.2
+    - pandas=0.23.4
     - matplotlib=3.0.2
     - seaborn=0.9.0
     - pandoc=2.5
-    - pytest=4.0.2
+    - pytest=4.4.1
     - flake8=3.6.0
     - snakemake-minimal=5.4
     - xlrd=1.2.0
@@ -19,27 +19,9 @@ dependencies:
     - gurobi=8.1.0
     - jinja2=2.10
     - pip=19.0.3
-    # FIXME The following is a copy of Calliope's base.yml file. It's only necessary because
-    # we pip install Calliope's development version and can be removed as soon as
-    # Calliope 0.6.4 is released.
-    - bottleneck
-    - click=6
-    - glpk=4.61
-    - hdf5
-    - ipython
-    - ipdb
-    - libnetcdf
-    - natsort
-    - netcdf4
-    - numexpr
-    - plotly<4.0
-    - pyomo<5.6
-    - ruamel.yaml<0.16
-    - scikit-learn<0.21
-    - xarray<0.11
     - pip:
         - pytest-pythonpath # adds the root path "./" to PYTHONPATH
         - pandoc-tablenos
         - pandoc-fignos
         - pantable
-        - -e ./calliope # FIXME install development version. Remove after release of 0.6.4
+        - git+git://github.com/calliope-project/calliope.git@cf283818711b6412593efd7197c2fc688a319e3f # FIXME install development version. Remove after release of 0.6.4
