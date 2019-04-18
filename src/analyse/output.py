@@ -19,9 +19,9 @@ ALL_COUNTRIES = ['ALB', 'AUT', 'BEL', 'BGR', 'BIH', 'CHE', 'CYP', 'CZE',
                  'PRT', 'ROU', 'SRB', 'SVK', 'SVN', 'SWE']
 LOCATIONS = [TOTAL_COVERED_REGION, GERMANY]
 CARRIER = "electricity"
-NUMBER_HOURS = 8760
 RE_TECHS = ["open_field_pv", "roof_mounted_pv", "wind_onshore_monopoly",
             "wind_onshore_competing", "wind_offshore", "hydro_run_of_river"]
+ELECTRICITY_DEMAND_TECH = "demand_elec"
 SCENARIO_NAME_MAP = {
     "baseline": "Baseline battery costs|Full geographic coverage",
     "low-cost": "50percent battery costs|Full geographic coverage",
@@ -336,6 +336,12 @@ def _excavate_generation_xarray(data, scaling_factor):
 
 
 @functools.lru_cache(maxsize=10, typed=False)
+def _excavate_consumption_xarray(data, scaling_factor):
+    return (data.get_formatted_array("carrier_con")
+                .sel(carriers=CARRIER)) * (-1) / scaling_factor
+
+
+@functools.lru_cache(maxsize=10, typed=False)
 def _excavate_renewable_generation_potential(data, scaling_factor):
     resource = data.get_formatted_array("resource").sel(techs=RE_TECHS)
     capacity = data.get_formatted_array("energy_cap").sel(techs=RE_TECHS) / scaling_factor
@@ -375,13 +381,15 @@ def _excavate_transmission_consumption(data, scaling_factors):
 
 
 def _excavate_demand(data, scaling_factors):
-    consumption = _excavate_consumption(data, scaling_factors["energy"]).reset_index()
-    consumption = (consumption.drop(index=consumption[consumption.techs.str.contains("ac_transmission")].index)
-                              .reset_index()
-                              .groupby("locs")
-                              .carrier_con
-                              .sum())
-    return consumption
+    return (_excavate_consumption_xarray(data, scaling_factors["energy"])
+            .sel(techs=ELECTRICITY_DEMAND_TECH)
+            .sum(dim=["timesteps"]))
+
+
+def _excavate_peak_demand(data, scaling_factors):
+    return (_excavate_consumption_xarray(data, scaling_factors["power"])
+            .sel(techs=ELECTRICITY_DEMAND_TECH)
+            .min(dim=["timesteps"]))
 
 
 @functools.lru_cache(maxsize=10, typed=False)
@@ -396,18 +404,6 @@ def _excavate_consumption(data, scaling_factor):
                 .div(scaling_factor))
 
 
-def _excavate_peak_demand(data, scaling_factors):
-    return (data.get_formatted_array("carrier_con")
-                .to_dataframe()
-                .reset_index()
-                .groupby(["techs", "locs"])
-                .carrier_con
-                .min()
-                .loc["demand_elec"]
-                .mul(-1)
-                .div(scaling_factors["power"]))
-
-
 def _excavate_co2_total_system(data, scaling_factors):
     return (data.get_formatted_array("cost")
                 .to_dataframe()
@@ -420,15 +416,17 @@ def _excavate_co2_total_system(data, scaling_factors):
 
 
 def _excavate_cycles_for_tech(data, tech, scaling_factors):
-    charge = data.get_formatted_array("carrier_con").sel(techs=tech, carriers=CARRIER).sum(dim="techs")
+    charge = (data.get_formatted_array("carrier_con")
+                  .sel(techs=tech, carriers=CARRIER)
+                  .sum(dim=["techs", "timesteps"]))
     storage_cap = data.get_formatted_array("storage_cap").sel(techs=tech).sum(dim="techs")
-    return (charge.sum(dim="timesteps") * (-1) / storage_cap)
+    return (charge * (-1) / storage_cap)
 
 
 def _full_load_hours_tech(data, tech, scaling_factors):
     generation = _excavate_generation_xarray(data, scaling_factors["power"]).sel(techs=tech).sum(dim="techs")
     capacity = _excavate_capacity_xarray(data, scaling_factors["power"]).sel(techs=tech).sum(dim="techs")
-    return generation / (capacity * NUMBER_HOURS)
+    return generation / capacity
 
 
 if __name__ == "__main__":
