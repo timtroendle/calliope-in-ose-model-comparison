@@ -14,7 +14,7 @@ CHARGE_RATES = { # from [@Geth:2015], given in [1/h]
     "EST": np.nan,
     "FIN": np.nan,
     "FRA": 4.317 / 83.37,
-    "DEU": 6.417 / 39.12,
+    "DEU": 1 / 7, # ASSUME DIW assumption
     "GRC": 0.735 / 4.97,
     "HUN": np.nan,
     "IRL": 0.292 / 1.8,
