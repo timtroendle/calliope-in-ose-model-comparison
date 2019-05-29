@@ -1,13 +1,12 @@
 """Create Calliope file defining bounds of generation capacities."""
 import jinja2
-import numpy as np
 import pandas as pd
 import pycountry
 
 BIOMASS_CAPACITY_FACTOR = 7500 / 8760 # ASSUME by DIW
 
 TECH_MAP = {
-    "Biofuels": "biofuels", # ASSUME inexistent
+    "Biofuels": "biomass", # ASSUME like biomass
     "Gas": "ccgt", # ASSUME all gas to be CCGT
     "Hard coal": "coal",
     "Hydro-pump": "pumped_hydro",
