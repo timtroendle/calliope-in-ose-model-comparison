@@ -5,30 +5,11 @@ subworkflow eurocalliope:
 
 configfile: "./config/default.yaml"
 
-localrules: copy_euro_calliope, model, pumped_hydro, raw_run_of_river_data_zipped
-
-URL_RUNOFF_DATA_SWITZERLAND = "https://data.sccer-jasm.ch/runofriver_production/"\
-                              "opsd-runofriver_production-2017-10-16.zip"
-
-
-rule raw_run_of_river_data_zipped:
-    message: "Download run of river generation data as zip."
-    output:
-        protected("data/automatic/raw-run-of-river.zip")
-    shell:
-        "curl -sLo {output} '{URL_RUNOFF_DATA_SWITZERLAND}'"
-
-
-rule run_of_river_capacity_factors:
-    message: "Create capacity factor timeseries from Swiss generation data."
-    input:
-        src = "src/construct/runoff.py",
-        zip = rules.raw_run_of_river_data_zipped.output,
-    shadow: "minimal"
-    output: "build/model/run-of-river.csv"
-    conda: "../envs/default.yaml"
-    script: "../src/construct/runoff.py"
-
+localrules: copy_euro_calliope, copy_national_definitions_from_euro_calliope, model
+wildcard_constraints:
+    definition_file = "((renewable-techs)|(locations)|(hydro-capacities)|"
+                      "(energy-generation-hydro-ror)|(energy-inflow-hydro-reservoir)|"
+                      "(storage-techs))"
 
 rule copy_euro_calliope:
     message: "Copy file ./build/model/{wildcards.definition_file}.yaml from euro-calliope."
@@ -37,10 +18,10 @@ rule copy_euro_calliope:
     shell: "cp {input} {output}"
 
 
-rule copy_national_locations_from_euro_calliope:
-    message: "Copy file locations.yaml from euro-calliope."
-    input: eurocalliope("build/model/national/locations.yaml"),
-    output: "build/model/locations.yaml"
+rule copy_national_definitions_from_euro_calliope:
+    message: "Copy file {input[0]} from euro-calliope."
+    input: eurocalliope("build/model/national/{definition_file}.{suffix}"),
+    output: "build/model/national/{definition_file}.{suffix}"
     shell: "cp {input} {output}"
 
 
@@ -50,7 +31,7 @@ rule preprocess_load:
         src = "src/construct/load.py",
         raw = "data/load_time_series.xlsx"
     params: scaling_factor = config["scaling-factors"]["power"]
-    output: "build/model/electricity-demand.csv"
+    output: "build/model/national/electricity-demand.csv"
     conda: "../envs/default.yaml"
     script: "../src/construct/load.py"
 
@@ -60,7 +41,7 @@ rule preprocess_capacityfactors:
     input:
         src = "src/construct/renewables.py",
         raw = "data/res_time_series_8760h.xlsx"
-    output: "build/model/capacityfactors-{technology}.csv"
+    output: "build/model/national/capacityfactors-{technology}.csv"
     conda: "../envs/default.yaml"
     script: "../src/construct/renewables.py"
 
@@ -71,7 +52,7 @@ rule links:
         src = "src/construct/links.py",
         ntc = "data/NTC.xlsx"
     params: scaling_factor = config["scaling-factors"]["power"]
-    output: "build/model/links.yaml"
+    output: "build/model/national/links.yaml"
     conda: "../envs/default.yaml"
     script: "../src/construct/links.py"
 
@@ -84,19 +65,9 @@ rule generation_capacities:
     params: scaling_factor = config["scaling-factors"]["power"]
     output:
         csv = "build/input/capacity.csv",
-        yaml = "build/model/capacity.yaml"
+        yaml = "build/model/national/capacity.yaml"
     conda: "../envs/default.yaml"
     script: "../src/construct/capacity.py"
-
-
-rule pumped_hydro:
-    message: "Define the charge rates of pumped hydro."
-    input:
-        src = "src/construct/pumped_hydro.py"
-    output:
-        yaml = "build/model/pumped-hydro.yaml"
-    conda: "../envs/default.yaml"
-    script: "../src/construct/pumped_hydro.py"
 
 
 rule renewable_shares:
@@ -106,7 +77,7 @@ rule renewable_shares:
         shares = "data/bound_RES_and_CO2.xlsx"
     output:
         csv = "build/input/renewable-shares.csv",
-        yaml = "build/model/renewable-shares.yaml"
+        yaml = "build/model/national/renewable-shares.yaml"
     conda: "../envs/default.yaml"
     script: "../src/construct/renewable_shares.py"
 
@@ -119,7 +90,7 @@ rule co2_caps:
     params: scaling_factor = config["scaling-factors"]["co2"]
     output:
         csv = "build/input/co2-caps.csv",
-        yaml = "build/model/co2-caps.yaml"
+        yaml = "build/model/national/co2-caps.yaml"
     conda: "../envs/default.yaml"
     script: "../src/construct/co2_caps.py"
 
@@ -128,19 +99,20 @@ rule model:
     message: "Build entire model."
     input:
         "build/model/renewable-techs.yaml",
-        "build/model/locations.yaml",
+        "build/model/national/locations.yaml",
+        "build/model/national/hydro-capacities.yaml",
+        "build/model/national/energy-generation-hydro-ror.csv",
+        "build/model/national/energy-inflow-hydro-reservoir.csv",
         "build/model/storage-techs.yaml",
         rules.preprocess_load.output,
         expand(
-            "build/model/capacityfactors-{technology}.csv",
+            "build/model/national/capacityfactors-{technology}.csv",
             technology=["open-field-pv", "rooftop-pv", "wind-offshore", "wind-onshore"]
         ),
         rules.links.output,
         rules.generation_capacities.output.yaml,
-        rules.pumped_hydro.output,
         rules.renewable_shares.output,
         rules.co2_caps.output,
-        rules.run_of_river_capacity_factors.output,
         legacy_techs = "src/template/legacy-tech.yaml",
         definition = "src/template/model.yaml"
     params:
@@ -152,7 +124,7 @@ rule model:
         co2_scaling_factor = config["scaling-factors"]["co2"]
     output:
         legacy_techs = "build/model/legacy-tech.yaml",
-        model = "build/model/model.yaml"
+        model = "build/model/national/model.yaml"
     run:
         import jinja2
 

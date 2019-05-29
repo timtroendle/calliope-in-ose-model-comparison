@@ -1,11 +1,11 @@
 import:
-    - './renewable-techs.yaml'
+    - '../renewable-techs.yaml'
+    - '../storage-techs.yaml'
+    - '../legacy-tech.yaml'
     - './locations.yaml'
-    - './storage-techs.yaml'
+    - './hydro-capacities.yaml'
     - './links.yaml'
     - './capacity.yaml'
-    - './pumped-hydro.yaml'
-    - './legacy-tech.yaml'
     - './renewable-shares.yaml'
     - './co2-caps.yaml'
 overrides:
@@ -258,13 +258,13 @@ overrides:
         locations.SVN.techs.hydrogen.exists: False
         locations.SWE.techs.hydrogen.exists: False
 scenarios:
-    baseline: ["diw_assumptions", "diw_battery_baseline_cost", "jrc_etri_2014_renewable_costs", "equal_interest_rate", "no_hydrogen"]
-    low-cost: ["diw_assumptions", "diw_battery_low_cost", "jrc_etri_2014_renewable_costs", "equal_interest_rate", "no_hydrogen"]
-    lowest-cost: ["diw_assumptions", "diw_battery_lowest_cost", "jrc_etri_2014_renewable_costs", "equal_interest_rate", "no_hydrogen"]
-    baseline-germany: ["diw_assumptions", "diw_battery_baseline_cost", "jrc_etri_2014_renewable_costs", "germany_only", "equal_interest_rate", "no_hydrogen"]
-    low-cost-germany: ["diw_assumptions", "diw_battery_low_cost", "jrc_etri_2014_renewable_costs", "germany_only", "equal_interest_rate", "no_hydrogen"]
-    lowest-cost-germany: ["diw_assumptions", "diw_battery_lowest_cost", "jrc_etri_2014_renewable_costs", "germany_only", "equal_interest_rate", "no_hydrogen"]
-    tight-co2-caps-germany: ["diw_assumptions", "diw_battery_baseline_cost", "jrc_etri_2014_renewable_costs", "germany_only", "equal_interest_rate", "no_hydrogen", "tight_co2_caps"]
+    baseline: ["diw_assumptions", "ose_capacity", "diw_battery_baseline_cost", "jrc_etri_2014_renewable_costs", "equal_interest_rate", "no_hydrogen"]
+    low-cost: ["diw_assumptions", "ose_capacity", "diw_battery_low_cost", "jrc_etri_2014_renewable_costs", "equal_interest_rate", "no_hydrogen"]
+    lowest-cost: ["diw_assumptions", "ose_capacity", "diw_battery_lowest_cost", "jrc_etri_2014_renewable_costs", "equal_interest_rate", "no_hydrogen"]
+    baseline-germany: ["diw_assumptions", "ose_capacity", "diw_battery_baseline_cost", "jrc_etri_2014_renewable_costs", "germany_only", "equal_interest_rate", "no_hydrogen"]
+    low-cost-germany: ["diw_assumptions", "ose_capacity", "diw_battery_low_cost", "jrc_etri_2014_renewable_costs", "germany_only", "equal_interest_rate", "no_hydrogen"]
+    lowest-cost-germany: ["diw_assumptions", "ose_capacity", "diw_battery_lowest_cost", "jrc_etri_2014_renewable_costs", "germany_only", "equal_interest_rate", "no_hydrogen"]
+    tight-co2-caps-germany: ["diw_assumptions", "ose_capacity", "diw_battery_baseline_cost", "jrc_etri_2014_renewable_costs", "germany_only", "equal_interest_rate", "no_hydrogen", "tight_co2_caps"]
 model:
     name: 'Open Source Modelling -- Euro Calliope model'
     calliope_version: 0.6.4
@@ -317,34 +317,6 @@ techs:
         constraints:
             energy_eff_per_distance: 0.99999995 # [1/m]
             one_way: true
-    hydro_run_of_river:
-        essentials:
-            name: 'Run of river hydro power'
-            parent: supply
-            carrier: electricity
-        constraints:
-            energy_cap_max: inf
-            resource: file=run-of-river.csv:capacityfactor
-            resource_unit: energy_per_cap
-            lifetime: 60 # [JRC ETRI 2014]
-        costs:
-            monetary:
-                energy_cap: {{ 5620000 * monetary_scaling_factor }} # [{{ 1 / monetary_scaling_factor }} EUR2013/MW], [JRC ETRI 2014]
-                om_annual: {{ 84300 * monetary_scaling_factor }} # [{{ 1 / monetary_scaling_factor }} EUR2013/MW/year], [JRC ETRI 2014]
-    hydro_reservoir: # ASSUME ignoring the actual reservoir here, as we do not know their size
-        essentials:
-            name: 'Reservoir hydro power'
-            parent: supply
-            carrier: electricity
-        constraints:
-            energy_cap_max: inf
-            resource: file=run-of-river.csv:capacityfactor
-            resource_unit: energy_per_cap
-            lifetime: 60 # [JRC ETRI 2014]
-        costs:
-            monetary:
-                energy_cap: {{ 5620000 * monetary_scaling_factor }} # [{{ 1 / monetary_scaling_factor }} EUR2013/MW], [JRC ETRI 2014]
-                om_annual: {{ 84300 * monetary_scaling_factor }} # [{{ 1 / monetary_scaling_factor }} EUR2013/MW/year], [JRC ETRI 2014]
     biomass: # based on Anaerobic digestion from [JRC ETRI 2014]
         essentials:
             name: Biomass

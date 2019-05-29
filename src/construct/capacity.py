@@ -1,5 +1,6 @@
 """Create Calliope file defining bounds of generation capacities."""
 import jinja2
+import numpy as np
 import pandas as pd
 import pycountry
 
@@ -23,48 +24,89 @@ TECH_MAP = {
     "Wind-off-shore": "wind_offshore"
 }
 
+CHARGE_RATES = { # from [@Geth:2015], given in [h]
+    "AUT": 132.41 / 3.246,
+    "BEL": 5.71 / 1.196,
+    "BGR": 11.13 / 0.93,
+    "HRV": 2.34 / 0.246,
+    "CYP": 0,
+    "CZE": 5.72 / 1.145,
+    "DNK": 0,
+    "EST": 0,
+    "FIN": 0,
+    "FRA": 83.37 / 4.317,
+    "DEU": 7, # ASSUME DIW assumption
+    "GRC": 4.97 / 0.735,
+    "HUN": 0,
+    "IRL": 1.8 / 0.292,
+    "ITA": 68.27 / 7.64,
+    "LVA": 0,
+    "LTU": 10.8 / 0.88,
+    "LUX": 4.92 / 1.050,
+    "MLT": 0,
+    "NLD": 0,
+    "POL": 7.96 / 1.647,
+    "PRT": 40.77 / 1.279,
+    "ROU": 10.2 / 0.2,
+    "SVK": 3.63 / 0.79,
+    "SVN": 0.5 / 0.180,
+    "ESP": 70 / 5.859,
+    "SWE": 72.12 / 0.091,
+    "GBR": 26.7 / 2.65,
+    "NOR": 399.39 / 0.892,
+    "CHE": 311.48 / 1.512,
+    "ALB": 0, # has no pumped hydro
+    "BIH": 4.97 / 0.735, # ASSUME like Greece
+    "MKD": 0, # has no pumped hydro
+    "MNE": 0, # has no pumped hydro
+    "SRB": 4.97 / 0.735, # ASSUME like Greece
+}
+
 TEMPLATE = """
-locations:
-    {% for country, techs in capacities.iterrows() %}
-    {{ country }}:
-        techs:
-            wind_onshore_monopoly:
-                constraints:
-                    energy_cap_min: {{ techs.wind_onshore_monopoly }} # [{{ unit_scaling_factor }} MW]
-            wind_offshore:
-                constraints:
-                    energy_cap_min: {{ techs.wind_offshore }} # [{{ unit_scaling_factor }} MW]
-            roof_mounted_pv:
-                constraints:
-                    energy_cap_min: {{ techs.roof_mounted_pv }} # [{{ unit_scaling_factor }} MW]
-            hydro_run_of_river:
-                constraints:
-                    energy_cap_equals: {{ techs.hydro_run_of_river }} # [{{ unit_scaling_factor }} MW]
-            hydro_reservoir:
-                constraints:
-                    energy_cap_equals: {{ techs.hydro_reservoir }} # [{{ unit_scaling_factor }} MW]
-            biomass:
-                constraints:
-                    energy_cap_equals: {{ techs.biomass }} # [{{ unit_scaling_factor }} MW]
-            pumped_hydro:
-                constraints:
-                    energy_cap_equals: {{ techs.pumped_hydro }} # [{{ unit_scaling_factor }} MW]
-            coal:
-                constraints:
-                    energy_cap_max: {{ techs.coal }} # [{{ unit_scaling_factor }} MW]
-            lignite:
-                constraints:
-                    energy_cap_max: {{ techs.lignite }} # [{{ unit_scaling_factor }} MW]
-            oils:
-                constraints:
-                    energy_cap_max: {{ techs.oils }} # [{{ unit_scaling_factor }} MW]
-            ccgt:
-                constraints:
-                    energy_cap_max: {{ techs.ccgt }} # [{{ unit_scaling_factor }} MW]
-            nuclear:
-                constraints:
-                    energy_cap_max: {{ techs.nuclear }} # [{{ unit_scaling_factor }} MW]
-    {% endfor %}
+overrides:
+    ose_capacity:
+        locations:
+            {% for country, techs in capacities.iterrows() %}
+            {{ country }}:
+                techs:
+                    wind_onshore_monopoly:
+                        constraints:
+                            energy_cap_min: {{ techs.wind_onshore_monopoly }} # [{{ unit_scaling_factor }} MW]
+                    wind_offshore:
+                        constraints:
+                            energy_cap_min: {{ techs.wind_offshore }} # [{{ unit_scaling_factor }} MW]
+                    roof_mounted_pv:
+                        constraints:
+                            energy_cap_min: {{ techs.roof_mounted_pv }} # [{{ unit_scaling_factor }} MW]
+                    hydro_run_of_river:
+                        constraints:
+                            energy_cap_equals: {{ techs.hydro_run_of_river }} # [{{ unit_scaling_factor }} MW]
+                    hydro_reservoir:
+                        constraints:
+                            energy_cap_equals: {{ techs.hydro_reservoir }} # [{{ unit_scaling_factor }} MW]
+                    biomass:
+                        constraints:
+                            energy_cap_equals: {{ techs.biomass }} # [{{ unit_scaling_factor }} MW]
+                    pumped_hydro:
+                        constraints:
+                            energy_cap_equals: {{ techs.pumped_hydro }} # [{{ unit_scaling_factor }} MW]
+                            storage_cap_equals: {{ techs.pumped_hydro * charge_rates[country] }} # [{{ unit_scaling_factor }} MWh]
+                    coal:
+                        constraints:
+                            energy_cap_max: {{ techs.coal }} # [{{ unit_scaling_factor }} MW]
+                    lignite:
+                        constraints:
+                            energy_cap_max: {{ techs.lignite }} # [{{ unit_scaling_factor }} MW]
+                    oils:
+                        constraints:
+                            energy_cap_max: {{ techs.oils }} # [{{ unit_scaling_factor }} MW]
+                    ccgt:
+                        constraints:
+                            energy_cap_max: {{ techs.ccgt }} # [{{ unit_scaling_factor }} MW]
+                    nuclear:
+                        constraints:
+                            energy_cap_max: {{ techs.nuclear }} # [{{ unit_scaling_factor }} MW]
+            {% endfor %}
 """
 
 
@@ -76,7 +118,8 @@ def generate_generation_capacities(path_to_data, scaling_factor, path_to_yaml, p
 
     capacities = jinja2.Template(TEMPLATE).render(
         capacities=raw.mul(scaling_factor),
-        unit_scaling_factor=1 / scaling_factor
+        unit_scaling_factor=1 / scaling_factor,
+        charge_rates=CHARGE_RATES
     )
     with open(path_to_yaml, "w") as result_file:
         result_file.write(capacities)
