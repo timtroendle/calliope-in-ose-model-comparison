@@ -1,7 +1,3 @@
-# Introduction
-
-...
-
 # Results
 
 ## Baseline scenario

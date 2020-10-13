@@ -4,6 +4,9 @@ build/
 # input data
 data/
 
+# notebooks
+notebooks
+
 ## Core latex/pdflatex auxiliary files:
 *.aux
 *.lof

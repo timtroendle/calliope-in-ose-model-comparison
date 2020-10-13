@@ -1,6 +1,6 @@
-# OSE Model Comparison -- Euro Calliope
+# OSE Model Comparison -- Euro-Calliope
 
-Simulation runs of Euro Calliope within the OSE Model Comparison.
+Simulation runs of Euro-Calliope within the OSE model comparison.
 
 This repository contains the entire scientific project, including code and report. The philosophy behind this repository is that no intermediary results are included, but all results are computed from raw data and code.
 
@@ -49,6 +49,7 @@ The default units within the optimisation model are `MW`, `MWh`, `EUR`, `Mt`, an
 ## Repo structure
 
 * `report`: contains all files necessary to build the report; plots and result files are not in here but generated automatically
+* `envs`: contains execution environments
 * `src`: contains the Python source code
 * `tests`: contains the test code
 * `config`: configurations used in the study
